@@ -190,8 +190,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 800824319}
-  - component: {fileID: 800824320}
-  - component: {fileID: 369640904}
+  - component: {fileID: 2118310470745331762}
+  - component: {fileID: 5422070743024243800}
   m_Layer: 0
   m_Name: Patrol
   m_TagString: Untagged
@@ -214,7 +214,7 @@ Transform:
   m_Father: {fileID: 1990525627}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &800824320
+--- !u!114 &2118310470745331762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,10 +223,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 800824318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 209b63d22783d664ba80ead2373214a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 284b1846dfb6b104cb1cac3f62df7dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: "\u5DE1\u903B"
+  Name: PatrolAction
   cost: 1
   m_Preconditions:
   - Key: HasTarget
@@ -235,13 +235,13 @@ MonoBehaviour:
   - Key: HasTarget
     Value: 1
   center: {fileID: 0}
-  range: 20
-  radius: 10
-  sector: 120
+  range: 10
+  radius: 5
+  sector: 90
   layer:
     serializedVersion: 2
-    m_Bits: 512
---- !u!114 &369640904
+    m_Bits: 0
+--- !u!114 &5422070743024243800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -250,15 +250,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 800824318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 086ce64ed52d8324a841c253a29dfe25, type: 3}
+  m_Script: {fileID: 11500000, guid: 59b107ec7e6b1fd4286f5f2c33a08f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 21641087}
-  texts:
-  - "emmm\uFF0C\u8FD9\u91CC\u4EC0\u4E48\u4E5F\u6CA1\u6709"
-  - "\u62A5\u544A\uFF01\u4E00\u5207\u6B63\u5E38\uFF01"
-  - "\u6211\u53BB\u522B\u5904\u770B\u770B\u5427"
-  - "\u5509~~\u5DE1\u903B\u771F\u662F\u7D2F\u4EBA\u554A\uFF01"
+  texts: []
 --- !u!1 &1320362482
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,8 +362,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1784008365}
-  - component: {fileID: 1784008366}
-  - component: {fileID: 24179751}
+  - component: {fileID: 4298687567811939166}
+  - component: {fileID: 8419972913514469206}
   m_Layer: 0
   m_Name: Seek
   m_TagString: Untagged
@@ -390,7 +386,7 @@ Transform:
   m_Father: {fileID: 1990525627}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1784008366
+--- !u!114 &4298687567811939166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,10 +395,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784008364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20614c2a52e5cbf4bb98bd1ce5891759, type: 3}
+  m_Script: {fileID: 11500000, guid: d42420a88cd11e9458830cdf871aeb0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: "\u8FFD\u9010\u654C\u4EBA"
+  Name: SeekAction
   cost: 1
   m_Preconditions:
   - Key: HasTarget
@@ -412,11 +408,9 @@ MonoBehaviour:
   m_Effects:
   - Key: InAttackRange
     Value: 1
-  - Key: HurtEnemy
-    Value: 1
   distance: 2
   timeout: 10
---- !u!114 &24179751
+--- !u!114 &8419972913514469206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -425,14 +419,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1784008364}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83c1adba1a40ce14096a9da8625ac17b, type: 3}
+  m_Script: {fileID: 11500000, guid: 493ec50996a64354493d6258fe19611b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 1320362484}
-  texts:
-  - "\u6211\u8981\u6293\u4F60\uFF01\uFF01"
-  - "\u547C\u547C\uFF0C\u7D2F\u6B7B\u6211\u4E86"
-  - "\u7AD9\u4F4F\uFF01"
+  texts: []
 --- !u!1 &1990525626
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3025367265000986600}
-  - component: {fileID: 3025367265000986601}
+  - component: {fileID: 473493519629446828}
   - component: {fileID: 5105011147659807164}
   m_Layer: 0
   m_Name: AI
@@ -500,7 +491,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3025367265000986601
+--- !u!114 &473493519629446828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -509,17 +500,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3025367265000986599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e10812592bbe194a84b0b517b9731e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9718a97dc0f4ba944a13be333b6dd6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   goals:
-  - Key: HurtEnemy
+  - Key: InAttackRange
     Value: 1
     Once: 0
     Priority: 0
   preState: []
   maxDepth: 0
-  interval: 0.1
+  interval: 3
   resetInterval: 1
 --- !u!195 &5105011147659807164
 NavMeshAgent:
