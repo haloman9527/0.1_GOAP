@@ -21,8 +21,8 @@ namespace CZToolKit.GOAP
         [Tooltip("状态预设")]
         List<State> preState = new List<State>();
 
-        
-        Blackboard blackboard = new Blackboard();
+
+        Dictionary<string, ICZType> blackboard = new Dictionary<string, ICZType>();
 
         IGOAP provider = null;
         Goal currentGoal = null;
@@ -78,7 +78,7 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public Blackboard Blackboard { get { return blackboard; } }
+        public Dictionary<string, ICZType> Blackboard { get { return blackboard; } }
 
         /// <summary> 当前目标，没有为空 </summary>
         public Goal CurrentGoal { get { return currentGoal; } }
