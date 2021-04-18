@@ -49,16 +49,6 @@ namespace CZToolKit.GOAP.Editors
         {
             instance = this;
             OnSelectionChange();
-            StartCoroutine(DDD());
-        }
-
-        IEnumerator DDD()
-        {
-            for (int i = 0; i < 1000; i++)
-            {
-                Debug.Log(EditorApplication.timeSinceStartup);
-                yield return 0;
-            }
         }
 
         private void OnSelectionChange()
