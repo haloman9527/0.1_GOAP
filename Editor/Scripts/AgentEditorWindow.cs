@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Editors
 {
-    public class AgentEditorWindow : BasicEditorWindow<AgentEditorWindow>
+    public class AgentEditorWindow : BasicEditorWindow
     {
 
         [MenuItem("Tools/CZToolKit/GOAP")]
