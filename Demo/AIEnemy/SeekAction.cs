@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class SeekAction : Action
+public class SeekAction : GOAPAction
 {
     private GameObject target;
     private NavMeshAgent navMeshAgent;

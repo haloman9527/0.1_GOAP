@@ -3,6 +3,9 @@
 namespace CZToolKit.GOAP
 {
     [Serializable]
+#if ODIN_INSPECTOR
+    [Sirenix.OdinInspector.HideReferenceObjectPicker]
+#endif
     public class State
     {
         public string Key = "None";
@@ -15,21 +18,5 @@ namespace CZToolKit.GOAP
             Key = _key;
             Value = _value;
         }
-    }
-
-    public enum ValueType
-    {
-        Boolean, Float
-    }
-
-
-    public enum ConditionType
-    {
-        Less, Greater, Equal
-    }
-
-    public class BState
-    {
-
     }
 }

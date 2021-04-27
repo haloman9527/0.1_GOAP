@@ -6,12 +6,30 @@ using State = CZToolKit.GOAP.State;
 
 namespace CZToolKit.GOAP
 {
+    public interface IGOAPAction
+    {
+        void Initialize(Agent _agent);
+        /// <summary> 在行为开始前执行一次 </summary>
+        void PrePerform();
+
+        bool Perform();
+
+        void Success();
+
+        void Failed();
+
+        /// <summary> 在行为结束后执行一次 </summary>
+        void PostPerform();
+
+        /// <summary> 是否完成动作 </summary>
+        bool IsDone();
+    }
+
     [Serializable]
-    public abstract class Action : MonoBehaviour
+    public abstract class GOAPAction : MonoBehaviour
     {
         /// <summary> 行为的名称 </summary>
         [Tooltip("行为名称")] public string Name;
-
         /// <summary> 行为的执行成本 </summary>
         [Tooltip("此行为的执行成本")] public float cost = 1;
 
@@ -64,7 +82,7 @@ namespace CZToolKit.GOAP
         /// <param name="_agent"></param>
         public void Initialize(Agent _agent)
         {
-            this.Agent = _agent;
+            Agent = _agent;
 
             preconditions = new Dictionary<string, bool>();
             foreach (var item in m_Preconditions)

@@ -5,19 +5,19 @@ using UnityEditor;
 
 namespace CZToolKit.GOAP.Editors
 {
-    [CustomEditor(typeof(Action), true)]
+    [CustomEditor(typeof(GOAPAction), true)]
     public class ActionEditor : BasicEditor
     {
         public static bool preconditionsFoldout, effectsFoldout;
 
-        GOAP.Action action;
+        GOAP.GOAPAction action;
         SerializedProperty preconditionsProperty, effectsProperty;
         ReorderableList preconditionsReorderableList, effectsReorderableList;
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            action = target as Action;
+            action = target as GOAPAction;
 
             preconditionsProperty = serializedObject.FindProperty("m_Preconditions");
             preconditionsReorderableList = new ReorderableList(serializedObject, preconditionsProperty, true, false, true, true);

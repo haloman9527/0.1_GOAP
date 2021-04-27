@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-public class PatrolAction : Action
+public class PatrolAction : GOAPAction
 {
     [Header("巡逻范围")]
     public GameObject center;

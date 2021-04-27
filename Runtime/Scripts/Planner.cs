@@ -9,15 +9,15 @@ namespace CZToolKit.GOAP
     {
         /// <summary> 节点对象池，节点对象重复利用 </summary>
         private GOAPNodePool NodePool { get; } = new GOAPNodePool();
-        private QueuePool<Action> Queue_Pool { get; } = new QueuePool<Action>();
-        private StackPool<Action> Stack_Pool { get; } = new StackPool<Action>();
+        private QueuePool<GOAPAction> Queue_Pool { get; } = new QueuePool<GOAPAction>();
+        private StackPool<GOAPAction> Stack_Pool { get; } = new StackPool<GOAPAction>();
         private DictionaryPool<string, bool> DictionaryObjPool { get; } = new DictionaryPool<string, bool>();
 
         GOAPNode root;
         GOAPNode cheapestNode;
         List<GOAPNode> leaves = new List<GOAPNode>();
-        List<Action> usableActions = new List<Action>();
-        Queue<Action> cheapestPlan = new Queue<Action>();
+        List<GOAPAction> usableActions = new List<GOAPAction>();
+        Queue<GOAPAction> cheapestPlan = new Queue<GOAPAction>();
 
         public GOAPNode CheapestNode { get { return cheapestNode; } }
 
@@ -31,7 +31,7 @@ namespace CZToolKit.GOAP
         /// <param name="_availableActions">所有可用行为</param>
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_goal">目标状态，想要达到的状态</param>
-        public Queue<Action> Plan(Agent _agent, Action[] _availableActions,
+        public Queue<GOAPAction> Plan(Agent _agent, GOAPAction[] _availableActions,
             Dictionary<string, bool> _currentStates, Goal _goal)
         {
             if (_currentStates.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
@@ -62,7 +62,7 @@ namespace CZToolKit.GOAP
             // 如果通过构建节点树找到了能够达成目标的计划
             if (BuildGraph(root, usableActions, _goal, 0, _agent.maxDepth, leaves))
             {
-                Stack<Action> goapActionStack = Stack_Pool.Spawn();
+                Stack<GOAPAction> goapActionStack = Stack_Pool.Spawn();
 
                 foreach (GOAPNode leaf in leaves)
                 {
@@ -104,12 +104,12 @@ namespace CZToolKit.GOAP
         /// <param name="_goal">目标计划</param>
         /// <param name="_leaves">已找到的所有计划</param>
         /// <returns>是否找到计划</returns>
-        private bool BuildGraph(GOAPNode _parent, List<Action> _usableActions, Goal _goal, int _depth, int _maxDepth, List<GOAPNode> _leaves)
+        private bool BuildGraph(GOAPNode _parent, List<GOAPAction> _usableActions, Goal _goal, int _depth, int _maxDepth, List<GOAPNode> _leaves)
         {
             if (_maxDepth >= 1 && _depth >= _maxDepth)
                 return false;
 
-            foreach (Action action in _usableActions)
+            foreach (GOAPAction action in _usableActions)
             {
                 // 不允许出现两个连续的相同行为
                 if (_parent == null || action == _parent.action || !action.IsProceduralPrecondition(_parent.state))
@@ -182,14 +182,14 @@ namespace CZToolKit.GOAP
             public float runningCost;
 
             /// <summary> 此节点代表的行为 </summary>
-            public Action action;
+            public GOAPAction action;
 
             /// <summary> 运行到此节点时的当前状态 </summary>
             public Dictionary<string, bool> state;
 
             public GOAPNode() { }
 
-            public GOAPNode(GOAPNode _parent, float _runningCost, Dictionary<string, bool> _state, Action _action)
+            public GOAPNode(GOAPNode _parent, float _runningCost, Dictionary<string, bool> _state, GOAPAction _action)
             {
                 parent = _parent;
                 runningCost = _runningCost;
@@ -214,7 +214,7 @@ namespace CZToolKit.GOAP
                 initCount = true;
             }
 
-            public GOAPNode TakeUnit(GOAPNode _parent, float _runningCost, Dictionary<string, bool> _state, Action _action)
+            public GOAPNode TakeUnit(GOAPNode _parent, float _runningCost, Dictionary<string, bool> _state, GOAPAction _action)
             {
                 GOAPNode unit = null;
 

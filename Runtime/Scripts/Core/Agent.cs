@@ -26,10 +26,10 @@ namespace CZToolKit.GOAP
 
         IGOAP provider = null;
         Goal currentGoal = null;
-        Action[] availableActions = null;
-        Queue<Action> storedActionQueue = new Queue<Action>();
-        Queue<Action> actionQueue;
-        Action currentAction = null;
+        GOAPAction[] availableActions = null;
+        Queue<GOAPAction> storedActionQueue = new Queue<GOAPAction>();
+        Queue<GOAPAction> actionQueue;
+        GOAPAction currentAction = null;
         /// <summary> 下此搜寻计划的时间 </summary>
         float nextPlanTime = 0;
 
@@ -84,16 +84,16 @@ namespace CZToolKit.GOAP
         public Goal CurrentGoal { get { return currentGoal; } }
 
         /// <summary> 当前计划 </summary>
-        public Queue<Action> StoredActionQueue { get { return storedActionQueue; } }
+        public Queue<GOAPAction> StoredActionQueue { get { return storedActionQueue; } }
 
         /// <summary> 当前行为队列 </summary>
-        public Queue<Action> ActionQueue { get { return actionQueue; } }
+        public Queue<GOAPAction> ActionQueue { get { return actionQueue; } }
 
         /// <summary> 所有可用的行为 </summary>
-        public Action[] AvailableActions { get { return availableActions; } }
+        public GOAPAction[] AvailableActions { get { return availableActions; } }
 
         /// <summary> 当前行为 </summary>
-        public Action CurrentAction { get { return currentAction; } }
+        public GOAPAction CurrentAction { get { return currentAction; } }
 
         public bool HasGoal { get { return CurrentGoal != null; } }
 
@@ -103,11 +103,11 @@ namespace CZToolKit.GOAP
         protected virtual void Awake()
         {
             provider = GetComponent<IGOAP>();
-            actionQueue = new Queue<Action>();
-            fsm = new GOAPFSM(this);
+            actionQueue = new Queue<GOAPAction>();
+            fsm = new GOAPFSM();
             goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
-            availableActions = GetComponentsInChildren<Action>();
-            foreach (Action action in availableActions)
+            availableActions = GetComponentsInChildren<GOAPAction>();
+            foreach (GOAPAction action in availableActions)
             {
                 action.Initialize(this);
             }
@@ -123,7 +123,7 @@ namespace CZToolKit.GOAP
                         return;
                     nextPlanTime = Time.time + interval;
 
-                    Queue<Action> plan = null;
+                    Queue<GOAPAction> plan = null;
                     // 搜寻计划
                     foreach (Goal goal in Goals)
                     {
@@ -165,7 +165,7 @@ namespace CZToolKit.GOAP
                     if (HasPlan)
                     {
                         // 如果当前有计划(目标尚未完成)
-                        Action action = actionQueue.Peek();
+                        GOAPAction action = actionQueue.Peek();
                         if (currentAction != action)
                         {
                             currentAction = action;

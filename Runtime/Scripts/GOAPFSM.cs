@@ -5,14 +5,8 @@ namespace CZToolKit.GOAP
 {
     public class GOAPFSM
     {
-        private Agent agent;
         private Dictionary<string, GOAPFSMState> states = new Dictionary<string, GOAPFSMState>();
         private GOAPFSMState currentState;
-
-        public GOAPFSM(Agent agent)
-        {
-            this.agent = agent;
-        }
 
         public void LateUpdate()
         {
