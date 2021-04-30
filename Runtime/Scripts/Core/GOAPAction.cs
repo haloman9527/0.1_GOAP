@@ -107,7 +107,7 @@ namespace CZToolKit.GOAP
         /// <summary> 动态评估成本 </summary>
         public virtual void DynamicallyEvaluateCost() { }
 
-        /// <summary> 检查能否执行 </summary>
+        /// <summary> 匹配计划过程中检查能否执行(应用计划执行过程中会导致的状态改变) </summary>
         public virtual bool IsProceduralPrecondition(Dictionary<string, bool> currentState) { return true; }
 
         /// <summary> 在行为开始前执行一次 </summary>

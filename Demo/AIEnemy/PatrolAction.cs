@@ -18,7 +18,7 @@ public class PatrolAction : GOAPAction
 
     private NavMeshAgent navMeshAgent;
 
-    public UnityAction onRefindTarget;
+    public UnityAction onRefindTarget { get; set; }
 
     protected override void OnInitialized()
     {

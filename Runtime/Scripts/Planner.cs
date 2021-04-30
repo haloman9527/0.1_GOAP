@@ -31,8 +31,8 @@ namespace CZToolKit.GOAP
         /// <param name="_availableActions">所有可用行为</param>
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_goal">目标状态，想要达到的状态</param>
-        public Queue<GOAPAction> Plan(Agent _agent, GOAPAction[] _availableActions,
-            Dictionary<string, bool> _currentStates, Goal _goal)
+        public Queue<GOAPAction> Plan(GOAPAction[] _availableActions,
+            Dictionary<string, bool> _currentStates, Goal _goal, int _maxDepth)
         {
             if (_currentStates.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
                 return null;
@@ -60,7 +60,7 @@ namespace CZToolKit.GOAP
             cheapestPlan = Queue_Pool.Spawn();
 
             // 如果通过构建节点树找到了能够达成目标的计划
-            if (BuildGraph(root, usableActions, _goal, 0, _agent.maxDepth, leaves))
+            if (BuildGraph(root, usableActions, _goal, 0, _maxDepth, leaves))
             {
                 Stack<GOAPAction> goapActionStack = Stack_Pool.Spawn();
 
@@ -94,7 +94,6 @@ namespace CZToolKit.GOAP
 
             // 用完回收所有对象
             DictionaryObjPool.RecycleAll();
-            Queue_Pool.Recycle(_agent.ActionQueue);
             return cheapestPlan;
         }
 

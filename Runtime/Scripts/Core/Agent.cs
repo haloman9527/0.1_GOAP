@@ -1,174 +1,136 @@
-﻿using System.Collections.Generic;
+﻿using CZToolKit.Core.Blackboards;
+using CZToolKit.SimpleFSM;
 using UnityEngine;
+using System.Collections.Generic;
 using System.Linq;
-using CZToolKit.Core.Blackboards;
 
 namespace CZToolKit.GOAP
 {
     public class Agent : MonoBehaviour
     {
-        #region 私有变量
-        GOAPFSM fsm;
-        GOAPFSMState idleState, performActionState;
-        Planner planner;
-
+        #region 变量
         [SerializeField]
-        [Tooltip("要达成的目标")]
+        [Space(10), Tooltip("要达成的目标")]
         List<Goal> goals = new List<Goal>();
-        Dictionary<string, bool> states = null;
 
         [SerializeField]
         [Tooltip("状态预设")]
         List<State> preState = new List<State>();
 
-
-        Dictionary<string, ICZType> blackboard = new Dictionary<string, ICZType>();
-
-        IGOAP provider = null;
-        Goal currentGoal = null;
-        GOAPAction[] availableActions = null;
-        Queue<GOAPAction> storedActionQueue = new Queue<GOAPAction>();
-        Queue<GOAPAction> actionQueue;
-        GOAPAction currentAction = null;
-        /// <summary> 下此搜寻计划的时间 </summary>
-        float nextPlanTime = 0;
-
-        [Header("Settings")]
         /// <summary> 计划最大深度，<1无限制 </summary>
+        [Space(10), Header("Settings")]
         [Tooltip("计划最大深度，<1无限制")]
         public int maxDepth = 0;
 
-        [Min(0)]
-        [Tooltip("两次搜索计划之间的间隔")]
         /// <summary> 两次搜索计划之间的间隔 </summary>
+        [Min(0), Tooltip("两次搜索计划之间的间隔")]
         public float interval = 3;
 
-        [Tooltip("计划异常终止是否要重置间隔")]
         /// <summary> 计划异常终止是否要重置间隔 </summary>
+        [Tooltip("计划异常终止是否要重置间隔")]
         public bool resetInterval = true;
         #endregion
 
         #region 公共属性
-        public Planner Planner
-        {
-            get
-            {
-                if (planner == null)
-                    planner = new Planner();
-                return planner;
-            }
-        }
-        public IGOAP Provider { get { return provider; } }
-
-        public List<Goal> Goals { get { return goals; } }
-
-        public Dictionary<string, bool> States
-        {
-            get
-            {
-                if (states == null)
-                {
-                    states = new Dictionary<string, bool>();
-                    foreach (var item in preState)
-                    {
-                        states[item.Key] = item.Value;
-                    }
-                }
-                return states;
-            }
-        }
-
-        public Dictionary<string, ICZType> Blackboard { get { return blackboard; } }
-
-        /// <summary> 当前目标，没有为空 </summary>
-        public Goal CurrentGoal { get { return currentGoal; } }
-
-        /// <summary> 当前计划 </summary>
-        public Queue<GOAPAction> StoredActionQueue { get { return storedActionQueue; } }
-
-        /// <summary> 当前行为队列 </summary>
-        public Queue<GOAPAction> ActionQueue { get { return actionQueue; } }
-
+        public IGOAP Provider { get; private set; }
+        public FSM FSM { get; private set; }
+        public Planner Planner { get; private set; }
+        public Dictionary<string, ICZType> Blackboard { get; private set; } = new Dictionary<string, ICZType>();
+        public List<Goal> Goals { get { return goals; } private set { goals = value; } }
+        public Dictionary<string, bool> States { get; private set; }
         /// <summary> 所有可用的行为 </summary>
-        public GOAPAction[] AvailableActions { get { return availableActions; } }
-
+        public GOAPAction[] AvailableActions { get; private set; }
+        /// <summary> 当前计划 </summary>
+        public Queue<GOAPAction> StoredActionQueue { get; private set; }
+        /// <summary> 当前行为队列 </summary>
+        public Queue<GOAPAction> ActionQueue { get; private set; }
         /// <summary> 当前行为 </summary>
-        public GOAPAction CurrentAction { get { return currentAction; } }
-
+        public GOAPAction CurrentAction { get; private set; }
+        /// <summary> 当前目的，没有为空 </summary>
+        public Goal CurrentGoal { get; private set; }
         public bool HasGoal { get { return CurrentGoal != null; } }
-
         public bool HasPlan { get { return ActionQueue != null && ActionQueue.Count > 0; } }
+        /// <summary> 下此搜寻计划的时间 </summary>
+        public float NextPlanTime { get; set; } = 0;
         #endregion
 
         protected virtual void Awake()
         {
-            provider = GetComponent<IGOAP>();
-            actionQueue = new Queue<GOAPAction>();
-            fsm = new GOAPFSM();
+            FSM = new FSM();
+            Planner = new Planner();
+            Provider = GetComponent<IGOAP>();
             goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
-            availableActions = GetComponentsInChildren<GOAPAction>();
-            foreach (GOAPAction action in availableActions)
+            AvailableActions = GetComponentsInChildren<GOAPAction>();
+            foreach (GOAPAction action in AvailableActions)
             {
                 action.Initialize(this);
             }
+            ActionQueue = new Queue<GOAPAction>();
         }
 
         protected virtual void Start()
         {
-            idleState = new GOAPFSMState()
+            States = new Dictionary<string, bool>();
+            foreach (var item in preState)
+            {
+                States[item.Key] = item.Value;
+            }
+
+            GOAPState idleState = new GOAPState()
             {
                 onUpdate = () =>
                 {
-                    if (Time.time < nextPlanTime)
-                        return;
-                    nextPlanTime = Time.time + interval;
+                    if (Time.time < NextPlanTime) return;
+
+                    NextPlanTime = Time.time + interval;
 
                     Queue<GOAPAction> plan = null;
                     // 搜寻计划
                     foreach (Goal goal in Goals)
                     {
-                        plan = Planner.Plan(this, availableActions, States, goal);
+                        plan = Planner.Plan(AvailableActions, States, goal, maxDepth);
                         if (plan != null)
                         {
-                            currentGoal = goal;
+                            CurrentGoal = goal;
                             break;
                         }
                     }
 
                     if (plan != null)
                     {
-                        storedActionQueue = plan;
+                        StoredActionQueue = plan;
 
                         ActionQueue.Clear();
                         foreach (var action in plan)
                             ActionQueue.Enqueue(action);
 
                         //通知计划找到
-                        if (provider != null)
-                            provider.PlanFound(currentGoal, actionQueue);
+                        if (Provider != null)
+                            Provider.PlanFound(CurrentGoal, ActionQueue);
                         //转换状态
-                        fsm.ChangeTo("PerformActionState");
+                        FSM.ChangeTo("PerformActionState");
                     }
                     else
                     {
                         //通知计划没找到
-                        if (provider != null)
-                            provider.PlanFailed(Goals);
-                        currentGoal = null;
+                        if (Provider != null)
+                            Provider.PlanFailed(Goals);
+                        CurrentGoal = null;
                     }
                 }
             };
-            performActionState = new GOAPFSMState()
+
+            GOAPState performActionState = new GOAPState()
             {
                 onUpdate = () =>
                 {
                     if (HasPlan)
                     {
                         // 如果当前有计划(目标尚未完成)
-                        GOAPAction action = actionQueue.Peek();
-                        if (currentAction != action)
+                        GOAPAction action = ActionQueue.Peek();
+                        if (CurrentAction != action)
                         {
-                            currentAction = action;
+                            CurrentAction = action;
                             action.PrePerform();
                         }
                         // 成功 or 失败
@@ -182,10 +144,10 @@ namespace CZToolKit.GOAP
                                 action.Success();
                                 action.PostPerform();
 
-                                if (provider != null)
-                                    provider.ActionFinished(action.Effects);
-                                actionQueue.Dequeue();
-                                currentAction = null;
+                                if (Provider != null)
+                                    Provider.ActionFinished(action.Effects);
+                                ActionQueue.Dequeue();
+                                CurrentAction = null;
                             }
                         }
                         else
@@ -202,52 +164,55 @@ namespace CZToolKit.GOAP
                             Goals.Remove(CurrentGoal);
 
                         // 通知计划完成
-                        if (provider != null)
-                            provider.PlanFinished();
+                        if (Provider != null)
+                            Provider.PlanFinished();
 
                         // 当前目标设置为空
-                        currentGoal = null;
-                        fsm.ChangeTo("IdleState");
+                        CurrentGoal = null;
+                        FSM.ChangeTo("IdleState");
                     }
                 }
             };
 
-            fsm.PushState("IdleState", idleState);
-            fsm.PushState("PerformActionState", performActionState);
-            fsm.ChangeTo("IdleState");
+            FSM.PushState("IdleState", idleState);
+            FSM.PushState("PerformActionState", performActionState);
+            FSM.ChangeTo("IdleState");
         }
 
-        protected virtual void LateUpdate() { fsm.LateUpdate(); }
+        protected virtual void LateUpdate() { FSM.Update(); }
 
         /// <summary> 终止计划(在<see cref="interval"/>之后才会重新搜寻计划) </summary>
         public void AbortPlan()
         {
-            if (HasPlan && currentAction != null)
+            if (HasPlan)
+                ActionQueue.Clear();
+
+            if (CurrentAction != null)
             {
                 // 如果动作执行失败，转换到空闲状态，并通知因为该动作导致计划失败  
-                currentAction.Failed();
-                currentAction.PostPerform();
+                CurrentAction.Failed();
+                CurrentAction.PostPerform();
                 if (Provider != null)
-                    Provider.PlanAborted(currentAction);
-                actionQueue.Clear();
+                    Provider.PlanAborted(CurrentAction);
             }
-            currentAction = null;
-            currentGoal = null;
+
+            CurrentAction = null;
+            CurrentGoal = null;
 
             if (resetInterval)
-                nextPlanTime = Time.time + interval;
+                NextPlanTime = Time.time + interval;
             else
-                nextPlanTime = Time.time;
+                NextPlanTime = Time.time;
 
-            fsm.ChangeTo("IdleState");
+            FSM.ChangeTo("IdleState");
         }
 
-        /// <summary> 立即重新搜寻计划 </summary>
+        /// <summary> 终止计划并，立即重新搜寻计划 </summary>
         public void EnforceReplan()
         {
             AbortPlan();
-            nextPlanTime = Time.time;
-            idleState.onUpdate();
+            NextPlanTime = Time.time;
+            FSM.Update();
         }
 
         /// <summary> 设置状态 </summary>
