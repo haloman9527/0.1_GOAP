@@ -68,7 +68,7 @@ public class PatrolAction : GOAPAction
             foreach (var item in colliders)
             {
                 if (Vector3.Angle(Agent.transform.forward, item.transform.position - Agent.transform.position) <= sector / 2)
-                    Agent.Blackboard.SaveData("Target", item.gameObject);
+                    Agent.Blackboard.SetData("Target", item.gameObject);
             }
         }
 

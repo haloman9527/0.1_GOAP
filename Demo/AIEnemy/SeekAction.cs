@@ -39,7 +39,7 @@ public class SeekAction : GOAPAction
     {
         if (target == null || !target.activeSelf || Time.time - startTime > timeout)
         {
-            Agent.Blackboard.SaveData<GameObject>("Target", null);
+            Agent.Blackboard.SetData<GameObject>("Target", null);
             return false;
         }
         navMeshAgent.destination = target.transform.position;
