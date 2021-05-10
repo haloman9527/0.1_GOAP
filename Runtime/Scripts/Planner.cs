@@ -197,7 +197,7 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public class GOAPNodePool : Pool<GOAPNode>
+        public class GOAPNodePool : PoolBase<GOAPNode>
         {
             bool initCount;
             public bool InitCount => initCount;
@@ -250,7 +250,7 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public class DictionaryPool<K, V> : Pool<Dictionary<K, V>>
+        public class DictionaryPool<K, V> : PoolBase<Dictionary<K, V>>
         {
             protected override Dictionary<K, V> CreateNewUnit()
             {
@@ -263,7 +263,7 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public class QueuePool<T> : Pool<Queue<T>>
+        public class QueuePool<T> : PoolBase<Queue<T>>
         {
             public override Queue<T> Spawn()
             {
@@ -301,7 +301,7 @@ namespace CZToolKit.GOAP
 
         }
 
-        public class StackPool<T> : Pool<Stack<T>>
+        public class StackPool<T> : PoolBase<Stack<T>>
         {
             public override Stack<T> Spawn()
             {
@@ -338,7 +338,7 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public class ListPool<T> : Pool<List<T>>
+        public class ListPool<T> : PoolBase<List<T>>
         {
             public override List<T> Spawn()
             {
