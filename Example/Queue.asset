@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
+  m_Name: Queue
+  m_EditorClassIdentifier: 
+  position: {x: 114, y: 261, z: 0}
+  scale: {x: 0.8695652, y: 0.8695652, z: 1}
+  blackboardoVisible: 0
+  blackboardPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 150
+    height: 200
+  blackboard:
+    keys: []
+    values: []
+  guidMap:
+    keys: []
+    values: []
+  serializedNodes:
+  - type: CZToolKit.GOAP.Actions.Movement.Queue, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: "{\"guid\":\"c9930b1f-e59b-447c-8a6e-ea4472ee07b2\",\"position\":{\"serializedVersion\":\"2\",\"x\":336.9500427246094,\"y\":-89.69999694824219,\"width\":100.0,\"height\":100.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"onEnter\",\"onExit\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"d4870976b94479446820d213540b2d69\",\"type\":2},\"ownerGUID\":\"c9930b1f-e59b-447c-8a6e-ea4472ee07b2\",\"fieldName\":\"onEnter\",\"typeQualifiedName\":\"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"d4870976b94479446820d213540b2d69\",\"type\":2},\"ownerGUID\":\"c9930b1f-e59b-447c-8a6e-ea4472ee07b2\",\"fieldName\":\"onExit\",\"typeQualifiedName\":\"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":1,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u6392\u961F\",\"cost\":1.0,\"m_Preconditions\":[{\"Key\":\"ArrvingMarker\",\"Value\":false}],\"m_Effects\":[{\"Key\":\"ArrvingMarker\",\"Value\":true}],\"agents\":{\"guid\":\"d0545b63-5963-4281-a5fe-4fcf50a8feff\",\"value\":[{\"instanceID\":0},{\"instanceID\":0},{\"instanceID\":0},{\"instanceID\":0},{\"instanceID\":0},{\"instanceID\":0},{\"instanceID\":0},{\"instanceID\":0},{\"instanceID\":0},{\"instanceID\":0}]},\"speed\":{\"guid\":\"25c6c5c8-6593-4768-aec2-17d07560504b\",\"value\":10.0},\"angularSpeed\":{\"guid\":\"7d897171-6a41-4ddb-8c82-fe0937a64bba\",\"value\":120.0},\"neighborDistance\":{\"guid\":\"8cff34ea-0cf0-474a-8ca6-82a690eccb97\",\"value\":10.0},\"separationDistance\":{\"guid\":\"ceac4541-34aa-4324-ba42-146abc5bd41b\",\"value\":2.0},\"maxQueueAheadDistance\":{\"guid\":\"2a830a64-ce7f-4581-9a5d-bbcc55ecbfc9\",\"value\":2.0},\"maxQueueRadius\":{\"guid\":\"e56e4947-7452-4a53-a562-864782b73ed3\",\"value\":20.0},\"slowDownSpeed\":{\"guid\":\"3bb8340d-c196-499a-9620-25391cd628d7\",\"value\":0.15000000596046449},\"target\":{\"guid\":\"cf68b4f2-fa07-41c0-9417-697589df8a8d\",\"value\":{\"instanceID\":0}}}"
+  serializedEdges: []
+  serializedStacks: []
+  serializedGroups: []
+  references:
+    version: 1

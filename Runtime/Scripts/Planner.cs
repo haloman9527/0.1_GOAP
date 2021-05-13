@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CZToolKit.Core.ObjectPool;
-using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    public class Planner
+    public class GOAPPlanner
     {
         /// <summary> 节点对象池，节点对象重复利用 </summary>
-        private GOAPNodePool NodePool { get; } = new GOAPNodePool();
+        private GOAPNodePool NodePool { get; } = new GOAPNodePool(32);
         private QueuePool<GOAPAction> Queue_Pool { get; } = new QueuePool<GOAPAction>();
         private StackPool<GOAPAction> Stack_Pool { get; } = new StackPool<GOAPAction>();
         private DictionaryPool<string, bool> DictionaryObjPool { get; } = new DictionaryPool<string, bool>();
@@ -20,11 +18,6 @@ namespace CZToolKit.GOAP
         Queue<GOAPAction> cheapestPlan = new Queue<GOAPAction>();
 
         public GOAPNode CheapestNode { get { return cheapestNode; } }
-
-        public Planner()
-        {
-            NodePool.InitializeCount(32);
-        }
 
         /// <summary> 定制最优计划 </summary>
         /// <param name="_agent">代理</param>
@@ -51,7 +44,7 @@ namespace CZToolKit.GOAP
             }
 
             // 根节点
-            root = NodePool.TakeUnit(null, 0, _currentStates, null);
+            root = NodePool.Spawn(null, 0, _currentStates, null);
             // 所有能达到目标的节点
             leaves.Clear();
             // 成本最低的计划节点
@@ -120,7 +113,7 @@ namespace CZToolKit.GOAP
                     Dictionary<string, bool> currentState = PopulateState(_parent.state, action.Effects);
 
                     // 生成动作完成的节点链，成本累加
-                    GOAPNode node = NodePool.TakeUnit(_parent, _parent.runningCost + action.cost, currentState, action);
+                    GOAPNode node = NodePool.Spawn(_parent, _parent.runningCost + action.cost, currentState, action);
 
                     // 如果当前状态能够达成目标
                     if (currentState.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
@@ -199,99 +192,59 @@ namespace CZToolKit.GOAP
 
         public class GOAPNodePool : PoolBase<GOAPNode>
         {
-            bool initCount;
-            public bool InitCount => initCount;
-
-            public void InitializeCount(int _count)
+            public GOAPNodePool(int _count)
             {
-                if (initCount) return;
-
                 for (int i = 0; i < _count; i++)
                 {
-                    IdleList.Add(new GOAPNode());
+                    IdleList.Add(CreateNewUnit());
                 }
-                initCount = true;
             }
 
-            public GOAPNode TakeUnit(GOAPNode _parent, float _runningCost, Dictionary<string, bool> _state, GOAPAction _action)
+            public GOAPNode Spawn(GOAPNode _parent, float _runningCost, Dictionary<string, bool> _state, GOAPAction _action)
             {
-                GOAPNode unit = null;
-
-                while (IdleList.Count > 0 && unit == null)
-                {
-                    unit = IdleList[0];
-                    IdleList.RemoveAt(0);
-                }
-
-                if (unit == null)
-                    unit = new GOAPNode(_parent, _runningCost, _state, _action);
-                else
-                {
-                    unit.parent = _parent;
-                    unit.runningCost = _runningCost;
-                    unit.state = _state;
-                    unit.action = _action;
-                }
-
-                WorkList.Add(unit);
-                OnSpawn(unit);
+                GOAPNode unit = base.Spawn();
+                unit.parent = _parent;
+                unit.runningCost = _runningCost;
+                unit.state = _state;
+                unit.action = _action;
                 return unit;
+            }
+
+            public override void Recycle(GOAPNode _unit)
+            {
+                base.Recycle(_unit);
+                _unit.parent = null;
+                _unit.runningCost = 0;
+                _unit.state = null;
+                _unit.action = null;
             }
 
             protected override GOAPNode CreateNewUnit()
             {
                 return new GOAPNode();
             }
-
-            protected override void OnRecycle(GOAPNode unit)
-            {
-                base.OnRecycle(unit);
-
-            }
         }
 
         public class DictionaryPool<K, V> : PoolBase<Dictionary<K, V>>
         {
+            public override void Recycle(Dictionary<K, V> _unit)
+            {
+                base.Recycle(_unit);
+                _unit.Clear();
+            }
+
             protected override Dictionary<K, V> CreateNewUnit()
             {
                 return new Dictionary<K, V>();
-            }
-
-            protected override void OnRecycle(Dictionary<K, V> unit)
-            {
-                unit.Clear();
             }
         }
 
         public class QueuePool<T> : PoolBase<Queue<T>>
         {
-            public override Queue<T> Spawn()
-            {
-                Queue<T> unit = null;
-
-                while (IdleList.Count > 0 && unit == null)
-                {
-                    unit = IdleList[0];
-                    IdleList.RemoveAt(0);
-                }
-
-                if (unit == null)
-                    unit = CreateNewUnit();
-
-                OnSpawn(unit);
-                return unit;
-            }
-
             public override void Recycle(Queue<T> _unit)
             {
-                if (_unit == null) return;
-                IdleList.Add(_unit);
-                OnRecycle(_unit);
-            }
-
-            protected override void OnRecycle(Queue<T> unit)
-            {
-                unit.Clear();
+                base.Recycle(_unit);
+                _unit.Clear();
             }
 
             protected override Queue<T> CreateNewUnit()
@@ -303,33 +256,10 @@ namespace CZToolKit.GOAP
 
         public class StackPool<T> : PoolBase<Stack<T>>
         {
-            public override Stack<T> Spawn()
-            {
-                Stack<T> unit = null;
-
-                while (IdleList.Count > 0 && unit == null)
-                {
-                    unit = IdleList[0];
-                    IdleList.RemoveAt(0);
-                }
-
-                if (unit == null)
-                    unit = CreateNewUnit();
-
-                OnSpawn(unit);
-                return unit;
-            }
-
             public override void Recycle(Stack<T> _unit)
             {
-                if (_unit == null) return;
-                IdleList.Add(_unit);
-                OnRecycle(_unit);
-            }
-
-            protected override void OnRecycle(Stack<T> unit)
-            {
-                unit.Clear();
+                base.Recycle(_unit);
+                _unit.Clear();
             }
 
             protected override Stack<T> CreateNewUnit()
@@ -340,33 +270,10 @@ namespace CZToolKit.GOAP
 
         public class ListPool<T> : PoolBase<List<T>>
         {
-            public override List<T> Spawn()
-            {
-                List<T> unit = null;
-
-                while (IdleList.Count > 0 && unit == null)
-                {
-                    unit = IdleList[0];
-                    IdleList.RemoveAt(0);
-                }
-
-                if (unit == null)
-                    unit = CreateNewUnit();
-
-                OnSpawn(unit);
-                return unit;
-            }
-
             public override void Recycle(List<T> _unit)
             {
-                if (_unit == null) return;
-                IdleList.Add(_unit);
-                OnRecycle(_unit);
-            }
-
-            protected override void OnRecycle(List<T> unit)
-            {
-                unit.Clear();
+                base.Recycle(_unit);
+                _unit.Clear();
             }
 
             protected override List<T> CreateNewUnit()

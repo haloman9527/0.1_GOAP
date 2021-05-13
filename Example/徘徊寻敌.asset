@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
+  m_Name: "\u5F98\u5F8A\u5BFB\u654C"
+  m_EditorClassIdentifier: 
+  position: {x: 41, y: 60, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  blackboardoVisible: 0
+  blackboardPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 150
+    height: 200
+  blackboard:
+    keys: []
+    values: []
+  guidMap:
+    keys: []
+    values: []
+  serializedNodes:
+  - type: CZToolKit.GOAP.WanderAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    json: "{\"guid\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"position\":{\"serializedVersion\":\"2\",\"x\":230.0,\"y\":78.0,\"width\":210.0,\"height\":211.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"onRefindTarget\",\"onFindedTarget\",\"onEnter\",\"onExit\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"fieldName\":\"onRefindTarget\",\"typeQualifiedName\":\"CZToolKit.GraphProcessor.BaseNode,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":1,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"fieldName\":\"onFindedTarget\",\"typeQualifiedName\":\"CZToolKit.GraphProcessor.BaseNode,
+      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":1,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"fieldName\":\"onEnter\",\"typeQualifiedName\":\"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"fieldName\":\"onExit\",\"typeQualifiedName\":\"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":1,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u5F98\u5F8A\",\"cost\":1.0,\"m_Preconditions\":[{\"Key\":\"HasTarget\",\"Value\":false}],\"m_Effects\":[{\"Key\":\"HasTarget\",\"Value\":true}],\"center\":{\"guid\":\"9d1aea3e-c22f-4d54-ad4f-0b38abe53784\",\"value\":{\"instanceID\":0}},\"range\":10.0,\"radius\":5.0,\"sector\":90.0,\"layer\":{\"serializedVersion\":\"2\",\"m_Bits\":0}}"
+  - type: CZToolKit.GOAP.SeekAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    json: "{\"guid\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"position\":{\"serializedVersion\":\"2\",\"x\":444.0,\"y\":188.0,\"width\":192.0,\"height\":221.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"onEnter\",\"onExit\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"fieldName\":\"onEnter\",\"typeQualifiedName\":\"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"fieldName\":\"onExit\",\"typeQualifiedName\":\"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":1,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u8FFD\u9010\",\"cost\":1.0,\"m_Preconditions\":[{\"Key\":\"HasTarget\",\"Value\":true},{\"Key\":\"InAttackRange\",\"Value\":false}],\"m_Effects\":[{\"Key\":\"InAttackRange\",\"Value\":true}],\"distance\":2.0,\"timeout\":10.0}"
+  serializedEdges: []
+  serializedStacks: []
+  serializedGroups: []
+  references:
+    version: 1
