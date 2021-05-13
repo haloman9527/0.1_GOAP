@@ -1,7 +1,7 @@
 ﻿using CZToolKit.Core;
 using CZToolKit.Core.Blackboards;
+using CZToolKit.Core.SimpleFSM;
 using CZToolKit.GraphProcessor;
-using CZToolKit.SimpleFSM;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -244,6 +244,7 @@ namespace CZToolKit.GOAP
 
         private void OnDrawGizmos()
         {
+            Gizmos.DrawIcon(transform.position, "GOAP/GOAP_Icon.png", true);
             if (TGraph != null)
                 TGraph.DrawGizmos(this);
         }

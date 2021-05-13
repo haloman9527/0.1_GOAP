@@ -1,4 +1,4 @@
-﻿using CZToolKit.SimpleFSM;
+﻿using CZToolKit.Core.SimpleFSM;
 using System;
 
 namespace CZToolKit.GOAP

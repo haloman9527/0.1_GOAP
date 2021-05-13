@@ -10,7 +10,7 @@ namespace CZToolKit.GOAP
     {
         public static bool goalsFoldout, preStatesFoldout;
 
-        private GOAPAgent agent;
+        GOAPAgent agent;
         SerializedProperty goalsProperty, preStateProperty;
         ReorderableList goalsReorderableList, preStateReorderableList;
 
