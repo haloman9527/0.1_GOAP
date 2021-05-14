@@ -17,8 +17,8 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    //[TaskDescription("Move towards the specified position. The position can either be specified by a transform or position. If the transform " +
-    //                 "is used then the position will not be used.")]
+    [NodeDescription("Move towards the specified position. The position can either be specified by a transform or position. If the transform " +
+                     "is used then the position will not be used.")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}MoveTowardsIcon.png")]

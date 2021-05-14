@@ -6,6 +6,7 @@ using UnityEngine.Events;
 namespace CZToolKit.GOAP
 {
     [NodeMenuItem("Seek")]
+    [NodeDescription("追逐敌人到一定距离后停下")]
     [NodeIcon("Assets/CZToolKit/2.0_UIFramework/Icons/Awesome/running.png", width = 22, height = 25)]
     public class SeekAction : GOAPAction
     {

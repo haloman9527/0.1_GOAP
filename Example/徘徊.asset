@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
+  m_Name: "\u5F98\u5F8A"
+  m_EditorClassIdentifier: 
+  position: {x: 136, y: 9, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  blackboardoVisible: 0
+  blackboardPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 150
+    height: 200
+  blackboard:
+    keys: []
+    values: []
+  guidMap:
+    keys: []
+    values: []
+  serializedNodes:
+  - type: CZToolKit.GOAP.Actions.Movement.Wander, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"c826386e-b81d-4088-9b03-504ff6e6b226","position":{"serializedVersion":"2","x":205.0,"y":135.0,"width":189.0,"height":161.0},"expanded":true,"locked":false,"ports":{"keys":["onEnter","onExit"],"values":[{"graph":{"fileID":11400000,"guid":"629950d01e3a97c41bcf25cc01c92587","type":2},"ownerGUID":"c826386e-b81d-4088-9b03-504ff6e6b226","fieldName":"onEnter","typeQualifiedName":"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","isMulti":true,"direction":0,"typeConstraint":0,"edgeGUIDs":[]},{"graph":{"fileID":11400000,"guid":"629950d01e3a97c41bcf25cc01c92587","type":2},"ownerGUID":"c826386e-b81d-4088-9b03-504ff6e6b226","fieldName":"onExit","typeQualifiedName":"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","isMulti":true,"direction":1,"typeConstraint":0,"edgeGUIDs":[]}]},"name":"","cost":1.0,"m_Preconditions":[],"m_Effects":[{"Key":"Wander","Value":true}],"speed":10.0,"angularSpeed":120.0,"arriveDistance":0.20000000298023225,"stopOnTaskEnd":true,"updateRotation":true,"minWanderDistance":{"guid":"18637412-edae-457a-aa78-7d904d0012cb","value":20.0},"maxWanderDistance":{"guid":"fe8bb47f-8609-4939-9b22-8b3552671706","value":20.0},"wanderRate":{"guid":"f683bb1d-e845-4120-8f9f-e5f7c892aa6e","value":2.0},"minPauseDuration":{"guid":"078a85d3-49ae-44e1-b0f7-013608c05490","value":0.0},"maxPauseDuration":{"guid":"2a2d8e91-e1ec-4cf1-a04e-2bc1f60c000b","value":0.0},"targetRetries":{"guid":"6d4df86b-776a-4280-a4c5-b4f9e6dc7263","value":1}}'
+  serializedEdges: []
+  serializedStacks: []
+  serializedGroups: []
+  references:
+    version: 1

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
+  m_Name: LeaderFollow
+  m_EditorClassIdentifier: 
+  position: {x: 42, y: -129, z: 0}
+  scale: {x: 1.3225, y: 1.3225, z: 1}
+  blackboardoVisible: 0
+  blackboardPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 150
+    height: 200
+  blackboard:
+    keys: []
+    values: []
+  guidMap:
+    keys: []
+    values: []
+  serializedNodes:
+  - type: CZToolKit.GOAP.Actions.Movement.LeaderFollow, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"53c4c1e9-04ac-4d78-9011-db6f8594c51f","position":{"serializedVersion":"2","x":187.69509887695313,"y":275.28564453125,"width":232.99996948242188,"height":181.0},"expanded":true,"locked":false,"ports":{"keys":["onEnter","onExit"],"values":[{"graph":{"fileID":11400000,"guid":"faff362fc2706334889574e1668c9000","type":2},"ownerGUID":"53c4c1e9-04ac-4d78-9011-db6f8594c51f","fieldName":"onEnter","typeQualifiedName":"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","isMulti":true,"direction":0,"typeConstraint":0,"edgeGUIDs":[]},{"graph":{"fileID":11400000,"guid":"faff362fc2706334889574e1668c9000","type":2},"ownerGUID":"53c4c1e9-04ac-4d78-9011-db6f8594c51f","fieldName":"onExit","typeQualifiedName":"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","isMulti":true,"direction":1,"typeConstraint":0,"edgeGUIDs":[]}]},"name":"10","cost":1.0,"m_Preconditions":[],"m_Effects":[{"Key":"LeaderFollow","Value":true}],"agents":{"guid":"b9a0ddda-5f01-4ac6-a0ca-27ce027c9057","value":[]},"speed":{"guid":"ffee48a6-11d4-4e4f-8eda-56188e9077f7","value":10.0},"angularSpeed":{"guid":"ce377586-afdb-4d80-b6f8-16b44cba4078","value":120.0},"neighborDistance":{"guid":"2b0809f4-82f6-496d-b435-c96842de5a54","value":10.0},"leaderBehindDistance":{"guid":"f92393f6-2dca-4fe4-a772-75e0b46aaa36","value":2.0},"separationDistance":{"guid":"8571f9a1-a080-482b-a279-b4bb2e016b4d","value":2.0},"aheadDistance":{"guid":"c0e25cf8-a1ee-4a2f-a493-a0de000bc2b8","value":2.0},"leader":{"guid":"a14b2723-e4a3-4655-82b4-e6653fb4f047","value":{"instanceID":0}}}'
+  serializedEdges: []
+  serializedStacks: []
+  serializedGroups: []
+  references:
+    version: 1

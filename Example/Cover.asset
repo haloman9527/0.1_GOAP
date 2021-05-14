@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
+  m_Name: Cover
+  m_EditorClassIdentifier: 
+  position: {x: 257, y: -157, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  blackboardoVisible: 0
+  blackboardPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 150
+    height: 200
+  blackboard:
+    keys: []
+    values: []
+  guidMap:
+    keys: []
+    values: []
+  serializedNodes:
+  - type: CZToolKit.GOAP.Actions.Movement.Cover, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"3d479320-cd27-4986-a29a-555f02b08b7c","position":{"serializedVersion":"2","x":470.0,"y":351.0,"width":100.0,"height":100.0},"expanded":true,"locked":false,"ports":{"keys":["onEnter","onExit"],"values":[{"graph":{"fileID":11400000,"guid":"2876c73480afabb4680f8655861ef354","type":2},"ownerGUID":"3d479320-cd27-4986-a29a-555f02b08b7c","fieldName":"onEnter","typeQualifiedName":"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","isMulti":true,"direction":0,"typeConstraint":0,"edgeGUIDs":[]},{"graph":{"fileID":11400000,"guid":"2876c73480afabb4680f8655861ef354","type":2},"ownerGUID":"3d479320-cd27-4986-a29a-555f02b08b7c","fieldName":"onExit","typeQualifiedName":"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","isMulti":true,"direction":1,"typeConstraint":0,"edgeGUIDs":[]}]},"name":"","cost":1.0,"m_Preconditions":[],"m_Effects":[{"Key":"Cover","Value":true}],"speed":10.0,"angularSpeed":120.0,"arriveDistance":0.20000000298023225,"stopOnTaskEnd":true,"updateRotation":true,"maxCoverDistance":{"guid":"32ee785b-e036-41d5-8726-82c1e603ae9e","value":1000.0},"availableLayerCovers":{"serializedVersion":"2","m_Bits":4096},"maxRaycasts":{"guid":"4714d7ba-7484-4707-97c9-ea22619f39ce","value":100},"rayStep":{"guid":"0eb6dd51-dbc6-4163-9290-9f0c8ed7d1f3","value":1.0},"coverOffset":{"guid":"00e3caa1-7e0f-4f3c-add1-8ecb679763b8","value":2.0},"lookAtCoverPoint":{"guid":"f5cce57e-30cf-4455-888d-6519c6822922","value":false},"rotationEpsilon":{"guid":"ff86495d-034c-4319-ac51-3c7dfb752782","value":0.5},"maxLookAtRotationDelta":{"guid":"bd03626a-54f5-4c47-b5a8-4a556e7357b0","value":0.0}}'
+  serializedEdges: []
+  serializedStacks: []
+  serializedGroups: []
+  references:
+    version: 1

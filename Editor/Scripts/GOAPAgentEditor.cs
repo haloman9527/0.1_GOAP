@@ -1,3 +1,4 @@
+using CZToolKit.Core.Editors;
 using CZToolKit.GraphProcessor.Editors;
 using UnityEditor;
 using UnityEditorInternal;
@@ -8,8 +9,6 @@ namespace CZToolKit.GOAP
     [CustomEditor(typeof(GOAPAgent))]
     public class GOAPAgentEditor : GraphOwnerEditor
     {
-        public static bool goalsFoldout, preStatesFoldout;
-
         GOAPAgent agent;
         SerializedProperty goalsProperty, preStateProperty;
         ReorderableList goalsReorderableList, preStateReorderableList;
@@ -38,14 +37,12 @@ namespace CZToolKit.GOAP
 
             RegisterDrawer("goals", property =>
             {
-                goalsFoldout = EditorGUILayout.Foldout(goalsFoldout, "Goals", true);
-                if (goalsFoldout)
+                if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), EditorGUIExtension.GetGUIContent("Goals")))
                     goalsReorderableList.DoLayoutList();
             });
             RegisterDrawer("preState", property =>
             {
-                preStatesFoldout = EditorGUILayout.Foldout(preStatesFoldout, "PreStates", true);
-                if (preStatesFoldout)
+                if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), EditorGUIExtension.GetGUIContent("PreStates")))
                     preStateReorderableList.DoLayoutList();
             });
 

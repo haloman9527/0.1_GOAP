@@ -17,7 +17,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    //[TaskDescription("Find a place to hide and move to it using the Unity NavMesh.")]
+    [NodeDescription("寻找一个掩体躲起来，使用NavMesh移动")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}CoverIcon.png")]

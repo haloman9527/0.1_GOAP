@@ -60,13 +60,13 @@ namespace CZToolKit.GOAP
 
         protected virtual void Awake()
         {
-            FSM = new FSM();
-            Planner = new GOAPPlanner();
+            ActionQueue = new Queue<GOAPAction>();
             Provider = GetComponent<IGOAP>();
+            Planner = new GOAPPlanner();
+            FSM = new FSM();
             Graph = Graph.Clone() as GOAPGraph;
             Graph.Initialize(this);
             Goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
-            ActionQueue = new Queue<GOAPAction>();
         }
 
         protected virtual void Start()
@@ -143,10 +143,6 @@ namespace CZToolKit.GOAP
                             case ActionStatus.Success:
                                 action.PostPerform();
                                 action.Success();
-                                //foreach (var item in action.Effects)
-                                //{
-                                //    States[item.Key] = item.Value;
-                                //}
                                 if (Provider != null)
                                     Provider.ActionFinished(action.Effects);
                                 ActionQueue.Dequeue();
@@ -244,8 +240,8 @@ namespace CZToolKit.GOAP
 
         private void OnDrawGizmos()
         {
-            Gizmos.DrawIcon(transform.position, "GOAP/GOAP_Icon.png", true);
-            if (TGraph != null)
+            Gizmos.DrawIcon(transform.position, "GOAP/GOAP_Scene_Icon.png", true);
+            if (TGraph != null && enabled)
                 TGraph.DrawGizmos(this);
         }
     }

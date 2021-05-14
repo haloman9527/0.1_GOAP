@@ -20,7 +20,7 @@ namespace CZToolKit.GOAP.Editors
     [InitializeOnLoad]
     public class HierarchyIcon : ScriptableObject
     {
-        private static Texture icon = AssetDatabase.LoadAssetAtPath("Assets/Gizmos/GOAP/GOAP_Icon.png", typeof(Texture)) as Texture;
+        private static Texture2D icon = AssetDatabase.LoadAssetAtPath("Assets/Gizmos/GOAP/GOAP_Hierarchy_Icon.png", typeof(Texture2D)) as Texture2D;
 
         static HierarchyIcon()
         {

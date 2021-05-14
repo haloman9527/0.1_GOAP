@@ -17,7 +17,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    //[TaskDescription("Follows the specified target using the Unity NavMesh.")]
+    [NodeDescription("Follows the specified target using the Unity NavMesh.")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}FollowIcon.png")]

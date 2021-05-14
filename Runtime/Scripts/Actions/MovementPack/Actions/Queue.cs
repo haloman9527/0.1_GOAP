@@ -17,7 +17,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    //[TaskDescription("Queue in a line using the Unity NavMesh.")]
+    [NodeDescription("Queue in a line using the Unity NavMesh.")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}QueueIcon.png")]
@@ -39,6 +39,7 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         public override void OnCreated()
         {
+            base.OnCreated();
             Name = "排队";
         }
 

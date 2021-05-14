@@ -15,6 +15,13 @@ namespace CZToolKit.GOAP.Actions.Movement
         public SharedGameObject target;
 
         private bool hasMoved;
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Name = "Ã”¿Î";
+        }
+
         public override void PrePerform()
         {
             base.PrePerform();

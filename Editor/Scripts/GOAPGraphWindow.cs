@@ -7,7 +7,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace CZToolKit.GOAP
+namespace CZToolKit.GOAP.Editors
 {
     [CustomGraphWindow(typeof(GOAPGraph))]
     public class GOAPGraphWindow : BaseGraphWindow
