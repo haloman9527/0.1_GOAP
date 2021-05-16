@@ -20,10 +20,11 @@ namespace CZToolKit.GOAP.Editors
     [InitializeOnLoad]
     public class HierarchyIcon : ScriptableObject
     {
-        private static Texture2D icon = AssetDatabase.LoadAssetAtPath("Assets/Gizmos/GOAP/GOAP_Hierarchy_Icon.png", typeof(Texture2D)) as Texture2D;
+        static Texture2D icon;
 
         static HierarchyIcon()
         {
+            icon = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Gizmos/GOAP/GOAP_Hierarchy_Icon.png");
             EditorApplication.hierarchyWindowItemOnGUI =
                 (EditorApplication.HierarchyWindowItemCallback)Delegate.Combine(EditorApplication.hierarchyWindowItemOnGUI, new EditorApplication.HierarchyWindowItemCallback(HierarchyIcon.HierarchyWindowItemOnGUI));
         }
@@ -34,8 +35,8 @@ namespace CZToolKit.GOAP.Editors
             if (gameObject == null) return;
             GOAPAgent agent = gameObject.GetComponent<GOAPAgent>();
             if (agent == null) return;
-            _rect.x = _rect.width + (_rect.x - 16f);
-            _rect.width = _rect.height = 16;
+            _rect.x = _rect.width + (_rect.x - 15f);
+            _rect.width = _rect.height = 15;
             GUI.DrawTexture(_rect, icon);
         }
     }

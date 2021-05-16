@@ -17,11 +17,11 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeDescription("Wander using the Unity NavMesh.")]
+    [NodeTooltip("在NavMesh上徘徊")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}WanderIcon.png")]
-    [NodeMenuItem("Wander(MP)")]
+    [NodeMenuItem("Movement", "Wander")]
     public class Wander : NavMeshMovement
     {
         [Tooltip("Minimum distance ahead of the current position to look ahead for a destination")]
@@ -39,6 +39,12 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         private float pauseTime;
         private float destinationReachTime;
+
+        public override void OnCreated()
+        {
+            base.OnCreated();
+            Name = "徘徊";
+        }
 
         // There is no success or fail state with wander - the agent will just keep wandering
         public override ActionStatus Perform()

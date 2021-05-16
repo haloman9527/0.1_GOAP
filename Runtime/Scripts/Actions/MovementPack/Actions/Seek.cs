@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenuItem("Seek(MP)")]
+    [NodeMenuItem("Movement", "Seek")]
     public class Seek : NavMeshMovement
     {
         [Tooltip("The GameObject that the agent is seeking")]
@@ -46,9 +46,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         private Vector3 Target()
         {
             if (target != null)
-            {
                 return target.transform.position;
-            }
             return targetPosition;
         }
     }

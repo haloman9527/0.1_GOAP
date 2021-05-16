@@ -7,7 +7,6 @@ namespace CZToolKit.GOAP
     {
         /// <summary> 节点对象池，节点对象重复利用 </summary>
         private GOAPNodePool NodePool { get; } = new GOAPNodePool(32);
-        private QueuePool<GOAPAction> Queue_Pool { get; } = new QueuePool<GOAPAction>();
         private StackPool<GOAPAction> Stack_Pool { get; } = new StackPool<GOAPAction>();
         private DictionaryPool<string, bool> DictionaryObjPool { get; } = new DictionaryPool<string, bool>();
 
@@ -15,7 +14,6 @@ namespace CZToolKit.GOAP
         GOAPNode cheapestNode;
         List<GOAPNode> leaves = new List<GOAPNode>();
         List<GOAPAction> usableActions = new List<GOAPAction>();
-        Queue<GOAPAction> cheapestPlan = new Queue<GOAPAction>();
 
         public GOAPNode CheapestNode { get { return cheapestNode; } }
 
@@ -24,11 +22,11 @@ namespace CZToolKit.GOAP
         /// <param name="_availableActions">所有可用行为</param>
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_goal">目标状态，想要达到的状态</param>
-        public Queue<GOAPAction> Plan(GOAPAction[] _availableActions,
-            Dictionary<string, bool> _currentStates, Goal _goal, int _maxDepth)
+        public void Plan(GOAPAction[] _availableActions,
+            Dictionary<string, bool> _currentStates, Goal _goal, int _maxDepth, ref Queue<GOAPAction> _plan)
         {
             if (_currentStates.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
-                return null;
+                return;
 
             NodePool.RecycleAll();
 
@@ -50,7 +48,7 @@ namespace CZToolKit.GOAP
             // 成本最低的计划节点
             cheapestNode = null;
             // 成本最低计划
-            cheapestPlan = Queue_Pool.Spawn();
+            _plan.Clear();
 
             // 如果通过构建节点树找到了能够达成目标的计划
             if (BuildGraph(root, usableActions, _goal, 0, _maxDepth, leaves))
@@ -80,14 +78,13 @@ namespace CZToolKit.GOAP
                 // 再将栈压入到队列中
                 while (goapActionStack.Count > 0)
                 {
-                    cheapestPlan.Enqueue(goapActionStack.Pop());
+                    _plan.Enqueue(goapActionStack.Pop());
                 }
                 Stack_Pool.Recycle(goapActionStack);
             }
 
             // 用完回收所有对象
             DictionaryObjPool.RecycleAll();
-            return cheapestPlan;
         }
 
         /// <summary> 构建树并返回所有计划 </summary>

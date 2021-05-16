@@ -17,12 +17,12 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeDescription("Rotates towards the specified rotation. The rotation can either be specified by a transform or rotation. If the transform "+
+    [NodeTooltip("Rotates towards the specified rotation. The rotation can either be specified by a transform or rotation. If the transform "+
                      "is used then the rotation will not be used.")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}RotateTowardsIcon.png")]
-    [NodeMenuItem("RotateTowards(MP)")]
+    [NodeMenuItem("Movement", "RotateTowards")]
     public class RotateTowards : GOAPAction
     {
         [Tooltip("Should the 2D version be used?")]

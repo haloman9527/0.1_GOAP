@@ -1,9 +1,10 @@
+using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenuItem("Pursue(MP)")]
+    [NodeMenuItem("Movement","Pursue")]
     public class Pursue : NavMeshMovement
     {
         [Tooltip("How far to predict the distance ahead of the target. Lower values indicate less distance should be predicated")]
@@ -11,7 +12,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("Multiplier for predicting the look ahead distance")]
         public float targetDistPredictionMult = 20;
         [Tooltip("The GameObject that the agent is pursuing")]
-        public GameObject target;
+        public SharedGameObject target;
 
         // The position of the target at the last frame
         private Vector3 targetPosition;
@@ -27,7 +28,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         public override void PrePerform()
         {
             base.PrePerform();
-            targetPosition = target.transform.position;
+            targetPosition = target.Value.transform.position;
             SetDestination(Target());
         }
 
@@ -47,7 +48,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         private Vector3 Target()
         {
             // Calculate the current distance to the target and the current speed
-            var distance = (target.transform.position - Agent.transform.position).magnitude;
+            var distance = (target.Value.transform.position - Agent.transform.position).magnitude;
             var speed = Velocity().magnitude;
 
             float futurePrediction = 0;
@@ -63,7 +64,7 @@ namespace CZToolKit.GOAP.Actions.Movement
 
             // Predict the future by taking the velocity of the target and multiply it by the future prediction
             var prevTargetPosition = targetPosition;
-            targetPosition = target.transform.position;
+            targetPosition = target.Value.transform.position;
             return targetPosition + (targetPosition - prevTargetPosition) * futurePrediction;
         }
     }

@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 namespace CZToolKit.GOAP
 {
     [NodeMenuItem("Wander")]
-    [NodeDescription("在指定区域内徘徊，直到看到敌人")]
+    [NodeTooltip("在指定区域内徘徊，直到看到敌人")]
     [NodeIcon("Assets/CZToolKit/2.0_UIFramework/Icons/Simple/constellation, zodiac, astronomy, horoscope.png", width = 25, height = 25)]
     public class WanderAction : GOAPAction
     {

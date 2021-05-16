@@ -17,11 +17,11 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeDescription("Flock around the scene using the Unity NavMesh.")]
+    [NodeTooltip("在场景中聚集，使用NavMesh移动")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}FlockIcon.png")]
-    [NodeMenuItem("Flock(MP)")]
+    [NodeMenuItem("Movement", "Flock")]
     public class Flock : NavMeshGroupMovement
     {
         [Tooltip("Agents less than this distance apart are neighbors")]

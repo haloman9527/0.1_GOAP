@@ -5,7 +5,8 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenuItem("Patrol(MP)")]
+    [NodeTooltip("沿设定路径巡逻，使用NavMesh移动")]
+    [NodeMenuItem("Movement", "Patrol")]
     public class Patrol : NavMeshMovement
     {
         [Tooltip("Should the agent patrol the waypoints randomly?")]
@@ -13,8 +14,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The length of time that the agent should pause when arriving at a waypoint")]
         public float waypointPauseDuration = 0;
         [Tooltip("The waypoints to move to")]
-        public List<GameObject> waypoints = new List<GameObject>();
-        public SharedGameObjectList waypoints1 = new SharedGameObjectList();
+        //public List<GameObject> waypoints = new List<GameObject>();
+        public SharedGameObjectList waypoints = new SharedGameObjectList();
 
         // The current index that we are heading towards within the waypoints array
         private int waypointIndex;
@@ -27,8 +28,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             SetEffect("HasTarget", true);
             randomPatrol = false;
             waypointPauseDuration = 0;
-            waypoints = null;
-            waypoints1.Value.Clear();
+            waypoints.Value.Clear();
         }
 
         public override void PrePerform()
@@ -38,9 +38,9 @@ namespace CZToolKit.GOAP.Actions.Movement
             // initially move towards the closest waypoint
             float distance = Mathf.Infinity;
             float localDistance;
-            for (int i = 0; i < waypoints.Count; ++i)
+            for (int i = 0; i < waypoints.Value.Count; ++i)
             {
-                if ((localDistance = Vector3.Magnitude(Agent.transform.position - waypoints[i].transform.position)) < distance)
+                if ((localDistance = Vector3.Magnitude(Agent.transform.position - waypoints.Value[i].transform.position)) < distance)
                 {
                     distance = localDistance;
                     waypointIndex = i;
@@ -53,7 +53,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Patrol around the different waypoints specified in the waypoint array. Always return a task status of running. 
         public override ActionStatus Perform()
         {
-            if (waypoints.Count == 0)
+            if (waypoints.Value.Count == 0)
             {
                 return ActionStatus.Failure;
             }
@@ -68,7 +68,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                 {
                     if (randomPatrol)
                     {
-                        if (waypoints.Count == 1)
+                        if (waypoints.Value.Count == 1)
                         {
                             waypointIndex = 0;
                         }
@@ -78,14 +78,14 @@ namespace CZToolKit.GOAP.Actions.Movement
                             var newWaypointIndex = waypointIndex;
                             while (newWaypointIndex == waypointIndex)
                             {
-                                newWaypointIndex = Random.Range(0, waypoints.Count);
+                                newWaypointIndex = Random.Range(0, waypoints.Value.Count);
                             }
                             waypointIndex = newWaypointIndex;
                         }
                     }
                     else
                     {
-                        waypointIndex = (waypointIndex + 1) % waypoints.Count;
+                        waypointIndex = (waypointIndex + 1) % waypoints.Value.Count;
                     }
                     SetDestination(Target());
                     waypointReachedTime = -1;
@@ -98,11 +98,11 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Return the current waypoint index position
         private Vector3 Target()
         {
-            if (waypointIndex >= waypoints.Count)
+            if (waypointIndex >= waypoints.Value.Count)
             {
                 return Agent.transform.position;
             }
-            return waypoints[waypointIndex].transform.position;
+            return waypoints.Value[waypointIndex].transform.position;
         }
 
         // Draw a gizmo indicating a patrol 
@@ -115,11 +115,11 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             var oldColor = UnityEditor.Handles.color;
             UnityEditor.Handles.color = Color.yellow;
-            for (int i = 0; i < waypoints.Count; ++i)
+            for (int i = 0; i < waypoints.Value.Count; ++i)
             {
-                if (waypoints[i] != null)
+                if (waypoints.Value[i] != null)
                 {
-                    UnityEditor.Handles.SphereHandleCap(0, waypoints[i].transform.position, waypoints[i].transform.rotation, 1, EventType.Repaint);
+                    UnityEditor.Handles.SphereHandleCap(0, waypoints.Value[i].transform.position, waypoints.Value[i].transform.rotation, 1, EventType.Repaint);
                 }
             }
             UnityEditor.Handles.color = oldColor;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenuItem("Flee(MP)")]
+    [NodeMenuItem("Movement", "Flee")]
     public class Flee : NavMeshMovement
     {
         [Tooltip("The agent has fleed when the magnitude is greater than this value")]

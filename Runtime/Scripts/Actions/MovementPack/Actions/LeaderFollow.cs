@@ -18,11 +18,11 @@ using UnityEngine.AI;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeDescription("Follow the leader using the Unity NavMesh.")]
+    [NodeTooltip("控制多个NavMesh跟随一个目标")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}LeaderFollowIcon.png")]
-    [NodeMenuItem("LeaderFollow(MP)")]
+    [NodeMenuItem("Movement","LeaderFollow")]
     public class LeaderFollow : NavMeshGroupMovement
     {
         [Tooltip("Agents less than this distance apart are neighbors")]

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
   m_Name: Queue
   m_EditorClassIdentifier: 
-  position: {x: -336, y: 10, z: 0}
-  scale: {x: 2, y: 2, z: 1}
+  position: {x: 63, y: 347, z: 0}
+  scale: {x: 1.3225, y: 1.3225, z: 1}
   blackboardoVisible: 0
   blackboardPosition:
     serializedVersion: 2

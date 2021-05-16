@@ -17,11 +17,11 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeDescription("Queue in a line using the Unity NavMesh.")]
+    [NodeTooltip("控制多个NavMesh前往目标")]
     //[TaskCategory("Movement")]
     //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
     //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}QueueIcon.png")]
-    [NodeMenuItem("Queue(MP)")]
+    [NodeMenuItem("Movement", "Queue")]
     public class Queue : NavMeshGroupMovement
     {
         [Tooltip("Agents less than this distance apart are neighbors")]

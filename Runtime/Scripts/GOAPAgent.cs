@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
+
     public class GOAPAgent : GraphOwner<GOAPGraph>
     {
         #region 变量
@@ -22,7 +23,8 @@ namespace CZToolKit.GOAP
 
         /// <summary> 计划最大深度，<1无限制 </summary>
         [Space(10), Header("Settings")]
-        public UpdateMode updateMode = UpdateMode.Normal;
+        [SerializeField]
+        UpdateMode updateMode = UpdateMode.Normal;
 
         [Tooltip("计划最大深度，<1无限制")]
         public int maxDepth = 0;
@@ -34,20 +36,23 @@ namespace CZToolKit.GOAP
         /// <summary> 计划异常终止是否要重置间隔 </summary>
         [Tooltip("计划异常终止是否立即重新搜寻计划")]
         public bool replanOnFailed = true;
+
+        Queue<GOAPAction> storedActionQueue;
+        Queue<GOAPAction> actionQueue;
         #endregion
 
         #region 公共属性
 
         public IGOAP Provider { get; private set; }
-        public FSM FSM { get; private set; }
+        public GOAPFSM FSM { get; private set; }
         public GOAPPlanner Planner { get; private set; }
         public Dictionary<string, ICZType> Blackboard { get; private set; } = new Dictionary<string, ICZType>();
         public List<Goal> Goals { get { return goals; } private set { goals = value; } }
         public Dictionary<string, bool> States { get; private set; }
         /// <summary> 当前计划 </summary>
-        public Queue<GOAPAction> StoredActionQueue { get; private set; }
+        public IReadOnlyCollection<GOAPAction> StoredActionQueue { get { return storedActionQueue; } }
         /// <summary> 当前行为队列 </summary>
-        public Queue<GOAPAction> ActionQueue { get; private set; }
+        public IReadOnlyCollection<GOAPAction> ActionQueue { get { return actionQueue; } }
         /// <summary> 当前行为 </summary>
         public GOAPAction CurrentAction { get; private set; }
         /// <summary> 当前目的，没有为空 </summary>
@@ -60,10 +65,11 @@ namespace CZToolKit.GOAP
 
         protected virtual void Awake()
         {
-            ActionQueue = new Queue<GOAPAction>();
+            storedActionQueue = new Queue<GOAPAction>();
+            actionQueue = new Queue<GOAPAction>();
             Provider = GetComponent<IGOAP>();
             Planner = new GOAPPlanner();
-            FSM = new FSM();
+            FSM = new GOAPFSM();
             Graph = Graph.Clone() as GOAPGraph;
             Graph.Initialize(this);
             Goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
@@ -77,102 +83,103 @@ namespace CZToolKit.GOAP
                 States[item.Key] = item.Value;
             }
 
-            GOAPState idleState = new GOAPState()
+            IdleState idleState = new IdleState(FSM)
             {
-                onUpdate = () =>
+                onStart = () => { },
+                onExit = () => { }
+            };
+            idleState.onUpdate = () =>
+                 {
+                     if (NextPlanTime > FSM.time) return;
+                     if (TGraph == null) return;
+
+                     NextPlanTime = FSM.time + interval;
+
+                     // 搜寻计划
+                     foreach (Goal goal in Goals)
+                     {
+                         Planner.Plan(TGraph.AvailableActions.ToArray(), States, goal, maxDepth, ref storedActionQueue);
+                         if (StoredActionQueue.Count == 0)
+                         {
+                             CurrentGoal = goal;
+                             break;
+                         }
+                     }
+
+                     if (storedActionQueue.Count > 0)
+                     {
+                         actionQueue.Clear();
+                         foreach (var action in storedActionQueue)
+                             actionQueue.Enqueue(action);
+
+                         //通知计划找到
+                         if (Provider != null)
+                             Provider.PlanFound(CurrentGoal, actionQueue);
+                         //转换状态
+                         FSM.ChangeTo("PerformActionState");
+                     }
+                     else
+                     {
+                         //通知计划没找到
+                         if (Provider != null)
+                             Provider.PlanFailed(Goals);
+                         CurrentGoal = null;
+                     }
+                 };
+
+            GOAPState performActionState = new GOAPState(FSM)
+            {
+                onStart = () => { },
+                onExit = () => { }
+            };
+            performActionState.onUpdate = () =>
+            {
+                if (HasPlan)
                 {
-                    if (TGraph == null) return;
-                    if (Time.time < NextPlanTime) return;
-
-                    NextPlanTime = Time.time + interval;
-
-                    Queue<GOAPAction> plan = null;
-                    // 搜寻计划
-                    foreach (Goal goal in Goals)
+                    // 如果当前有计划(目标尚未完成)
+                    GOAPAction action = actionQueue.Peek();
+                    if (CurrentAction != action)
                     {
-                        plan = Planner.Plan(TGraph.AvailableActions.ToArray(), States, goal, maxDepth);
-                        if (plan != null)
-                        {
-                            CurrentGoal = goal;
+                        CurrentAction = action;
+                        action.PrePerform();
+                    }
+                    // 成功 or 失败
+                    ActionStatus status = action.Perform();
+
+                    switch (status)
+                    {
+                        case ActionStatus.Success:
+                            action.PostPerform();
+                            action.Success();
+                            if (Provider != null)
+                                Provider.ActionFinished(action.Effects);
+                            actionQueue.Dequeue();
+                            CurrentAction = null;
                             break;
-                        }
-                    }
-
-                    if (plan != null)
-                    {
-                        StoredActionQueue = plan;
-
-                        ActionQueue.Clear();
-                        foreach (var action in plan)
-                            ActionQueue.Enqueue(action);
-
-                        //通知计划找到
-                        //if (Provider != null)
-                        //    Provider.PlanFound(CurrentGoal, ActionQueue);
-                        //转换状态
-                        FSM.ChangeTo("PerformActionState");
-                    }
-                    else
-                    {
-                        //通知计划没找到
-                        if (Provider != null)
-                            Provider.PlanFailed(Goals);
-                        CurrentGoal = null;
+                        case ActionStatus.Failure:
+                            if (replanOnFailed)
+                                EnforceReplan();
+                            else
+                                AbortPlan();
+                            return;
+                        default:
+                            break;
                     }
                 }
-            };
-
-            GOAPState performActionState = new GOAPState()
-            {
-                onUpdate = () =>
+                else
                 {
-                    if (HasPlan)
-                    {
-                        // 如果当前有计划(目标尚未完成)
-                        GOAPAction action = ActionQueue.Peek();
-                        if (CurrentAction != action)
-                        {
-                            CurrentAction = action;
-                            action.PrePerform();
-                        }
-                        // 成功 or 失败
-                        ActionStatus status = action.Perform();
+                    // 如果没有计划(目标已完成)
+                    // 如果目标为一次性，移除掉
+                    if (CurrentGoal != null && CurrentGoal.Once)
+                        Goals.Remove(CurrentGoal);
 
-                        switch (status)
-                        {
-                            case ActionStatus.Success:
-                                action.PostPerform();
-                                action.Success();
-                                if (Provider != null)
-                                    Provider.ActionFinished(action.Effects);
-                                ActionQueue.Dequeue();
-                                CurrentAction = null;
-                                break;
-                            case ActionStatus.Failure:
-                                if (replanOnFailed)
-                                    EnforceReplan();
-                                else
-                                    AbortPlan();
-                                return;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        // 如果没有计划(目标已完成)
-                        // 如果目标为一次性，移除掉
-                        if (CurrentGoal.Once)
-                            Goals.Remove(CurrentGoal);
+                    // 通知计划完成
+                    if (Provider != null)
+                        Provider.PlanFinished();
 
-                        // 通知计划完成
-                        if (Provider != null)
-                            Provider.PlanFinished();
-
-                        // 当前目标设置为空
-                        CurrentGoal = null;
-                        FSM.ChangeTo("IdleState");
-                    }
+                    // 当前目标设置为空
+                    CurrentGoal = null;
+                    FSM.ChangeTo("IdleState");
                 }
             };
 
@@ -183,32 +190,42 @@ namespace CZToolKit.GOAP
 
         private void FixedUpdate()
         {
-            if (updateMode == UpdateMode.AnimatePhysics) FSM.Update();
+            if (updateMode == UpdateMode.AnimatePhysics)
+                Evaluate(Time.fixedDeltaTime);
         }
 
         protected virtual void Update()
         {
-            if (updateMode == UpdateMode.Normal || updateMode == UpdateMode.UnscaledTime) FSM.Update();
+            switch (updateMode)
+            {
+                case UpdateMode.Normal:
+                    Evaluate(Time.deltaTime);
+                    break;
+                case UpdateMode.UnscaledTime:
+                    Evaluate(Time.unscaledDeltaTime);
+                    break;
+            }
         }
 
-        public void Evaluate()
+        public void Evaluate(float _deltaTime)
         {
-            if (updateMode == UpdateMode.Manual) FSM.Update();
+            FSM.time += _deltaTime;
+            FSM.Update();
         }
 
         /// <summary> 终止计划(在<see cref="interval"/>之后才会重新搜寻计划) </summary>
         public void AbortPlan()
         {
             if (HasPlan)
-                ActionQueue.Clear();
+                actionQueue.Clear();
 
             if (CurrentAction != null)
             {
                 CurrentAction.PostPerform();
                 // 如果动作执行失败，转换到空闲状态，并通知因为该动作导致计划失败  
                 CurrentAction.Failed();
-                //if (Provider != null)
-                //    Provider.PlanAborted(CurrentAction);
+                if (Provider != null)
+                    Provider.PlanAborted(CurrentAction);
             }
 
             CurrentAction = null;
