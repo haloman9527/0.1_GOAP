@@ -126,8 +126,7 @@ namespace CZToolKit.GOAP
         /// <summary> 返回一个新的修改过的状态 </summary>
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_effects">行为效果</param>
-        private Dictionary<string, bool> PopulateState(Dictionary<string, bool> _currentStates,
-            Dictionary<string, bool> _effects)
+        private Dictionary<string, bool> PopulateState(Dictionary<string, bool> _currentStates, List<State> _effects)
         {
             Dictionary<string, bool> newStates = DictionaryObjPool.Spawn();
             newStates.Clear();
@@ -146,11 +145,11 @@ namespace CZToolKit.GOAP
 
         /// <summary> 当前状态是否达成目标(_currentStates是否包含所有的_goals) </summary>
         /// <param name="_currentStates"></param>
-        /// <param name="_goals"></param>
+        /// <param name="_conditions"></param>
         /// <returns></returns>
-        public static bool InState(Dictionary<string, bool> _currentStates, Dictionary<string, bool> _goals)
+        public static bool InState(Dictionary<string, bool> _currentStates, List<State> _conditions)
         {
-            foreach (KeyValuePair<string, bool> goal in _goals)
+            foreach (State goal in _conditions)
             {
                 // 如果_currentStates不包含_goals，则认为不能达成目标
                 if (!_currentStates.TryGetValue(goal.Key, out bool value) && value.Equals(true))

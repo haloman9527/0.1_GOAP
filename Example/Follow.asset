@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
   m_Name: Follow
   m_EditorClassIdentifier: 
-  position: {x: 0, y: 0, z: 0}
+  position: {x: -8, y: -193, z: 0}
   scale: {x: 1, y: 1, z: 1}
   blackboardoVisible: 1
   blackboardPosition:
@@ -32,7 +32,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
     json: "{\"guid\":\"c3e0624b-0349-49d3-bfcd-097358ccbec8\",\"position\":{\"serializedVersion\":\"2\",\"x\":454.0,\"y\":276.0,\"width\":176.0,\"height\":181.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"onEnter\",\"onExit\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"fa62dc9ccf4fbcf4f9678441db6264bc\",\"type\":2},\"ownerGUID\":\"c3e0624b-0349-49d3-bfcd-097358ccbec8\",\"fieldName\":\"onEnter\",\"typeQualifiedName\":\"System.Action,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"fa62dc9ccf4fbcf4f9678441db6264bc\",\"type\":2},\"ownerGUID\":\"c3e0624b-0349-49d3-bfcd-097358ccbec8\",\"fieldName\":\"onExit\",\"typeQualifiedName\":\"System.Action,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":1,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u8DDF\u968F\",\"cost\":1.0,\"m_Preconditions\":[],\"m_Effects\":[{\"Key\":\"Follow\",\"Value\":true}],\"speed\":10.0,\"angularSpeed\":120.0,\"arriveDistance\":0.20000000298023225,\"stopOnTaskEnd\":true,\"updateRotation\":true,\"target\":{\"guid\":\"69cc3f27-3495-48ed-9c6d-0d78c9066875\",\"value\":{\"instanceID\":0}},\"moveDistance\":{\"guid\":\"70ca9a18-a5cb-4e64-a021-8c6362273f33\",\"value\":2.0}}"
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":1,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u8DDF\u968F\",\"cost\":1.0,\"preconditions\":[],\"effects\":[{\"Key\":\"Follow\",\"Value\":true}],\"speed\":10.0,\"angularSpeed\":120.0,\"arriveDistance\":0.20000000298023225,\"stopOnTaskEnd\":true,\"updateRotation\":true,\"target\":{\"guid\":\"69cc3f27-3495-48ed-9c6d-0d78c9066875\",\"value\":{\"instanceID\":0}},\"moveDistance\":{\"guid\":\"70ca9a18-a5cb-4e64-a021-8c6362273f33\",\"value\":2.0}}"
   serializedEdges: []
   serializedStacks: []
   serializedGroups: []

@@ -44,13 +44,10 @@ namespace CZToolKit.GOAP
         [Tooltip("此行为的执行成本")] [HideInInspector] public float cost = 1;
 
         /// <summary> 执行此行为的前提条件 </summary>
-        [Tooltip("此行为的前提条件")] [HideInInspector] public List<State> m_Preconditions = new List<State>();
-        private Dictionary<string, bool> preconditions = null;
+        [Tooltip("此行为的前提条件")] [SerializeField, HideInInspector] List<State> preconditions = new List<State>();
 
         /// <summary> 行为执行成功造成的效果 </summary>
-        [Tooltip("行为可以造成的效果")] [HideInInspector] public List<State> m_Effects = new List<State>();
-
-        private Dictionary<string, bool> effects = null;
+        [Tooltip("行为可以造成的效果")] [SerializeField, HideInInspector] List<State> effects = new List<State>();
 
         [Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
         [PortSize(12), PortColor(0.1f, 0.5f, 0.1f)]
@@ -71,34 +68,10 @@ namespace CZToolKit.GOAP
         public Cooldown Cooldown { get; private set; } = new Cooldown();
 
         /// <summary> 执行此行为的前提条件 </summary>
-        public Dictionary<string, bool> Preconditions
-        {
-            get
-            {
-                if (preconditions == null)
-                {
-                    preconditions = new Dictionary<string, bool>();
-                    foreach (var item in m_Preconditions)
-                        preconditions[item.Key] = item.Value;
-                }
-                return preconditions;
-            }
-        }
+        public List<State> Preconditions { get { return preconditions; } }
 
         /// <summary> 此技能对世界状态造成的修改 </summary>
-        public Dictionary<string, bool> Effects
-        {
-            get
-            {
-                if (effects == null)
-                {
-                    effects = new Dictionary<string, bool>();
-                    foreach (var item in m_Effects)
-                        effects[item.Key] = item.Value;
-                }
-                return effects;
-            }
-        }
+        public List<State> Effects { get { return effects; } }
 
         public override void Initialize(GraphOwner _graphOwner)
         {
@@ -137,57 +110,33 @@ namespace CZToolKit.GOAP
         /// <summary> 添加一条前提条件 </summary>
         public void SetPrecondition(string key, bool value)
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                State state = m_Preconditions.Find(item => item.Key == key);
-                if (state == null)
-                    m_Preconditions.Add(new State(key, value));
-                else
-                    state.Value = value;
-            }
+            State state = preconditions.Find(item => item.Key == key);
+            if (state == null)
+                preconditions.Add(new State(key, value));
             else
-#endif
-                Preconditions[key] = value;
+                state.Value = value;
         }
 
         /// <summary> 移除一条前提条件 </summary>
         public void RemovePrecondition(string key)
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-                m_Preconditions.RemoveAll(item => item.Key == key);
-            else
-#endif
-                Preconditions.Remove(key);
+            preconditions.RemoveAll(item => item.Key == key);
         }
 
         /// <summary> 添加一条效果 </summary>
         public void SetEffect(string key, bool value)
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-            {
-                State state = m_Effects.Find(item => item.Key == key);
-                if (state == null)
-                    m_Effects.Add(new State(key, value));
-                else
-                    state.Value = value;
-            }
+            State state = effects.Find(item => item.Key == key);
+            if (state == null)
+                effects.Add(new State(key, value));
             else
-#endif
-                Effects[key] = value;
+                state.Value = value;
         }
 
         /// <summary> 移除一条效果 </summary>
         public void RemoveEffect(string key)
         {
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-                m_Effects.RemoveAll(item => item.Key == key);
-            else
-#endif
-                Effects.Remove(key);
+            effects.RemoveAll(item => item.Key == key);
         }
     }
 }

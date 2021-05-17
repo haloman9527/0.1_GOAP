@@ -270,24 +270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
-  - id: 7
-  - id: 8
-  - id: 9
-  - id: 10
-  - id: 11
-  - id: 12
-  - id: 13
-  - id: 14
-  - id: 15
-  - id: 16
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"94b3073f-4b98-4239-891c-1f6c0565eb2c","value":{"instanceID":0}}'
+  objectsCache:
+  - guid: 94b3073f-4b98-4239-891c-1f6c0565eb2c
+    single: {fileID: 367048808}
+    multi: []
   graph: {fileID: 11400000, guid: dfa8600abb4a6684792308cce6ba1e7c, type: 2}
   goals:
   - Key: Pursue
@@ -299,93 +289,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 32ee785b-e036-41d5-8726-82c1e603ae9e
-        value: 1000
-    00000001:
-      type: {class: SharedInt, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 4714d7ba-7484-4707-97c9-ea22619f39ce
-        value: 100
-    00000002:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 0eb6dd51-dbc6-4163-9290-9f0c8ed7d1f3
-        value: 1
-    00000003:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 00e3caa1-7e0f-4f3c-add1-8ecb679763b8
-        value: 2
-    00000004:
-      type: {class: SharedBool, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: f5cce57e-30cf-4455-888d-6519c6822922
-        value: 0
-    00000005:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: ff86495d-034c-4319-ac51-3c7dfb752782
-        value: 0.5
-    00000006:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: bd03626a-54f5-4c47-b5a8-4a556e7357b0
-        value: 0
-    00000007:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 94b3073f-4b98-4239-891c-1f6c0565eb2c
-        value: {fileID: 367048808}
-    00000008:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 769e7298-8d5c-4c5e-89c7-54b4b61ee8b1
-        value: 20
-    00000009:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 579d45c0-faf6-463d-8aca-98241d7843bb
-        value: {fileID: 0}
-    0000000A:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 066b443f-f867-4e06-b96f-daff2b5aacf4
-        value: {fileID: 0}
-    0000000B:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: e92cac6f-97f3-4996-b8fb-11ada1278148
-        value: 2
-    0000000C:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 5b3d338d-946b-4aac-aa1b-84c097b9d51c
-        value: 10
-    0000000D:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 7ba6a2dd-de17-49c2-be8b-9a9b3e7b97c2
-        value: 5
-    0000000E:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 25ffd2dd-86dd-42f9-8f7f-8db0d970b521
-        value: 20
-    0000000F:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: e7251c39-1ba4-4bbb-be0b-52e213faf8a3
-        value: 20
-    00000010:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 2ebc1b7c-c95d-474e-a27f-e3d66adf4058
-        value: {fileID: 367048808}
 --- !u!195 &120138045
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -482,122 +385,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 82.48, z: 0}
---- !u!1 &243509512
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 243509513}
-  - component: {fileID: 243509517}
-  - component: {fileID: 243509516}
-  - component: {fileID: 243509515}
-  - component: {fileID: 243509514}
-  m_Layer: 0
-  m_Name: Sphere (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &243509513
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243509512}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.14, y: 0, z: -21.59}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1180106689}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &243509514
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243509512}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 1
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!135 &243509515
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243509512}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &243509516
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243509512}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &243509517
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 243509512}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &367048808
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,14 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
+  serializedVariables: []
+  objectsCache: []
   graph: {fileID: 11400000, guid: 629950d01e3a97c41bcf25cc01c92587, type: 2}
   goals:
   - Key: Wander
@@ -746,43 +527,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 53f584c3-3bad-41e4-97c8-32ef363586be
-        value: {fileID: 604489998}
-    00000001:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 347235d8-462e-42b8-a188-1d3dcace7f0d
-        value: 20
-    00000002:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 88378da4-9624-4ca1-8124-656095063f1b
-        value: 20
-    00000003:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 4006fb1f-6136-40f5-bff2-2346103e50c2
-        value: 2
-    00000004:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 809987d6-12bd-4e99-a050-382ce807ff2e
-        value: 0
-    00000005:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 4027d39d-4109-4d8b-83fe-e4773f6ab5ca
-        value: 0
-    00000006:
-      type: {class: SharedInt, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: b9b0afbd-6398-45d1-b9d4-c0704f39086b
-        value: 1
 --- !u!1 &424214879
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,9 +736,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"a5bc0d4c-ae6e-4aa9-bebf-1cdebd18864f","value":20.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"66459a5e-a566-4b46-9b15-98b0478fdad0","value":{"instanceID":0}}'
+  objectsCache:
+  - guid: 66459a5e-a566-4b46-9b15-98b0478fdad0
+    single: {fileID: 367048808}
+    multi: []
   graph: {fileID: 11400000, guid: 50a23d0acafda4c44b842b9d39248e1b, type: 2}
   goals:
   - Key: Flee
@@ -1006,18 +758,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: a5bc0d4c-ae6e-4aa9-bebf-1cdebd18864f
-        value: 20
-    00000001:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 66459a5e-a566-4b46-9b15-98b0478fdad0
-        value: {fileID: 367048808}
 --- !u!195 &524847970
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1142,123 +882,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &706177916
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 706177922}
-  - component: {fileID: 706177921}
-  - component: {fileID: 706177920}
-  - component: {fileID: 706177919}
-  - component: {fileID: 706177918}
-  m_Layer: 0
-  m_Name: WanderAI (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!195 &706177918
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706177916}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 20
-  avoidancePriority: 30
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!135 &706177919
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706177916}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &706177920
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706177916}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &706177921
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706177916}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &706177922
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706177916}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.4, y: 0.43, z: 27.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &725976054
 GameObject:
@@ -1469,122 +1093,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800458522}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &898699176
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 898699177}
-  - component: {fileID: 898699181}
-  - component: {fileID: 898699180}
-  - component: {fileID: 898699179}
-  - component: {fileID: 898699178}
-  m_Layer: 0
-  m_Name: Sphere (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &898699177
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898699176}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: -20.51}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1180106689}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &898699178
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898699176}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 1
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!135 &898699179
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898699176}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &898699180
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898699176}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &898699181
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898699176}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &911461167
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1223,6 @@ GameObject:
   - component: {fileID: 931218679}
   - component: {fileID: 931218678}
   - component: {fileID: 931218677}
-  - component: {fileID: 931218683}
   m_Layer: 0
   m_Name: FollowAI
   m_TagString: Untagged
@@ -1735,26 +1242,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
-  - id: 7
-  - id: 8
-  - id: 9
-  - id: 10
-  - id: 11
-  - id: 12
-  - id: 13
-  - id: 14
-  - id: 15
-  - id: 16
-  - id: 17
-  - id: 18
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"69cc3f27-3495-48ed-9c6d-0d78c9066875","value":{"instanceID":0}}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"70ca9a18-a5cb-4e64-a021-8c6362273f33","value":2.0}'
+  objectsCache:
+  - guid: 69cc3f27-3495-48ed-9c6d-0d78c9066875
+    single: {fileID: 367048808}
+    multi: []
   graph: {fileID: 11400000, guid: fa62dc9ccf4fbcf4f9678441db6264bc, type: 2}
   goals:
   - Key: Follow
@@ -1766,103 +1264,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 32ee785b-e036-41d5-8726-82c1e603ae9e
-        value: 1000
-    00000001:
-      type: {class: SharedInt, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 4714d7ba-7484-4707-97c9-ea22619f39ce
-        value: 100
-    00000002:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 0eb6dd51-dbc6-4163-9290-9f0c8ed7d1f3
-        value: 1
-    00000003:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 00e3caa1-7e0f-4f3c-add1-8ecb679763b8
-        value: 2
-    00000004:
-      type: {class: SharedBool, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: f5cce57e-30cf-4455-888d-6519c6822922
-        value: 0
-    00000005:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: ff86495d-034c-4319-ac51-3c7dfb752782
-        value: 0.5
-    00000006:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: bd03626a-54f5-4c47-b5a8-4a556e7357b0
-        value: 0
-    00000007:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 94b3073f-4b98-4239-891c-1f6c0565eb2c
-        value: {fileID: 367048808}
-    00000008:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 769e7298-8d5c-4c5e-89c7-54b4b61ee8b1
-        value: 20
-    00000009:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 579d45c0-faf6-463d-8aca-98241d7843bb
-        value: {fileID: 0}
-    0000000A:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 066b443f-f867-4e06-b96f-daff2b5aacf4
-        value: {fileID: 0}
-    0000000B:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: e92cac6f-97f3-4996-b8fb-11ada1278148
-        value: 2
-    0000000C:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 5b3d338d-946b-4aac-aa1b-84c097b9d51c
-        value: 10
-    0000000D:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 7ba6a2dd-de17-49c2-be8b-9a9b3e7b97c2
-        value: 5
-    0000000E:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 25ffd2dd-86dd-42f9-8f7f-8db0d970b521
-        value: 20
-    0000000F:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: e7251c39-1ba4-4bbb-be0b-52e213faf8a3
-        value: 20
-    00000010:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 2ebc1b7c-c95d-474e-a27f-e3d66adf4058
-        value: {fileID: 367048808}
-    00000011:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 69cc3f27-3495-48ed-9c6d-0d78c9066875
-        value: {fileID: 367048808}
-    00000012:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 70ca9a18-a5cb-4e64-a021-8c6362273f33
-        value: 2
 --- !u!195 &931218678
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1959,144 +1360,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 82.48, z: 0}
---- !u!114 &931218683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931218676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  variables: []
-  graph: {fileID: 0}
-  goals: []
-  preState: []
-  updateMode: 0
-  maxDepth: 0
-  interval: 3
-  replanOnFailed: 1
-  references:
-    version: 1
---- !u!1 &946462390
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 946462391}
-  - component: {fileID: 946462395}
-  - component: {fileID: 946462394}
-  - component: {fileID: 946462393}
-  - component: {fileID: 946462392}
-  m_Layer: 0
-  m_Name: Sphere (8)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &946462391
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946462390}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0, z: -20.86}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1180106689}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &946462392
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946462390}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 1
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!135 &946462393
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946462390}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &946462394
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946462390}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &946462395
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946462390}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1180106688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,14 +1392,8 @@ Transform:
   - {fileID: 800458523}
   - {fileID: 2113224423}
   - {fileID: 1297751119}
-  - {fileID: 1820281618}
-  - {fileID: 243509513}
-  - {fileID: 898699177}
-  - {fileID: 946462391}
-  - {fileID: 1866964548}
-  - {fileID: 1642143865}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1227599528
 GameObject:
@@ -2229,7 +1486,7 @@ Transform:
   m_LocalScale: {x: 49.548462, y: 2.5976, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -10.503, z: 0}
 --- !u!1 &1297751118
 GameObject:
@@ -2438,7 +1695,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1436880535
 GameObject:
@@ -2469,16 +1726,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
-  - id: 7
-  - id: 8
+  serializedVariables: []
+  objectsCache: []
   graph: {fileID: 11400000, guid: d4870976b94479446820d213540b2d69, type: 2}
   goals:
   - Key: ArrvingMarker
@@ -2490,63 +1739,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedGameObjectList, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: d0545b63-5963-4281-a5fe-4fcf50a8feff
-        value:
-        - {fileID: 97958415}
-        - {fileID: 911461167}
-        - {fileID: 800458522}
-        - {fileID: 2113224422}
-        - {fileID: 1297751118}
-        - {fileID: 1820281617}
-        - {fileID: 243509512}
-        - {fileID: 898699176}
-        - {fileID: 946462390}
-        - {fileID: 1866964547}
-    00000001:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 25c6c5c8-6593-4768-aec2-17d07560504b
-        value: 10
-    00000002:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 7d897171-6a41-4ddb-8c82-fe0937a64bba
-        value: 120
-    00000003:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 8cff34ea-0cf0-474a-8ca6-82a690eccb97
-        value: 10
-    00000004:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: ceac4541-34aa-4324-ba42-146abc5bd41b
-        value: 2
-    00000005:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 2a830a64-ce7f-4581-9a5d-bbcc55ecbfc9
-        value: 2
-    00000006:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: e56e4947-7452-4a53-a562-864782b73ed3
-        value: 20
-    00000007:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 3bb8340d-c196-499a-9620-25391cd628d7
-        value: 0.15
-    00000008:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: cf68b4f2-fa07-41c0-9417-697589df8a8d
-        value: {fileID: 367048808}
 --- !u!4 &1436880537
 Transform:
   m_ObjectHideFlags: 0
@@ -2591,7 +1783,7 @@ Transform:
   - {fileID: 439357894}
   - {fileID: 725976055}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485255694
 GameObject:
@@ -2716,15 +1908,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
-  - id: 7
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedGameObjectList, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"b9a0ddda-5f01-4ac6-a0ca-27ce027c9057","value":[{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0}]}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"ffee48a6-11d4-4e4f-8eda-56188e9077f7","value":10.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"ce377586-afdb-4d80-b6f8-16b44cba4078","value":120.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"2b0809f4-82f6-496d-b435-c96842de5a54","value":10.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"f92393f6-2dca-4fe4-a772-75e0b46aaa36","value":2.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"8571f9a1-a080-482b-a279-b4bb2e016b4d","value":2.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"c0e25cf8-a1ee-4a2f-a493-a0de000bc2b8","value":2.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"a14b2723-e4a3-4655-82b4-e6653fb4f047","value":{"instanceID":0}}'
+  objectsCache:
+  - guid: b9a0ddda-5f01-4ac6-a0ca-27ce027c9057
+    single: {fileID: 0}
+    multi:
+    - {fileID: 97958415}
+    - {fileID: 911461167}
+    - {fileID: 800458522}
+    - {fileID: 2113224422}
+    - {fileID: 1297751118}
+  - guid: a14b2723-e4a3-4655-82b4-e6653fb4f047
+    single: {fileID: 367048808}
+    multi: []
   graph: {fileID: 11400000, guid: faff362fc2706334889574e1668c9000, type: 2}
   goals:
   - Key: LeaderFollow
@@ -2736,58 +1956,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedGameObjectList, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: b9a0ddda-5f01-4ac6-a0ca-27ce027c9057
-        value:
-        - {fileID: 97958415}
-        - {fileID: 911461167}
-        - {fileID: 800458522}
-        - {fileID: 2113224422}
-        - {fileID: 1297751118}
-        - {fileID: 1820281617}
-        - {fileID: 243509512}
-        - {fileID: 898699176}
-        - {fileID: 946462390}
-        - {fileID: 1866964547}
-    00000001:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: ffee48a6-11d4-4e4f-8eda-56188e9077f7
-        value: 10
-    00000002:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: ce377586-afdb-4d80-b6f8-16b44cba4078
-        value: 120
-    00000003:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 2b0809f4-82f6-496d-b435-c96842de5a54
-        value: 10
-    00000004:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: f92393f6-2dca-4fe4-a772-75e0b46aaa36
-        value: 2
-    00000005:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 8571f9a1-a080-482b-a279-b4bb2e016b4d
-        value: 2
-    00000006:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: c0e25cf8-a1ee-4a2f-a493-a0de000bc2b8
-        value: 2
-    00000007:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: a14b2723-e4a3-4655-82b4-e6653fb4f047
-        value: {fileID: 367048808}
 --- !u!4 &1560031266
 Transform:
   m_ObjectHideFlags: 0
@@ -2894,331 +2062,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1642143861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1642143865}
-  - component: {fileID: 1642143864}
-  - component: {fileID: 1642143863}
-  - component: {fileID: 1642143862}
-  m_Layer: 0
-  m_Name: Marker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!135 &1642143862
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642143861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1642143863
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642143861}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1642143864
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642143861}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1642143865
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642143861}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.26, y: 0, z: 25.52}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1180106689}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1820281617
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1820281618}
-  - component: {fileID: 1820281622}
-  - component: {fileID: 1820281621}
-  - component: {fileID: 1820281620}
-  - component: {fileID: 1820281619}
-  m_Layer: 0
-  m_Name: Sphere (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1820281618
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820281617}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.71, y: 0, z: -18.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1180106689}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &1820281619
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820281617}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 1
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!135 &1820281620
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820281617}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1820281621
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820281617}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1820281622
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1820281617}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1866964547
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1866964548}
-  - component: {fileID: 1866964552}
-  - component: {fileID: 1866964551}
-  - component: {fileID: 1866964550}
-  - component: {fileID: 1866964549}
-  m_Layer: 0
-  m_Name: Sphere (9)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1866964548
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866964547}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.47, y: 0, z: -19.24}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1180106689}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &1866964549
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866964547}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 1
-  m_Acceleration: 20
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!135 &1866964550
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866964547}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1866964551
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866964547}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1866964552
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866964547}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1903898836
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,15 +2091,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
-  - id: 7
+  serializedVariables: []
+  objectsCache: []
   graph: {fileID: 11400000, guid: 041a7feb7ee332e4484ea032a03053e6, type: 2}
   goals:
   - Key: Flock
@@ -3268,58 +2104,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedGameObjectList, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: ef0634c1-4f3f-4bb3-9341-ff9f5dd9c588
-        value:
-        - {fileID: 97958415}
-        - {fileID: 911461167}
-        - {fileID: 800458522}
-        - {fileID: 2113224422}
-        - {fileID: 1297751118}
-        - {fileID: 1820281617}
-        - {fileID: 243509512}
-        - {fileID: 898699176}
-        - {fileID: 946462390}
-        - {fileID: 1866964547}
-    00000001:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 658bc118-def5-45e6-95da-ab8829e4a46d
-        value: 10
-    00000002:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: cadf7acd-9440-442c-8e8e-6c0f9feb0b07
-        value: 120
-    00000003:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: d57ad83d-72a5-4451-8eff-e6188aee608b
-        value: 100
-    00000004:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 45a0e0e8-7850-4863-92c4-1ac0f576f569
-        value: 5
-    00000005:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: ebaeac11-afe2-4197-96a6-50b6b40c11f9
-        value: 0.4
-    00000006:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: b63c7594-7658-4c51-b8f9-529baa01f5bb
-        value: 0.5
-    00000007:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 92a5a5d5-fb16-4a54-9f88-cda51a8e304c
-        value: 0.6
 --- !u!4 &1903898838
 Transform:
   m_ObjectHideFlags: 0
@@ -3425,7 +2209,7 @@ Transform:
   m_LocalScale: {x: 50.263725, y: 2.5976, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 9.878, z: 0}
 --- !u!1 &1999368446
 GameObject:
@@ -3460,14 +2244,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"32ee785b-e036-41d5-8726-82c1e603ae9e","value":1000.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedInt, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"4714d7ba-7484-4707-97c9-ea22619f39ce","value":100}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"0eb6dd51-dbc6-4163-9290-9f0c8ed7d1f3","value":1.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"00e3caa1-7e0f-4f3c-add1-8ecb679763b8","value":2.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedBool, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"f5cce57e-30cf-4455-888d-6519c6822922","value":false}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"ff86495d-034c-4319-ac51-3c7dfb752782","value":0.5}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"bd03626a-54f5-4c47-b5a8-4a556e7357b0","value":0.0}'
+  objectsCache: []
   graph: {fileID: 11400000, guid: 2876c73480afabb4680f8655861ef354, type: 2}
   goals:
   - Key: Cover
@@ -3479,43 +2278,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 32ee785b-e036-41d5-8726-82c1e603ae9e
-        value: 1000
-    00000001:
-      type: {class: SharedInt, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 4714d7ba-7484-4707-97c9-ea22619f39ce
-        value: 100
-    00000002:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 0eb6dd51-dbc6-4163-9290-9f0c8ed7d1f3
-        value: 1
-    00000003:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 00e3caa1-7e0f-4f3c-add1-8ecb679763b8
-        value: 2
-    00000004:
-      type: {class: SharedBool, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: f5cce57e-30cf-4455-888d-6519c6822922
-        value: 0
-    00000005:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: ff86495d-034c-4319-ac51-3c7dfb752782
-        value: 0.5
-    00000006:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: bd03626a-54f5-4c47-b5a8-4a556e7357b0
-        value: 0
 --- !u!195 &1999368448
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3645,14 +2407,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  variables:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
-  - id: 4
-  - id: 5
-  - id: 6
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"5b3d338d-946b-4aac-aa1b-84c097b9d51c","value":10.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"7ba6a2dd-de17-49c2-be8b-9a9b3e7b97c2","value":5.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"25ffd2dd-86dd-42f9-8f7f-8db0d970b521","value":20.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"e7251c39-1ba4-4bbb-be0b-52e213faf8a3","value":20.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"2ebc1b7c-c95d-474e-a27f-e3d66adf4058","value":{"instanceID":0}}'
+  objectsCache:
+  - guid: 2ebc1b7c-c95d-474e-a27f-e3d66adf4058
+    single: {fileID: 367048808}
+    multi: []
   graph: {fileID: 11400000, guid: 27b082737bb051344b8e2ebae68bf8ac, type: 2}
   goals:
   - Key: Evade
@@ -3664,43 +2438,6 @@ MonoBehaviour:
   maxDepth: 0
   interval: 3
   replanOnFailed: 1
-  references:
-    version: 1
-    00000000:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: a5bc0d4c-ae6e-4aa9-bebf-1cdebd18864f
-        value: 20
-    00000001:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 66459a5e-a566-4b46-9b15-98b0478fdad0
-        value: {fileID: 367048808}
-    00000002:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 5b3d338d-946b-4aac-aa1b-84c097b9d51c
-        value: 10
-    00000003:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 7ba6a2dd-de17-49c2-be8b-9a9b3e7b97c2
-        value: 5
-    00000004:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 25ffd2dd-86dd-42f9-8f7f-8db0d970b521
-        value: 20
-    00000005:
-      type: {class: SharedFloat, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: e7251c39-1ba4-4bbb-be0b-52e213faf8a3
-        value: 20
-    00000006:
-      type: {class: SharedGameObject, ns: CZToolKit.Core.SharedVariable, asm: CZToolKit.Core}
-      data:
-        guid: 2ebc1b7c-c95d-474e-a27f-e3d66adf4058
-        value: {fileID: 367048808}
 --- !u!195 &2055021750
 NavMeshAgent:
   m_ObjectHideFlags: 0

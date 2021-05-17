@@ -8,7 +8,7 @@ namespace CZToolKit.GOAP
         void PlanFailed(List<Goal> failedGoals);
 
         /// <summary> 一个行为完成 </summary>  
-        void ActionFinished(Dictionary<string, bool> effect);
+        void ActionFinished(List<State> effect);
 
         /// <summary> 找到可以完成目标的一系列动作 </summary>  
         void PlanFound(Goal goal, Queue<GOAPAction> actions);

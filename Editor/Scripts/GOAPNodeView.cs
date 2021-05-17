@@ -52,15 +52,15 @@ namespace CZToolKit.GOAP
             Button btnAddCondition = new Button(() =>
             {
                 GOAP.State state = new GOAP.State();
-                action.m_Preconditions.Add(state);
-                conditionFoldout.Add(CreateToggle(state, action.m_Preconditions));
+                action.Preconditions.Add(state);
+                conditionFoldout.Add(CreateToggle(state, action.Preconditions));
             });
             btnAddCondition.text = "添加条件";
             btnAddCondition.style.alignItems = Align.Center;
             conditionFoldout.Add(btnAddCondition);
-            for (int i = 0; i < action.m_Preconditions.Count; i++)
+            for (int i = 0; i < action.Preconditions.Count; i++)
             {
-                conditionFoldout.Add(CreateToggle(action.m_Preconditions[i], action.m_Preconditions));
+                conditionFoldout.Add(CreateToggle(action.Preconditions[i], action.Preconditions));
             }
 
             // 效果列表
@@ -70,15 +70,15 @@ namespace CZToolKit.GOAP
             Button btnAddEffect = new Button(() =>
             {
                 GOAP.State state = new GOAP.State();
-                action.m_Effects.Add(state);
-                effectFoldout.Add(CreateToggle(state, action.m_Effects));
+                action.Effects.Add(state);
+                effectFoldout.Add(CreateToggle(state, action.Effects));
             });
             btnAddEffect.text = "添加效果";
             btnAddEffect.style.alignItems = Align.Center;
             effectFoldout.Add(btnAddEffect);
-            for (int i = 0; i < action.m_Effects.Count; i++)
+            for (int i = 0; i < action.Effects.Count; i++)
             {
-                effectFoldout.Add(CreateToggle(action.m_Effects[i], action.m_Effects));
+                effectFoldout.Add(CreateToggle(action.Effects[i], action.Effects));
             }
         }
 
