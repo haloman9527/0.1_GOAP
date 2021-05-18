@@ -514,7 +514,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables: []
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"347235d8-462e-42b8-a188-1d3dcace7f0d","value":20.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"88378da4-9624-4ca1-8124-656095063f1b","value":20.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"4006fb1f-6136-40f5-bff2-2346103e50c2","value":2.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"809987d6-12bd-4e99-a050-382ce807ff2e","value":0.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"4027d39d-4109-4d8b-83fe-e4773f6ab5ca","value":0.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedInt, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"b9b0afbd-6398-45d1-b9d4-c0704f39086b","value":1}'
   objectsCache: []
   graph: {fileID: 11400000, guid: 629950d01e3a97c41bcf25cc01c92587, type: 2}
   goals:
@@ -1726,7 +1744,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables: []
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"25c6c5c8-6593-4768-aec2-17d07560504b","value":10.0}'
   objectsCache: []
   graph: {fileID: 11400000, guid: d4870976b94479446820d213540b2d69, type: 2}
   goals:
@@ -1909,9 +1930,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedGameObjectList, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"b9a0ddda-5f01-4ac6-a0ca-27ce027c9057","value":[{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0}]}'
   - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     json: '{"guid":"ffee48a6-11d4-4e4f-8eda-56188e9077f7","value":10.0}'
@@ -1930,10 +1948,19 @@ MonoBehaviour:
   - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     json: '{"guid":"c0e25cf8-a1ee-4a2f-a493-a0de000bc2b8","value":2.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedInt, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"a4d017b1-426f-44b6-b8be-aa3bebf13317","value":0}'
   - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
     json: '{"guid":"a14b2723-e4a3-4655-82b4-e6653fb4f047","value":{"instanceID":0}}'
+  - type: CZToolKit.Core.SharedVariable.SharedGameObjectList, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"b9a0ddda-5f01-4ac6-a0ca-27ce027c9057","value":[{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0}]}'
   objectsCache:
+  - guid: a14b2723-e4a3-4655-82b4-e6653fb4f047
+    single: {fileID: 367048808}
+    multi: []
   - guid: b9a0ddda-5f01-4ac6-a0ca-27ce027c9057
     single: {fileID: 0}
     multi:
@@ -1942,9 +1969,6 @@ MonoBehaviour:
     - {fileID: 800458522}
     - {fileID: 2113224422}
     - {fileID: 1297751118}
-  - guid: a14b2723-e4a3-4655-82b4-e6653fb4f047
-    single: {fileID: 367048808}
-    multi: []
   graph: {fileID: 11400000, guid: faff362fc2706334889574e1668c9000, type: 2}
   goals:
   - Key: LeaderFollow
@@ -2091,8 +2115,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables: []
-  objectsCache: []
+  serializedVariables:
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"5b3d338d-946b-4aac-aa1b-84c097b9d51c","value":10.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"7ba6a2dd-de17-49c2-be8b-9a9b3e7b97c2","value":5.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"25ffd2dd-86dd-42f9-8f7f-8db0d970b521","value":20.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"e7251c39-1ba4-4bbb-be0b-52e213faf8a3","value":20.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"2ebc1b7c-c95d-474e-a27f-e3d66adf4058","value":{"instanceID":0}}'
+  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"69cc3f27-3495-48ed-9c6d-0d78c9066875","value":{"instanceID":0}}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"70ca9a18-a5cb-4e64-a021-8c6362273f33","value":2.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedGameObjectList, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"ef0634c1-4f3f-4bb3-9341-ff9f5dd9c588","value":[]}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"658bc118-def5-45e6-95da-ab8829e4a46d","value":10.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"cadf7acd-9440-442c-8e8e-6c0f9feb0b07","value":120.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"d57ad83d-72a5-4451-8eff-e6188aee608b","value":100.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"45a0e0e8-7850-4863-92c4-1ac0f576f569","value":5.0}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"ebaeac11-afe2-4197-96a6-50b6b40c11f9","value":0.4000000059604645}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"b63c7594-7658-4c51-b8f9-529baa01f5bb","value":0.5}'
+  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"92a5a5d5-fb16-4a54-9f88-cda51a8e304c","value":0.6000000238418579}'
+  objectsCache:
+  - guid: 2ebc1b7c-c95d-474e-a27f-e3d66adf4058
+    single: {fileID: 0}
+    multi: []
+  - guid: 69cc3f27-3495-48ed-9c6d-0d78c9066875
+    single: {fileID: 0}
+    multi: []
+  - guid: ef0634c1-4f3f-4bb3-9341-ff9f5dd9c588
+    single: {fileID: 0}
+    multi: []
   graph: {fileID: 11400000, guid: 041a7feb7ee332e4484ea032a03053e6, type: 2}
   goals:
   - Key: Flock

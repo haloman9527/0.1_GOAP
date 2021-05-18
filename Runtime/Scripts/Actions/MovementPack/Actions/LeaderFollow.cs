@@ -36,6 +36,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The leader to follow")]
         public SharedGameObject leader = null;
 
+        public SharedInt ii = new SharedInt();
+
         // component cache
         private Transform leaderTransform;
         private NavMeshAgent leaderAgent;

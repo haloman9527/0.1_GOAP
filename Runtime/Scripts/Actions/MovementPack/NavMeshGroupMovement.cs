@@ -26,6 +26,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The angular speed of the agents")]
         public SharedFloat angularSpeed = new SharedFloat(120);
 
+
         // A cache of the NavMeshAgents
         private NavMeshAgent[] navMeshAgents;
         protected Transform[] transforms;

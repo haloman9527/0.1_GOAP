@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
   m_Name: "\u5F98\u5F8A"
   m_EditorClassIdentifier: 
-  position: {x: 136, y: 9, z: 0}
-  scale: {x: 1, y: 1, z: 1}
+  position: {x: -242, y: -131, z: 0}
+  scale: {x: 1.520875, y: 1.520875, z: 1}
   blackboardoVisible: 0
   blackboardPosition:
     serializedVersion: 2

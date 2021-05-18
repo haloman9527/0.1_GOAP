@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
   m_Name: Evade
   m_EditorClassIdentifier: 
-  position: {x: -383, y: -358, z: 0}
-  scale: {x: 1.7490063, y: 1.7490063, z: 1}
+  position: {x: 69, y: 5, z: 0}
+  scale: {x: 0.65751624, y: 0.65751624, z: 1}
   blackboardoVisible: 1
   blackboardPosition:
     serializedVersion: 2

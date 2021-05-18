@@ -13,6 +13,7 @@
 #endregion
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
