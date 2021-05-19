@@ -39,9 +39,9 @@ namespace CZToolKit.GOAP.Actions.Movement
             Name = "跟随";
         }
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
-            base.PrePerform();
+            base.OnPrePerform();
             if (target.Value == null)
             {
                 return;
@@ -51,7 +51,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             hasMoved = false;
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             if (target.Value == null)
                 return ActionStatus.Failure;

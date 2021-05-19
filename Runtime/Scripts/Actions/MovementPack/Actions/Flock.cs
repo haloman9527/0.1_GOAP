@@ -75,7 +75,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             separation = ((separation / neighborCount) * -1).normalized;
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             // Determine a destination for each agent
             for (int i = 0; i < agents.Value.Count; ++i)

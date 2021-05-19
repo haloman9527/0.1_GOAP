@@ -70,7 +70,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         private float destinationReachTime;
 
         private Collider[] overlapColliders;
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             if (HasArrived())
             {

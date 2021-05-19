@@ -33,7 +33,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
             navMeshAgent.speed = speed;
             navMeshAgent.angularSpeed = angularSpeed;
@@ -127,7 +127,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         /// <summary>
         /// The behavior tree has ended.Stop moving.
         /// </summary>
-        public override void PostPerform()
+        public override void OnPostPerform(bool _successed)
         {
             if (stopOnTaskEnd)
                 Stop();

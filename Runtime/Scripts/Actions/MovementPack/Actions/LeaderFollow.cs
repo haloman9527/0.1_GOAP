@@ -42,15 +42,15 @@ namespace CZToolKit.GOAP.Actions.Movement
         private Transform leaderTransform;
         private NavMeshAgent leaderAgent;
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
             leaderTransform = leader.Value.transform;
             leaderAgent = leader.Value.GetComponent<NavMeshAgent>();
 
-            base.PrePerform();
+            base.OnPrePerform();
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             var behindPosition = LeaderBehindPosition();
             // Determine a destination for each agent

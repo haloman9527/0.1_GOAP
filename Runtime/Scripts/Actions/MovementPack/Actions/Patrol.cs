@@ -31,9 +31,9 @@ namespace CZToolKit.GOAP.Actions.Movement
             waypoints.Value.Clear();
         }
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
-            base.PrePerform();
+            base.OnPrePerform();
 
             // initially move towards the closest waypoint
             float distance = Mathf.Infinity;
@@ -51,7 +51,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         }
 
         // Patrol around the different waypoints specified in the waypoint array. Always return a task status of running. 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             if (waypoints.Value.Count == 0)
             {

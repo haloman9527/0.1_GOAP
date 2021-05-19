@@ -17,12 +17,12 @@ namespace CZToolKit.GOAP
             SetEffect("KillTarget", true);
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             return ActionStatus.Running;
         }
 
-        public override void PostPerform()
+        public override void OnPostPerform(bool _successed)
         {
             //base.PostPerform();
             // 如果没有击杀敌人

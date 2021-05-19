@@ -67,7 +67,7 @@ namespace CZToolKit.GOAP
         Vector3 targetPos;
         float stayTime;
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
             targetPos = Random.insideUnitSphere * range + center.Value.transform.position;
             targetPos.y = 0;
@@ -77,7 +77,7 @@ namespace CZToolKit.GOAP
             Debug.Log("徘徊");
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             if (Vector3.Distance(targetPos, Agent.transform.position) <= 2)
             {
@@ -109,20 +109,18 @@ namespace CZToolKit.GOAP
             return ActionStatus.Running;
         }
 
-        public override void PostPerform()
+        public override void OnPostPerform(bool _successed)
         {
             navMeshAgent.isStopped = true;
-        }
-
-        public override void Success()
-        {
-            Agent.SetState("HasTarget", true);
-            ExecuteConnections(nameof(onFindedTarget));
-        }
-
-        public override void Failed()
-        {
-            Agent.SetState("HasTarget", false);
+            if (_successed)
+            {
+                Agent.SetState("HasTarget", true);
+                ExecuteConnections(nameof(onFindedTarget));
+            }
+            else
+            {
+                Agent.SetState("HasTarget", false);
+            }
         }
 
         public override void DrawGizmos(GraphOwner _graphOwner)

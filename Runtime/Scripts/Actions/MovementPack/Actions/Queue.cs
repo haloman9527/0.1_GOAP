@@ -43,7 +43,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             Name = "排队";
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             // Determine a destination for each agent
             for (int i = 0; i < agents.Value.Count; ++i)

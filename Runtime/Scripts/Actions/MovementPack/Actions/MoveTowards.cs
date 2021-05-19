@@ -49,7 +49,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             return target.Value.transform.position;
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             var position = Target();
             // Return a task status of success once we've reached the target

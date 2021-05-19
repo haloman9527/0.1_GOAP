@@ -31,7 +31,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         private NavMeshAgent[] navMeshAgents;
         protected Transform[] transforms;
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
             navMeshAgents = new NavMeshAgent[agents.Value.Count];
             transforms = new Transform[agents.Value.Count];
@@ -59,9 +59,9 @@ namespace CZToolKit.GOAP.Actions.Movement
             return navMeshAgents[index].velocity;
         }
 
-        public override void PostPerform()
+        public override void OnPostPerform(bool _successed)
         {
-            base.PostPerform();
+            base.OnPostPerform(_successed);
             // Disable the nav mesh
             for (int i = 0; i < navMeshAgents.Length; ++i)
             {

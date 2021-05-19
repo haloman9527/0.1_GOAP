@@ -47,7 +47,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Was cover found?
         private bool foundCover;
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
             RaycastHit hit;
             int raycastCount = 0;
@@ -79,10 +79,10 @@ namespace CZToolKit.GOAP.Actions.Movement
             if (foundCover)
                 SetDestination(coverTarget);
 
-            base.PrePerform();
+            base.OnPrePerform();
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             if (!foundCover) return ActionStatus.Failure;
             if (HasArrived())

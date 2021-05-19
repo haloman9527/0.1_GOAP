@@ -15,28 +15,21 @@ namespace CZToolKit.GOAP
     public interface IGOAPAction
     {
         string Name { get; }
-        bool IsUsable { get; }
+
+        bool IsUsable();
 
         void DynamicallyEvaluateCost();
 
         bool IsProceduralPrecondition(Dictionary<string, bool> currentState);
 
-        void PrePerform();
+        void OnPrePerform();
 
-        bool Perform();
+        ActionStatus OnPerform();
 
-        void PostPerform();
-
-        void Success();
-
-        void Failed();
-
-        bool IsDone();
-
-        void OnDrawGizmos();
+        void OnPostPerform(bool _successed);
     }
 
-    public abstract class GOAPAction : BaseNode
+    public abstract class GOAPAction : BaseNode, IGOAPAction
     {
         /// <summary> 行为的名称 </summary>
         [Tooltip("行为名称")] [SerializeField, HideInInspector] string name;
@@ -91,21 +84,13 @@ namespace CZToolKit.GOAP
         /// <summary> 匹配计划过程中检查能否执行(应用计划执行过程中会导致的状态改变) </summary>
         public virtual bool IsProceduralPrecondition(Dictionary<string, bool> currentState) { return true; }
 
-        public virtual void PrePerform() { }
+        public virtual void OnPrePerform() { }
 
-        public abstract ActionStatus Perform();
+        public abstract ActionStatus OnPerform();
 
-        public virtual void PostPerform()
+        public virtual void OnPostPerform(bool _successed)
         {
-            foreach (var effect in effects)
-            {
-                Agent.SetState(effect.Key, effect.Value);
-            }
         }
-
-        public virtual void Success() { }
-
-        public virtual void Failed() { }
 
         /// <summary> 添加一条前提条件 </summary>
         public void SetPrecondition(string key, bool value)

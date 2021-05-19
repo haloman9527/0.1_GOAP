@@ -21,16 +21,16 @@ namespace CZToolKit.GOAP.Actions.Movement
         // The position of the target at the last frame
         private Vector3 targetPosition;
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
-            base.PrePerform();
+            base.OnPrePerform();
             targetPosition = target.Value.transform.position;
             SetDestination(Target());
         }
 
         // Evade from the target. Return success once the agent has fleed the target by moving far enough away from it
         // Return running if the agent is still fleeing
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             SetDestination(Target());
             if (Vector3.Magnitude(Agent.transform.position - target.Value.transform.position) > evadeDistance.Value)

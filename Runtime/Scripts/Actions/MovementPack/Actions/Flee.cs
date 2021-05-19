@@ -22,16 +22,16 @@ namespace CZToolKit.GOAP.Actions.Movement
             Name = "ÌÓÀë";
         }
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
-            base.PrePerform();
+            base.OnPrePerform();
             hasMoved = false;
             SetDestination(Target());
         }
 
         // Flee from the target. Return success once the agent has fleed the target by moving far enough away from it
         // Return running if the agent is still fleeing
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             if (Vector3.Magnitude(Agent.transform.position - target.Value.transform.position) > fleedDistance.Value)
             {

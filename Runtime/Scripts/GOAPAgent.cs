@@ -139,16 +139,19 @@ namespace CZToolKit.GOAP
                     if (CurrentAction != action)
                     {
                         CurrentAction = action;
-                        action.PrePerform();
+                        action.OnPrePerform();
                     }
                     // 成功 or 失败
-                    ActionStatus status = action.Perform();
+                    ActionStatus status = action.OnPerform();
 
                     switch (status)
                     {
                         case ActionStatus.Success:
-                            action.PostPerform();
-                            action.Success();
+                            foreach (var effect in action.Effects)
+                            {
+                                SetState(effect.Key, effect.Value);
+                            }
+                            action.OnPostPerform(true);
                             if (Provider != null)
                                 Provider.ActionFinished(action.Effects);
                             actionQueue.Dequeue();
@@ -219,9 +222,8 @@ namespace CZToolKit.GOAP
 
             if (CurrentAction != null)
             {
-                CurrentAction.PostPerform();
-                // 如果动作执行失败，转换到空闲状态，并通知因为该动作导致计划失败  
-                CurrentAction.Failed();
+                CurrentAction.OnPostPerform(false);
+                // 如果动作执行失败，转换到空闲状态，并通知因为该动作导致计划失败
                 if (Provider != null)
                     Provider.PlanAborted(CurrentAction);
             }

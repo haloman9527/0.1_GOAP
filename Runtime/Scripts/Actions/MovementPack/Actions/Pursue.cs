@@ -25,16 +25,16 @@ namespace CZToolKit.GOAP.Actions.Movement
             target = null;
         }
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
-            base.PrePerform();
+            base.OnPrePerform();
             targetPosition = target.Value.transform.position;
             SetDestination(Target());
         }
 
         // Pursue the destination. Return success once the agent has reached the destination.
         // Return running if the agent hasn't reached the destination yet
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             if (HasArrived())
                 return ActionStatus.Success;

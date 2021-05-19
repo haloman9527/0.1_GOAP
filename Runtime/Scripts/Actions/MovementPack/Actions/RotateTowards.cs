@@ -38,7 +38,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("If target is null then use the target rotation")]
         public SharedVector3 targetRotation;
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             var rotation = Target();
             // Return a task status of success once we are done rotating

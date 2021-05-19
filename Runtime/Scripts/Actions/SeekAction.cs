@@ -13,7 +13,7 @@ namespace CZToolKit.GOAP
         private GameObject target;
         private NavMeshAgent navMeshAgent;
 
-        public float distance = 2;
+        public float stopDistance = 2;
         private float startTime;
 
         [Header("超时")]
@@ -41,25 +41,25 @@ namespace CZToolKit.GOAP
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 
-        public override void PrePerform()
+        public override void OnPrePerform()
         {
             Agent.Blackboard.TryGetData("Target", out target);
             startTime = Time.time;
-            navMeshAgent.stoppingDistance = distance; 
+            navMeshAgent.stoppingDistance = stopDistance;
             navMeshAgent.updateRotation = true;
             navMeshAgent.isStopped = false;
             onPrePerform?.Invoke();
             Debug.Log("追逐");
         }
 
-        public override ActionStatus Perform()
+        public override ActionStatus OnPerform()
         {
             if (target == null || !target.activeSelf || Time.time - startTime > timeout)
             {
                 Debug.Log("追不上");
                 return ActionStatus.Failure;
             }
-            if (Vector3.Distance(Agent.transform.position, target.transform.position) <= distance)
+            if (Vector3.Distance(Agent.transform.position, target.transform.position) <= stopDistance)
             {
                 return ActionStatus.Success;
             }
@@ -68,21 +68,20 @@ namespace CZToolKit.GOAP
             return ActionStatus.Running;
         }
 
-        public override void PostPerform()
+        public override void OnPostPerform(bool _successed)
         {
             navMeshAgent.isStopped = true;
-        }
-
-        public override void Success()
-        {
-            onSuccess?.Invoke();
-        }
-
-        public override void Failed()
-        {
-            onFailed?.Invoke();
-            Agent.Blackboard.SetData<GameObject>("Target", null);
-            Agent.SetState("HasTarget", false);
+            if (_successed)
+            {
+                onSuccess?.Invoke();
+            }
+            else
+            {
+                onFailed?.Invoke();
+                Agent.Blackboard.SetData<GameObject>("Target", null);
+                Agent.SetState("HasTarget", false);
+                Agent.SetState("InAttackRange", false);
+            }
         }
     }
 }
