@@ -28,7 +28,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             SetEffect("HasTarget", true);
             randomPatrol = false;
             waypointPauseDuration = 0;
-            waypoints.Value.Clear();
+            //waypoints.Value.Clear();
         }
 
         public override void OnPrePerform()
@@ -105,8 +105,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             return waypoints.Value[waypointIndex].transform.position;
         }
 
-        // Draw a gizmo indicating a patrol 
-        public void OnDrawGizmos()
+        public override void DrawGizmos(GraphOwner _graphOwner)
         {
 #if UNITY_EDITOR
             if (waypoints == null)

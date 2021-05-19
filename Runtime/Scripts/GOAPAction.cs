@@ -42,12 +42,12 @@ namespace CZToolKit.GOAP
         /// <summary> 行为执行成功造成的效果 </summary>
         [Tooltip("行为可以造成的效果")] [SerializeField, HideInInspector] List<State> effects = new List<State>();
 
-        [Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
+        [Vertical, Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
         [PortSize(12), PortColor(0.1f, 0.5f, 0.1f)]
         [Tooltip("进入行为时触发")]
         public Action onEnter;
 
-        [Port(PortDirection.Output, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
+        [Vertical, Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
         [PortSize(12), PortColor(0.5f, 0.1f, 0.5f)]
         [Tooltip("退出行为时触发")]
         public Action onExit;

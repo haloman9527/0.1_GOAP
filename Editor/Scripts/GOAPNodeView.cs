@@ -14,6 +14,14 @@ namespace CZToolKit.GOAP
     {
         string rawTitle;
 
+        //public override bool RefreshPorts()
+        //{
+        //    GOAPAction action = NodeData as GOAPAction;
+        //    bool result = base.RefreshPorts();
+        //    outputContainer.Add(PortViews[nameof(action.onExit)]);
+        //    return result;
+        //}
+
         protected override void OnInitialized()
         {
             base.OnInitialized();

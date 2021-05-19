@@ -7,7 +7,7 @@ namespace CZToolKit.GOAP
 {
     [NodeMenuItem("Seek")]
     [NodeTooltip("追逐敌人到一定距离后停下")]
-    [NodeIcon("Assets/CZToolKit/2.0_UIFramework/Icons/Awesome/running.png", width = 22, height = 25)]
+    [NodeIcon("Assets/CZToolKit/0.1_GOAP/Icons/Running.png", width = 22, height = 25)]
     public class SeekAction : GOAPAction
     {
         private GameObject target;

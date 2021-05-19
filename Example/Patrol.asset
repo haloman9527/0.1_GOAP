@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
+  m_Name: Patrol
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0, z: 0}
+  scale: {x: 1, y: 1, z: 1}
+  blackboardoVisible: 1
+  blackboardPosition:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 150
+    height: 200
+  blackboard:
+    keys: []
+    values: []
+  guidMap:
+    keys: []
+    values: []
+  serializedNodes:
+  - type: CZToolKit.GOAP.Actions.Movement.Patrol, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    json: '{"guid":"4dbb6ce9-1f3f-4331-9053-29750743feb5","position":{"serializedVersion":"2","x":491.0,"y":149.0,"width":100.0,"height":100.0},"expanded":true,"locked":false,"ports":{"keys":["onEnter","onExit"],"values":[{"graph":{"fileID":11400000,"guid":"ba270b2984682104d80fa4173b550af7","type":2},"ownerGUID":"4dbb6ce9-1f3f-4331-9053-29750743feb5","fieldName":"onEnter","typeQualifiedName":"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","isMulti":true,"direction":0,"typeConstraint":0,"edgeGUIDs":[]},{"graph":{"fileID":11400000,"guid":"ba270b2984682104d80fa4173b550af7","type":2},"ownerGUID":"4dbb6ce9-1f3f-4331-9053-29750743feb5","fieldName":"onExit","typeQualifiedName":"System.Action,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","isMulti":true,"direction":0,"typeConstraint":0,"edgeGUIDs":[]}]},"name":"","cost":1.0,"preconditions":[{"Key":"HasTarget","Value":false}],"effects":[{"Key":"HasTarget","Value":true}],"speed":10.0,"angularSpeed":120.0,"arriveDistance":0.20000000298023225,"stopOnTaskEnd":true,"updateRotation":true,"randomPatrol":false,"waypointPauseDuration":0.0,"waypoints":{"guid":"22413a98-cb46-4275-8848-dc1eea2c21a4","value":[{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0}]}}'
+  serializedEdges: []
+  serializedStacks: []
+  serializedGroups: []
+  references:
+    version: 1
