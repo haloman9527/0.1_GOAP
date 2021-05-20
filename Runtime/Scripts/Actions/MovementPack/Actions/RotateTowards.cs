@@ -38,17 +38,17 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("If target is null then use the target rotation")]
         public SharedVector3 targetRotation;
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             var rotation = Target();
             // Return a task status of success once we are done rotating
             if (Quaternion.Angle(Agent.transform.rotation, rotation) < rotationEpsilon.Value)
             {
-                return ActionStatus.Success;
+                return GOAPActionStatus.Success;
             }
             // We haven't reached the target yet so keep rotating towards it
             Agent.transform.rotation = Quaternion.RotateTowards(Agent.transform.rotation, rotation, maxLookAtRotationDelta.Value);
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         // Return targetPosition if targetTransform is null

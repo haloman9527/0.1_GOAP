@@ -1,10 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using State = CZToolKit.GOAP.State;
+using State = CZToolKit.GOAP.GOAPState;
 
 namespace CZToolKit.GOAP.Editors
 {
-    [CustomPropertyDrawer(typeof(State))]
+    [CustomPropertyDrawer(typeof(GOAPState))]
     public class StateDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

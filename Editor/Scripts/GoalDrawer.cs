@@ -1,10 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using Goal = CZToolKit.GOAP.Goal;
+using Goal = CZToolKit.GOAP.GOAPGoal;
 
 namespace CZToolKit.GOAP.Editors
 {
-    [CustomPropertyDrawer(typeof(Goal))]
+    [CustomPropertyDrawer(typeof(GOAPGoal))]
     public class GoalDrawer : PropertyDrawer
     {
         public float height = 20;

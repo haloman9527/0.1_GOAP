@@ -70,7 +70,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         private float destinationReachTime;
 
         private Collider[] overlapColliders;
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             if (HasArrived())
             {
@@ -106,7 +106,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             // If an object was seen then return success
             if (returnedObject.Value != null)
             {
-                return ActionStatus.Success;
+                return GOAPActionStatus.Success;
             }
             // Detect if any object are within audio range (if enabled)
             if (senseAudio.Value)
@@ -115,12 +115,12 @@ namespace CZToolKit.GOAP.Actions.Movement
                 // If an object was heard then return success
                 if (returnedObject.Value != null)
                 {
-                    return ActionStatus.Success;
+                    return GOAPActionStatus.Success;
                 }
             }
 
             // No object has been seen or heard so keep searching
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         private bool TrySetTarget()

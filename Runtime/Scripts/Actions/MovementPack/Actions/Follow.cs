@@ -51,10 +51,10 @@ namespace CZToolKit.GOAP.Actions.Movement
             hasMoved = false;
         }
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             if (target.Value == null)
-                return ActionStatus.Failure;
+                return GOAPActionStatus.Failure;
 
             // Move if the target has moved more than the moveDistance since the last time the agent moved.
             var targetPosition = target.Value.transform.position;
@@ -75,7 +75,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                 }
             }
 
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
     }
 }

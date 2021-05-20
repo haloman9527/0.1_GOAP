@@ -30,13 +30,13 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         // Evade from the target. Return success once the agent has fleed the target by moving far enough away from it
         // Return running if the agent is still fleeing
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             SetDestination(Target());
             if (Vector3.Magnitude(Agent.transform.position - target.Value.transform.position) > evadeDistance.Value)
-                return ActionStatus.Success;
+                return GOAPActionStatus.Success;
 
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         // Evade in the opposite direction

@@ -43,7 +43,7 @@ namespace CZToolKit.GOAP
 
         public override void OnPrePerform()
         {
-            Agent.Blackboard.TryGetData("Target", out target);
+            Agent.Memory.TryGetData("Target", out target);
             startTime = Time.time;
             navMeshAgent.stoppingDistance = stopDistance;
             navMeshAgent.updateRotation = true;
@@ -52,20 +52,20 @@ namespace CZToolKit.GOAP
             Debug.Log("追逐");
         }
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             if (target == null || !target.activeSelf || Time.time - startTime > timeout)
             {
                 Debug.Log("追不上");
-                return ActionStatus.Failure;
+                return GOAPActionStatus.Failure;
             }
             if (Vector3.Distance(Agent.transform.position, target.transform.position) <= stopDistance)
             {
-                return ActionStatus.Success;
+                return GOAPActionStatus.Success;
             }
             navMeshAgent.destination = target.transform.position;
             onPerform?.Invoke();
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         public override void OnPostPerform(bool _successed)
@@ -78,7 +78,7 @@ namespace CZToolKit.GOAP
             else
             {
                 onFailed?.Invoke();
-                Agent.Blackboard.SetData<GameObject>("Target", null);
+                Agent.Memory.SetData<GameObject>("Target", null);
                 Agent.SetState("HasTarget", false);
                 Agent.SetState("InAttackRange", false);
             }

@@ -50,7 +50,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             base.OnPrePerform();
         }
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             var behindPosition = LeaderBehindPosition();
             // Determine a destination for each agent
@@ -67,7 +67,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                     SetDestination(i, behindPosition + DetermineSeparation(i));
                 }
             }
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         private Vector3 LeaderBehindPosition()

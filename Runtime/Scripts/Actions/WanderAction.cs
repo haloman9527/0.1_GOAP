@@ -31,13 +31,11 @@ namespace CZToolKit.GOAP
 
         [Vertical, Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
         [Tooltip("前往下个地点时触发")]
-        [NonSerialized]
-        UnityAction onRefindTarget;
+        public UnityAction onRefindTarget;
 
         [Vertical, Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
         [Tooltip("看到敌人时触发")]
-        [NonSerialized]
-        UnityAction onFindedTarget;
+        public UnityAction onFindedTarget;
 
         public override void OnCreated()
         {
@@ -61,7 +59,7 @@ namespace CZToolKit.GOAP
         {
             //return Agent.States["HasTarget"] = false;
             //Agent.SetState("HasTarget", Agent.Blackboard.TryGetData("Target", out GameObject go) && go != null);
-            return !Agent.Blackboard.TryGetData("Target", out GameObject go) || go == null;
+            return !Agent.Memory.TryGetData("Target", out GameObject go) || go == null;
         }
 
         Vector3 targetPos;
@@ -77,7 +75,7 @@ namespace CZToolKit.GOAP
             Debug.Log("徘徊");
         }
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             if (Vector3.Distance(targetPos, Agent.transform.position) <= 2)
             {
@@ -100,13 +98,13 @@ namespace CZToolKit.GOAP
                 {
                     if (Vector3.Angle(Agent.transform.forward, item.transform.position - Agent.transform.position) <= sector / 2)
                     {
-                        Agent.Blackboard.SetData("Target", item.gameObject);
-                        return ActionStatus.Success;
+                        Agent.Memory.SetData("Target", item.gameObject);
+                        return GOAPActionStatus.Success;
                     }
                 }
             }
 
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         public override void OnPostPerform(bool _successed)

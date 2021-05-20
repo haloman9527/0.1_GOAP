@@ -82,16 +82,16 @@ namespace CZToolKit.GOAP.Actions.Movement
             base.OnPrePerform();
         }
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
-            if (!foundCover) return ActionStatus.Failure;
+            if (!foundCover) return GOAPActionStatus.Failure;
             if (HasArrived())
             {
                 var rotation = Quaternion.LookRotation(coverPoint - Agent.transform.position);
                 // Return success if the agent isn't going to look at the cover point or it has completely rotated to look at the cover point
                 if (!lookAtCoverPoint.Value || Quaternion.Angle(Agent.transform.rotation, rotation) < rotationEpsilon.Value)
                 {
-                    return ActionStatus.Success;
+                    return GOAPActionStatus.Success;
                 }
                 else
                 {
@@ -99,7 +99,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                     Agent.transform.rotation = Quaternion.RotateTowards(Agent.transform.rotation, rotation, maxLookAtRotationDelta.Value);
                 }
             }
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
     }
 }

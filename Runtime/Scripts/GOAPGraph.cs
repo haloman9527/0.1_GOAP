@@ -28,7 +28,7 @@ namespace CZToolKit.GOAP
             });
             foreach (var action in AvailableActions)
             {
-                action.Initialize(agent);
+                action.InitializeGraphOwner(agent);
             }
         }
 

@@ -59,7 +59,7 @@ namespace CZToolKit.GOAP
             controlsContainer.Add(conditionFoldout);
             Button btnAddCondition = new Button(() =>
             {
-                GOAP.State state = new GOAP.State();
+                GOAP.GOAPState state = new GOAP.GOAPState();
                 action.Preconditions.Add(state);
                 conditionFoldout.Add(CreateToggle(state, action.Preconditions));
             });
@@ -77,7 +77,7 @@ namespace CZToolKit.GOAP
             controlsContainer.Add(effectFoldout);
             Button btnAddEffect = new Button(() =>
             {
-                GOAP.State state = new GOAP.State();
+                GOAP.GOAPState state = new GOAP.GOAPState();
                 action.Effects.Add(state);
                 effectFoldout.Add(CreateToggle(state, action.Effects));
             });
@@ -90,7 +90,7 @@ namespace CZToolKit.GOAP
             }
         }
 
-        VisualElement CreateToggle(GOAP.State _state, List<GOAP.State> _states)
+        VisualElement CreateToggle(GOAP.GOAPState _state, List<GOAP.GOAPState> _states)
         {
             VisualElement box = new VisualElement();
             box.style.flexDirection = FlexDirection.Row;

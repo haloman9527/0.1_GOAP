@@ -3,7 +3,7 @@
 namespace CZToolKit.GOAP
 {
     [Serializable]
-    public class Goal : State
+    public class GOAPGoal : GOAPState
     {
         public bool Once;
         public float Priority;

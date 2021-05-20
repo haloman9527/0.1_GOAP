@@ -43,7 +43,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             Name = "排队";
         }
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             // Determine a destination for each agent
             for (int i = 0; i < agents.Value.Count; ++i)
@@ -57,7 +57,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                     SetDestination(i, target.Value.transform.position);
                 }
             }
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         // Returns the agent that is ahead of the current agent

@@ -75,7 +75,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             separation = ((separation / neighborCount) * -1).normalized;
         }
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             // Determine a destination for each agent
             for (int i = 0; i < agents.Value.Count; ++i)
@@ -93,7 +93,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                     SetDestination(i, transforms[i].position + velocity * lookAheadDistance.Value);
                 }
             }
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
     }
 }

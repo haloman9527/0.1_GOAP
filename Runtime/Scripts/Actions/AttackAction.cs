@@ -7,8 +7,6 @@ namespace CZToolKit.GOAP
     {
         public override void OnCreated()
         {
-            base.OnCreated();
-
             Name = "攻击";
 
             SetPrecondition("HasTarget", true);
@@ -17,9 +15,9 @@ namespace CZToolKit.GOAP
             SetEffect("KillTarget", true);
         }
 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         public override void OnPostPerform(bool _successed)

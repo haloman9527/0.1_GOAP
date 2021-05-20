@@ -23,7 +23,7 @@ namespace CZToolKit.GOAP
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_goal">目标状态，想要达到的状态</param>
         public void Plan(GOAPAction[] _availableActions,
-            Dictionary<string, bool> _currentStates, Goal _goal, int _maxDepth, ref Queue<GOAPAction> _plan)
+            Dictionary<string, bool> _currentStates, GOAPGoal _goal, int _maxDepth, ref Queue<GOAPAction> _plan)
         {
             if (_currentStates.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
                 return;
@@ -93,7 +93,7 @@ namespace CZToolKit.GOAP
         /// <param name="_goal">目标计划</param>
         /// <param name="_leaves">已找到的所有计划</param>
         /// <returns>是否找到计划</returns>
-        private bool BuildGraph(GOAPNode _parent, List<GOAPAction> _usableActions, Goal _goal, int _depth, int _maxDepth, List<GOAPNode> _leaves)
+        private bool BuildGraph(GOAPNode _parent, List<GOAPAction> _usableActions, GOAPGoal _goal, int _depth, int _maxDepth, List<GOAPNode> _leaves)
         {
             if (_maxDepth >= 1 && _depth >= _maxDepth)
                 return false;
@@ -126,7 +126,7 @@ namespace CZToolKit.GOAP
         /// <summary> 返回一个新的修改过的状态 </summary>
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_effects">行为效果</param>
-        private Dictionary<string, bool> PopulateState(Dictionary<string, bool> _currentStates, List<State> _effects)
+        private Dictionary<string, bool> PopulateState(Dictionary<string, bool> _currentStates, List<GOAPState> _effects)
         {
             Dictionary<string, bool> newStates = DictionaryObjPool.Spawn();
             newStates.Clear();
@@ -147,9 +147,9 @@ namespace CZToolKit.GOAP
         /// <param name="_currentStates"></param>
         /// <param name="_conditions"></param>
         /// <returns></returns>
-        public static bool InState(Dictionary<string, bool> _currentStates, List<State> _conditions)
+        public static bool InState(Dictionary<string, bool> _currentStates, List<GOAPState> _conditions)
         {
-            foreach (State goal in _conditions)
+            foreach (GOAPState goal in _conditions)
             {
                 // 如果_currentStates不包含_goals，则认为不能达成目标
                 if (!_currentStates.TryGetValue(goal.Key, out bool value) && value.Equals(true))

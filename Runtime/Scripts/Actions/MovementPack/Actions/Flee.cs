@@ -31,22 +31,22 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         // Flee from the target. Return success once the agent has fleed the target by moving far enough away from it
         // Return running if the agent is still fleeing
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             if (Vector3.Magnitude(Agent.transform.position - target.Value.transform.position) > fleedDistance.Value)
             {
-                return ActionStatus.Success;
+                return GOAPActionStatus.Success;
             }
 
             if (HasArrived())
             {
                 if (!hasMoved)
                 {
-                    return ActionStatus.Failure;
+                    return GOAPActionStatus.Failure;
                 }
                 if (!SetDestination(Target()))
                 {
-                    return ActionStatus.Failure;
+                    return GOAPActionStatus.Failure;
                 }
                 hasMoved = false;
             }
@@ -56,12 +56,12 @@ namespace CZToolKit.GOAP.Actions.Movement
                 var velocityMagnitude = Velocity().sqrMagnitude;
                 if (hasMoved && velocityMagnitude <= 0f)
                 {
-                    return ActionStatus.Failure;
+                    return GOAPActionStatus.Failure;
                 }
                 hasMoved = velocityMagnitude > 0f;
             }
 
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         // Flee in the opposite direction

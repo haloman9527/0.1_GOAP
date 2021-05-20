@@ -47,7 +47,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         }
 
         // There is no success or fail state with wander - the agent will just keep wandering
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             if (HasArrived())
             {
@@ -73,7 +73,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                     TrySetTarget();
                 }
             }
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         private bool TrySetTarget()

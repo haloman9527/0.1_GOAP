@@ -51,11 +51,11 @@ namespace CZToolKit.GOAP.Actions.Movement
         }
 
         // Patrol around the different waypoints specified in the waypoint array. Always return a task status of running. 
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             if (waypoints.Value.Count == 0)
             {
-                return ActionStatus.Failure;
+                return GOAPActionStatus.Failure;
             }
             if (HasArrived())
             {
@@ -92,7 +92,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                 }
             }
 
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         // Return the current waypoint index position

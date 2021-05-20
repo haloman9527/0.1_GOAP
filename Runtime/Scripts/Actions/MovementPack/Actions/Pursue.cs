@@ -19,7 +19,6 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         public override void OnCreated()
         {
-            base.OnCreated();
             targetDistPrediction = 20;
             targetDistPredictionMult = 20;
             target = null;
@@ -34,14 +33,14 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         // Pursue the destination. Return success once the agent has reached the destination.
         // Return running if the agent hasn't reached the destination yet
-        public override ActionStatus OnPerform()
+        public override GOAPActionStatus OnPerform()
         {
             if (HasArrived())
-                return ActionStatus.Success;
+                return GOAPActionStatus.Success;
 
             // Target will return the predicated position
             SetDestination(Target());
-            return ActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         // Predict the position of the target

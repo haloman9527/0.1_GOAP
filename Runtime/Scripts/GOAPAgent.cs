@@ -13,11 +13,11 @@ namespace CZToolKit.GOAP
 
         [SerializeField]
         [Space(10), Tooltip("要达成的目标")]
-        List<Goal> goals = new List<Goal>();
+        List<GOAPGoal> goals = new List<GOAPGoal>();
 
         [SerializeField]
         [Tooltip("状态预设")]
-        List<State> preState = new List<State>();
+        List<GOAPState> preState = new List<GOAPState>();
 
         /// <summary> 计划最大深度，<1无限制 </summary>
         [Space(10), Header("Settings")]
@@ -44,8 +44,8 @@ namespace CZToolKit.GOAP
         public IGOAP Provider { get; private set; }
         public GOAPFSM FSM { get; private set; }
         public GOAPPlanner Planner { get; private set; }
-        public Dictionary<string, ICZType> Blackboard { get; private set; } = new Dictionary<string, ICZType>();
-        public List<Goal> Goals { get { return goals; } private set { goals = value; } }
+        public Dictionary<string, ICZType> Memory { get; private set; } = new Dictionary<string, ICZType>();
+        public List<GOAPGoal> Goals { get { return goals; } private set { goals = value; } }
         public Dictionary<string, bool> States { get; private set; }
         /// <summary> 当前计划 </summary>
         public IReadOnlyCollection<GOAPAction> StoredActionQueue { get { return storedActionQueue; } }
@@ -54,7 +54,7 @@ namespace CZToolKit.GOAP
         /// <summary> 当前行为 </summary>
         public GOAPAction CurrentAction { get; private set; }
         /// <summary> 当前目的，没有为空 </summary>
-        public Goal CurrentGoal { get; private set; }
+        public GOAPGoal CurrentGoal { get; private set; }
         public bool HasGoal { get { return CurrentGoal != null; } }
         public bool HasPlan { get { return ActionQueue != null && ActionQueue.Count > 0; } }
         /// <summary> 下此搜寻计划的时间 </summary>
@@ -94,7 +94,7 @@ namespace CZToolKit.GOAP
                      NextPlanTime = FSM.time + interval;
 
                      // 搜寻计划
-                     foreach (Goal goal in Goals)
+                     foreach (GOAPGoal goal in Goals)
                      {
                          Planner.Plan(TGraph.AvailableActions.ToArray(), States, goal, maxDepth, ref storedActionQueue);
                          if (StoredActionQueue.Count == 0)
@@ -125,7 +125,7 @@ namespace CZToolKit.GOAP
                      }
                  };
 
-            GOAPState performActionState = new GOAPState(FSM)
+            GOAPFSMState performActionState = new GOAPFSMState(FSM)
             {
                 onStart = () => { },
                 onExit = () => { }
@@ -142,11 +142,11 @@ namespace CZToolKit.GOAP
                         action.OnPrePerform();
                     }
                     // 成功 or 失败
-                    ActionStatus status = action.OnPerform();
+                    GOAPActionStatus status = action.OnPerform();
 
                     switch (status)
                     {
-                        case ActionStatus.Success:
+                        case GOAPActionStatus.Success:
                             foreach (var effect in action.Effects)
                             {
                                 SetState(effect.Key, effect.Value);
@@ -157,7 +157,7 @@ namespace CZToolKit.GOAP
                             actionQueue.Dequeue();
                             CurrentAction = null;
                             break;
-                        case ActionStatus.Failure:
+                        case GOAPActionStatus.Failure:
                             if (replanOnFailed)
                                 EnforceReplan();
                             else

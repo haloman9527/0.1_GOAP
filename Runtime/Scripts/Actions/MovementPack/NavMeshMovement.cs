@@ -20,11 +20,6 @@ namespace CZToolKit.GOAP.Actions.Movement
         protected NavMeshAgent navMeshAgent;
         private bool startUpdateRotation;
 
-        public override void OnCreated()
-        {
-            base.OnCreated();
-        }
-
         /// <summary>
         /// Cache the component references.
         /// </summary>
