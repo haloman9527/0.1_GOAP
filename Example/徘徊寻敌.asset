@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
   m_Name: "\u5F98\u5F8A\u5BFB\u654C"
   m_EditorClassIdentifier: 
-  position: {x: 388, y: 56, z: 0}
+  position: {x: 330, y: 38, z: 0}
   scale: {x: 1, y: 1, z: 1}
   blackboardoVisible: 0
   blackboardPosition:
@@ -37,7 +37,7 @@ MonoBehaviour:
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u5F98\u5F8A\",\"cost\":1.0,\"preconditions\":[{\"Key\":\"HasTarget\",\"Value\":false}],\"effects\":[{\"Key\":\"HasTarget\",\"Value\":true}],\"center\":{\"guid\":\"9d1aea3e-c22f-4d54-ad4f-0b38abe53784\",\"value\":{\"instanceID\":0}},\"range\":10.0,\"radius\":5.0,\"sector\":90.0,\"layer\":{\"serializedVersion\":\"2\",\"m_Bits\":1024}}"
   - type: CZToolKit.GOAP.SeekAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-    json: "{\"guid\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"position\":{\"serializedVersion\":\"2\",\"x\":320.04998779296877,\"y\":158.30003356933595,\"width\":178.00003051757813,\"height\":228.00003051757813},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"onEnter\",\"onExit\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"fieldName\":\"onEnter\",\"typeQualifiedName\":\"System.Action,
+    json: "{\"guid\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"position\":{\"serializedVersion\":\"2\",\"x\":316.0,\"y\":141.0,\"width\":177.0,\"height\":230.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"onEnter\",\"onExit\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"fieldName\":\"onEnter\",\"typeQualifiedName\":\"System.Action,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"fieldName\":\"onExit\",\"typeQualifiedName\":\"System.Action,
       mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u8FFD\u9010\",\"cost\":1.0,\"preconditions\":[{\"Key\":\"HasTarget\",\"Value\":true},{\"Key\":\"InAttackRange\",\"Value\":false}],\"effects\":[{\"Key\":\"InAttackRange\",\"Value\":true}],\"stopDistance\":2.0,\"timeout\":10.0}"
   - type: CZToolKit.GOAP.ActionDebugEvt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
