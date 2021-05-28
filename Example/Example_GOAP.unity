@@ -270,15 +270,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"94b3073f-4b98-4239-891c-1f6c0565eb2c","value":{"instanceID":0}}'
-  objectsCache:
-  - guid: 94b3073f-4b98-4239-891c-1f6c0565eb2c
-    single: {fileID: 367048808}
-    multi: []
-  graph: {fileID: 11400000, guid: dfa8600abb4a6684792308cce6ba1e7c, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
+    CZToolKit.Core\",\r\n            \"guid\": \"ce2e254b-13ba-4a3d-b9f6-9ca6f1b6aaba\",\r\n           
+    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 367048808}
+  graphAsset: {fileID: 11400000, guid: dfa8600abb4a6684792308cce6ba1e7c, type: 2}
   goals:
   - Key: Pursue
     Value: 1
@@ -418,18 +417,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"69cc3f27-3495-48ed-9c6d-0d78c9066875","value":{"instanceID":0}}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"70ca9a18-a5cb-4e64-a021-8c6362273f33","value":2.0}'
-  objectsCache:
-  - guid: 69cc3f27-3495-48ed-9c6d-0d78c9066875
-    single: {fileID: 2055021748}
-    multi: []
-  graph: {fileID: 11400000, guid: fa62dc9ccf4fbcf4f9678441db6264bc, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
+    CZToolKit.Core\",\r\n            \"guid\": \"4db5a910-4132-4404-aa07-3dc37534ec8c\",\r\n           
+    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 367048808}
+  graphAsset: {fileID: 11400000, guid: fa62dc9ccf4fbcf4f9678441db6264bc, type: 2}
   goals:
   - Key: Follow
     Value: 1
@@ -665,27 +660,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"347235d8-462e-42b8-a188-1d3dcace7f0d","value":20.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"88378da4-9624-4ca1-8124-656095063f1b","value":20.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"4006fb1f-6136-40f5-bff2-2346103e50c2","value":2.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"809987d6-12bd-4e99-a050-382ce807ff2e","value":0.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"4027d39d-4109-4d8b-83fe-e4773f6ab5ca","value":0.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedInt, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"b9b0afbd-6398-45d1-b9d4-c0704f39086b","value":1}'
-  objectsCache: []
-  graph: {fileID: 11400000, guid: 629950d01e3a97c41bcf25cc01c92587, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 0,\r\n    \"$rcontent\": [\r\n   
+    ]\r\n}"
+  unityReference: []
+  graphAsset: {fileID: 11400000, guid: 629950d01e3a97c41bcf25cc01c92587, type: 2}
   goals:
   - Key: Wander
     Value: 1
@@ -905,18 +884,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"a5bc0d4c-ae6e-4aa9-bebf-1cdebd18864f","value":10.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"66459a5e-a566-4b46-9b15-98b0478fdad0","value":{"instanceID":0}}'
-  objectsCache:
-  - guid: 66459a5e-a566-4b46-9b15-98b0478fdad0
-    single: {fileID: 230930455}
-    multi: []
-  graph: {fileID: 11400000, guid: 50a23d0acafda4c44b842b9d39248e1b, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
+    CZToolKit.Core\",\r\n            \"guid\": \"2b448ec8-1cdc-4fb8-b637-d8c424cecdd1\",\r\n           
+    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 367048808}
+  graphAsset: {fileID: 11400000, guid: 50a23d0acafda4c44b842b9d39248e1b, type: 2}
   goals:
   - Key: Flee
     Value: 1
@@ -1086,26 +1061,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"69cc3f27-3495-48ed-9c6d-0d78c9066875","value":{"instanceID":0}}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"70ca9a18-a5cb-4e64-a021-8c6362273f33","value":2.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"9d1aea3e-c22f-4d54-ad4f-0b38abe53784","value":{"instanceID":0}}'
-  objectsCache:
-  - guid: 69cc3f27-3495-48ed-9c6d-0d78c9066875
-    single: {fileID: 367048808}
-    multi: []
-  - guid: 9d1aea3e-c22f-4d54-ad4f-0b38abe53784
-    single: {fileID: 604489998}
-    multi: []
-  graph: {fileID: 11400000, guid: f6aa642f117120a4c9da1fa330f1ad00, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
+    CZToolKit.Core\",\r\n            \"guid\": \"3a555995-790a-471e-a52a-b9be323584a9\",\r\n           
+    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 604489998}
+  graphAsset: {fileID: 11400000, guid: f6aa642f117120a4c9da1fa330f1ad00, type: 2}
   goals:
-  - Key: InAttackRange
+  - Key: HasTarget
     Value: 1
     Once: 0
     Priority: 0
@@ -1662,18 +1627,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"69cc3f27-3495-48ed-9c6d-0d78c9066875","value":{"instanceID":0}}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"70ca9a18-a5cb-4e64-a021-8c6362273f33","value":2.0}'
-  objectsCache:
-  - guid: 69cc3f27-3495-48ed-9c6d-0d78c9066875
-    single: {fileID: 367048808}
-    multi: []
-  graph: {fileID: 11400000, guid: fa62dc9ccf4fbcf4f9678441db6264bc, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 0,\r\n    \"$rcontent\": [\r\n   
+    ]\r\n}"
+  unityReference: []
+  graphAsset: {fileID: 11400000, guid: fa62dc9ccf4fbcf4f9678441db6264bc, type: 2}
   goals:
   - Key: Follow
     Value: 1
@@ -1813,20 +1771,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedGameObjectList, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"22413a98-cb46-4275-8848-dc1eea2c21a4","value":[{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0}]}'
-  objectsCache:
-  - guid: 22413a98-cb46-4275-8848-dc1eea2c21a4
-    single: {fileID: 0}
-    multi:
-    - {fileID: 1196521461}
-    - {fileID: 734372337}
-    - {fileID: 905465464}
-    - {fileID: 1070432582}
-  graph: {fileID: 11400000, guid: ba270b2984682104d80fa4173b550af7, type: 2}
-  goals: []
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObjectList,
+    CZToolKit.Core\",\r\n            \"guid\": \"776aee71-1354-4817-b226-b3c3d777a42c\",\r\n           
+    \"value\": {\r\n                \"$id\": 2,\r\n                \"$type\": \"2|System.Collections.Generic.List`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule]], mscorlib\",\r\n                \"$rlength\": 4,\r\n               
+    \"$rcontent\": [\r\n                    $eref:0,\r\n                    $eref:1,\r\n                   
+    $eref:2,\r\n                    $eref:3\r\n                ]\r\n            }\r\n       
+    }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 1196521461}
+  - {fileID: 734372337}
+  - {fileID: 905465464}
+  - {fileID: 1070432582}
+  graphAsset: {fileID: 11400000, guid: ba270b2984682104d80fa4173b550af7, type: 2}
+  goals:
+  - Key: HasTarget
+    Value: 1
+    Once: 0
+    Priority: 0
   preState: []
   updateMode: 0
   maxDepth: 0
@@ -2354,12 +2318,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"25c6c5c8-6593-4768-aec2-17d07560504b","value":10.0}'
-  objectsCache: []
-  graph: {fileID: 11400000, guid: d4870976b94479446820d213540b2d69, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 2,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObjectList,
+    CZToolKit.Core\",\r\n            \"guid\": \"19601361-675c-4ff9-bd78-78d0896b0f2f\",\r\n           
+    \"value\": {\r\n                \"$id\": 2,\r\n                \"$type\": \"2|System.Collections.Generic.List`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule]], mscorlib\",\r\n                \"$rlength\": 5,\r\n               
+    \"$rcontent\": [\r\n                    $eref:0,\r\n                    $eref:1,\r\n                   
+    $eref:2,\r\n                    $eref:3,\r\n                    $eref:4\r\n               
+    ]\r\n            }\r\n        },\r\n        {\r\n            \"$id\": 3,\r\n           
+    \"$type\": \"3|CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core\",\r\n           
+    \"guid\": \"3374d3ec-a019-4ad7-8d5e-56c202588e47\",\r\n            \"value\":
+    $eref:5\r\n        }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 97958415}
+  - {fileID: 911461167}
+  - {fileID: 800458522}
+  - {fileID: 2113224422}
+  - {fileID: 1297751118}
+  - {fileID: 367048808}
+  graphAsset: {fileID: 11400000, guid: d4870976b94479446820d213540b2d69, type: 2}
   goals:
   - Key: ArrvingMarker
     Value: 1
@@ -2539,47 +2517,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"ffee48a6-11d4-4e4f-8eda-56188e9077f7","value":10.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"ce377586-afdb-4d80-b6f8-16b44cba4078","value":120.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"2b0809f4-82f6-496d-b435-c96842de5a54","value":10.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"f92393f6-2dca-4fe4-a772-75e0b46aaa36","value":2.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"8571f9a1-a080-482b-a279-b4bb2e016b4d","value":2.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"c0e25cf8-a1ee-4a2f-a493-a0de000bc2b8","value":2.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedInt, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"a4d017b1-426f-44b6-b8be-aa3bebf13317","value":0}'
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"a14b2723-e4a3-4655-82b4-e6653fb4f047","value":{"instanceID":0}}'
-  - type: CZToolKit.Core.SharedVariable.SharedGameObjectList, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"b9a0ddda-5f01-4ac6-a0ca-27ce027c9057","value":[{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0},{"instanceID":0}]}'
-  objectsCache:
-  - guid: a14b2723-e4a3-4655-82b4-e6653fb4f047
-    single: {fileID: 367048808}
-    multi: []
-  - guid: b9a0ddda-5f01-4ac6-a0ca-27ce027c9057
-    single: {fileID: 0}
-    multi:
-    - {fileID: 97958415}
-    - {fileID: 911461167}
-    - {fileID: 800458522}
-    - {fileID: 2113224422}
-    - {fileID: 1297751118}
-  graph: {fileID: 11400000, guid: faff362fc2706334889574e1668c9000, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 2,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
+    CZToolKit.Core\",\r\n            \"guid\": \"a6d7370e-63db-4a24-b387-01b18e32f6ea\",\r\n           
+    \"value\": $eref:0\r\n        },\r\n        {\r\n            \"$id\": 2,\r\n           
+    \"$type\": \"2|CZToolKit.Core.SharedVariable.SharedGameObjectList, CZToolKit.Core\",\r\n           
+    \"guid\": \"3699dd1f-a64d-42a9-a62a-b45affc5756c\",\r\n            \"value\":
+    {\r\n                \"$id\": 3,\r\n                \"$type\": \"3|System.Collections.Generic.List`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule]], mscorlib\",\r\n                \"$rlength\": 5,\r\n               
+    \"$rcontent\": [\r\n                    $eref:1,\r\n                    $eref:2,\r\n                   
+    $eref:3,\r\n                    $eref:4,\r\n                    $eref:5\r\n               
+    ]\r\n            }\r\n        }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 367048808}
+  - {fileID: 97958415}
+  - {fileID: 911461167}
+  - {fileID: 800458522}
+  - {fileID: 2113224422}
+  - {fileID: 1297751118}
+  graphAsset: {fileID: 11400000, guid: faff362fc2706334889574e1668c9000, type: 2}
   goals:
   - Key: LeaderFollow
     Value: 1
@@ -2720,68 +2677,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903898836}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"5b3d338d-946b-4aac-aa1b-84c097b9d51c","value":10.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"7ba6a2dd-de17-49c2-be8b-9a9b3e7b97c2","value":5.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"25ffd2dd-86dd-42f9-8f7f-8db0d970b521","value":20.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"e7251c39-1ba4-4bbb-be0b-52e213faf8a3","value":20.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"2ebc1b7c-c95d-474e-a27f-e3d66adf4058","value":{"instanceID":0}}'
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"69cc3f27-3495-48ed-9c6d-0d78c9066875","value":{"instanceID":0}}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"70ca9a18-a5cb-4e64-a021-8c6362273f33","value":2.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedGameObjectList, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"ef0634c1-4f3f-4bb3-9341-ff9f5dd9c588","value":[]}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"658bc118-def5-45e6-95da-ab8829e4a46d","value":10.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"cadf7acd-9440-442c-8e8e-6c0f9feb0b07","value":120.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"d57ad83d-72a5-4451-8eff-e6188aee608b","value":100.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"45a0e0e8-7850-4863-92c4-1ac0f576f569","value":5.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"ebaeac11-afe2-4197-96a6-50b6b40c11f9","value":0.4000000059604645}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"b63c7594-7658-4c51-b8f9-529baa01f5bb","value":0.5}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"92a5a5d5-fb16-4a54-9f88-cda51a8e304c","value":0.6000000238418579}'
-  objectsCache:
-  - guid: 2ebc1b7c-c95d-474e-a27f-e3d66adf4058
-    single: {fileID: 0}
-    multi: []
-  - guid: 69cc3f27-3495-48ed-9c6d-0d78c9066875
-    single: {fileID: 0}
-    multi: []
-  - guid: ef0634c1-4f3f-4bb3-9341-ff9f5dd9c588
-    single: {fileID: 0}
-    multi: []
-  graph: {fileID: 11400000, guid: 041a7feb7ee332e4484ea032a03053e6, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObjectList,
+    CZToolKit.Core\",\r\n            \"guid\": \"af72748a-4404-4a1d-b491-783c9831fbe3\",\r\n           
+    \"value\": {\r\n                \"$id\": 2,\r\n                \"$type\": \"2|System.Collections.Generic.List`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule]], mscorlib\",\r\n                \"$rlength\": 5,\r\n               
+    \"$rcontent\": [\r\n                    $eref:0,\r\n                    $eref:1,\r\n                   
+    $eref:2,\r\n                    $eref:3,\r\n                    $eref:4\r\n               
+    ]\r\n            }\r\n        }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 97958415}
+  - {fileID: 911461167}
+  - {fileID: 800458522}
+  - {fileID: 2113224422}
+  - {fileID: 1297751118}
+  graphAsset: {fileID: 11400000, guid: 041a7feb7ee332e4484ea032a03053e6, type: 2}
   goals:
   - Key: Flock
     Value: 1
@@ -2932,30 +2848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"32ee785b-e036-41d5-8726-82c1e603ae9e","value":1000.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedInt, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"4714d7ba-7484-4707-97c9-ea22619f39ce","value":100}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"0eb6dd51-dbc6-4163-9290-9f0c8ed7d1f3","value":1.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"00e3caa1-7e0f-4f3c-add1-8ecb679763b8","value":2.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedBool, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"f5cce57e-30cf-4455-888d-6519c6822922","value":false}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"ff86495d-034c-4319-ac51-3c7dfb752782","value":0.5}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"bd03626a-54f5-4c47-b5a8-4a556e7357b0","value":0.0}'
-  objectsCache: []
-  graph: {fileID: 11400000, guid: 2876c73480afabb4680f8655861ef354, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 0,\r\n    \"$rcontent\": [\r\n   
+    ]\r\n}"
+  unityReference: []
+  graphAsset: {fileID: 11400000, guid: 2876c73480afabb4680f8655861ef354, type: 2}
   goals:
   - Key: Cover
     Value: 1
@@ -3095,27 +2992,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8584003d2783c142a92cf3e5c438665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializedVariables:
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"5b3d338d-946b-4aac-aa1b-84c097b9d51c","value":10.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"7ba6a2dd-de17-49c2-be8b-9a9b3e7b97c2","value":5.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"25ffd2dd-86dd-42f9-8f7f-8db0d970b521","value":20.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedFloat, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"e7251c39-1ba4-4bbb-be0b-52e213faf8a3","value":20.0}'
-  - type: CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"2ebc1b7c-c95d-474e-a27f-e3d66adf4058","value":{"instanceID":0}}'
-  objectsCache:
-  - guid: 2ebc1b7c-c95d-474e-a27f-e3d66adf4058
-    single: {fileID: 230930455}
-    multi: []
-  graph: {fileID: 11400000, guid: 27b082737bb051344b8e2ebae68bf8ac, type: 2}
+  serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
+    {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
+    CZToolKit.Core\",\r\n            \"guid\": \"7fcb29c8-cc02-4772-9d35-1458e914c2b4\",\r\n           
+    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
+  unityReference:
+  - {fileID: 367048808}
+  graphAsset: {fileID: 11400000, guid: 27b082737bb051344b8e2ebae68bf8ac, type: 2}
   goals:
   - Key: Evade
     Value: 1

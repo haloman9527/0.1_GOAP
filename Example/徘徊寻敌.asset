@@ -9,53 +9,142 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4db19e1458b49240bdd1c5f3abe3776, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d95a0c53cc183e418d8d221f0eedac7, type: 3}
   m_Name: "\u5F98\u5F8A\u5BFB\u654C"
   m_EditorClassIdentifier: 
-  position: {x: 330, y: 38, z: 0}
-  scale: {x: 1, y: 1, z: 1}
-  blackboardoVisible: 0
-  blackboardPosition:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 150
-    height: 200
-  blackboard:
-    keys: []
-    values: []
-  guidMap:
-    keys: []
-    values: []
-  serializedNodes:
-  - type: CZToolKit.GOAP.WanderAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    json: "{\"guid\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"position\":{\"serializedVersion\":\"2\",\"x\":169.13043212890626,\"y\":76.2608871459961,\"width\":210.0,\"height\":211.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"onRefindTarget\",\"onFindedTarget\",\"onEnter\",\"onExit\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"fieldName\":\"onRefindTarget\",\"typeQualifiedName\":\"UnityEngine.Events.UnityAction,
-      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[\"91618b77-e6ea-43b4-9a25-27497bb8eee1\"]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"fieldName\":\"onFindedTarget\",\"typeQualifiedName\":\"UnityEngine.Events.UnityAction,
-      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[\"e0687183-2cdb-44e4-804b-036b71f70977\"]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"fieldName\":\"onEnter\",\"typeQualifiedName\":\"System.Action,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"8762cb55-af2f-42a0-bc00-6a7a24b87b58\",\"fieldName\":\"onExit\",\"typeQualifiedName\":\"System.Action,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u5F98\u5F8A\",\"cost\":1.0,\"preconditions\":[{\"Key\":\"HasTarget\",\"Value\":false}],\"effects\":[{\"Key\":\"HasTarget\",\"Value\":true}],\"center\":{\"guid\":\"9d1aea3e-c22f-4d54-ad4f-0b38abe53784\",\"value\":{\"instanceID\":0}},\"range\":10.0,\"radius\":5.0,\"sector\":90.0,\"layer\":{\"serializedVersion\":\"2\",\"m_Bits\":1024}}"
-  - type: CZToolKit.GOAP.SeekAction, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    json: "{\"guid\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"position\":{\"serializedVersion\":\"2\",\"x\":316.0,\"y\":141.0,\"width\":177.0,\"height\":230.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"onEnter\",\"onExit\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"fieldName\":\"onEnter\",\"typeQualifiedName\":\"System.Action,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]},{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"7445bc28-0175-4aee-96a0-1e65848dec8e\",\"fieldName\":\"onExit\",\"typeQualifiedName\":\"System.Action,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\"isMulti\":true,\"direction\":0,\"typeConstraint\":0,\"edgeGUIDs\":[]}]},\"name\":\"\u8FFD\u9010\",\"cost\":1.0,\"preconditions\":[{\"Key\":\"HasTarget\",\"Value\":true},{\"Key\":\"InAttackRange\",\"Value\":false}],\"effects\":[{\"Key\":\"InAttackRange\",\"Value\":true}],\"stopDistance\":2.0,\"timeout\":10.0}"
-  - type: CZToolKit.GOAP.ActionDebugEvt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    json: "{\"guid\":\"afc1fdca-dbe2-4b3f-9447-afa07c8b8604\",\"position\":{\"serializedVersion\":\"2\",\"x\":53.32249450683594,\"y\":-7.395810127258301,\"width\":126.0,\"height\":36.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"action\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"afc1fdca-dbe2-4b3f-9447-afa07c8b8604\",\"fieldName\":\"action\",\"typeQualifiedName\":\"CZToolKit.GOAP.GOAPAction,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\"isMulti\":true,\"direction\":1,\"typeConstraint\":1,\"edgeGUIDs\":[\"91618b77-e6ea-43b4-9a25-27497bb8eee1\"]}]},\"text\":\"\u62A5\u544A\uFF01\u4E00\u5207\u6B63\u5E38\uFF01\"}"
-  - type: CZToolKit.GOAP.ActionDebugEvt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-    json: "{\"guid\":\"5bd9461d-3e87-402c-87d6-1dc622e74876\",\"position\":{\"serializedVersion\":\"2\",\"x\":252.32249450683595,\"y\":-4.395808219909668,\"width\":122.0,\"height\":36.0},\"expanded\":true,\"locked\":false,\"ports\":{\"keys\":[\"action\"],\"values\":[{\"graph\":{\"fileID\":11400000,\"guid\":\"f6aa642f117120a4c9da1fa330f1ad00\",\"type\":2},\"ownerGUID\":\"5bd9461d-3e87-402c-87d6-1dc622e74876\",\"fieldName\":\"action\",\"typeQualifiedName\":\"CZToolKit.GOAP.GOAPAction,
-      Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\",\"isMulti\":true,\"direction\":1,\"typeConstraint\":1,\"edgeGUIDs\":[\"91618b77-e6ea-43b4-9a25-27497bb8eee1\",\"e0687183-2cdb-44e4-804b-036b71f70977\"]}]},\"text\":\"\u53D1\u73B0\u654C\u4EBA\uFF01\"}"
-  serializedEdges:
-  - type: CZToolKit.GraphProcessor.SerializableEdge, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"91618b77-e6ea-43b4-9a25-27497bb8eee1","owner":{"fileID":11400000,"guid":"f6aa642f117120a4c9da1fa330f1ad00","type":2},"inputNodeGUID":"8762cb55-af2f-42a0-bc00-6a7a24b87b58","inputFieldName":"onRefindTarget","outputNodeGUID":"afc1fdca-dbe2-4b3f-9447-afa07c8b8604","outputFieldName":"action"}'
-  - type: CZToolKit.GraphProcessor.SerializableEdge, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    json: '{"guid":"e0687183-2cdb-44e4-804b-036b71f70977","owner":{"fileID":11400000,"guid":"f6aa642f117120a4c9da1fa330f1ad00","type":2},"inputNodeGUID":"8762cb55-af2f-42a0-bc00-6a7a24b87b58","inputFieldName":"onFindedTarget","outputNodeGUID":"5bd9461d-3e87-402c-87d6-1dc622e74876","outputFieldName":"action"}'
-  serializedStacks: []
-  serializedGroups: []
-  references:
-    version: 1
+  graph:
+    position: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
+    blackboardoVisible: 1
+    blackboardPosition:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 150
+      height: 200
+    groups: []
+  serializedGraph: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|CZToolKit.GOAP.GOAPGraph,
+    Assembly-CSharp\",\r\n    \"position\": {\r\n        \"$type\": \"1|UnityEngine.Vector3,
+    UnityEngine.CoreModule\",\r\n        0,\r\n        0,\r\n        0\r\n    },\r\n   
+    \"scale\": {\r\n        \"$type\": 1,\r\n        1,\r\n        1,\r\n       
+    1\r\n    },\r\n    \"blackboardoVisible\": true,\r\n    \"blackboardPosition\":
+    {\r\n        \"$type\": \"2|UnityEngine.Rect, UnityEngine.CoreModule\",\r\n       
+    0,\r\n        0,\r\n        150,\r\n        200\r\n    },\r\n    \"nodes\": {\r\n       
+    \"$id\": 1,\r\n        \"$type\": \"3|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[CZToolKit.GraphProcessor.BaseNode, Assembly-CSharp]], mscorlib\",\r\n       
+    \"comparer\": {\r\n            \"$id\": 2,\r\n            \"$type\": \"4|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+    mscorlib]], mscorlib\"\r\n        },\r\n        \"$rlength\": 1,\r\n        \"$rcontent\":
+    [\r\n            {\r\n                \"$k\": \"8afadbed-3454-49da-880c-2cb97f16d2b9\",\r\n               
+    \"$v\": {\r\n                    \"$id\": 3,\r\n                    \"$type\":
+    \"5|CZToolKit.GOAP.WanderAction, Assembly-CSharp\",\r\n                    \"guid\":
+    \"8afadbed-3454-49da-880c-2cb97f16d2b9\",\r\n                    \"position\":
+    {\r\n                        \"$type\": 2,\r\n                        536,\r\n                       
+    132,\r\n                        150,\r\n                        210\r\n                   
+    },\r\n                    \"expanded\": true,\r\n                    \"locked\":
+    false,\r\n                    \"ports\": {\r\n                        \"$id\":
+    4,\r\n                        \"$type\": \"6|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[CZToolKit.GraphProcessor.NodePort, Assembly-CSharp]], mscorlib\",\r\n                       
+    \"comparer\": {\r\n                            \"$id\": 5,\r\n                           
+    \"$type\": 4\r\n                        },\r\n                        \"$rlength\":
+    4,\r\n                        \"$rcontent\": [\r\n                           
+    {\r\n                                \"$k\": \"onEnter\",\r\n                               
+    \"$v\": {\r\n                                    \"$id\": 6,\r\n                                   
+    \"$type\": \"7|CZToolKit.GraphProcessor.NodePort, Assembly-CSharp\",\r\n                                   
+    \"graph\": $iref:0,\r\n                                    \"ownerGUID\": \"8afadbed-3454-49da-880c-2cb97f16d2b9\",\r\n                                   
+    \"fieldName\": \"onEnter\",\r\n                                    \"typeQualifiedName\":
+    \"System.Action, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                                   
+    \"dataType\": {\r\n                                        \"$id\": 7,\r\n                                       
+    \"$type\": \"8|System.RuntimeType, mscorlib\",\r\n                                       
+    \"System.Action, mscorlib\"\r\n                                    },\r\n                                   
+    \"isMulti\": true,\r\n                                    \"direction\": 0,\r\n                                   
+    \"typeConstraint\": 0,\r\n                                    \"edgeGUIDs\":
+    {\r\n                                        \"$id\": 8,\r\n                                       
+    \"$type\": \"9|System.Collections.Generic.List`1[[System.String, mscorlib]],
+    mscorlib\",\r\n                                        \"$rlength\": 0,\r\n                                       
+    \"$rcontent\": [\r\n                                        ]\r\n                                   
+    }\r\n                                }\r\n                            },\r\n                           
+    {\r\n                                \"$k\": \"onExit\",\r\n                               
+    \"$v\": {\r\n                                    \"$id\": 9,\r\n                                   
+    \"$type\": 7,\r\n                                    \"graph\": $iref:0,\r\n                                   
+    \"ownerGUID\": \"8afadbed-3454-49da-880c-2cb97f16d2b9\",\r\n                                   
+    \"fieldName\": \"onExit\",\r\n                                    \"typeQualifiedName\":
+    \"System.Action, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                                   
+    \"dataType\": $iref:7,\r\n                                    \"isMulti\": true,\r\n                                   
+    \"direction\": 0,\r\n                                    \"typeConstraint\":
+    0,\r\n                                    \"edgeGUIDs\": {\r\n                                       
+    \"$id\": 10,\r\n                                        \"$type\": 9,\r\n                                       
+    \"$rlength\": 0,\r\n                                        \"$rcontent\": [\r\n                                       
+    ]\r\n                                    }\r\n                               
+    }\r\n                            },\r\n                            {\r\n                               
+    \"$k\": \"onRefindTarget\",\r\n                                \"$v\": {\r\n                                   
+    \"$id\": 11,\r\n                                    \"$type\": 7,\r\n                                   
+    \"graph\": $iref:0,\r\n                                    \"ownerGUID\": \"8afadbed-3454-49da-880c-2cb97f16d2b9\",\r\n                                   
+    \"fieldName\": \"onRefindTarget\",\r\n                                    \"typeQualifiedName\":
+    \"UnityEngine.Events.UnityAction, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null\",\r\n                                    \"dataType\": {\r\n                                       
+    \"$id\": 12,\r\n                                        \"$type\": 8,\r\n                                       
+    \"UnityEngine.Events.UnityAction, UnityEngine.CoreModule\"\r\n                                   
+    },\r\n                                    \"isMulti\": true,\r\n                                   
+    \"direction\": 0,\r\n                                    \"typeConstraint\":
+    0,\r\n                                    \"edgeGUIDs\": {\r\n                                       
+    \"$id\": 13,\r\n                                        \"$type\": 9,\r\n                                       
+    \"$rlength\": 0,\r\n                                        \"$rcontent\": [\r\n                                       
+    ]\r\n                                    }\r\n                               
+    }\r\n                            },\r\n                            {\r\n                               
+    \"$k\": \"onFindedTarget\",\r\n                                \"$v\": {\r\n                                   
+    \"$id\": 14,\r\n                                    \"$type\": 7,\r\n                                   
+    \"graph\": $iref:0,\r\n                                    \"ownerGUID\": \"8afadbed-3454-49da-880c-2cb97f16d2b9\",\r\n                                   
+    \"fieldName\": \"onFindedTarget\",\r\n                                    \"typeQualifiedName\":
+    \"UnityEngine.Events.UnityAction, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null\",\r\n                                    \"dataType\": $iref:12,\r\n                                   
+    \"isMulti\": true,\r\n                                    \"direction\": 0,\r\n                                   
+    \"typeConstraint\": 0,\r\n                                    \"edgeGUIDs\":
+    {\r\n                                        \"$id\": 15,\r\n                                       
+    \"$type\": 9,\r\n                                        \"$rlength\": 0,\r\n                                       
+    \"$rcontent\": [\r\n                                        ]\r\n                                   
+    }\r\n                                }\r\n                            }\r\n                       
+    ]\r\n                    },\r\n                    \"name\": \"\\u5f98\\u5f8a\",\r\n                   
+    \"cost\": 1,\r\n                    \"preconditions\": {\r\n                       
+    \"$id\": 16,\r\n                        \"$type\": \"10|System.Collections.Generic.List`1[[CZToolKit.GOAP.GOAPState,
+    Assembly-CSharp]], mscorlib\",\r\n                        \"$rlength\": 1,\r\n                       
+    \"$rcontent\": [\r\n                            {\r\n                               
+    \"$id\": 17,\r\n                                \"$type\": \"11|CZToolKit.GOAP.GOAPState,
+    Assembly-CSharp\",\r\n                                \"Key\": \"HasTarget\",\r\n                               
+    \"Value\": false\r\n                            }\r\n                       
+    ]\r\n                    },\r\n                    \"effects\": {\r\n                       
+    \"$id\": 18,\r\n                        \"$type\": 10,\r\n                       
+    \"$rlength\": 1,\r\n                        \"$rcontent\": [\r\n                           
+    {\r\n                                \"$id\": 19,\r\n                               
+    \"$type\": 11,\r\n                                \"Key\": \"HasTarget\",\r\n                               
+    \"Value\": true\r\n                            }\r\n                        ]\r\n                   
+    },\r\n                    \"onEnter\": null,\r\n                    \"onExit\":
+    null,\r\n                    \"center\": {\r\n                        \"$id\":
+    20,\r\n                        \"$type\": \"12|CZToolKit.Core.SharedVariable.SharedGameObject,
+    CZToolKit.Core\",\r\n                        \"guid\": \"3a555995-790a-471e-a52a-b9be323584a9\",\r\n                       
+    \"value\": null\r\n                    },\r\n                    \"range\": 10,\r\n                   
+    \"radius\": 5,\r\n                    \"sector\": 90,\r\n                   
+    \"layer\": {\r\n                        \"$type\": \"13|UnityEngine.LayerMask,
+    UnityEngine.CoreModule\",\r\n                        0\r\n                   
+    },\r\n                    \"onRefindTarget\": null,\r\n                    \"onFindedTarget\":
+    null\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"edges\":
+    {\r\n        \"$id\": 21,\r\n        \"$type\": \"14|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[CZToolKit.GraphProcessor.SerializableEdge, Assembly-CSharp]], mscorlib\",\r\n       
+    \"comparer\": $iref:2,\r\n        \"$rlength\": 0,\r\n        \"$rcontent\":
+    [\r\n        ]\r\n    },\r\n    \"stacks\": {\r\n        \"$id\": 22,\r\n       
+    \"$type\": \"15|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[CZToolKit.GraphProcessor.BaseStackNode,
+    Assembly-CSharp]], mscorlib\",\r\n        \"comparer\": $iref:2,\r\n        \"$rlength\":
+    0,\r\n        \"$rcontent\": [\r\n        ]\r\n    },\r\n    \"groups\": {\r\n       
+    \"$id\": 23,\r\n        \"$type\": \"16|System.Collections.Generic.List`1[[CZToolKit.GraphProcessor.BaseGroup,
+    Assembly-CSharp]], mscorlib\",\r\n        \"$rlength\": 0,\r\n        \"$rcontent\":
+    [\r\n        ]\r\n    },\r\n    \"blackboard\": {\r\n        \"$id\": 24,\r\n       
+    \"$type\": \"17|CZToolKit.Core.Blackboards.CZBlackboard, CZToolKit.Core\",\r\n       
+    \"dataMap\": {\r\n            \"$id\": 25,\r\n            \"$type\": \"18|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[CZToolKit.Core.Blackboards.ICZType, CZToolKit.Core]], mscorlib\",\r\n           
+    \"comparer\": {\r\n                \"$id\": 26,\r\n                \"$type\":
+    4\r\n            },\r\n            \"$rlength\": 0,\r\n            \"$rcontent\":
+    [\r\n            ]\r\n        },\r\n        \"guidMap\": {\r\n            \"$id\":
+    27,\r\n            \"$type\": \"19|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[System.String, mscorlib]], mscorlib\",\r\n            \"comparer\":
+    $iref:26,\r\n            \"$rlength\": 0,\r\n            \"$rcontent\": [\r\n           
+    ]\r\n        }\r\n    }\r\n}"
+  unityReferences: []

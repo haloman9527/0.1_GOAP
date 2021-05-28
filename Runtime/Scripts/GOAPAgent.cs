@@ -1,13 +1,14 @@
 ﻿using CZToolKit.Core;
 using CZToolKit.Core.Blackboards;
 using CZToolKit.GraphProcessor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPAgent : GraphOwner<GOAPGraph>
+    public class GOAPAgent : GraphOwner<GOAPGraphAsset, GOAPGraph>
     {
         #region 变量
 
@@ -59,6 +60,7 @@ namespace CZToolKit.GOAP
         public bool HasPlan { get { return ActionQueue != null && ActionQueue.Count > 0; } }
         /// <summary> 下此搜寻计划的时间 </summary>
         public float NextPlanTime { get; set; } = 0;
+
         #endregion
 
         protected virtual void Awake()
@@ -68,8 +70,8 @@ namespace CZToolKit.GOAP
             Provider = GetComponent<IGOAP>();
             Planner = new GOAPPlanner();
             FSM = new GOAPFSM();
-            Graph = Graph.Clone() as GOAPGraph;
-            Graph.Initialize(this);
+            GraphAsset = GraphAsset.Clone() as GOAPGraphAsset;
+            TGraphAsset.Graph.Initialize(this);
             Goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
         }
 
@@ -89,14 +91,14 @@ namespace CZToolKit.GOAP
             idleState.onUpdate = () =>
                  {
                      if (NextPlanTime > FSM.time) return;
-                     if (TGraph == null) return;
+                     if (TGraphAsset == null) return;
 
                      NextPlanTime = FSM.time + interval;
 
                      // 搜寻计划
                      foreach (GOAPGoal goal in Goals)
                      {
-                         Planner.Plan(TGraph.AvailableActions.ToArray(), States, goal, maxDepth, ref storedActionQueue);
+                         Planner.Plan(TGraphAsset.TGraph.AvailableActions.ToArray(), States, goal, maxDepth, ref storedActionQueue);
                          if (StoredActionQueue.Count == 0)
                          {
                              CurrentGoal = goal;
@@ -258,8 +260,8 @@ namespace CZToolKit.GOAP
         private void OnDrawGizmos()
         {
             Gizmos.DrawIcon(transform.position, "GOAP/GOAP_Scene_Icon.png", true);
-            if (TGraph != null && enabled)
-                TGraph.DrawGizmos(this);
+            if (TGraphAsset != null && enabled)
+                TGraphAsset.TGraph.DrawGizmos(this);
         }
     }
 }

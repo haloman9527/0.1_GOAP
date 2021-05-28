@@ -1,10 +1,10 @@
 ﻿using CZToolKit.GraphProcessor;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    [CreateAssetMenu]
+    [Serializable]
     public class GOAPGraph : BaseGraph
     {
         public List<GOAPAction> AvailableActions { get; private set; } = new List<GOAPAction>();
@@ -14,7 +14,10 @@ namespace CZToolKit.GOAP
             base.Initialize(_graphOwner);
             GOAPAgent agent = _graphOwner as GOAPAgent;
 
-            AvailableActions.Clear();
+            if (AvailableActions == null)
+                AvailableActions = new List<GOAPAction>();
+            else
+                AvailableActions.Clear();
             foreach (var node in NodesGUIDMapping)
             {
                 if (node.Value is GOAPAction action)
