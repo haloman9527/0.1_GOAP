@@ -7,7 +7,7 @@ using UnityEngine;
 namespace CZToolKit.GOAP
 {
     [CustomEditor(typeof(GOAPAgent))]
-    public class GOAPAgentEditor : GraphOwnerEditor
+    public class GOAPAgentEditor : GraphAssetOwnerEditor
     {
         GOAPAgent agent;
         SerializedProperty goalsProperty, preStateProperty;

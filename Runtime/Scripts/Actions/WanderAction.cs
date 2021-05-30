@@ -121,7 +121,7 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public override void DrawGizmos(GraphOwner _graphOwner)
+        public override void DrawGizmos(GraphAssetOwner _graphOwner)
         {
 #if UNITY_EDITOR
             SharedGameObject variable = _graphOwner.GetVariable(center.GUID) as SharedGameObject;

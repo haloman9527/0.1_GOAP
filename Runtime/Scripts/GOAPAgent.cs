@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPAgent : GraphOwner<GOAPGraphAsset, GOAPGraph>
+    public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraph>
     {
         #region 变量
 

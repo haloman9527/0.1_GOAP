@@ -23,12 +23,6 @@ MonoBehaviour:
       width: 150
       height: 200
     groups: []
-    blackboard:
-      keys: []
-      values: []
-    guidMap:
-      keys: []
-      values: []
   serializedGraph: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|CZToolKit.GOAP.GOAPGraph,
     Assembly-CSharp\",\r\n    \"position\": {\r\n        \"$type\": \"1|UnityEngine.Vector3,
     UnityEngine.CoreModule\",\r\n        0,\r\n        0,\r\n        0\r\n    },\r\n   
@@ -112,12 +106,14 @@ MonoBehaviour:
     \"$type\": \"15|System.Collections.Generic.List`1[[CZToolKit.GraphProcessor.BaseGroup,
     Assembly-CSharp]], mscorlib\",\r\n        \"$rlength\": 0,\r\n        \"$rcontent\":
     [\r\n        ]\r\n    },\r\n    \"blackboard\": {\r\n        \"$id\": 18,\r\n       
-    \"$type\": \"16|CZToolKit.GraphProcessor.ExposedParmetersDictionary, Assembly-CSharp\",\r\n       
-    \"comparer\": {\r\n            \"$id\": 19,\r\n            \"$type\": 4\r\n       
-    },\r\n        \"$rlength\": 0,\r\n        \"$rcontent\": [\r\n        ]\r\n   
-    },\r\n    \"guidMap\": {\r\n        \"$id\": 20,\r\n        \"$type\": \"17|CZToolKit.GraphProcessor.GUIDMapDictionary,
-    Assembly-CSharp\",\r\n        \"comparer\": $iref:19,\r\n        \"$rlength\":
-    0,\r\n        \"$rcontent\": [\r\n        ]\r\n    }\r\n}"
+    \"$type\": \"16|CZToolKit.Core.Blackboards.CZBlackboard, CZToolKit.Core\",\r\n       
+    \"dataMap\": {\r\n            \"$id\": 19,\r\n            \"$type\": \"17|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[CZToolKit.Core.Blackboards.ICZType, CZToolKit.Core]], mscorlib\",\r\n           
+    \"comparer\": {\r\n                \"$id\": 20,\r\n                \"$type\":
+    4\r\n            },\r\n            \"$rlength\": 0,\r\n            \"$rcontent\":
+    [\r\n            ]\r\n        },\r\n        \"guidMap\": {\r\n            \"$id\":
+    21,\r\n            \"$type\": \"18|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[System.String, mscorlib]], mscorlib\",\r\n            \"comparer\":
+    $iref:20,\r\n            \"$rlength\": 0,\r\n            \"$rcontent\": [\r\n           
+    ]\r\n        }\r\n    }\r\n}"
   unityReferences: []
-  references:
-    version: 1

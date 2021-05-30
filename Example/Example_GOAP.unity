@@ -274,9 +274,8 @@ MonoBehaviour:
     CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
     {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
     CZToolKit.Core\",\r\n            \"guid\": \"ce2e254b-13ba-4a3d-b9f6-9ca6f1b6aaba\",\r\n           
-    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
-  unityReference:
-  - {fileID: 367048808}
+    \"value\": null\r\n        }\r\n    ]\r\n}"
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: dfa8600abb4a6684792308cce6ba1e7c, type: 2}
   goals:
   - Key: Pursue
@@ -422,7 +421,7 @@ MonoBehaviour:
     {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
     CZToolKit.Core\",\r\n            \"guid\": \"4db5a910-4132-4404-aa07-3dc37534ec8c\",\r\n           
     \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
-  unityReference:
+  unityReferences:
   - {fileID: 367048808}
   graphAsset: {fileID: 11400000, guid: fa62dc9ccf4fbcf4f9678441db6264bc, type: 2}
   goals:
@@ -663,7 +662,7 @@ MonoBehaviour:
   serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
     CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 0,\r\n    \"$rcontent\": [\r\n   
     ]\r\n}"
-  unityReference: []
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: 629950d01e3a97c41bcf25cc01c92587, type: 2}
   goals:
   - Key: Wander
@@ -888,9 +887,8 @@ MonoBehaviour:
     CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
     {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
     CZToolKit.Core\",\r\n            \"guid\": \"2b448ec8-1cdc-4fb8-b637-d8c424cecdd1\",\r\n           
-    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
-  unityReference:
-  - {fileID: 367048808}
+    \"value\": null\r\n        }\r\n    ]\r\n}"
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: 50a23d0acafda4c44b842b9d39248e1b, type: 2}
   goals:
   - Key: Flee
@@ -1065,9 +1063,8 @@ MonoBehaviour:
     CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
     {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
     CZToolKit.Core\",\r\n            \"guid\": \"3a555995-790a-471e-a52a-b9be323584a9\",\r\n           
-    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
-  unityReference:
-  - {fileID: 604489998}
+    \"value\": null\r\n        }\r\n    ]\r\n}"
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: f6aa642f117120a4c9da1fa330f1ad00, type: 2}
   goals:
   - Key: HasTarget
@@ -1630,7 +1627,7 @@ MonoBehaviour:
   serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
     CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 0,\r\n    \"$rcontent\": [\r\n   
     ]\r\n}"
-  unityReference: []
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: fa62dc9ccf4fbcf4f9678441db6264bc, type: 2}
   goals:
   - Key: Follow
@@ -1777,14 +1774,10 @@ MonoBehaviour:
     CZToolKit.Core\",\r\n            \"guid\": \"776aee71-1354-4817-b226-b3c3d777a42c\",\r\n           
     \"value\": {\r\n                \"$id\": 2,\r\n                \"$type\": \"2|System.Collections.Generic.List`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule]], mscorlib\",\r\n                \"$rlength\": 4,\r\n               
-    \"$rcontent\": [\r\n                    $eref:0,\r\n                    $eref:1,\r\n                   
-    $eref:2,\r\n                    $eref:3\r\n                ]\r\n            }\r\n       
+    \"$rcontent\": [\r\n                    null,\r\n                    null,\r\n                   
+    null,\r\n                    null\r\n                ]\r\n            }\r\n       
     }\r\n    ]\r\n}"
-  unityReference:
-  - {fileID: 1196521461}
-  - {fileID: 734372337}
-  - {fileID: 905465464}
-  - {fileID: 1070432582}
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: ba270b2984682104d80fa4173b550af7, type: 2}
   goals:
   - Key: HasTarget
@@ -2324,19 +2317,13 @@ MonoBehaviour:
     CZToolKit.Core\",\r\n            \"guid\": \"19601361-675c-4ff9-bd78-78d0896b0f2f\",\r\n           
     \"value\": {\r\n                \"$id\": 2,\r\n                \"$type\": \"2|System.Collections.Generic.List`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule]], mscorlib\",\r\n                \"$rlength\": 5,\r\n               
-    \"$rcontent\": [\r\n                    $eref:0,\r\n                    $eref:1,\r\n                   
-    $eref:2,\r\n                    $eref:3,\r\n                    $eref:4\r\n               
+    \"$rcontent\": [\r\n                    null,\r\n                    null,\r\n                   
+    null,\r\n                    null,\r\n                    null\r\n               
     ]\r\n            }\r\n        },\r\n        {\r\n            \"$id\": 3,\r\n           
     \"$type\": \"3|CZToolKit.Core.SharedVariable.SharedGameObject, CZToolKit.Core\",\r\n           
     \"guid\": \"3374d3ec-a019-4ad7-8d5e-56c202588e47\",\r\n            \"value\":
-    $eref:5\r\n        }\r\n    ]\r\n}"
-  unityReference:
-  - {fileID: 97958415}
-  - {fileID: 911461167}
-  - {fileID: 800458522}
-  - {fileID: 2113224422}
-  - {fileID: 1297751118}
-  - {fileID: 367048808}
+    null\r\n        }\r\n    ]\r\n}"
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: d4870976b94479446820d213540b2d69, type: 2}
   goals:
   - Key: ArrvingMarker
@@ -2529,7 +2516,7 @@ MonoBehaviour:
     \"$rcontent\": [\r\n                    $eref:1,\r\n                    $eref:2,\r\n                   
     $eref:3,\r\n                    $eref:4,\r\n                    $eref:5\r\n               
     ]\r\n            }\r\n        }\r\n    ]\r\n}"
-  unityReference:
+  unityReferences:
   - {fileID: 367048808}
   - {fileID: 97958415}
   - {fileID: 911461167}
@@ -2688,15 +2675,10 @@ MonoBehaviour:
     CZToolKit.Core\",\r\n            \"guid\": \"af72748a-4404-4a1d-b491-783c9831fbe3\",\r\n           
     \"value\": {\r\n                \"$id\": 2,\r\n                \"$type\": \"2|System.Collections.Generic.List`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule]], mscorlib\",\r\n                \"$rlength\": 5,\r\n               
-    \"$rcontent\": [\r\n                    $eref:0,\r\n                    $eref:1,\r\n                   
-    $eref:2,\r\n                    $eref:3,\r\n                    $eref:4\r\n               
+    \"$rcontent\": [\r\n                    null,\r\n                    null,\r\n                   
+    null,\r\n                    null,\r\n                    null\r\n               
     ]\r\n            }\r\n        }\r\n    ]\r\n}"
-  unityReference:
-  - {fileID: 97958415}
-  - {fileID: 911461167}
-  - {fileID: 800458522}
-  - {fileID: 2113224422}
-  - {fileID: 1297751118}
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: 041a7feb7ee332e4484ea032a03053e6, type: 2}
   goals:
   - Key: Flock
@@ -2851,7 +2833,7 @@ MonoBehaviour:
   serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
     CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 0,\r\n    \"$rcontent\": [\r\n   
     ]\r\n}"
-  unityReference: []
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: 2876c73480afabb4680f8655861ef354, type: 2}
   goals:
   - Key: Cover
@@ -2996,9 +2978,8 @@ MonoBehaviour:
     CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
     {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
     CZToolKit.Core\",\r\n            \"guid\": \"7fcb29c8-cc02-4772-9d35-1458e914c2b4\",\r\n           
-    \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
-  unityReference:
-  - {fileID: 367048808}
+    \"value\": null\r\n        }\r\n    ]\r\n}"
+  unityReferences: []
   graphAsset: {fileID: 11400000, guid: 27b082737bb051344b8e2ebae68bf8ac, type: 2}
   goals:
   - Key: Evade
