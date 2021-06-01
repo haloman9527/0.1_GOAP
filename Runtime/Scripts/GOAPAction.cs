@@ -42,7 +42,7 @@ namespace CZToolKit.GOAP
         /// <summary> 此技能对世界状态造成的修改 </summary>
         public List<GOAPState> Effects { get { return effects; } }
 
-        public override void InitializeGraphOwner(GraphAssetOwner _graphOwner)
+        public override void InitializeGraphOwner(IGraphAssetOwner _graphOwner)
         {
             base.InitializeGraphOwner(_graphOwner);
             Agent = _graphOwner as GOAPAgent;

@@ -1774,10 +1774,14 @@ MonoBehaviour:
     CZToolKit.Core\",\r\n            \"guid\": \"776aee71-1354-4817-b226-b3c3d777a42c\",\r\n           
     \"value\": {\r\n                \"$id\": 2,\r\n                \"$type\": \"2|System.Collections.Generic.List`1[[UnityEngine.GameObject,
     UnityEngine.CoreModule]], mscorlib\",\r\n                \"$rlength\": 4,\r\n               
-    \"$rcontent\": [\r\n                    null,\r\n                    null,\r\n                   
-    null,\r\n                    null\r\n                ]\r\n            }\r\n       
+    \"$rcontent\": [\r\n                    $eref:0,\r\n                    $eref:1,\r\n                   
+    $eref:2,\r\n                    $eref:3\r\n                ]\r\n            }\r\n       
     }\r\n    ]\r\n}"
-  unityReferences: []
+  unityReferences:
+  - {fileID: 1196521461}
+  - {fileID: 734372337}
+  - {fileID: 905465464}
+  - {fileID: 1070432582}
   graphAsset: {fileID: 11400000, guid: ba270b2984682104d80fa4173b550af7, type: 2}
   goals:
   - Key: HasTarget

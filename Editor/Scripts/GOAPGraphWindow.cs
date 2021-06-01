@@ -38,12 +38,14 @@ namespace CZToolKit.GOAP.Editors
 
         protected override IEnumerable<Type> GetNodeTypes()
         {
-            foreach (var type in Utility.GetChildrenTypes<GOAPAction>())
+            foreach (var type in Utility_Refelection.GetChildrenTypes<GOAPAction>())
             {
+                if (type.IsAbstract) continue;
                 yield return type;
             }
-            foreach (var type in Utility.GetChildrenTypes<GOAPActionEvtNode>())
+            foreach (var type in Utility_Refelection.GetChildrenTypes<GOAPActionEvtNode>())
             {
+                if (type.IsAbstract) continue;
                 yield return type;
             }
         }
@@ -81,7 +83,7 @@ namespace CZToolKit.GOAP.Editors
             string ownerName = "";
             if (GraphAsset != null)
                 assetName = GraphAsset.name;
-            if (GraphWindow.GraphOwner != null && GraphWindow.GraphOwner.GetObject() != null)
+            if (GraphWindow.GraphOwner != null && GraphWindow.GraphOwner.Self() != null)
                 ownerName = GraphWindow.GraphOwner.GetOwnerName();
             label.text = $"{assetName}/{ownerName}";
         }

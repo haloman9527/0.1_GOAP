@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Cover
   m_EditorClassIdentifier: 
   graph:
-    position: {x: -627, y: -188, z: 0}
-    scale: {x: 2, y: 2, z: 1}
-    blackboardoVisible: 0
+    position: {x: -295, y: -63, z: 0}
+    scale: {x: 1.3225, y: 1.3225, z: 1}
+    blackboardVisible: 0
     blackboardPosition:
       serializedVersion: 2
       x: 0
@@ -25,9 +25,9 @@ MonoBehaviour:
     groups: []
   serializedGraph: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|CZToolKit.GOAP.GOAPGraph,
     Assembly-CSharp\",\r\n    \"position\": {\r\n        \"$type\": \"1|UnityEngine.Vector3,
-    UnityEngine.CoreModule\",\r\n        -627,\r\n        -188,\r\n        0\r\n   
-    },\r\n    \"scale\": {\r\n        \"$type\": 1,\r\n        2,\r\n        2,\r\n       
-    1\r\n    },\r\n    \"blackboardoVisible\": false,\r\n    \"blackboardPosition\":
+    UnityEngine.CoreModule\",\r\n        -295,\r\n        -63,\r\n        0\r\n   
+    },\r\n    \"scale\": {\r\n        \"$type\": 1,\r\n        1.3225,\r\n       
+    1.3225,\r\n        1\r\n    },\r\n    \"blackboardVisible\": false,\r\n    \"blackboardPosition\":
     {\r\n        \"$type\": \"2|UnityEngine.Rect, UnityEngine.CoreModule\",\r\n       
     0,\r\n        0,\r\n        150,\r\n        200\r\n    },\r\n    \"nodes\": {\r\n       
     \"$id\": 1,\r\n        \"$type\": \"3|System.Collections.Generic.Dictionary`2[[System.String,
@@ -50,7 +50,7 @@ MonoBehaviour:
     {\r\n                                \"$k\": \"onEnter\",\r\n                               
     \"$v\": {\r\n                                    \"$id\": 6,\r\n                                   
     \"$type\": \"7|CZToolKit.GraphProcessor.NodePort, Assembly-CSharp\",\r\n                                   
-    \"graph\": $iref:0,\r\n                                    \"ownerGUID\": \"76ad1a37-8191-464e-8dce-f1063312b699\",\r\n                                   
+    \"ownerGUID\": \"76ad1a37-8191-464e-8dce-f1063312b699\",\r\n                                   
     \"fieldName\": \"onEnter\",\r\n                                    \"typeQualifiedName\":
     \"System.Action, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                                   
     \"dataType\": {\r\n                                        \"$id\": 7,\r\n                                       
@@ -65,8 +65,7 @@ MonoBehaviour:
     }\r\n                                }\r\n                            },\r\n                           
     {\r\n                                \"$k\": \"onExit\",\r\n                               
     \"$v\": {\r\n                                    \"$id\": 9,\r\n                                   
-    \"$type\": 7,\r\n                                    \"graph\": $iref:0,\r\n                                   
-    \"ownerGUID\": \"76ad1a37-8191-464e-8dce-f1063312b699\",\r\n                                   
+    \"$type\": 7,\r\n                                    \"ownerGUID\": \"76ad1a37-8191-464e-8dce-f1063312b699\",\r\n                                   
     \"fieldName\": \"onExit\",\r\n                                    \"typeQualifiedName\":
     \"System.Action, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                                   
     \"dataType\": $iref:7,\r\n                                    \"isMulti\": true,\r\n                                   
@@ -121,7 +120,7 @@ MonoBehaviour:
     Assembly-CSharp]], mscorlib\",\r\n        \"comparer\": $iref:2,\r\n        \"$rlength\":
     0,\r\n        \"$rcontent\": [\r\n        ]\r\n    },\r\n    \"stacks\": {\r\n       
     \"$id\": 22,\r\n        \"$type\": \"17|System.Collections.Generic.Dictionary`2[[System.String,
-    mscorlib],[CZToolKit.GraphProcessor.BaseStackNode, Assembly-CSharp]], mscorlib\",\r\n       
+    mscorlib],[CZToolKit.GraphProcessor.BaseStack, Assembly-CSharp]], mscorlib\",\r\n       
     \"comparer\": $iref:2,\r\n        \"$rlength\": 0,\r\n        \"$rcontent\":
     [\r\n        ]\r\n    },\r\n    \"groups\": {\r\n        \"$id\": 23,\r\n       
     \"$type\": \"18|System.Collections.Generic.List`1[[CZToolKit.GraphProcessor.BaseGroup,

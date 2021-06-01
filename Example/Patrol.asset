@@ -23,12 +23,6 @@ MonoBehaviour:
       width: 150
       height: 200
     groups: []
-    blackboard:
-      keys: []
-      values: []
-    guidMap:
-      keys: []
-      values: []
   serializedGraph: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|CZToolKit.GOAP.GOAPGraph,
     Assembly-CSharp\",\r\n    \"position\": {\r\n        \"$type\": \"1|UnityEngine.Vector3,
     UnityEngine.CoreModule\",\r\n        0,\r\n        0,\r\n        0\r\n    },\r\n   
@@ -56,7 +50,7 @@ MonoBehaviour:
     {\r\n                                \"$k\": \"onEnter\",\r\n                               
     \"$v\": {\r\n                                    \"$id\": 6,\r\n                                   
     \"$type\": \"7|CZToolKit.GraphProcessor.NodePort, Assembly-CSharp\",\r\n                                   
-    \"graph\": $iref:0,\r\n                                    \"ownerGUID\": \"a3dd55fe-9482-4b11-97fb-51ea7c9c7fc2\",\r\n                                   
+    \"ownerGUID\": \"a3dd55fe-9482-4b11-97fb-51ea7c9c7fc2\",\r\n                                   
     \"fieldName\": \"onEnter\",\r\n                                    \"typeQualifiedName\":
     \"System.Action, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                                   
     \"dataType\": {\r\n                                        \"$id\": 7,\r\n                                       
@@ -71,8 +65,7 @@ MonoBehaviour:
     }\r\n                                }\r\n                            },\r\n                           
     {\r\n                                \"$k\": \"onExit\",\r\n                               
     \"$v\": {\r\n                                    \"$id\": 9,\r\n                                   
-    \"$type\": 7,\r\n                                    \"graph\": $iref:0,\r\n                                   
-    \"ownerGUID\": \"a3dd55fe-9482-4b11-97fb-51ea7c9c7fc2\",\r\n                                   
+    \"$type\": 7,\r\n                                    \"ownerGUID\": \"a3dd55fe-9482-4b11-97fb-51ea7c9c7fc2\",\r\n                                   
     \"fieldName\": \"onExit\",\r\n                                    \"typeQualifiedName\":
     \"System.Action, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                                   
     \"dataType\": $iref:7,\r\n                                    \"isMulti\": true,\r\n                                   
@@ -107,30 +100,28 @@ MonoBehaviour:
     \"value\": {\r\n                            \"$id\": 16,\r\n                           
     \"$type\": \"13|System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
     mscorlib\",\r\n                            \"$rlength\": 4,\r\n                           
-    \"$rcontent\": [\r\n                                $eref:0,\r\n                               
-    $eref:1,\r\n                                $eref:2,\r\n                               
-    $eref:3\r\n                            ]\r\n                        }\r\n                   
+    \"$rcontent\": [\r\n                                null,\r\n                               
+    null,\r\n                                null,\r\n                               
+    null\r\n                            ]\r\n                        }\r\n                   
     }\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"edges\":
     {\r\n        \"$id\": 17,\r\n        \"$type\": \"14|System.Collections.Generic.Dictionary`2[[System.String,
     mscorlib],[CZToolKit.GraphProcessor.SerializableEdge, Assembly-CSharp]], mscorlib\",\r\n       
     \"comparer\": $iref:2,\r\n        \"$rlength\": 0,\r\n        \"$rcontent\":
     [\r\n        ]\r\n    },\r\n    \"stacks\": {\r\n        \"$id\": 18,\r\n       
-    \"$type\": \"15|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[CZToolKit.GraphProcessor.BaseStackNode,
+    \"$type\": \"15|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[CZToolKit.GraphProcessor.BaseStack,
     Assembly-CSharp]], mscorlib\",\r\n        \"comparer\": $iref:2,\r\n        \"$rlength\":
     0,\r\n        \"$rcontent\": [\r\n        ]\r\n    },\r\n    \"groups\": {\r\n       
     \"$id\": 19,\r\n        \"$type\": \"16|System.Collections.Generic.List`1[[CZToolKit.GraphProcessor.BaseGroup,
     Assembly-CSharp]], mscorlib\",\r\n        \"$rlength\": 0,\r\n        \"$rcontent\":
     [\r\n        ]\r\n    },\r\n    \"blackboard\": {\r\n        \"$id\": 20,\r\n       
-    \"$type\": \"17|CZToolKit.GraphProcessor.ExposedParmetersDictionary, Assembly-CSharp\",\r\n       
-    \"comparer\": {\r\n            \"$id\": 21,\r\n            \"$type\": 4\r\n       
-    },\r\n        \"$rlength\": 0,\r\n        \"$rcontent\": [\r\n        ]\r\n   
-    },\r\n    \"guidMap\": {\r\n        \"$id\": 22,\r\n        \"$type\": \"18|CZToolKit.GraphProcessor.GUIDMapDictionary,
-    Assembly-CSharp\",\r\n        \"comparer\": $iref:21,\r\n        \"$rlength\":
-    0,\r\n        \"$rcontent\": [\r\n        ]\r\n    }\r\n}"
-  unityReferences:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  references:
-    version: 1
+    \"$type\": \"17|CZToolKit.Core.Blackboards.CZBlackboard, CZToolKit.Core\",\r\n       
+    \"dataMap\": {\r\n            \"$id\": 21,\r\n            \"$type\": \"18|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[CZToolKit.Core.Blackboards.ICZType, CZToolKit.Core]], mscorlib\",\r\n           
+    \"comparer\": {\r\n                \"$id\": 22,\r\n                \"$type\":
+    4\r\n            },\r\n            \"$rlength\": 0,\r\n            \"$rcontent\":
+    [\r\n            ]\r\n        },\r\n        \"guidMap\": {\r\n            \"$id\":
+    23,\r\n            \"$type\": \"19|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[System.String, mscorlib]], mscorlib\",\r\n            \"comparer\":
+    $iref:22,\r\n            \"$rlength\": 0,\r\n            \"$rcontent\": [\r\n           
+    ]\r\n        }\r\n    }\r\n}"
+  unityReferences: []
