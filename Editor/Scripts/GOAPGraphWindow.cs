@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 
 namespace CZToolKit.GOAP.Editors
 {
-    [CustomGraphWindow(typeof(GOAPGraphAsset))]
+    [CustomGraphWindow(typeof(GOAPGraph))]
     public class GOAPGraphWindow : BaseGraphWindow
     {
         protected override void OnEnable()
@@ -18,10 +18,10 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView InitializeGraphView(BaseGraphAsset _graphAsset)
+        protected override BaseGraphView InitializeGraphView(IBaseGraph _graph)
         {
             GOAPGraphView graphView = new GOAPGraphView();
-            graphView.Initialize(this, _graphAsset);
+            graphView.Initialize(this, _graph);
             return graphView;
         }
     }
@@ -83,8 +83,8 @@ namespace CZToolKit.GOAP.Editors
             string ownerName = "";
             if (GraphAsset != null)
                 assetName = GraphAsset.name;
-            if (GraphWindow.GraphOwner != null && GraphWindow.GraphOwner.Self() != null)
-                ownerName = GraphWindow.GraphOwner.GetOwnerName();
+            if (GraphWindow.GraphAssetOwner != null && GraphWindow.GraphAssetOwner.Self() != null)
+                ownerName = GraphWindow.GraphAssetOwner.GetOwnerName();
             label.text = $"{assetName}/{ownerName}";
         }
     }
