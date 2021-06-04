@@ -140,13 +140,13 @@ namespace CZToolKit.GOAP.Editors
                     GUILayout.Label("Precondtions", (GUIStyle)"dockareaStandalone", GUILayout.Width(f));
                     GUILayout.Label("Cost", (GUIStyle)"dockareaStandalone", GUILayout.Width(f));
                     GUILayout.EndHorizontal();
-                    for (int i = 0; i < agent.TGraphAsset.TGraph.AvailableActions.Count; i++)
+                    for (int i = 0; i < agent.T_GraphAsset.TGraph.AvailableActions.Count; i++)
                     {
                         GUILayout.BeginHorizontal();
-                        GUILayout.Label(agent.TGraph.AvailableActions[i].GetType().Name, (GUIStyle)"dockareaStandalone", GUILayout.Width(f));
-                        GUILayout.Toggle(agent.CurrentAction == agent.TGraph.AvailableActions[i], "", GUILayout.Width(f));
-                        GUILayout.Toggle(agent.CurrentAction == agent.TGraph.AvailableActions[i], "", GUILayout.Width(f));
-                        GUILayout.Label(agent.TGraph.AvailableActions[i].cost.ToString(), (GUIStyle)"dockareaStandalone", GUILayout.Width(f));
+                        GUILayout.Label(agent.T_Graph.AvailableActions[i].GetType().Name, (GUIStyle)"dockareaStandalone", GUILayout.Width(f));
+                        GUILayout.Toggle(agent.CurrentAction == agent.T_Graph.AvailableActions[i], "", GUILayout.Width(f));
+                        GUILayout.Toggle(agent.CurrentAction == agent.T_Graph.AvailableActions[i], "", GUILayout.Width(f));
+                        GUILayout.Label(agent.T_Graph.AvailableActions[i].cost.ToString(), (GUIStyle)"dockareaStandalone", GUILayout.Width(f));
                         GUILayout.EndHorizontal();
                     }
 

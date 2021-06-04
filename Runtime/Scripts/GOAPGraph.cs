@@ -9,7 +9,7 @@ namespace CZToolKit.GOAP
     {
         public List<GOAPAction> AvailableActions { get; private set; } = new List<GOAPAction>();
 
-        public override void Initialize(IGraphAssetOwner _graphOwner)
+        public override void Initialize(IGraphOwner _graphOwner)
         {
             base.Initialize(_graphOwner);
             GOAPAgent agent = _graphOwner as GOAPAgent;
@@ -31,7 +31,7 @@ namespace CZToolKit.GOAP
             });
             foreach (var action in AvailableActions)
             {
-                action.InitializeGraphOwner(agent);
+                action.Initialize(agent);
             }
         }
 
