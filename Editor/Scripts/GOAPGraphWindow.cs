@@ -61,6 +61,8 @@ namespace CZToolKit.GOAP.Editors
             //label.BindProperty(SerializedObject.FindProperty("m_Name"));
             Add(label);
 
+            Add(new IMGUIContainer(UpdateLabel));
+
             MiniMap miniMap = new MiniMap();
             miniMap.SetPosition(new Rect(10, 10, 200, 200));
             Add(miniMap);
@@ -71,14 +73,14 @@ namespace CZToolKit.GOAP.Editors
                 miniMap.visible = b;
             }, true);
 
+
             // 添加模拟节点
 
             // 模拟节点所有的世界状态
         }
 
-        public override void OnGUI()
+        void UpdateLabel()
         {
-            base.OnGUI();
             string assetName = "";
             string ownerName = "";
             if (GraphAsset != null)

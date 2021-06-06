@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPNodeView : SimpleNodeView, IOnGUIObserver
+    public class GOAPNodeView : SimpleNodeView
     {
         string rawTitle;
 
@@ -88,6 +88,12 @@ namespace CZToolKit.GOAP
             {
                 effectFoldout.Add(CreateToggle(action.Effects[i], action.Effects));
             }
+
+            Add(new IMGUIContainer(() =>
+            {
+                if (!typeof(GOAPAction).IsAssignableFrom(NodeDataType)) return;
+                title = (NodeData as GOAPAction).Name + $"({rawTitle})";
+            }));
         }
 
         VisualElement CreateToggle(GOAP.GOAPState _state, List<GOAP.GOAPState> _states)
@@ -121,6 +127,7 @@ namespace CZToolKit.GOAP
                     box.RemoveFromHierarchy();
                 }));
             return box;
+
         }
 
         Button CreateSmallButton(string _text, float _size, Action _onClick)
@@ -138,12 +145,6 @@ namespace CZToolKit.GOAP
             btn.style.height = btn.style.width = _size;
             btn.style.backgroundImage = _texture;
             return btn;
-        }
-
-        public void OnGUI()
-        {
-            if (!typeof(GOAPAction).IsAssignableFrom(NodeDataType)) return;
-            title = (NodeData as GOAPAction).Name + $"({rawTitle})";
         }
     }
 }
