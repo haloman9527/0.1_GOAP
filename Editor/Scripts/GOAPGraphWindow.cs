@@ -18,10 +18,9 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView InitializeGraphView(IBaseGraph _graph)
+        protected override BaseGraphView CreateGraphView(IGraph _graph)
         {
-            GOAPGraphView graphView = new GOAPGraphView();
-            graphView.Initialize(this, _graph);
+            GOAPGraphView graphView = new GOAPGraphView(_graph, CommandDispatcher, this);
             return graphView;
         }
     }
@@ -51,6 +50,11 @@ namespace CZToolKit.GOAP.Editors
         }
 
         Label label;
+
+        public GOAPGraphView(IGraph _graph, CommandDispatcher _commandDispatcher, BaseGraphWindow _window) : base(_graph, _commandDispatcher, _window)
+        {
+        }
+
         protected override void OnInitialized()
         {
             base.OnInitialized();
@@ -85,8 +89,8 @@ namespace CZToolKit.GOAP.Editors
             string ownerName = "";
             if (GraphAsset != null)
                 assetName = GraphAsset.name;
-            if (GraphWindow.GraphAssetOwner != null && GraphWindow.GraphAssetOwner.Self() != null)
-                ownerName = GraphWindow.GraphAssetOwner.GetOwnerName();
+            if (GraphWindow.GraphOwner != null && GraphWindow.GraphOwner.Self() != null)
+                ownerName = GraphWindow.GraphOwner.GetOwnerName();
             label.text = $"{assetName}/{ownerName}";
         }
     }
