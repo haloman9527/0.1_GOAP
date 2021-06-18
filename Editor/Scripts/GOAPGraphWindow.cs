@@ -4,6 +4,7 @@ using CZToolKit.GraphProcessor.Editors;
 using System;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -70,12 +71,16 @@ namespace CZToolKit.GOAP.Editors
             MiniMap miniMap = new MiniMap();
             miniMap.SetPosition(new Rect(10, 10, 200, 200));
             Add(miniMap);
+
             miniMap.MarkDirtyRepaint();
 
-            GraphWindow.Toolbar.AddToggle("MiniMap", true, b =>
+            ToolbarToggle tglMiniMap = new ToolbarToggle() { text = "MiniMap", style = { alignSelf = Align.Center, width = 80, unityTextAlign = TextAnchor.MiddleCenter } };
+            tglMiniMap.RegisterValueChangedCallback(e =>
             {
-                miniMap.visible = b;
-            }, true);
+                miniMap.visible = e.newValue;
+            });
+            tglMiniMap.value = true;
+            Parent.Toolbar.AddToggleToLeft(tglMiniMap);
 
 
             // 添加模拟节点

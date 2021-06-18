@@ -20,8 +20,8 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 150
-      height: 200
+      width: 245
+      height: 236
     groups: []
   serializedGraph: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|CZToolKit.GOAP.GOAPGraph,
     Assembly-CSharp\",\r\n    \"position\": {\r\n        \"$type\": \"1|UnityEngine.Vector3,

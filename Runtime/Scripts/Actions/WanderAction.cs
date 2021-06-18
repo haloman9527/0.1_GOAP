@@ -12,7 +12,7 @@ namespace CZToolKit.GOAP
 {
     [NodeMenuItem("Wander")]
     [NodeTooltip("在指定区域内徘徊，直到看到敌人")]
-    [NodeIcon("Assets/CZToolKit/0.1_GOAP/Icons/Wander.png", width = 25, height = 25)]
+    [NodeIcon("Assets/CZToolKit/0.1_GOAP/Editor/Icons/Wander.png", width = 18, height = 18)]
     public class WanderAction : GOAPAction
     {
         [Header("巡逻范围")]

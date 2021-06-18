@@ -4,19 +4,19 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Editors
 {
-    public class AgentEditorWindow : BasicEditorWindow
+    public class GOAPDebugWindow : BasicEditorWindow
     {
 
-        [MenuItem("Tools/CZToolKit/GraphGOAP")]
+        [MenuItem("Tools/CZToolKit/GraphGOAP", priority = 0)]
         public static void Open()
         {
-            AgentEditorWindow w = GetWindow<AgentEditorWindow>("Agent Debuger");
+            GOAPDebugWindow w = GetWindow<GOAPDebugWindow>("Agent Debuger");
             w.position = new Rect(200, 200, 500, 700);
         }
 
-        static AgentEditorWindow instance;
+        static GOAPDebugWindow instance;
 
-        public static AgentEditorWindow Instance
+        public static GOAPDebugWindow Instance
         {
             get { return instance; }
             protected set { instance = value; }

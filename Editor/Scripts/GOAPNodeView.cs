@@ -1,5 +1,4 @@
 ﻿using CZToolKit.Core;
-using CZToolKit.GraphProcessor;
 using CZToolKit.GraphProcessor.Editors;
 using System;
 using System.Collections.Generic;
@@ -14,14 +13,6 @@ namespace CZToolKit.GOAP
     {
         string rawTitle;
 
-        //public override bool RefreshPorts()
-        //{
-        //    GOAPAction action = NodeData as GOAPAction;
-        //    bool result = base.RefreshPorts();
-        //    outputContainer.Add(PortViews[nameof(action.onExit)]);
-        //    return result;
-        //}
-
         protected override void OnInitialized()
         {
             base.OnInitialized();
@@ -32,26 +23,22 @@ namespace CZToolKit.GOAP
 
             if (!typeof(GOAPAction).IsAssignableFrom(NodeDataType)) return;
 
-            title = (NodeData as GOAPAction).Name;
+            title = (NodeData as GOAPAction).Name + $"({rawTitle})";
 
             GOAPAction action = NodeData as GOAPAction;
 
             // 名字
-            TextField nameField = new TextField("Name", 100, false, false, '*') { value = action.Name };
-            nameField.labelElement.style.minWidth = nameField.labelElement.style.maxWidth = 50;
-            nameField.RegisterValueChangedCallback(evt =>
+            VisualElement nameElement = CreateControlField(Utility_Refelection.GetFieldInfo(NodeDataType, "name"), "Name", newValue =>
             {
-                action.Name = evt.newValue;
+                title = action.Name + $"({rawTitle})";
             });
-            nameField.RegisterCallback<FocusInEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.On; });
-            nameField.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
-            controlsContainer.Add(nameField);
+            nameElement.RegisterCallback<FocusInEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.On; });
+            nameElement.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
+            controlsContainer.Add(nameElement);
 
             // 成本
-            FloatField costField = new FloatField("Cost") { value = action.cost };
-            costField.labelElement.style.minWidth = costField.labelElement.style.maxWidth = 50;
-            costField.RegisterValueChangedCallback(evt => { action.cost = evt.newValue; });
-            controlsContainer.Add(costField);
+            VisualElement costElement = CreateControlField(Utility_Refelection.GetFieldInfo(NodeDataType, "cost"), "Cost");
+            controlsContainer.Add(costElement);
 
             // 条件列表
             Foldout conditionFoldout = new Foldout() { text = "条件" };
@@ -62,6 +49,7 @@ namespace CZToolKit.GOAP
                 GOAP.GOAPState state = new GOAP.GOAPState();
                 action.Preconditions.Add(state);
                 conditionFoldout.Add(CreateToggle(state, action.Preconditions));
+                Owner.SetDirty();
             });
             btnAddCondition.text = "添加条件";
             btnAddCondition.style.alignItems = Align.Center;
@@ -80,6 +68,7 @@ namespace CZToolKit.GOAP
                 GOAP.GOAPState state = new GOAP.GOAPState();
                 action.Effects.Add(state);
                 effectFoldout.Add(CreateToggle(state, action.Effects));
+                Owner.SetDirty();
             });
             btnAddEffect.text = "添加效果";
             btnAddEffect.style.alignItems = Align.Center;
@@ -88,12 +77,6 @@ namespace CZToolKit.GOAP
             {
                 effectFoldout.Add(CreateToggle(action.Effects[i], action.Effects));
             }
-
-            Add(new IMGUIContainer(() =>
-            {
-                if (!typeof(GOAPAction).IsAssignableFrom(NodeDataType)) return;
-                title = (NodeData as GOAPAction).Name + $"({rawTitle})";
-            }));
         }
 
         VisualElement CreateToggle(GOAP.GOAPState _state, List<GOAP.GOAPState> _states)
@@ -107,6 +90,7 @@ namespace CZToolKit.GOAP
             {
                 _state.Value = evt.newValue;
             });
+            toggle.style.width = 20;
             box.Add(toggle);
 
             TextField keyField = new TextField();

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: "\u5F98\u5F8A"
   m_EditorClassIdentifier: 
   graph:
-    position: {x: 0, y: 0, z: 0}
-    scale: {x: 1, y: 1, z: 1}
-    blackboardoVisible: 1
+    position: {x: -669, y: -220, z: 0}
+    scale: {x: 2, y: 2, z: 1}
+    blackboardVisible: 0
     blackboardPosition:
       serializedVersion: 2
       x: 0
@@ -23,17 +23,11 @@ MonoBehaviour:
       width: 150
       height: 200
     groups: []
-    blackboard:
-      keys: []
-      values: []
-    guidMap:
-      keys: []
-      values: []
   serializedGraph: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|CZToolKit.GOAP.GOAPGraph,
     Assembly-CSharp\",\r\n    \"position\": {\r\n        \"$type\": \"1|UnityEngine.Vector3,
-    UnityEngine.CoreModule\",\r\n        0,\r\n        0,\r\n        0\r\n    },\r\n   
-    \"scale\": {\r\n        \"$type\": 1,\r\n        1,\r\n        1,\r\n       
-    1\r\n    },\r\n    \"blackboardoVisible\": true,\r\n    \"blackboardPosition\":
+    UnityEngine.CoreModule\",\r\n        -669,\r\n        -220,\r\n        0\r\n   
+    },\r\n    \"scale\": {\r\n        \"$type\": 1,\r\n        2,\r\n        2,\r\n       
+    1\r\n    },\r\n    \"blackboardVisible\": false,\r\n    \"blackboardPosition\":
     {\r\n        \"$type\": \"2|UnityEngine.Rect, UnityEngine.CoreModule\",\r\n       
     0,\r\n        0,\r\n        150,\r\n        200\r\n    },\r\n    \"nodes\": {\r\n       
     \"$id\": 1,\r\n        \"$type\": \"3|System.Collections.Generic.Dictionary`2[[System.String,
@@ -56,7 +50,7 @@ MonoBehaviour:
     {\r\n                                \"$k\": \"onEnter\",\r\n                               
     \"$v\": {\r\n                                    \"$id\": 6,\r\n                                   
     \"$type\": \"7|CZToolKit.GraphProcessor.NodePort, Assembly-CSharp\",\r\n                                   
-    \"graph\": $iref:0,\r\n                                    \"ownerGUID\": \"5728548d-853c-4464-a17c-4f71f51e9c02\",\r\n                                   
+    \"ownerGUID\": \"5728548d-853c-4464-a17c-4f71f51e9c02\",\r\n                                   
     \"fieldName\": \"onEnter\",\r\n                                    \"typeQualifiedName\":
     \"System.Action, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                                   
     \"dataType\": {\r\n                                        \"$id\": 7,\r\n                                       
@@ -71,8 +65,7 @@ MonoBehaviour:
     }\r\n                                }\r\n                            },\r\n                           
     {\r\n                                \"$k\": \"onExit\",\r\n                               
     \"$v\": {\r\n                                    \"$id\": 9,\r\n                                   
-    \"$type\": 7,\r\n                                    \"graph\": $iref:0,\r\n                                   
-    \"ownerGUID\": \"5728548d-853c-4464-a17c-4f71f51e9c02\",\r\n                                   
+    \"$type\": 7,\r\n                                    \"ownerGUID\": \"5728548d-853c-4464-a17c-4f71f51e9c02\",\r\n                                   
     \"fieldName\": \"onExit\",\r\n                                    \"typeQualifiedName\":
     \"System.Action, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\",\r\n                                   
     \"dataType\": $iref:7,\r\n                                    \"isMulti\": true,\r\n                                   
@@ -122,18 +115,20 @@ MonoBehaviour:
     Assembly-CSharp]], mscorlib\",\r\n        \"comparer\": $iref:2,\r\n        \"$rlength\":
     0,\r\n        \"$rcontent\": [\r\n        ]\r\n    },\r\n    \"stacks\": {\r\n       
     \"$id\": 21,\r\n        \"$type\": \"15|System.Collections.Generic.Dictionary`2[[System.String,
-    mscorlib],[CZToolKit.GraphProcessor.BaseStackNode, Assembly-CSharp]], mscorlib\",\r\n       
+    mscorlib],[CZToolKit.GraphProcessor.BaseStack, Assembly-CSharp]], mscorlib\",\r\n       
     \"comparer\": $iref:2,\r\n        \"$rlength\": 0,\r\n        \"$rcontent\":
     [\r\n        ]\r\n    },\r\n    \"groups\": {\r\n        \"$id\": 22,\r\n       
     \"$type\": \"16|System.Collections.Generic.List`1[[CZToolKit.GraphProcessor.BaseGroup,
     Assembly-CSharp]], mscorlib\",\r\n        \"$rlength\": 0,\r\n        \"$rcontent\":
     [\r\n        ]\r\n    },\r\n    \"blackboard\": {\r\n        \"$id\": 23,\r\n       
-    \"$type\": \"17|CZToolKit.GraphProcessor.ExposedParmetersDictionary, Assembly-CSharp\",\r\n       
-    \"comparer\": {\r\n            \"$id\": 24,\r\n            \"$type\": 4\r\n       
-    },\r\n        \"$rlength\": 0,\r\n        \"$rcontent\": [\r\n        ]\r\n   
-    },\r\n    \"guidMap\": {\r\n        \"$id\": 25,\r\n        \"$type\": \"18|CZToolKit.GraphProcessor.GUIDMapDictionary,
-    Assembly-CSharp\",\r\n        \"comparer\": $iref:24,\r\n        \"$rlength\":
-    0,\r\n        \"$rcontent\": [\r\n        ]\r\n    }\r\n}"
-  unityReferences: []
-  references:
-    version: 1
+    \"$type\": \"17|CZToolKit.Core.Blackboards.CZBlackboard, CZToolKit.Core\",\r\n       
+    \"dataMap\": {\r\n            \"$id\": 24,\r\n            \"$type\": \"18|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[CZToolKit.Core.Blackboards.ICZType, CZToolKit.Core]], mscorlib\",\r\n           
+    \"comparer\": {\r\n                \"$id\": 25,\r\n                \"$type\":
+    4\r\n            },\r\n            \"$rlength\": 0,\r\n            \"$rcontent\":
+    [\r\n            ]\r\n        },\r\n        \"guidMap\": {\r\n            \"$id\":
+    26,\r\n            \"$type\": \"19|System.Collections.Generic.Dictionary`2[[System.String,
+    mscorlib],[System.String, mscorlib]], mscorlib\",\r\n            \"comparer\":
+    $iref:25,\r\n            \"$rlength\": 0,\r\n            \"$rcontent\": [\r\n           
+    ]\r\n        }\r\n    }\r\n}"
+  graphUnityReferences: []

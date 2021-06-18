@@ -17,7 +17,6 @@ using UnityEngine;
 namespace CZToolKit.GOAP
 {
     [NodeMenuItem("ActionDebug")]
-    [NodeIcon("Assets/CZToolKit/2.0_UIFramework/Icons/Awesome/broom.png", width = 18, height = 14)]
     public class ActionDebugEvt : GOAPActionEvtNode
     {
         public string text = "";
