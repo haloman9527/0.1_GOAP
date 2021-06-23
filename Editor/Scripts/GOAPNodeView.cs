@@ -28,7 +28,7 @@ namespace CZToolKit.GOAP
             GOAPAction action = NodeData as GOAPAction;
 
             // 名字
-            VisualElement nameElement = CreateControlField(Utility_Refelection.GetFieldInfo(NodeDataType, "name"), "Name", newValue =>
+            VisualElement nameElement = CreateControlField(Utility_Reflection.GetFieldInfo(NodeDataType, "name"), "Name", newValue =>
             {
                 title = action.Name + $"({rawTitle})";
             });
@@ -37,7 +37,7 @@ namespace CZToolKit.GOAP
             controlsContainer.Add(nameElement);
 
             // 成本
-            VisualElement costElement = CreateControlField(Utility_Refelection.GetFieldInfo(NodeDataType, "cost"), "Cost");
+            VisualElement costElement = CreateControlField(Utility_Reflection.GetFieldInfo(NodeDataType, "cost"), "Cost");
             controlsContainer.Add(costElement);
 
             // 条件列表

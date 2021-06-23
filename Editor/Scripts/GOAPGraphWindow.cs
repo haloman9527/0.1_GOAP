@@ -38,12 +38,12 @@ namespace CZToolKit.GOAP.Editors
 
         protected override IEnumerable<Type> GetNodeTypes()
         {
-            foreach (var type in Utility_Refelection.GetChildrenTypes<GOAPAction>())
+            foreach (var type in Utility_Reflection.GetChildrenTypes<GOAPAction>())
             {
                 if (type.IsAbstract) continue;
                 yield return type;
             }
-            foreach (var type in Utility_Refelection.GetChildrenTypes<GOAPActionEvtNode>())
+            foreach (var type in Utility_Reflection.GetChildrenTypes<GOAPActionEvtNode>())
             {
                 if (type.IsAbstract) continue;
                 yield return type;

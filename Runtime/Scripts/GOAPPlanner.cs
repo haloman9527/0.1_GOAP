@@ -206,9 +206,9 @@ namespace CZToolKit.GOAP
                 return unit;
             }
 
-            public override void Recycle(GOAPNode _unit)
+            protected override void OnAfterRecycle(GOAPNode _unit)
             {
-                base.Recycle(_unit);
+                base.OnAfterRecycle(_unit);
                 _unit.parent = null;
                 _unit.runningCost = 0;
                 _unit.state = null;
@@ -219,13 +219,19 @@ namespace CZToolKit.GOAP
             {
                 return new GOAPNode();
             }
+
+            public override void Dispose()
+            {
+
+            }
         }
 
         public class DictionaryPool<K, V> : PoolBase<Dictionary<K, V>>
         {
-            public override void Recycle(Dictionary<K, V> _unit)
+
+            protected override void OnAfterRecycle(Dictionary<K, V> _unit)
             {
-                base.Recycle(_unit);
+                base.OnAfterRecycle(_unit);
                 _unit.Clear();
             }
 
@@ -233,13 +239,18 @@ namespace CZToolKit.GOAP
             {
                 return new Dictionary<K, V>();
             }
+
+            public override void Dispose()
+            {
+
+            }
         }
 
         public class QueuePool<T> : PoolBase<Queue<T>>
         {
-            public override void Recycle(Queue<T> _unit)
+            protected override void OnAfterRecycle(Queue<T> _unit)
             {
-                base.Recycle(_unit);
+                base.OnAfterRecycle(_unit);
                 _unit.Clear();
             }
 
@@ -248,13 +259,17 @@ namespace CZToolKit.GOAP
                 return new Queue<T>(8);
             }
 
+            public override void Dispose()
+            {
+
+            }
         }
 
         public class StackPool<T> : PoolBase<Stack<T>>
         {
-            public override void Recycle(Stack<T> _unit)
+            protected override void OnAfterRecycle(Stack<T> _unit)
             {
-                base.Recycle(_unit);
+                base.OnAfterRecycle(_unit);
                 _unit.Clear();
             }
 
@@ -262,19 +277,29 @@ namespace CZToolKit.GOAP
             {
                 return new Stack<T>(8);
             }
+
+            public override void Dispose()
+            {
+
+            }
         }
 
         public class ListPool<T> : PoolBase<List<T>>
         {
-            public override void Recycle(List<T> _unit)
+            protected override void OnAfterRecycle(List<T> _unit)
             {
-                base.Recycle(_unit);
+                base.OnAfterRecycle(_unit);
                 _unit.Clear();
             }
 
             protected override List<T> CreateNewUnit()
             {
                 return new List<T>(8);
+            }
+
+            public override void Dispose()
+            {
+
             }
         }
     }
