@@ -19,7 +19,7 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView CreateGraphView(IGraph _graph)
+        protected override BaseGraphView GenerateGraphView(IGraph _graph)
         {
             GOAPGraphView graphView = new GOAPGraphView(_graph, CommandDispatcher, this);
             return graphView;
@@ -74,13 +74,13 @@ namespace CZToolKit.GOAP.Editors
 
             miniMap.MarkDirtyRepaint();
 
-            ToolbarToggle tglMiniMap = new ToolbarToggle() { text = "MiniMap", style = { alignSelf = Align.Center, width = 80, unityTextAlign = TextAnchor.MiddleCenter } };
+            ToolbarToggle tglMiniMap = new ToolbarToggle() { text = "MiniMap" };
             tglMiniMap.RegisterValueChangedCallback(e =>
             {
                 miniMap.visible = e.newValue;
             });
             tglMiniMap.value = true;
-            Parent.Toolbar.AddToggleToLeft(tglMiniMap);
+            Parent.Toolbar.AddToggleToLeft(tglMiniMap, 80);
 
 
             // 添加模拟节点
