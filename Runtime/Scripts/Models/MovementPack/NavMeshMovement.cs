@@ -16,7 +16,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("Should the NavMeshAgent rotation be updated when the task ends?")]
         public bool updateRotation = true;
 
-        // Component references
+        #region ViewModel
         protected NavMeshAgent navMeshAgent;
         private bool startUpdateRotation;
 
@@ -48,9 +48,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             return navMeshAgent.SetDestination(destination);
         }
 
-        /// <summary>
-        /// Specifies if the rotation should be updated.
-        /// </summary>
+        /// <summary> Specifies if the rotation should be updated. </summary>
         /// <param name="update">Should the rotation be updated?</param>
         protected override void UpdateRotation(bool update)
         {
@@ -58,9 +56,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             navMeshAgent.updateUpAxis = update;
         }
 
-        /// <summary>
-        /// Does the agent have a pathfinding path?
-        /// </summary>
+        /// <summary> Does the agent have a pathfinding path? </summary>
         /// <returns>True if the agent has a pathfinding path.</returns>
         protected override bool HasPath()
         {
@@ -135,5 +131,6 @@ namespace CZToolKit.GOAP.Actions.Movement
         //    Stop();
         //    Debug.Log(1);
         //}
+        #endregion
     }
 }

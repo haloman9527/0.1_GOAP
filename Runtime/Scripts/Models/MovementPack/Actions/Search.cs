@@ -18,10 +18,7 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("Search for a target by combining the wander, within hearing range, and the within seeing range tasks using the Unity NavMesh.")]
-    //[TaskCategory("Movement")]
-    //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
-    //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}SearchIcon.png")]
-    [NodeMenuItem("Movement","Search")]
+    [NodeMenuItem("Movement", "Search")]
     public class Search : NavMeshMovement
     {
         [Tooltip("Minimum distance ahead of the current position to look ahead for a destination")]
@@ -66,10 +63,12 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The object that is found")]
         public SharedGameObject returnedObject;
 
+        #region ViewModel
         private float pauseTime;
         private float destinationReachTime;
 
         private Collider[] overlapColliders;
+
         public override GOAPActionStatus OnPerform()
         {
             if (HasArrived())
@@ -143,5 +142,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             return validDestination;
         }
 
+        #endregion
     }
 }

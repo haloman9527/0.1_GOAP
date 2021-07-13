@@ -5,42 +5,55 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    public abstract class GOAPAction : BaseNode, IGOAPAction
+    public abstract class GOAPAction : BaseNode
     {
         /// <summary> 行为的名称 </summary>
-        [Tooltip("行为名称")] [SerializeField, HideInInspector] string name;
+        [Tooltip("行为名称")]
+        [SerializeField] protected string name;
+
         /// <summary> 行为的执行成本 </summary>
-        [Tooltip("此行为的执行成本")] [HideInInspector] public float cost = 1;
+        [Tooltip("此行为的执行成本")]
+        [SerializeField] protected float cost = 1;
 
         /// <summary> 执行此行为的前提条件 </summary>
-        [Tooltip("此行为的前提条件")] [SerializeField, HideInInspector] List<GOAPState> preconditions = new List<GOAPState>();
+        [Tooltip("此行为的前提条件")]
+        [SerializeField] protected List<GOAPState> preconditions = new List<GOAPState>();
 
         /// <summary> 行为执行成功造成的效果 </summary>
-        [Tooltip("行为可以造成的效果")] [SerializeField, HideInInspector] List<GOAPState> effects = new List<GOAPState>();
+        [Tooltip("行为可以造成的效果")]
+        [SerializeField] protected List<GOAPState> effects = new List<GOAPState>();
 
-        [Vertical, Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
-        [PortSize(12), PortColor(0.1f, 0.5f, 0.1f)]
-        [Tooltip("进入行为时触发")]
-        public Action onEnter;
+        #region ViewModel
+        public event Action<GOAPState> onPreconditionAdded;
+        public event Action<GOAPState> onPreconditionRemoved;
+        public event Action<GOAPState> onEffectAdded;
+        public event Action<GOAPState> onEffectRemoved;
 
-        [Vertical, Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
-        [PortSize(12), PortColor(0.5f, 0.1f, 0.5f)]
-        [Tooltip("退出行为时触发")]
-        public Action onExit;
-
-        public string Name { get { return name; } set { name = value; } }
-        /// <summary> 行为所属代理 </summary>
-        public GOAPAgent Agent { get; private set; }
+        public string Name
+        {
+            get { return GetPropertyValue<string>(nameof(Name)); }
+            set { SetPropertyValue(nameof(Name), value); }
+        }
+        public float Cost
+        {
+            get { return GetPropertyValue<float>(nameof(Cost)); }
+            set { SetPropertyValue(nameof(Cost), value); }
+        }
+        public IReadOnlyList<GOAPState> Preconditions { get { return preconditions; } }
+        public IReadOnlyList<GOAPState> Effects { get { return effects; } }
         /// <summary> 冷却时间(可重载) </summary>
         public virtual float CooldownTime => 0f;
         /// <summary> 冷却计时器 </summary>
         public Cooldown Cooldown { get; private set; } = new Cooldown();
 
-        /// <summary> 执行此行为的前提条件 </summary>
-        public List<GOAPState> Preconditions { get { return preconditions; } }
+        public GOAPAgent Agent { get; set; }
 
-        /// <summary> 此技能对世界状态造成的修改 </summary>
-        public List<GOAPState> Effects { get { return effects; } }
+        public override void InitializeBindableProperties()
+        {
+            base.InitializeBindableProperties();
+            SetBindableProperty(nameof(Name), new BindableProperty<string>(name, v => { name = v; }));
+            SetBindableProperty(nameof(Cost), new BindableProperty<float>(cost, v => { cost = v; }));
+        }
 
         public override void Initialize(IGraphOwner _graphOwner)
         {
@@ -65,36 +78,27 @@ namespace CZToolKit.GOAP
 
         public virtual void OnPostPerform(bool _successed) { }
 
-        /// <summary> 添加一条前提条件 </summary>
-        public void SetPrecondition(string _key, bool _value)
+        public void AddPrecondition(GOAPState _precondition)
         {
-            GOAPState state = preconditions.Find(item => item.Key == _key);
-            if (state == null)
-                preconditions.Add(new GOAPState(_key, _value));
-            else
-                state.Value = _value;
+            preconditions.Add(_precondition);
+            onPreconditionAdded?.Invoke(_precondition);
         }
 
-        /// <summary> 移除一条前提条件 </summary>
-        public void RemovePrecondition(string _key)
+        public void AddEffect(GOAPState _effect)
         {
-            preconditions.RemoveAll(item => item.Key == _key);
+            effects.Add(_effect);
+            onEffectAdded?.Invoke(_effect);
         }
 
-        /// <summary> 添加一条效果 </summary>
-        public void SetEffect(string _key, bool _value)
+        public void RemovePrecondition(GOAPState _precondition)
         {
-            GOAPState state = effects.Find(item => item.Key == _key);
-            if (state == null)
-                effects.Add(new GOAPState(_key, _value));
-            else
-                state.Value = _value;
+            onPreconditionRemoved?.Invoke(null);
         }
 
-        /// <summary> 移除一条效果 </summary>
-        public void RemoveEffect(string _key)
+        public void RemoveEffect(GOAPState _effect)
         {
-            effects.RemoveAll(item => item.Key == _key);
+            onEffectRemoved?.Invoke(null);
         }
+        #endregion
     }
 }

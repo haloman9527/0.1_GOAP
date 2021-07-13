@@ -13,14 +13,14 @@
 #endregion
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
+using System;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("在NavMesh上徘徊")]
-    //[TaskCategory("Movement")]
-    //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
-    //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}WanderIcon.png")]
     [NodeMenuItem("Movement", "Wander")]
     public class Wander : NavMeshMovement
     {
@@ -37,14 +37,13 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The maximum number of retries per tick (set higher if using a slow tick time)")]
         public SharedInt targetRetries = new SharedInt(1);
 
-        private float pauseTime;
-        private float destinationReachTime;
-
-        public override void OnCreated()
+        public Wander() : base()
         {
-            base.OnCreated();
-            Name = "徘徊";
+            name = "徘徊";
         }
+        #region ViewModel
+        [NonSerialized] float pauseTime;
+        [NonSerialized] float destinationReachTime;
 
         // There is no success or fail state with wander - the agent will just keep wandering
         public override GOAPActionStatus OnPerform()
@@ -95,5 +94,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             return validDestination;
         }
+        #endregion
     }
 }

@@ -1,5 +1,6 @@
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
+using System;
 using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
@@ -18,8 +19,9 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The GameObject that the agent is evading")]
         public SharedGameObject target;
 
+        #region ViewModel
         // The position of the target at the last frame
-        private Vector3 targetPosition;
+        [NonSerialized] Vector3 targetPosition;
 
         public override void OnPrePerform()
         {
@@ -64,5 +66,6 @@ namespace CZToolKit.GOAP.Actions.Movement
 
             return Agent.transform.position + (Agent.transform.position - position).normalized * lookAheadDistance.Value;
         }
+        #endregion
     }
 }

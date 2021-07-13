@@ -1,7 +1,9 @@
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
@@ -14,22 +16,22 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The length of time that the agent should pause when arriving at a waypoint")]
         public float waypointPauseDuration = 0;
         [Tooltip("The waypoints to move to")]
-        //public List<GameObject> waypoints = new List<GameObject>();
         public SharedGameObjectList waypoints = new SharedGameObjectList();
 
-        // The current index that we are heading towards within the waypoints array
-        private int waypointIndex;
-        private float waypointReachedTime;
-
-        public override void OnCreated()
+        public Patrol() : base()
         {
-            base.OnCreated();
-            SetPrecondition("HasTarget", false);
-            SetEffect("HasTarget", true);
+            preconditions.Add(new GOAPState("HasTarget", false));
+
+            effects.Add(new GOAPState("HasTarget", true));
+
             randomPatrol = false;
             waypointPauseDuration = 0;
-            //waypoints.Value.Clear();
         }
+
+        #region ViewModel
+        // The current index that we are heading towards within the waypoints array
+        [NonSerialized] int waypointIndex;
+        [NonSerialized] float waypointReachedTime;
 
         public override void OnPrePerform()
         {
@@ -124,5 +126,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             UnityEditor.Handles.color = oldColor;
 #endif
         }
+        #endregion
     }
 }

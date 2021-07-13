@@ -18,12 +18,10 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("寻找一个掩体躲起来，使用NavMesh移动")]
-    //[TaskCategory("Movement")]
-    //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
-    //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}CoverIcon.png")]
     [NodeMenuItem("Movement", "Cover")]
     public class Cover : NavMeshMovement
     {
+        #region Model
         [Tooltip("The distance to search for cover")]
         public SharedFloat maxCoverDistance = new SharedFloat(1000);
         [Tooltip("The layermask of the available cover positions")]
@@ -41,11 +39,21 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("Max rotation delta if lookAtCoverPoint")]
         public SharedFloat maxLookAtRotationDelta;
 
-        private Vector3 coverPoint;
+
+        public Cover() : base()
+        {
+            name = "Cover";
+            cost = 1;
+        }
+
+        #endregion
+
+        #region ViewModel
+        Vector3 coverPoint;
         // The position to reach, offsetted from coverPoint
-        private Vector3 coverTarget;
+        Vector3 coverTarget;
         // Was cover found?
-        private bool foundCover;
+        bool foundCover;
 
         public override void OnPrePerform()
         {
@@ -101,5 +109,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             return GOAPActionStatus.Running;
         }
+        #endregion
     }
 }

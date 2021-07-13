@@ -110,7 +110,7 @@ namespace CZToolKit.GOAP
                     Dictionary<string, bool> currentState = PopulateState(_parent.state, action.Effects);
 
                     // 生成动作完成的节点链，成本累加
-                    GOAPNode node = NodePool.Spawn(_parent, _parent.runningCost + action.cost, currentState, action);
+                    GOAPNode node = NodePool.Spawn(_parent, _parent.runningCost + action.Cost, currentState, action);
 
                     // 如果当前状态能够达成目标
                     if (currentState.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
@@ -126,7 +126,7 @@ namespace CZToolKit.GOAP
         /// <summary> 返回一个新的修改过的状态 </summary>
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_effects">行为效果</param>
-        private Dictionary<string, bool> PopulateState(Dictionary<string, bool> _currentStates, List<GOAPState> _effects)
+        private Dictionary<string, bool> PopulateState(Dictionary<string, bool> _currentStates, IReadOnlyList<GOAPState> _effects)
         {
             Dictionary<string, bool> newStates = DictionaryObjPool.Spawn();
             newStates.Clear();
@@ -147,7 +147,7 @@ namespace CZToolKit.GOAP
         /// <param name="_currentStates"></param>
         /// <param name="_conditions"></param>
         /// <returns></returns>
-        public static bool InState(Dictionary<string, bool> _currentStates, List<GOAPState> _conditions)
+        public static bool InState(Dictionary<string, bool> _currentStates, IReadOnlyList<GOAPState> _conditions)
         {
             foreach (GOAPState goal in _conditions)
             {

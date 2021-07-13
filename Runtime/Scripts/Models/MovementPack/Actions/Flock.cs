@@ -18,9 +18,6 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("在场景中聚集，使用NavMesh移动")]
-    //[TaskCategory("Movement")]
-    //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
-    //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}FlockIcon.png")]
     [NodeMenuItem("Movement", "Flock")]
     public class Flock : NavMeshGroupMovement
     {
@@ -35,7 +32,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The greater the separationWeight is the more likely it is that the agents will be separated")]
         public SharedFloat separationWeight = new SharedFloat(0.6f);
 
-
+        #region ViewModel
         // Determine the three flock parameters: alignment, cohesion, and separation.
         // Alignment: determines which direction to move
         // Cohesion: Determines a common position to move towards
@@ -95,5 +92,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             return GOAPActionStatus.Running;
         }
+        #endregion
     }
 }

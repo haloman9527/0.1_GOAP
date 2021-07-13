@@ -27,23 +27,25 @@ namespace CZToolKit.GOAP
         public float sector = 90;
         public LayerMask layer;
 
-        private NavMeshAgent navMeshAgent;
-
-        [Vertical, Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
+        [Vertical, Input(IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
         [Tooltip("前往下个地点时触发")]
         public UnityAction onRefindTarget;
 
-        [Vertical, Port(PortDirection.Input, IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
+        [Vertical, Input(IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
         [Tooltip("看到敌人时触发")]
         public UnityAction onFindedTarget;
 
-        public override void OnCreated()
+        public WanderAction() : base()
         {
-            base.OnCreated();
-            Name = "徘徊";
-            SetPrecondition("HasTarget", false);
-            SetEffect("HasTarget", true);
+            name = "徘徊";
+
+            preconditions.Add(new GOAPState() { Key = "HasTarget", Value = false });
+
+            effects.Add(new GOAPState() { Key = "HasTarget", Value = true });
         }
+
+        #region ViewModel
+        [NonSerialized] NavMeshAgent navMeshAgent;
 
         protected override void OnInitialized()
         {
@@ -205,5 +207,6 @@ namespace CZToolKit.GOAP
             return mesh;
         }
 #endif
+        #endregion
     }
 }

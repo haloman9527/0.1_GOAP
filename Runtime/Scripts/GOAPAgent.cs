@@ -71,7 +71,7 @@ namespace CZToolKit.GOAP
             Planner = new GOAPPlanner();
             FSM = new GOAPFSM();
             GraphAsset = GraphAsset.Clone() as GOAPGraphAsset;
-            T_GraphAsset.Graph.Initialize(this);
+            T_Graph.Initialize(this);
             Goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
         }
 
@@ -98,7 +98,7 @@ namespace CZToolKit.GOAP
                      // 搜寻计划
                      foreach (GOAPGoal goal in Goals)
                      {
-                         Planner.Plan(T_GraphAsset.TGraph.AvailableActions.ToArray(), States, goal, maxDepth, ref storedActionQueue);
+                         Planner.Plan(T_Graph.AvailableActions.ToArray(), States, goal, maxDepth, ref storedActionQueue);
                          if (StoredActionQueue.Count == 0)
                          {
                              CurrentGoal = goal;
@@ -261,7 +261,7 @@ namespace CZToolKit.GOAP
         {
             Gizmos.DrawIcon(transform.position, "GOAP/GOAP_Scene_Icon.png", true);
             if (T_GraphAsset != null && enabled)
-                T_GraphAsset.TGraph.DrawGizmos(this);
+                T_GraphAsset.T_Graph.DrawGizmos(this);
         }
     }
 }

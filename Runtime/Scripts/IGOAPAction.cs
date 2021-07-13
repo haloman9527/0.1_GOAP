@@ -17,20 +17,17 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    public interface IGOAPAction
+    public interface IGOAPActionViewModel
     {
         string Name { get; }
+        float Cost { get; }
+        IReadOnlyList<GOAPState> Preconditions { get; }
+        IReadOnlyList<GOAPState> Effects { get; }
 
         bool IsUsable();
-
         void DynamicallyEvaluateCost();
-
         bool IsProceduralPrecondition(Dictionary<string, bool> currentState);
-
         void OnPrePerform();
-
         GOAPActionStatus OnPerform();
-
-        void OnPostPerform(bool _successed);
-    }
+        void OnPostPerform(bool _successed);    }
 }

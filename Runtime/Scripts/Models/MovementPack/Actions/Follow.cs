@@ -13,15 +13,12 @@
 #endregion
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("跟随一个目标，使用NavMesh移动")]
-    //[TaskCategory("Movement")]
-    //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
-    //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}FollowIcon.png")]
     [NodeMenuItem("Movement", "Follow")]
     public class Follow : NavMeshMovement
     {
@@ -30,14 +27,14 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("Start moving towards the target if the target is further than the specified distance")]
         public SharedFloat moveDistance = new SharedFloat(2);
 
-        private Vector3 lastTargetPosition;
-        private bool hasMoved;
-
-        public override void OnCreated()
+        public Follow() : base()
         {
-            base.OnCreated();
-            Name = "跟随";
+            name = "跟随";
         }
+
+        #region ViewModel
+        [NonSerialized] Vector3 lastTargetPosition;
+        [NonSerialized] bool hasMoved;
 
         public override void OnPrePerform()
         {
@@ -77,5 +74,6 @@ namespace CZToolKit.GOAP.Actions.Movement
 
             return GOAPActionStatus.Running;
         }
+        #endregion
     }
 }

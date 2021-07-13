@@ -13,16 +13,14 @@
 #endregion
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh跟随一个目标")]
-    //[TaskCategory("Movement")]
-    //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
-    //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}LeaderFollowIcon.png")]
-    [NodeMenuItem("Movement","LeaderFollow")]
+    [NodeMenuItem("Movement", "LeaderFollow")]
     public class LeaderFollow : NavMeshGroupMovement
     {
         [Tooltip("Agents less than this distance apart are neighbors")]
@@ -36,11 +34,9 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The leader to follow")]
         public SharedGameObject leader = null;
 
-        public SharedInt ii = new SharedInt();
-
-        // component cache
-        private Transform leaderTransform;
-        private NavMeshAgent leaderAgent;
+        #region ViewModel
+        [NonSerialized] Transform leaderTransform;
+        [NonSerialized] NavMeshAgent leaderAgent;
 
         public override void OnPrePerform()
         {
@@ -112,5 +108,6 @@ namespace CZToolKit.GOAP.Actions.Movement
         {
             return Vector3.Dot(leaderTransform.forward, transforms[agentIndex].forward) < -0.5f;
         }
+        #endregion
     }
 }

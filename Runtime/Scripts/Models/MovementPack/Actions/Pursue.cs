@@ -1,10 +1,11 @@
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
+using System;
 using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenuItem("Movement","Pursue")]
+    [NodeMenuItem("Movement", "Pursue")]
     public class Pursue : NavMeshMovement
     {
         [Tooltip("How far to predict the distance ahead of the target. Lower values indicate less distance should be predicated")]
@@ -12,17 +13,11 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("Multiplier for predicting the look ahead distance")]
         public float targetDistPredictionMult = 20;
         [Tooltip("The GameObject that the agent is pursuing")]
-        public SharedGameObject target;
+        public SharedGameObject target = new SharedGameObject(null);
 
+        #region ViewModel
         // The position of the target at the last frame
-        private Vector3 targetPosition;
-
-        public override void OnCreated()
-        {
-            targetDistPrediction = 20;
-            targetDistPredictionMult = 20;
-            target = null;
-        }
+        [NonSerialized] Vector3 targetPosition;
 
         public override void OnPrePerform()
         {
@@ -66,5 +61,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             targetPosition = target.Value.transform.position;
             return targetPosition + (targetPosition - prevTargetPosition) * futurePrediction;
         }
+        #endregion
     }
 }

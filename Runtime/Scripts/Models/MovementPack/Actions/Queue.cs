@@ -18,9 +18,6 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh前往目标")]
-    //[TaskCategory("Movement")]
-    //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
-    //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}QueueIcon.png")]
     [NodeMenuItem("Movement", "Queue")]
     public class Queue : NavMeshGroupMovement
     {
@@ -37,12 +34,12 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The target to seek towards")]
         public SharedGameObject target;
 
-        public override void OnCreated()
+        public Queue() : base()
         {
-            base.OnCreated();
-            Name = "排队";
+            name = "排队";
         }
 
+        #region ViewModel
         public override GOAPActionStatus OnPerform()
         {
             // Determine a destination for each agent
@@ -106,5 +103,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             // Normalize the value
             return ((separation / neighborCount) * -1).normalized * separationDistance.Value;
         }
+        #endregion
     }
 }

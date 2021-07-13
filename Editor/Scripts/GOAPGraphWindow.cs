@@ -19,40 +19,18 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView GenerateGraphView(IGraph _graph)
+        protected override BaseGraphView GenerateGraphView(BaseGraph _graph)
         {
-            GOAPGraphView graphView = new GOAPGraphView(_graph, CommandDispatcher, this);
+            GOAPGraphView graphView = new GOAPGraphView(_graph as GOAPGraph, CommandDispatcher, this);
             return graphView;
         }
     }
 
     public class GOAPGraphView : BaseGraphView
     {
-        protected override Type GetDefaultNodeViewType(Type _nodeDataType)
-        {
-            if (typeof(GOAPAction).IsAssignableFrom(_nodeDataType))
-                return typeof(GOAPNodeView);
-            else
-                return typeof(SimpleNodeView);
-        }
-
-        protected override IEnumerable<Type> GetNodeTypes()
-        {
-            foreach (var type in Utility_Reflection.GetChildrenTypes<GOAPAction>())
-            {
-                if (type.IsAbstract) continue;
-                yield return type;
-            }
-            foreach (var type in Utility_Reflection.GetChildrenTypes<GOAPActionEvtNode>())
-            {
-                if (type.IsAbstract) continue;
-                yield return type;
-            }
-        }
-
         Label label;
 
-        public GOAPGraphView(IGraph _graph, CommandDispatcher _commandDispatcher, BaseGraphWindow _window) : base(_graph, _commandDispatcher, _window)
+        public GOAPGraphView(GOAPGraph _graph, CommandDispatcher _commandDispatcher, BaseGraphWindow _window) : base(_graph, _commandDispatcher, _window)
         {
         }
 
@@ -80,12 +58,34 @@ namespace CZToolKit.GOAP.Editors
                 miniMap.visible = e.newValue;
             });
             tglMiniMap.value = true;
-            Parent.Toolbar.AddToggleToLeft(tglMiniMap, 80);
+            GraphWindow.Toolbar.AddToggleToLeft(tglMiniMap, 80);
 
 
             // 添加模拟节点
 
             // 模拟节点所有的世界状态
+        }
+
+        protected override Type GetDefaultNodeViewType(BaseNode _node)
+        {
+            if (typeof(GOAPAction).IsAssignableFrom(_node.GetType()))
+                return typeof(GOAPNodeView);
+            else
+                return typeof(BaseNodeView);
+        }
+
+        protected override IEnumerable<Type> GetNodeTypes()
+        {
+            foreach (var type in Utility_Reflection.GetChildrenTypes<GOAPAction>())
+            {
+                if (type.IsAbstract) continue;
+                yield return type;
+            }
+            foreach (var type in Utility_Reflection.GetChildrenTypes<GOAPActionEvtNode>())
+            {
+                if (type.IsAbstract) continue;
+                yield return type;
+            }
         }
 
         void UpdateLabel()

@@ -1,5 +1,6 @@
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
+using System;
 using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
@@ -14,13 +15,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("The GameObject that the agent is fleeing from")]
         public SharedGameObject target;
 
-        private bool hasMoved;
-
-        public override void OnCreated()
-        {
-            base.OnCreated();
-            Name = "Ã”¿Î";
-        }
+        #region ViewModel
+        [NonSerialized] bool hasMoved;
 
         public override void OnPrePerform()
         {
@@ -79,5 +75,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             return base.SetDestination(destination);
         }
+        #endregion
     }
 }

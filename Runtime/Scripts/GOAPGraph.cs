@@ -18,14 +18,14 @@ namespace CZToolKit.GOAP
                 AvailableActions = new List<GOAPAction>();
             else
                 AvailableActions.Clear();
-            foreach (var node in NodesGUIDMapping)
+            foreach (var node in Nodes)
             {
                 if (node.Value is GOAPAction action)
                     AvailableActions.Add(action);
             }
             AvailableActions.QuickSort((a, center) =>
             {
-                if (a.position.y > center.position.y)
+                if (a.Position.y > center.Position.y)
                     return true;
                 return false;
             });
@@ -37,7 +37,7 @@ namespace CZToolKit.GOAP
 
         public void DrawGizmos(GOAPAgent _agent)
         {
-            foreach (var node in NodesGUIDMapping)
+            foreach (var node in Nodes)
             {
                 GOAPAction action = node.Value as GOAPAction;
                 if (action != null)

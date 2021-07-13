@@ -11,15 +11,16 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("If target is null then use the target position")]
         public Vector3 targetPosition;
 
-        public override void OnCreated()
+        public Seek() : base()
         {
-            base.OnCreated();
-            SetPrecondition("HasTarget", true);
-            SetEffect("InXXXRange", true);
+            preconditions.Add(new GOAPState("HasTarget", true));
+            effects.Add(new GOAPState("InXXXRange", true));
+
             target = null;
             targetPosition = Vector3.zero;
         }
 
+        #region ViewModel
         public override bool IsUsable()
         {
             return !Agent.GetState("HasTarget");
@@ -39,7 +40,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             if (HasArrived())
                 return GOAPActionStatus.Success;
             SetDestination(Target());
-            return  GOAPActionStatus.Running;
+            return GOAPActionStatus.Running;
         }
 
         // Return targetPosition if target is null
@@ -49,5 +50,6 @@ namespace CZToolKit.GOAP.Actions.Movement
                 return target.transform.position;
             return targetPosition;
         }
+        #endregion
     }
 }

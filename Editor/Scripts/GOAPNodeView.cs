@@ -1,4 +1,5 @@
 ﻿using CZToolKit.Core;
+using CZToolKit.GraphProcessor;
 using CZToolKit.GraphProcessor.Editors;
 using System;
 using System.Collections.Generic;
@@ -9,77 +10,138 @@ using UnityEngine.UIElements;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPNodeView : SimpleNodeView
+    public class GOAPNodeView : SimpleNodeView<GOAPAction>
     {
         string rawTitle;
+        TextField nameField;
+        FloatField costField;
+
+        Foldout conditionFoldout;
+        Button btnAddCondition;
+        Foldout effectFoldout;
+        Button btnAddEffect;
+
+        public GOAPNodeView() : base()
+        {
+            nameField = new TextField();
+            controlsContainer.Add(nameField);
+
+            costField = new FloatField();
+            controlsContainer.Add(costField);
+
+            conditionFoldout = new Foldout() { text = "条件" };
+            conditionFoldout.style.unityFontStyleAndWeight = FontStyle.Bold;
+            controlsContainer.Add(conditionFoldout);
+
+            btnAddCondition = new Button();
+            btnAddCondition.text = "添加条件";
+            btnAddCondition.style.alignItems = Align.Center;
+            conditionFoldout.Add(btnAddCondition);
+
+            effectFoldout = new Foldout() { text = "可以造成的效果" };
+            effectFoldout.style.unityFontStyleAndWeight = FontStyle.Bold;
+            controlsContainer.Add(effectFoldout);
+
+            btnAddEffect = new Button();
+            btnAddEffect.text = "添加效果";
+            btnAddEffect.style.alignItems = Align.Center;
+            effectFoldout.Add(btnAddEffect);
+
+            titleContainer.style.height = 30;
+            style.minWidth = 150;
+        }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
 
-            titleContainer.style.height = 30;
-            style.minWidth = 150;
-            rawTitle = title;
 
-            if (!typeof(GOAPAction).IsAssignableFrom(NodeDataType)) return;
+            if (!typeof(GOAPAction).IsAssignableFrom(T_Model.GetType())) return;
 
-            title = (NodeData as GOAPAction).Name + $"({rawTitle})";
-
-            GOAPAction action = NodeData as GOAPAction;
-
-            // 名字
-            VisualElement nameElement = CreateControlField(Utility_Reflection.GetFieldInfo(NodeDataType, "name"), "Name", newValue =>
+            nameField.RegisterValueChangedCallback(evt =>
             {
-                title = action.Name + $"({rawTitle})";
+                T_Model.Name = evt.newValue;
             });
-            nameElement.RegisterCallback<FocusInEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.On; });
-            nameElement.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
-            controlsContainer.Add(nameElement);
+            nameField.RegisterCallback<FocusInEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.On; });
+            nameField.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
 
-            // 成本
-            VisualElement costElement = CreateControlField(Utility_Reflection.GetFieldInfo(NodeDataType, "cost"), "Cost");
-            controlsContainer.Add(costElement);
-
-            // 条件列表
-            Foldout conditionFoldout = new Foldout() { text = "条件" };
-            conditionFoldout.style.unityFontStyleAndWeight = FontStyle.Bold;
-            controlsContainer.Add(conditionFoldout);
-            Button btnAddCondition = new Button(() =>
+            costField.RegisterValueChangedCallback(evt =>
             {
-                GOAP.GOAPState state = new GOAP.GOAPState();
-                action.Preconditions.Add(state);
-                conditionFoldout.Add(CreateToggle(state, action.Preconditions));
+                T_Model.Cost = evt.newValue;
+            });
+
+            btnAddCondition.clicked += () =>
+            {
+                T_Model.AddPrecondition(new GOAPState());
                 Owner.SetDirty();
-            });
-            btnAddCondition.text = "添加条件";
-            btnAddCondition.style.alignItems = Align.Center;
-            conditionFoldout.Add(btnAddCondition);
-            for (int i = 0; i < action.Preconditions.Count; i++)
+            };
+            btnAddEffect.clicked += () =>
             {
-                conditionFoldout.Add(CreateToggle(action.Preconditions[i], action.Preconditions));
+                T_Model.AddEffect(new GOAPState());
+                Owner.SetDirty();
+            };
+
+            for (int i = 0; i < T_Model.Preconditions.Count; i++)
+            {
+                conditionFoldout.Add(CreateToggle(T_Model.Preconditions[i], (ele, state) =>
+                {
+                    T_Model.RemovePrecondition(state);
+                    ele.RemoveFromHierarchy();
+                }));
             }
 
-            // 效果列表
-            Foldout effectFoldout = new Foldout() { text = "可以造成的效果" };
-            effectFoldout.style.unityFontStyleAndWeight = FontStyle.Bold;
-            controlsContainer.Add(effectFoldout);
-            Button btnAddEffect = new Button(() =>
+            for (int i = 0; i < T_Model.Effects.Count; i++)
             {
-                GOAP.GOAPState state = new GOAP.GOAPState();
-                action.Effects.Add(state);
-                effectFoldout.Add(CreateToggle(state, action.Effects));
-                Owner.SetDirty();
-            });
-            btnAddEffect.text = "添加效果";
-            btnAddEffect.style.alignItems = Align.Center;
-            effectFoldout.Add(btnAddEffect);
-            for (int i = 0; i < action.Effects.Count; i++)
-            {
-                effectFoldout.Add(CreateToggle(action.Effects[i], action.Effects));
+                effectFoldout.Add(CreateToggle(T_Model.Effects[i], (ele, state) =>
+                {
+                    T_Model.RemoveEffect(state);
+                    ele.RemoveFromHierarchy();
+                }));
             }
         }
 
-        VisualElement CreateToggle(GOAP.GOAPState _state, List<GOAP.GOAPState> _states)
+        protected override void BindingPropertiesBeforeUpdate()
+        {
+            base.BindingPropertiesBeforeUpdate();
+            rawTitle = T_Model.Title;
+
+            T_Model.RegisterValueChangedEvent<string>(nameof(T_Model.Name), v =>
+            {
+                Model.Title = T_Model.Name + $"({rawTitle})";
+                nameField.SetValueWithoutNotify(v);
+            });
+
+            T_Model.RegisterValueChangedEvent<float>(nameof(T_Model.Cost), v =>
+            {
+                costField.SetValueWithoutNotify(v);
+            });
+
+            T_Model.onPreconditionAdded += v =>
+            {
+                conditionFoldout.Add(CreateToggle(v, (ele, state) =>
+                {
+                    T_Model.RemovePrecondition(state);
+                }));
+            };
+            T_Model.onPreconditionRemoved += v =>
+            {
+
+            };
+
+            T_Model.onEffectAdded += v =>
+            {
+                effectFoldout.Add(CreateToggle(v, (ele, state) =>
+                {
+                    T_Model.RemoveEffect(state);
+                }));
+            };
+            T_Model.onEffectRemoved += v =>
+            {
+
+            };
+        }
+
+        VisualElement CreateToggle(GOAPState _state, Action<VisualElement, GOAPState> _onBtnRemoveClicked)
         {
             VisualElement box = new VisualElement();
             box.style.flexDirection = FlexDirection.Row;
@@ -107,8 +169,7 @@ namespace CZToolKit.GOAP
             box.Add(CreateSmallButton(EditorGUIUtility.FindTexture("P4_DeletedLocal"), 14,
                 () =>
                 {
-                    _states.Remove(_state);
-                    box.RemoveFromHierarchy();
+                    _onBtnRemoveClicked?.Invoke(box, _state);
                 }));
             return box;
 

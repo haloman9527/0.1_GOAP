@@ -5,16 +5,15 @@ namespace CZToolKit.GOAP
     [NodeMenuItem("Attack")]
     public class AttackAction : GOAPAction
     {
-        public override void OnCreated()
+        public AttackAction() : base()
         {
-            Name = "攻击";
+            name = "攻击";
 
-            SetPrecondition("HasTarget", true);
-            SetPrecondition("InAttackRange", true);
+            preconditions.Add(new GOAPState() { Key = "HasTarget", Value = true });
+            preconditions.Add(new GOAPState() { Key = "InAttackRange", Value = true });
 
-            SetEffect("KillTarget", true);
+            effects.Add(new GOAPState() { Key = "KillTarget", Value = true });
         }
-
         public override GOAPActionStatus OnPerform()
         {
             return GOAPActionStatus.Running;

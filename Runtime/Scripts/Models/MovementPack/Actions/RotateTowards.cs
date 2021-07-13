@@ -19,9 +19,6 @@ namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("Rotates towards the specified rotation. The rotation can either be specified by a transform or rotation. If the transform "+
                      "is used then the rotation will not be used.")]
-    //[TaskCategory("Movement")]
-    //[HelpURL("https://www.opsive.com/support/documentation/behavior-designer-movement-pack/")]
-    //[TaskIcon("Assets/Behavior Designer Movement/Editor/Icons/{SkinColor}RotateTowardsIcon.png")]
     [NodeMenuItem("Movement", "RotateTowards")]
     public class RotateTowards : GOAPAction
     {
@@ -38,6 +35,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         [Tooltip("If target is null then use the target rotation")]
         public SharedVector3 targetRotation;
 
+        #region ViewModel
         public override GOAPActionStatus OnPerform()
         {
             var rotation = Target();
@@ -70,5 +68,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             return Quaternion.LookRotation(position);
         }
+        #endregion
     }
 }
