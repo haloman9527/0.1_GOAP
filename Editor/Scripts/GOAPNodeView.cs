@@ -49,37 +49,15 @@ namespace CZToolKit.GOAP
 
             titleContainer.style.height = 30;
             style.minWidth = 150;
+
+            nameField.RegisterCallback<FocusInEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.On; });
+            nameField.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
         }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-
-
             if (!typeof(GOAPAction).IsAssignableFrom(T_Model.GetType())) return;
-
-            nameField.RegisterValueChangedCallback(evt =>
-            {
-                T_Model.Name = evt.newValue;
-            });
-            nameField.RegisterCallback<FocusInEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.On; });
-            nameField.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
-
-            costField.RegisterValueChangedCallback(evt =>
-            {
-                T_Model.Cost = evt.newValue;
-            });
-
-            btnAddCondition.clicked += () =>
-            {
-                T_Model.AddPrecondition(new GOAPState());
-                Owner.SetDirty();
-            };
-            btnAddEffect.clicked += () =>
-            {
-                T_Model.AddEffect(new GOAPState());
-                Owner.SetDirty();
-            };
 
             for (int i = 0; i < T_Model.Preconditions.Count; i++)
             {
@@ -100,10 +78,31 @@ namespace CZToolKit.GOAP
             }
         }
 
-        protected override void BindingPropertiesBeforeUpdate()
+        protected override void BindingProperties()
         {
-            base.BindingPropertiesBeforeUpdate();
+            base.BindingProperties();
             rawTitle = T_Model.Title;
+
+            nameField.RegisterValueChangedCallback(evt =>
+            {
+                T_Model.Name = evt.newValue;
+            });
+
+            costField.RegisterValueChangedCallback(evt =>
+            {
+                T_Model.Cost = evt.newValue;
+            });
+
+            btnAddCondition.clicked += () =>
+            {
+                T_Model.AddPrecondition(new GOAPState());
+                Owner.SetDirty();
+            };
+            btnAddEffect.clicked += () =>
+            {
+                T_Model.AddEffect(new GOAPState());
+                Owner.SetDirty();
+            };
 
             T_Model.RegisterValueChangedEvent<string>(nameof(T_Model.Name), v =>
             {
