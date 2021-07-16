@@ -1,3 +1,18 @@
+#region æ³¨ é‡Š
+/***
+ *
+ *  Title:
+ *  
+ *  Description:
+ *  
+ *  Date:
+ *  Version:
+ *  Writer: åŠåªé¾™è™¾äºº
+ *  Github: https://github.com/HalfLobsterMan
+ *  Blog: https://www.crosshair.top/
+ *
+ */
+#endregion
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
 using System;
@@ -7,7 +22,7 @@ using Random = UnityEngine.Random;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeTooltip("ÑØÉè¶¨Â·¾¶Ñ²Âß£¬Ê¹ÓÃNavMeshÒÆ¶¯")]
+    [NodeTooltip("ï¿½ï¿½ï¿½è¶¨Â·ï¿½ï¿½Ñ²ï¿½ß£ï¿½Ê¹ï¿½ï¿½NavMeshï¿½Æ¶ï¿½")]
     [NodeMenuItem("Movement", "Patrol")]
     public class Patrol : NavMeshMovement
     {
