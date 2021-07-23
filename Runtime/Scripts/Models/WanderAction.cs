@@ -31,16 +31,16 @@ namespace CZToolKit.GOAP
     public class WanderAction : GOAPAction
     {
         [Header("巡逻范围")]
-        public SharedGameObject center;
+        [SerializeField] SharedGameObject center;
 
-        public float range = 10;
+        [SerializeField] float range = 10;
 
         [Header("视野范围")]
-        public float radius = 5;
+        [SerializeField] float radius = 5;
         [Range(0, 360)]
         [Header("视野角度")]
-        public float sector = 90;
-        public LayerMask layer;
+        [SerializeField] float sector = 90;
+        [SerializeField] LayerMask layer;
 
         [Vertical, Input(IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
         [Tooltip("前往下个地点时触发")]
@@ -62,9 +62,20 @@ namespace CZToolKit.GOAP
         #region ViewModel
         [NonSerialized] NavMeshAgent navMeshAgent;
 
+        public GameObject Center
+        {
+            get { return GetPropertyValue<GameObject>(nameof(Center)); }
+            set { SetPropertyValue(nameof(Center), value); }
+        }
+
         protected override void OnInitialized()
         {
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
+        }
+
+        public override void OnInitializedPropertyMapping(IVariableOwner variableOwner)
+        {
+            SetBindableProperty(nameof(Center), new BindableProperty<GameObject>(center.Value, v => center.Value = v));
         }
 
         public override bool IsProceduralPrecondition(Dictionary<string, bool> currentState)

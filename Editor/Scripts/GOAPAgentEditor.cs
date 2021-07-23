@@ -19,7 +19,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace CZToolKit.GOAP
+namespace CZToolKit.GOAP.Editors
 {
     [CustomEditor(typeof(GOAPAgent))]
     public class GOAPAgentEditor : GraphAssetOwnerEditor

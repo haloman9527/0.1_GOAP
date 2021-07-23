@@ -107,12 +107,14 @@ namespace CZToolKit.GOAP
 
         public void RemovePrecondition(GOAPState _precondition)
         {
-            onPreconditionRemoved?.Invoke(null);
+            if (preconditions.Remove(_precondition))
+                onPreconditionRemoved?.Invoke(_precondition);
         }
 
         public void RemoveEffect(GOAPState _effect)
         {
-            onEffectRemoved?.Invoke(null);
+            if (effects.Remove(_effect))
+                onEffectRemoved?.Invoke(_effect);
         }
         #endregion
     }

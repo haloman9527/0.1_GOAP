@@ -31,7 +31,6 @@ namespace CZToolKit.GOAP.Editors
             var once = property.FindPropertyRelative("Once");
             var priority = property.FindPropertyRelative("Priority");
 
-
             EditorGUI.indentLevel++;
             GUI.Box(position, "");
 
@@ -42,7 +41,7 @@ namespace CZToolKit.GOAP.Editors
 
             position.x += position.width;
             position.width = width - 200;
-            key.stringValue = EditorGUI.TextField(position, key.stringValue);
+            key.stringValue = EditorGUI.DelayedTextField(position, key.stringValue);
 
             position.x += position.width + 5;
             position.width = 50;
@@ -52,7 +51,7 @@ namespace CZToolKit.GOAP.Editors
             position.width = 120;
             float lableWidth = EditorGUIUtility.labelWidth;
             EditorGUIUtility.labelWidth = 75;
-            priority.floatValue = EditorGUI.FloatField(position, new GUIContent("Priority", "优先级，越高越先执行"), priority.floatValue);
+            priority.floatValue = EditorGUI.DelayedFloatField(position, new GUIContent("Priority", "优先级，越高越先执行"), priority.floatValue);
             EditorGUIUtility.labelWidth = lableWidth;
 
             EditorGUI.indentLevel--;

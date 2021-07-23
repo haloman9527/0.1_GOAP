@@ -36,6 +36,9 @@ namespace CZToolKit.GOAP
         Foldout effectFoldout;
         Button btnAddEffect;
 
+        Dictionary<GOAPState, VisualElement> ConditionElements = new Dictionary<GOAPState, VisualElement>();
+        Dictionary<GOAPState, VisualElement> EffectElements = new Dictionary<GOAPState, VisualElement>();
+
         public GOAPNodeView() : base()
         {
             nameField = new TextField();
@@ -76,20 +79,73 @@ namespace CZToolKit.GOAP
 
             for (int i = 0; i < T_Model.Preconditions.Count; i++)
             {
-                conditionFoldout.Add(CreateToggle(T_Model.Preconditions[i], (ele, state) =>
+                VisualElement v = CreateToggle(T_Model.Preconditions[i], (ele, state) =>
                 {
                     T_Model.RemovePrecondition(state);
                     ele.RemoveFromHierarchy();
-                }));
+                });
+                conditionFoldout.Add(v);
+                ConditionElements[T_Model.Preconditions[i]] = v;
             }
 
             for (int i = 0; i < T_Model.Effects.Count; i++)
             {
-                effectFoldout.Add(CreateToggle(T_Model.Effects[i], (ele, state) =>
+                VisualElement v = CreateToggle(T_Model.Effects[i], (ele, state) =>
                 {
                     T_Model.RemoveEffect(state);
                     ele.RemoveFromHierarchy();
-                }));
+                });
+                effectFoldout.Add(v);
+                EffectElements[T_Model.Effects[i]] = v;
+            }
+        }
+
+        void OnNameChanged(string _newName)
+        {
+            Model.Title = T_Model.Name + $"({rawTitle})";
+            nameField.SetValueWithoutNotify(_newName);
+        }
+
+        void OnCostChanged(float _newCost)
+        {
+            costField.SetValueWithoutNotify(_newCost);
+        }
+
+        void OnPreconditionAdded(GOAPState _newCondition)
+        {
+            VisualElement v = CreateToggle(_newCondition, (ele, state) =>
+            {
+                T_Model.RemovePrecondition(state);
+            });
+            conditionFoldout.Add(v);
+            ConditionElements[_newCondition] = v;
+        }
+
+        void OnPreconditionRemoved(GOAPState _condition)
+        {
+            if (ConditionElements.TryGetValue(_condition, out VisualElement e))
+            {
+                conditionFoldout.Remove(e);
+                ConditionElements.Remove(_condition);
+            }
+        }
+
+        void OnEffectAdded(GOAPState _newEffect)
+        {
+            VisualElement v = CreateToggle(_newEffect, (ele, state) =>
+            {
+                T_Model.RemoveEffect(state);
+            });
+            effectFoldout.Add(v);
+            EffectElements[_newEffect] = v;
+        }
+
+        void OnEffectRemoved(GOAPState _newEffect)
+        {
+            if (EffectElements.TryGetValue(_newEffect, out VisualElement e))
+            {
+                effectFoldout.Remove(e);
+                EffectElements.Remove(_newEffect);
             }
         }
 
@@ -97,6 +153,10 @@ namespace CZToolKit.GOAP
         {
             base.BindingProperties();
             rawTitle = T_Model.Title;
+
+            nameField.SetValueWithoutNotify(T_Model.Name);
+            costField.SetValueWithoutNotify(T_Model.Cost);
+            Model.Title = T_Model.Name + $"({rawTitle})";
 
             nameField.RegisterValueChangedCallback(evt =>
             {
@@ -119,40 +179,28 @@ namespace CZToolKit.GOAP
                 Owner.SetDirty();
             };
 
-            T_Model.RegisterValueChangedEvent<string>(nameof(T_Model.Name), v =>
-            {
-                Model.Title = T_Model.Name + $"({rawTitle})";
-                nameField.SetValueWithoutNotify(v);
-            });
+            T_Model.BindingProperty<string>(nameof(T_Model.Name), OnNameChanged);
+            T_Model.BindingProperty<float>(nameof(T_Model.Cost), OnCostChanged);
 
-            T_Model.RegisterValueChangedEvent<float>(nameof(T_Model.Cost), v =>
-            {
-                costField.SetValueWithoutNotify(v);
-            });
+            T_Model.onPreconditionAdded += OnPreconditionAdded;
+            T_Model.onPreconditionRemoved += OnPreconditionRemoved;
 
-            T_Model.onPreconditionAdded += v =>
-            {
-                conditionFoldout.Add(CreateToggle(v, (ele, state) =>
-                {
-                    T_Model.RemovePrecondition(state);
-                }));
-            };
-            T_Model.onPreconditionRemoved += v =>
-            {
+            T_Model.onEffectAdded += OnEffectAdded;
+            T_Model.onEffectRemoved += OnEffectRemoved;
+        }
 
-            };
+        public override void UnBindingProperties()
+        {
+            base.UnBindingProperties();
 
-            T_Model.onEffectAdded += v =>
-            {
-                effectFoldout.Add(CreateToggle(v, (ele, state) =>
-                {
-                    T_Model.RemoveEffect(state);
-                }));
-            };
-            T_Model.onEffectRemoved += v =>
-            {
+            T_Model.UnBindingProperty<string>(nameof(T_Model.Name), OnNameChanged);
+            T_Model.UnBindingProperty<float>(nameof(T_Model.Cost), OnCostChanged);
 
-            };
+            T_Model.onPreconditionAdded -= OnPreconditionAdded;
+            T_Model.onPreconditionRemoved -= OnPreconditionRemoved;
+
+            T_Model.onEffectAdded -= OnEffectAdded;
+            T_Model.onEffectRemoved -= OnEffectRemoved;
         }
 
         VisualElement CreateToggle(GOAPState _state, Action<VisualElement, GOAPState> _onBtnRemoveClicked)
@@ -185,8 +233,8 @@ namespace CZToolKit.GOAP
                 {
                     _onBtnRemoveClicked?.Invoke(box, _state);
                 }));
+            box.userData = _state;
             return box;
-
         }
 
         Button CreateSmallButton(string _text, float _size, Action _onClick)
