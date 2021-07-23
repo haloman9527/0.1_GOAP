@@ -47,18 +47,18 @@ namespace CZToolKit.GOAP.Editors
 
         public GOAPGraphView(GOAPGraph _graph, CommandDispatcher _commandDispatcher, BaseGraphWindow _window) : base(_graph, _commandDispatcher, _window)
         {
+            label = new Label();
+            label.style.fontSize = 30;
+            label.style.color = new StyleColor(new Color(0.18f, 1f, 0.63f));
+            label.style.alignSelf = Align.FlexEnd;
+            Add(label);
         }
 
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            label = new Label();
-            label.style.fontSize = 30;
-            label.style.color = new StyleColor(new Color(0.18f, 1f, 0.63f));
-            label.style.alignSelf = Align.FlexEnd;
-            //label.BindProperty(SerializedObject.FindProperty("m_Name"));
-            Add(label);
 
+            UpdateLabel();
             Add(new IMGUIContainer(UpdateLabel));
 
             MiniMap miniMap = new MiniMap();

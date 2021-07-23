@@ -68,6 +68,15 @@ namespace CZToolKit.GOAP
             set { SetPropertyValue(nameof(Center), value); }
         }
 
+        public override void InitializeBindableProperties()
+        {
+            base.InitializeBindableProperties();
+            SetBindableProperty("Range", new BindableProperty<float>(range, v => range = v));
+            SetBindableProperty("Radius", new BindableProperty<float>(radius, v => radius = v));
+            SetBindableProperty("Sector", new BindableProperty<float>(sector, v => sector = v));
+            SetBindableProperty("Layer", new BindableProperty<LayerMask>(layer, v => layer = v));
+        }
+
         protected override void OnInitialized()
         {
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
@@ -159,7 +168,6 @@ namespace CZToolKit.GOAP
                 Gizmos.DrawWireSphere(variable.Value.transform.position, range);
                 Gizmos.DrawSphere(variable.Value.transform.position, 0.5f);
             }
-
             Gizmos.color = new Color(1, 0, 0, 0.3f);
             Gizmos.DrawMesh(SemicircleMesh(radius, (int)sector, Vector3.up), _graphOwner.transform.position + Vector3.up * 0.2f, _graphOwner.transform.rotation);
 #endif
