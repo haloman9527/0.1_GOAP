@@ -9,4 +9,4 @@ GOAP目标导向型AI决策算法
 
 
 > 截图\
-# > ![GOAP](https://github.com/HalfLobsterMan/0.1_GOAP/blob/master/Example/ScreenShot/1.png?raw=true)
+# ![GOAP](Example/ScreenShot/1.png)

@@ -18,7 +18,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "CZToolKit/GOAP/New GOAPGraph")]
     public class GOAPGraphAsset : BaseGraphAsset<GOAPGraph> { }
 
 }

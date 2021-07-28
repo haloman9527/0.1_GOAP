@@ -14,6 +14,7 @@
  */
 #endregion
 using CZToolKit.Core.SharedVariable;
+using CZToolKit.GraphProcessor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -32,6 +33,40 @@ namespace CZToolKit.GOAP.Actions.Movement
         // A cache of the NavMeshAgents
         NavMeshAgent[] navMeshAgents;
         protected Transform[] transforms;
+
+        public BindableList<GameObject> Agents
+        {
+            get { return this[nameof(Agents)] as BindableList<GameObject>; }
+            set { this[nameof(Agents)] = value; }
+        }
+
+        public float Speed
+        {
+            get { return GetPropertyValue<float>(nameof(Speed)); }
+            set { SetPropertyValue(nameof(Speed), value); }
+        }
+
+        public float AgularSpeed
+        {
+            get { return GetPropertyValue<float>(nameof(AgularSpeed)); }
+            set { SetPropertyValue(nameof(AgularSpeed), value); }
+        }
+
+        public override void OnInitializedPropertyMapping(IVariableOwner variableOwner)
+        {
+            base.OnInitializedPropertyMapping(variableOwner);
+            Agents.SetValueWithoutNotify(agents.Value);
+            this[nameof(Speed)].AsBindableProperty<float>().SetValueWithoutNotify(speed.Value);
+            this[nameof(AgularSpeed)].AsBindableProperty<float>().SetValueWithoutNotify(angularSpeed.Value);
+        }
+
+        public override void InitializeBindableProperties()
+        {
+            base.InitializeBindableProperties();
+            this[nameof(Agents)] = new BindableList<GameObject>();
+            this[nameof(Speed)] = new BindableProperty<float>(speed.Value);
+            this[nameof(AgularSpeed)] = new BindableProperty<float>(angularSpeed.Value);
+        }
 
         public override void OnPrePerform()
         {

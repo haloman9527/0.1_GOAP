@@ -68,23 +68,25 @@ namespace CZToolKit.GOAP
             set { SetPropertyValue(nameof(Center), value); }
         }
 
+        public override void OnInitializedPropertyMapping(IVariableOwner variableOwner)
+        {
+            Center = center.Value;
+        }
+
         public override void InitializeBindableProperties()
         {
             base.InitializeBindableProperties();
-            SetBindableProperty("Range", new BindableProperty<float>(range, v => range = v));
-            SetBindableProperty("Radius", new BindableProperty<float>(radius, v => radius = v));
-            SetBindableProperty("Sector", new BindableProperty<float>(sector, v => sector = v));
-            SetBindableProperty("Layer", new BindableProperty<LayerMask>(layer, v => layer = v));
+            this[nameof(Center)] = new BindableProperty<GameObject>(center.Value, v => center.Value = v);
+
+            this["Range"] = new BindableProperty<float>(range, v => range = v);
+            this["Radius"] = new BindableProperty<float>(radius, v => radius = v);
+            this["Sector"] = new BindableProperty<float>(sector, v => sector = v);
+            this["Layer"] = new BindableProperty<LayerMask>(layer, v => layer = v);
         }
 
         protected override void OnInitialized()
         {
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
-        }
-
-        public override void OnInitializedPropertyMapping(IVariableOwner variableOwner)
-        {
-            SetBindableProperty(nameof(Center), new BindableProperty<GameObject>(center.Value, v => center.Value = v));
         }
 
         public override bool IsProceduralPrecondition(Dictionary<string, bool> currentState)

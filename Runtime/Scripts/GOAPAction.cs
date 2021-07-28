@@ -66,8 +66,8 @@ namespace CZToolKit.GOAP
         public override void InitializeBindableProperties()
         {
             base.InitializeBindableProperties();
-            SetBindableProperty(nameof(Name), new BindableProperty<string>(name, v => { name = v; }));
-            SetBindableProperty(nameof(Cost), new BindableProperty<float>(cost, v => { cost = v; }));
+            this[nameof(Name)] = new BindableProperty<string>(name, v => { name = v; });
+            this[nameof(Cost)] = new BindableProperty<float>(cost, v => { cost = v; });
         }
 
         public override void Initialize(IGraphOwner _graphOwner)
