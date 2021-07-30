@@ -52,12 +52,12 @@ namespace CZToolKit.GOAP.Editors
 
             RegisterDrawer("goals", property =>
             {
-                if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), EditorGUIExtension.GetGUIContent("Goals")))
+                if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), GUIHelper.GetGUIContent("Goals")))
                     goalsReorderableList.DoLayoutList();
             });
             RegisterDrawer("preState", property =>
             {
-                if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), EditorGUIExtension.GetGUIContent("PreStates")))
+                if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), GUIHelper.GetGUIContent("PreStates")))
                     preStateReorderableList.DoLayoutList();
             });
 
