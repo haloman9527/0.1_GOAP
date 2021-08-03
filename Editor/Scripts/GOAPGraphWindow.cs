@@ -23,6 +23,8 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+using UnityObject = UnityEngine.Object;
+
 namespace CZToolKit.GOAP.Editors
 {
     [CustomGraphWindow(typeof(GOAPGraph))]
@@ -109,8 +111,8 @@ namespace CZToolKit.GOAP.Editors
             string ownerName = "";
             if (GraphAsset != null)
                 assetName = GraphAsset.name;
-            if (GraphWindow.GraphOwner != null && GraphWindow.GraphOwner.Self() != null)
-                ownerName = GraphWindow.GraphOwner.GetOwnerName();
+            if (GraphWindow.GraphOwner != null)
+                ownerName = (GraphWindow.GraphOwner as UnityObject)?.name;
             label.text = $"{assetName}/{ownerName}";
         }
     }
