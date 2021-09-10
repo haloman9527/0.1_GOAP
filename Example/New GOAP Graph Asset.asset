@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: New GOAP Graph Asset
   m_EditorClassIdentifier: 
   graph:
-    position: {x: 404, y: 160, z: 0}
-    scale: {x: 1.3225, y: 1.3225, z: 1}
+    position: {x: 496, y: -81, z: 0}
+    scale: {x: 1.7490063, y: 1.7490063, z: 1}
     blackboardVisible: 0
     blackboardPosition:
       serializedVersion: 2
@@ -26,10 +26,10 @@ MonoBehaviour:
     blackboard: {}
   serializedGraph: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|CZToolKit.GOAP.GOAPGraph,
     Assembly-CSharp\",\r\n    \"position\": {\r\n        \"$type\": \"1|UnityEngine.Vector3,
-    UnityEngine.CoreModule\",\r\n        404,\r\n        160,\r\n        0\r\n   
-    },\r\n    \"scale\": {\r\n        \"$type\": 1,\r\n        1.3225,\r\n       
-    1.3225,\r\n        1\r\n    },\r\n    \"blackboardVisible\": false,\r\n    \"blackboardPosition\":
-    {\r\n        \"$type\": \"2|UnityEngine.Rect, UnityEngine.CoreModule\",\r\n       
+    UnityEngine.CoreModule\",\r\n        496,\r\n        -81,\r\n        0\r\n   
+    },\r\n    \"scale\": {\r\n        \"$type\": 1,\r\n        1.74900627,\r\n       
+    1.74900627,\r\n        1\r\n    },\r\n    \"blackboardVisible\": false,\r\n   
+    \"blackboardPosition\": {\r\n        \"$type\": \"2|UnityEngine.Rect, UnityEngine.CoreModule\",\r\n       
     25,\r\n        10,\r\n        150,\r\n        200\r\n    },\r\n    \"nodes\":
     {\r\n        \"$id\": 1,\r\n        \"$type\": \"3|System.Collections.Generic.Dictionary`2[[System.String,
     mscorlib],[CZToolKit.GraphProcessor.BaseNode, CZToolKit.GraphProcessor]], mscorlib\",\r\n       
