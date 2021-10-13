@@ -14,6 +14,7 @@
  */
 #endregion
 using CZToolKit.GraphProcessor;
+using System.Collections.Generic;
 
 namespace CZToolKit.GOAP
 {
@@ -29,6 +30,7 @@ namespace CZToolKit.GOAP
 
             effects.Add(new GOAPState() { Key = "KillTarget", Value = true });
         }
+
         public override GOAPActionStatus OnPerform()
         {
             return GOAPActionStatus.Running;
