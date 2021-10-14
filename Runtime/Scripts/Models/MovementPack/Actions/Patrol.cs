@@ -122,7 +122,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             return waypoints.Value[waypointIndex].transform.position;
         }
 
-        public override void DrawGizmos(GraphAssetOwner _graphOwner)
+        public override void DrawGizmos(IGraphOwner _graphOwner)
         {
 #if UNITY_EDITOR
             if (waypoints == null)

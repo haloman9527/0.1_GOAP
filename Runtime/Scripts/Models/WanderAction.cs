@@ -27,7 +27,6 @@ namespace CZToolKit.GOAP
 {
     [NodeMenuItem("Wander")]
     [NodeTooltip("在指定区域内徘徊，直到看到敌人")]
-    [NodeIcon("Assets/CZToolKit/0.1_GOAP/Editor/Icons/Wander.png", width = 18, height = 18)]
     public class WanderAction : GOAPAction
     {
         [Header("巡逻范围")]
@@ -41,14 +40,6 @@ namespace CZToolKit.GOAP
         [Header("视野角度")]
         [SerializeField] float sector = 90;
         [SerializeField] LayerMask layer;
-
-        [Vertical, Input(IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
-        [Tooltip("前往下个地点时触发")]
-        public UnityAction onRefindTarget;
-
-        [Vertical, Input(IsMulti = true, TypeConstraint = PortTypeConstraint.None)]
-        [Tooltip("看到敌人时触发")]
-        public UnityAction onFindedTarget;
 
         public WanderAction() : base()
         {
@@ -121,8 +112,6 @@ namespace CZToolKit.GOAP
                 stayTime -= Time.deltaTime;
                 if (stayTime <= 0)
                 {
-                    onRefindTarget?.Invoke();
-                    ExecuteConnections(nameof(onRefindTarget));
                     targetPos = Random.insideUnitSphere * range + center.Value.transform.position;
                     targetPos.y = 0;
                     stayTime = Random.Range(2, 5);
@@ -152,7 +141,6 @@ namespace CZToolKit.GOAP
             if (_successed)
             {
                 Agent.SetState("HasTarget", true);
-                ExecuteConnections(nameof(onFindedTarget));
             }
             else
             {
@@ -160,8 +148,9 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public override void DrawGizmos(GraphAssetOwner _graphOwner)
+        public override void DrawGizmos(IGraphOwner _graphOwner)
         {
+            GameObject go = _graphOwner.Self() as GameObject;
 #if UNITY_EDITOR
             SharedGameObject variable = _graphOwner.GetVariable(center.GUID) as SharedGameObject;
             Gizmos.color = Color.green;
@@ -171,7 +160,7 @@ namespace CZToolKit.GOAP
                 Gizmos.DrawSphere(variable.Value.transform.position, 0.5f);
             }
             Gizmos.color = new Color(1, 0, 0, 0.3f);
-            Gizmos.DrawMesh(SemicircleMesh(radius, (int)sector, Vector3.up), _graphOwner.transform.position + Vector3.up * 0.2f, _graphOwner.transform.rotation);
+            Gizmos.DrawMesh(SemicircleMesh(radius, (int)sector, Vector3.up), go.transform.position + Vector3.up * 0.2f, go.transform.rotation);
 #endif
             if (Application.isPlaying)
                 Gizmos.DrawSphere(targetPos, 0.5f);

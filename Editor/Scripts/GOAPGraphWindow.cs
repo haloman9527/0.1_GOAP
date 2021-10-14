@@ -36,18 +36,17 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView GenerateGraphView(BaseGraph _graph)
+        protected override InternalBaseGraphView NewGraphView(BaseGraph graph)
         {
-            GOAPGraphView graphView = new GOAPGraphView(_graph as GOAPGraph, CommandDispatcher, this);
-            return graphView;
+            return new GOAPGraphView(graph as GOAPGraph, this, new CommandDispatcher());
         }
     }
 
-    public class GOAPGraphView : BaseGraphView
+    public class GOAPGraphView : BaseGraphView<GOAPGraph>
     {
         Label label;
 
-        public GOAPGraphView(GOAPGraph _graph, CommandDispatcher _commandDispatcher, BaseGraphWindow _window) : base(_graph, _commandDispatcher, _window)
+        public GOAPGraphView(GOAPGraph _graph, BaseGraphWindow _window, CommandDispatcher _commandDispatcher) : base(_graph, _window, _commandDispatcher)
         {
             label = new Label();
             label.style.fontSize = 30;
@@ -83,14 +82,6 @@ namespace CZToolKit.GOAP.Editors
             // 模拟节点所有的世界状态
         }
 
-        protected override Type GetDefaultNodeViewType(BaseNode _node)
-        {
-            if (typeof(GOAPAction).IsAssignableFrom(_node.GetType()))
-                return typeof(GOAPNodeView);
-            else
-                return typeof(BaseNodeView);
-        }
-
         protected override IEnumerable<Type> GetNodeTypes()
         {
             foreach (var type in Utility_Reflection.GetChildTypes<GOAPAction>())
@@ -103,6 +94,14 @@ namespace CZToolKit.GOAP.Editors
                 if (type.IsAbstract) continue;
                 yield return type;
             }
+        }
+
+        protected override Type GetNodeViewType(BaseNode node)
+        {
+            if (typeof(GOAPAction).IsAssignableFrom(node.GetType()))
+                return typeof(GOAPNodeView);
+            else
+                return base.GetNodeViewType(node);
         }
 
         void UpdateLabel()

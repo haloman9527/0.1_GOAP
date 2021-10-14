@@ -25,7 +25,7 @@ using UnityEngine.UIElements;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPNodeView : SimpleNodeView<GOAPAction>
+    public class GOAPNodeView : BaseSimpleNodeView<GOAPAction>
     {
         string rawTitle;
         TextField nameField;
@@ -72,9 +72,8 @@ namespace CZToolKit.GOAP
             nameField.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
         }
 
-        protected override void OnInitialized()
+        public override void Initialized()
         {
-            base.OnInitialized();
             if (!typeof(GOAPAction).IsAssignableFrom(T_Model.GetType())) return;
 
             for (int i = 0; i < T_Model.Preconditions.Count; i++)
@@ -252,6 +251,11 @@ namespace CZToolKit.GOAP
             btn.style.height = btn.style.width = _size;
             btn.style.backgroundImage = _texture;
             return btn;
+        }
+
+        public override InternalBasePortView NewPortView(BaseSlot slot)
+        {
+            return new BasePortView(slot, typeof(object));
         }
     }
 }
