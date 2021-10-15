@@ -252,10 +252,5 @@ namespace CZToolKit.GOAP
             btn.style.backgroundImage = _texture;
             return btn;
         }
-
-        public override InternalBasePortView NewPortView(BaseSlot slot)
-        {
-            return new BasePortView(slot, typeof(object));
-        }
     }
 }

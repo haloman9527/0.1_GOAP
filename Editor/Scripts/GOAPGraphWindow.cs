@@ -36,13 +36,13 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override InternalBaseGraphView NewGraphView(BaseGraph graph)
+        protected override BaseGraphView NewGraphView(BaseGraph graph)
         {
             return new GOAPGraphView(graph as GOAPGraph, this, new CommandDispatcher());
         }
     }
 
-    public class GOAPGraphView : BaseGraphView<GOAPGraph>
+    public class GOAPGraphView : BaseGraphView
     {
         Label label;
 
