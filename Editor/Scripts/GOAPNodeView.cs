@@ -72,7 +72,7 @@ namespace CZToolKit.GOAP
             nameField.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
         }
 
-        public override void Initialized()
+        protected override void OnInitialized()
         {
             if (!typeof(GOAPAction).IsAssignableFrom(T_Model.GetType())) return;
 
