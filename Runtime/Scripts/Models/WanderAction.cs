@@ -30,7 +30,7 @@ namespace CZToolKit.GOAP
     public class WanderAction : GOAPAction
     {
         [Header("巡逻范围")]
-        [SerializeField] SharedGameObject center;
+        [SerializeField] SharedGameObject center = new SharedGameObject();
 
         [SerializeField] float range = 10;
 
@@ -64,7 +64,7 @@ namespace CZToolKit.GOAP
             Center = center.Value;
         }
 
-        public override void InitializeBindableProperties()
+        protected override void InitializeBindableProperties()
         {
             base.InitializeBindableProperties();
             this[nameof(Center)] = new BindableProperty<GameObject>(center.Value, v => center.Value = v);
@@ -87,6 +87,7 @@ namespace CZToolKit.GOAP
 
         public override bool IsUsable()
         {
+            Debug.Log(1);
             //return Agent.States["HasTarget"] = false;
             //Agent.SetState("HasTarget", Agent.Blackboard.TryGetData("Target", out GameObject go) && go != null);
             return !Agent.Memory.TryGetData("Target", out GameObject go) || go == null;
@@ -150,8 +151,8 @@ namespace CZToolKit.GOAP
 
         public override void DrawGizmos(IGraphOwner _graphOwner)
         {
-            GameObject go = _graphOwner.Self() as GameObject;
 #if UNITY_EDITOR
+            GameObject go = (_graphOwner.Self() as MonoBehaviour).gameObject;
             SharedGameObject variable = _graphOwner.GetVariable(center.GUID) as SharedGameObject;
             Gizmos.color = Color.green;
             if (variable != null && variable.Value != null)

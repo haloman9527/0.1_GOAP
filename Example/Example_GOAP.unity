@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -150,174 +150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec064185206f494c8f61c85085d333a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  undoProRecords: []
-  undoState:
-    redoRecords: []
-    undoRecords:
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Selection Change
-    - Add TextMeshPro
-    - Selection Change
-    - Remove MonoBehaviour
-    - Selection Change
-    - Delete Game Objects
-    - Delete Game Objects
 --- !u!4 &39241497
 Transform:
   m_ObjectHideFlags: 3
@@ -352,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &420890831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,7 +204,7 @@ MonoBehaviour:
     \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
   variablesUnityReference:
   - {fileID: 0}
-  graphAsset: {fileID: 11400000, guid: e2c59bdfd0bc8a04186e4595867ba13a, type: 2}
+  graphAsset: {fileID: 0}
   goals:
   - Key: HasTarget
     Value: 1
@@ -706,7 +538,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1494298366
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -815,13 +647,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
-    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 1,\r\n    \"$rcontent\": [\r\n       
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 2,\r\n    \"$rcontent\": [\r\n       
     {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
     CZToolKit.Core\",\r\n            \"guid\": \"d4f38d15-6c89-442d-8347-bbadbb16bf78\",\r\n           
+    \"value\": $eref:0\r\n        },\r\n        {\r\n            \"$id\": 2,\r\n           
+    \"$type\": 1,\r\n            \"guid\": \"aa3c924b-6609-488a-8cc3-7c2288426455\",\r\n           
     \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
   variablesUnityReference:
   - {fileID: 1009434960}
-  graphAsset: {fileID: 11400000, guid: e2c59bdfd0bc8a04186e4595867ba13a, type: 2}
+  graphAsset: {fileID: 11400000, guid: 6c02100c768e7184ba8adb37e23243cf, type: 2}
   goals:
   - Key: HasTarget
     Value: 1

@@ -60,7 +60,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             this[nameof(AgularSpeed)].AsBindableProperty<float>().SetValueWithoutNotify(angularSpeed.Value);
         }
 
-        public override void InitializeBindableProperties()
+        protected override void InitializeBindableProperties()
         {
             base.InitializeBindableProperties();
             this[nameof(Agents)] = new BindableList<GameObject>();

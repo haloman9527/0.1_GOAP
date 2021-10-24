@@ -76,6 +76,12 @@ namespace CZToolKit.GOAP
         {
             if (!typeof(GOAPAction).IsAssignableFrom(T_Model.GetType())) return;
 
+            rawTitle = T_Model.Title;
+
+            title = T_Model.Name + $"({rawTitle})";
+            nameField.SetValueWithoutNotify(T_Model.Name);
+            costField.SetValueWithoutNotify(T_Model.Cost);
+
             for (int i = 0; i < T_Model.Preconditions.Count; i++)
             {
                 VisualElement v = CreateToggle(T_Model.Preconditions[i], (ele, state) =>
@@ -101,7 +107,7 @@ namespace CZToolKit.GOAP
 
         void OnNameChanged(string _newName)
         {
-            Model.Title = T_Model.Name + $"({rawTitle})";
+            title = T_Model.Name + $"({rawTitle})";
             nameField.SetValueWithoutNotify(_newName);
         }
 
@@ -151,11 +157,6 @@ namespace CZToolKit.GOAP
         protected override void BindingProperties()
         {
             base.BindingProperties();
-            rawTitle = T_Model.Title;
-
-            nameField.SetValueWithoutNotify(T_Model.Name);
-            costField.SetValueWithoutNotify(T_Model.Cost);
-            Model.Title = T_Model.Name + $"({rawTitle})";
 
             nameField.RegisterValueChangedCallback(evt =>
             {

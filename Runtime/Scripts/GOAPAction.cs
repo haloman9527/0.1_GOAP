@@ -63,7 +63,7 @@ namespace CZToolKit.GOAP
 
         public GOAPAgent Agent { get; set; }
 
-        public override void InitializeBindableProperties()
+        protected override void InitializeBindableProperties()
         {
             base.InitializeBindableProperties();
             this[nameof(Name)] = new BindableProperty<string>(name, v => { name = v; });

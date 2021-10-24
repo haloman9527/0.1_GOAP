@@ -52,11 +52,6 @@ namespace CZToolKit.GOAP.Actions.Movement
             base.OnInitializedPropertyMapping(variableOwner);
         }
 
-        public override void InitializeBindableProperties()
-        {
-            base.InitializeBindableProperties();
-        }
-
         // There is no success or fail state with wander - the agent will just keep wandering
         public override GOAPActionStatus OnPerform()
         {
