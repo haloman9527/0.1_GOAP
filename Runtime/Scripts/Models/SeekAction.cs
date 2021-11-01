@@ -51,8 +51,10 @@ namespace CZToolKit.GOAP
         public UnityAction onPerform { get; }
         public UnityAction onSuccess { get; }
         public UnityAction onFailed { get; }
-        protected override void OnInitialized()
+
+        public override void Initialize(IGraphOwner _graphOwner)
         {
+            base.Initialize(_graphOwner);
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 

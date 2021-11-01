@@ -19,7 +19,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 using Random = UnityEngine.Random;
 
@@ -59,25 +58,22 @@ namespace CZToolKit.GOAP
             set { SetPropertyValue(nameof(Center), value); }
         }
 
-        public override void OnInitializedPropertyMapping(IVariableOwner variableOwner)
+        public override void Initialize(IGraphOwner _graphOwner)
         {
+            base.Initialize(_graphOwner);
+            navMeshAgent = Agent.GetComponent<NavMeshAgent>();
             Center = center.Value;
         }
 
-        protected override void InitializeBindableProperties()
+        protected override void BindProperties()
         {
-            base.InitializeBindableProperties();
+            base.BindProperties();
             this[nameof(Center)] = new BindableProperty<GameObject>(center.Value, v => center.Value = v);
 
             this["Range"] = new BindableProperty<float>(range, v => range = v);
             this["Radius"] = new BindableProperty<float>(radius, v => radius = v);
             this["Sector"] = new BindableProperty<float>(sector, v => sector = v);
             this["Layer"] = new BindableProperty<LayerMask>(layer, v => layer = v);
-        }
-
-        protected override void OnInitialized()
-        {
-            navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 
         public override bool IsProceduralPrecondition(Dictionary<string, bool> currentState)
