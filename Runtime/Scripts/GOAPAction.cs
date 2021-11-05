@@ -72,13 +72,8 @@ namespace CZToolKit.GOAP
 
         public override void Initialize(IGraphOwner graphOwner)
         {
-<<<<<<< HEAD
-            base.Initialize(_graphOwner);
-            Agent = _graphOwner as GOAPAgent;
-=======
             base.Initialize(graphOwner);
             Agent = graphOwner as GOAPAgent;
->>>>>>> fafe7e19fcd300f014b770fa4370ed3294f60b63
         }
 
         /// <summary> 是否行为是否可用(可重载) </summary>

@@ -52,15 +52,9 @@ namespace CZToolKit.GOAP.Actions.Movement
             set { SetPropertyValue(nameof(AgularSpeed), value); }
         }
 
-<<<<<<< HEAD
-        public override void Initialize(IGraphOwner _graphOwner)
-        {
-            base.Initialize(_graphOwner);
-=======
         public override void Initialize(IGraphOwner graphOwner)
         {
             base.Initialize(graphOwner);
->>>>>>> fafe7e19fcd300f014b770fa4370ed3294f60b63
             Agents.SetValueWithoutNotify(agents.Value);
             this[nameof(Speed)].AsBindableProperty<float>().SetValueWithoutNotify(speed.Value);
             this[nameof(AgularSpeed)].AsBindableProperty<float>().SetValueWithoutNotify(angularSpeed.Value);
