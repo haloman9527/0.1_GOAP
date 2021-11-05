@@ -52,17 +52,17 @@ namespace CZToolKit.GOAP.Actions.Movement
             set { SetPropertyValue(nameof(AgularSpeed), value); }
         }
 
-        public override void OnInitializedPropertyMapping(IVariableOwner variableOwner)
+        public override void Initialize(IGraphOwner _graphOwner)
         {
-            base.OnInitializedPropertyMapping(variableOwner);
+            base.Initialize(_graphOwner);
             Agents.SetValueWithoutNotify(agents.Value);
             this[nameof(Speed)].AsBindableProperty<float>().SetValueWithoutNotify(speed.Value);
             this[nameof(AgularSpeed)].AsBindableProperty<float>().SetValueWithoutNotify(angularSpeed.Value);
         }
 
-        protected override void InitializeBindableProperties()
+        protected override void BindProperties()
         {
-            base.InitializeBindableProperties();
+            base.BindProperties();
             this[nameof(Agents)] = new BindableList<GameObject>();
             this[nameof(Speed)] = new BindableProperty<float>(speed.Value);
             this[nameof(AgularSpeed)] = new BindableProperty<float>(angularSpeed.Value);

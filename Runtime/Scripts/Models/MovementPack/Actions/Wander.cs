@@ -47,11 +47,6 @@ namespace CZToolKit.GOAP.Actions.Movement
         [NonSerialized] float pauseTime;
         [NonSerialized] float destinationReachTime;
 
-        public override void OnInitializedPropertyMapping(IVariableOwner variableOwner)
-        {
-            base.OnInitializedPropertyMapping(variableOwner);
-        }
-
         // There is no success or fail state with wander - the agent will just keep wandering
         public override GOAPActionStatus OnPerform()
         {

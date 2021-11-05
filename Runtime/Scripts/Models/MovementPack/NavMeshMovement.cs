@@ -13,6 +13,7 @@
  *
  */
 #endregion
+using CZToolKit.GraphProcessor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -38,8 +39,9 @@ namespace CZToolKit.GOAP.Actions.Movement
         /// <summary>
         /// Cache the component references.
         /// </summary>
-        protected override void OnInitialized()
+        public override void Initialize(IGraphOwner _graphOwner)
         {
+            base.Initialize(_graphOwner);
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 
