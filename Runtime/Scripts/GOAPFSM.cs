@@ -18,7 +18,7 @@ using System;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPFSM : FSM
+    public class GOAPFSM : Core.SimpleFSM.FSM
     {
         public float time;
     }
@@ -29,7 +29,7 @@ namespace CZToolKit.GOAP
         public Action onUpdate;
         public Action onExit;
 
-        public FSM Owner { get; set; }
+        public Core.SimpleFSM.FSM Owner { get; set; }
 
         public GOAPFSMState(GOAPFSM _owner)
         {

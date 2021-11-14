@@ -86,6 +86,7 @@ namespace CZToolKit.GOAP
             Planner = new GOAPPlanner();
             FSM = new GOAPFSM();
             GraphAsset = GraphAsset.Clone() as GOAPGraphAsset;
+            Debug.Log(1);
             T_Graph.Initialize(this);
             Goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
         }
@@ -113,8 +114,10 @@ namespace CZToolKit.GOAP
                      // 搜寻计划
                      foreach (GOAPGoal goal in Goals)
                      {
+                         storedActionQueue.Clear();
                          Planner.Plan(T_Graph.AvailableActions.ToArray(), States, goal, maxDepth, ref storedActionQueue);
-                         if (StoredActionQueue.Count == 0)
+                         // 如果找到了计划
+                         if (StoredActionQueue.Count != 0)
                          {
                              CurrentGoal = goal;
                              break;

@@ -13,9 +13,7 @@
  *
  */
 #endregion
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
@@ -31,5 +29,6 @@ namespace CZToolKit.GOAP
         bool IsProceduralPrecondition(Dictionary<string, bool> currentState);
         void OnPrePerform();
         GOAPActionStatus OnPerform();
-        void OnPostPerform(bool _successed);    }
+        void OnPostPerform(bool _successed);
+    }
 }

@@ -62,8 +62,6 @@ namespace CZToolKit.GOAP
             leaves.Clear();
             // 成本最低的计划节点
             cheapestNode = null;
-            // 成本最低计划
-            _plan.Clear();
 
             // 如果通过构建节点树找到了能够达成目标的计划
             if (BuildGraph(root, usableActions, _goal, 0, _maxDepth, leaves))

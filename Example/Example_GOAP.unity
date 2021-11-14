@@ -647,11 +647,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedVariables: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|System.Collections.Generic.List`1[[CZToolKit.Core.SharedVariable.SharedVariable,
-    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 2,\r\n    \"$rcontent\": [\r\n       
+    CZToolKit.Core]], mscorlib\",\r\n    \"$rlength\": 3,\r\n    \"$rcontent\": [\r\n       
     {\r\n            \"$id\": 1,\r\n            \"$type\": \"1|CZToolKit.Core.SharedVariable.SharedGameObject,
     CZToolKit.Core\",\r\n            \"guid\": \"d4f38d15-6c89-442d-8347-bbadbb16bf78\",\r\n           
     \"value\": $eref:0\r\n        },\r\n        {\r\n            \"$id\": 2,\r\n           
     \"$type\": 1,\r\n            \"guid\": \"aa3c924b-6609-488a-8cc3-7c2288426455\",\r\n           
+    \"value\": $eref:0\r\n        },\r\n        {\r\n            \"$id\": 3,\r\n           
+    \"$type\": 1,\r\n            \"guid\": \"1868ea88-325c-4a83-a33a-5141e55237bd\",\r\n           
     \"value\": $eref:0\r\n        }\r\n    ]\r\n}"
   variablesUnityReference:
   - {fileID: 1009434960}
@@ -665,9 +667,11 @@ MonoBehaviour:
     Value: 1
     Once: 0
     Priority: 0
-  preState: []
+  preState:
+  - Key: HasTarget
+    Value: 0
   updateMode: 0
-  maxDepth: 0
+  maxDepth: 3
   interval: 3
   replanOnFailed: 1
 --- !u!195 &1826581357

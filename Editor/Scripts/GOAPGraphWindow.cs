@@ -18,6 +18,7 @@ using CZToolKit.GraphProcessor;
 using CZToolKit.GraphProcessor.Editors;
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -36,51 +37,54 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView NewGraphView(BaseGraph graph,CommandDispatcher commandDispatcher)
+        protected override BaseGraphView NewGraphView(BaseGraph graph, CommandDispatcher commandDispatcher)
         {
             return new GOAPGraphView(graph as GOAPGraph, this, commandDispatcher);
+        }
+
+        protected override void BuildToolbar(ToolbarView toolbar)
+        {
+            base.BuildToolbar(toolbar);
+            ToolbarButton btnSave = new ToolbarButton();
+            btnSave.text = "Save";
+            btnSave.clicked += Save;
+            toolbar.AddButtonToRight(btnSave);
+        }
+
+        protected override void KeyDownCallback(KeyDownEvent evt)
+        {
+            base.KeyDownCallback(evt);
+            if (evt.commandKey || evt.ctrlKey)
+            {
+                switch (evt.keyCode)
+                {
+                    case KeyCode.S:
+                        Save();
+                        break;
+                }
+            }
+        }
+
+        void Save()
+        {
+            if (GraphAsset is IGraphAsset graphAsset)
+            {
+                graphAsset.SaveGraph();
+            }
+            if (GraphOwner is IGraphOwner graphOwner)
+            {
+                graphOwner.SaveVariables();
+            }
+            GraphView.SetDirty(true);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            GraphView.UnsetDirty();
         }
     }
 
     public class GOAPGraphView : BaseGraphView
     {
-        Label label;
-
-        public GOAPGraphView(GOAPGraph _graph, BaseGraphWindow _window, CommandDispatcher _commandDispatcher) : base(_graph, _window, _commandDispatcher)
-        {
-            label = new Label();
-            label.style.fontSize = 30;
-            label.style.color = new StyleColor(new Color(0.18f, 1f, 0.63f));
-            label.style.alignSelf = Align.FlexEnd;
-            Add(label);
-        }
-
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-
-            UpdateLabel();
-            Add(new IMGUIContainer(UpdateLabel));
-
-            MiniMap miniMap = new MiniMap();
-            miniMap.SetPosition(new Rect(10, 10, 200, 200));
-            Add(miniMap);
-
-            miniMap.MarkDirtyRepaint();
-
-            ToolbarToggle tglMiniMap = new ToolbarToggle() { text = "MiniMap" };
-            tglMiniMap.RegisterValueChangedCallback(e =>
-            {
-                miniMap.visible = e.newValue;
-            });
-            tglMiniMap.value = true;
-            GraphWindow.Toolbar.AddToggleToLeft(tglMiniMap, 80);
-
-
-            // 添加模拟节点
-
-            // 模拟节点所有的世界状态
-        }
+        public GOAPGraphView(GOAPGraph _graph, BaseGraphWindow _window, CommandDispatcher _commandDispatcher) : base(_graph, _window, _commandDispatcher) { }
 
         protected override IEnumerable<Type> GetNodeTypes()
         {
@@ -102,17 +106,6 @@ namespace CZToolKit.GOAP.Editors
                 return typeof(GOAPNodeView);
             else
                 return base.GetNodeViewType(node);
-        }
-
-        void UpdateLabel()
-        {
-            string assetName = "";
-            string ownerName = "";
-            if (GraphAsset != null)
-                assetName = GraphAsset.name;
-            if (GraphWindow.GraphOwner != null)
-                ownerName = (GraphWindow.GraphOwner as UnityObject)?.name;
-            label.text = $"{assetName}/{ownerName}";
         }
     }
 }
