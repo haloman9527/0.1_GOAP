@@ -86,7 +86,7 @@ namespace CZToolKit.GOAP
             Planner = new GOAPPlanner();
             FSM = new GOAPFSM();
             GraphAsset = GraphAsset.Clone() as GOAPGraphAsset;
-            Debug.Log(1);
+
             T_Graph.Initialize(this);
             Goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
         }
