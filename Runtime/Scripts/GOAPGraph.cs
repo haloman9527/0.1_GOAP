@@ -41,8 +41,8 @@ namespace CZToolKit.GOAP
             AvailableActions.QuickSort((a, center) =>
             {
                 if (a.Position.y > center.Position.y)
-                    return true;
-                return false;
+                    return 1;
+                return -1;
             });
             foreach (var action in AvailableActions)
             {
