@@ -38,10 +38,12 @@ namespace CZToolKit.GOAP
                 if (node.Value is GOAPAction action)
                     AvailableActions.Add(action);
             }
-            AvailableActions.QuickSort((a, center) =>
+            AvailableActions.QuickSort((a, b) =>
             {
-                if (a.Position.y > center.Position.y)
+                if (a.Position.y > b.Position.y)
                     return 1;
+                if (a.Position.y == b.Position.y)
+                    return 0;
                 return -1;
             });
             foreach (var action in AvailableActions)
