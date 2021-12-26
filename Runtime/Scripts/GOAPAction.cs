@@ -63,17 +63,18 @@ namespace CZToolKit.GOAP
 
         public GOAPAgent Agent { get; set; }
 
-        protected override void BindProperties()
+        protected override void OnEnabled()
         {
-            base.BindProperties();
+            base.OnEnabled();
+
             this[nameof(Name)] = new BindableProperty<string>(name, v => { name = v; });
             this[nameof(Cost)] = new BindableProperty<float>(cost, v => { cost = v; });
         }
 
-        public override void Initialize(IGraphOwner graphOwner)
+        protected override void OnInitialized()
         {
-            base.Initialize(graphOwner);
-            Agent = graphOwner as GOAPAgent;
+            base.OnInitialized();
+            Agent = GraphOwner as GOAPAgent;
         }
 
         /// <summary> 是否行为是否可用(可重载) </summary>

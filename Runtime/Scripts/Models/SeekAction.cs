@@ -52,9 +52,9 @@ namespace CZToolKit.GOAP
         public UnityAction onSuccess { get; }
         public UnityAction onFailed { get; }
 
-        public override void Initialize(IGraphOwner _graphOwner)
+        protected override void OnInitialized()
         {
-            base.Initialize(_graphOwner);
+            base.OnInitialized();
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 

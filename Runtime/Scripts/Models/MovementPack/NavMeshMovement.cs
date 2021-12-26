@@ -39,9 +39,9 @@ namespace CZToolKit.GOAP.Actions.Movement
         /// <summary>
         /// Cache the component references.
         /// </summary>
-        public override void Initialize(IGraphOwner _graphOwner)
+        protected override void OnInitialized()
         {
-            base.Initialize(_graphOwner);
+            base.OnInitialized();
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 

@@ -24,10 +24,10 @@ namespace CZToolKit.GOAP
     {
         public List<GOAPAction> AvailableActions { get; private set; } = new List<GOAPAction>();
 
-        public override void Initialize(IGraphOwner _graphOwner)
+        protected override void OnInitialized()
         {
-            base.Initialize(_graphOwner);
-            GOAPAgent agent = _graphOwner as GOAPAgent;
+            base.OnInitialized();
+            GOAPAgent agent = GraphOwner as GOAPAgent;
 
             if (AvailableActions == null)
                 AvailableActions = new List<GOAPAction>();
@@ -46,10 +46,6 @@ namespace CZToolKit.GOAP
                     return 0;
                 return -1;
             });
-            foreach (var action in AvailableActions)
-            {
-                action.Initialize(agent);
-            }
         }
 
         public void DrawGizmos(GOAPAgent _agent)

@@ -58,22 +58,22 @@ namespace CZToolKit.GOAP
             set { SetPropertyValue(nameof(Center), value); }
         }
 
-        public override void Initialize(IGraphOwner _graphOwner)
+        protected override void OnEnabled()
         {
-            base.Initialize(_graphOwner);
-            navMeshAgent = Agent.GetComponent<NavMeshAgent>();
-            Center = center.Value;
-        }
-
-        protected override void BindProperties()
-        {
-            base.BindProperties();
+            base.OnEnabled();
             this[nameof(Center)] = new BindableProperty<GameObject>(center.Value, v => center.Value = v);
 
             this["Range"] = new BindableProperty<float>(range, v => range = v);
             this["Radius"] = new BindableProperty<float>(radius, v => radius = v);
             this["Sector"] = new BindableProperty<float>(sector, v => sector = v);
             this["Layer"] = new BindableProperty<LayerMask>(layer, v => layer = v);
+        }
+
+        protected override void OnInitialized()
+        {
+            base.OnInitialized();
+            navMeshAgent = Agent.GetComponent<NavMeshAgent>();
+            Center = center.Value;
         }
 
         public override bool IsProceduralPrecondition(Dictionary<string, bool> currentState)
