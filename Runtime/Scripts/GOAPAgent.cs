@@ -85,7 +85,6 @@ namespace CZToolKit.GOAP
             Provider = GetComponent<IGOAP>();
             Planner = new GOAPPlanner();
             FSM = new GOAPFSM();
-            GraphAsset = GraphAsset.Clone() as GOAPGraphAsset;
 
             T_Graph.Initialize(this);
             Goals = Goals.OrderByDescending(goal => goal.Priority).ToList();
@@ -278,8 +277,8 @@ namespace CZToolKit.GOAP
         private void OnDrawGizmos()
         {
             Gizmos.DrawIcon(transform.position, "GOAP/GOAP_Scene_Icon.png", true);
-            if (T_GraphAsset != null && enabled)
-                T_GraphAsset.T_Graph.DrawGizmos(this);
+            if (enabled)
+                T_Graph?.DrawGizmos(this);
         }
     }
 }

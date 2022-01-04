@@ -69,7 +69,7 @@ namespace CZToolKit.GOAP.Editors
         {
             if (GraphAsset is IGraphAsset graphAsset)
             {
-                graphAsset.SaveGraph();
+                graphAsset.SaveGraph(Graph);
             }
             if (GraphOwner is IGraphOwner graphOwner)
             {
