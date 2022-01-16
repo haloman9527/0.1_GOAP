@@ -37,9 +37,9 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView NewGraphView(BaseGraph graph, CommandDispatcher commandDispatcher)
+        protected override BaseGraphView NewGraphView(BaseGraph graph)
         {
-            return new GOAPGraphView(graph as GOAPGraph, this, commandDispatcher);
+            return new GOAPGraphView();
         }
 
         protected override void BuildToolbar(ToolbarView toolbar)
@@ -84,8 +84,6 @@ namespace CZToolKit.GOAP.Editors
 
     public class GOAPGraphView : BaseGraphView
     {
-        public GOAPGraphView(GOAPGraph _graph, BaseGraphWindow _window, CommandDispatcher _commandDispatcher) : base(_graph, _window, _commandDispatcher) { }
-
         protected override IEnumerable<Type> GetNodeTypes()
         {
             foreach (var type in Util_Reflection.GetChildTypes<GOAPAction>())
