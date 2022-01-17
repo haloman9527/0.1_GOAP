@@ -61,12 +61,12 @@ namespace CZToolKit.GOAP
         protected override void OnEnabled()
         {
             base.OnEnabled();
-            this[nameof(Center)] = new BindableProperty<GameObject>(center.Value, v => center.Value = v);
+            this[nameof(Center)] = new BindableProperty<GameObject>(()=> center.Value, v => center.Value = v);
 
-            this["Range"] = new BindableProperty<float>(range, v => range = v);
-            this["Radius"] = new BindableProperty<float>(radius, v => radius = v);
-            this["Sector"] = new BindableProperty<float>(sector, v => sector = v);
-            this["Layer"] = new BindableProperty<LayerMask>(layer, v => layer = v);
+            this["Range"] = new BindableProperty<float>(() => range, v => range = v);
+            this["Radius"] = new BindableProperty<float>(() => radius, v => radius = v);
+            this["Sector"] = new BindableProperty<float>(() => sector, v => sector = v);
+            this["Layer"] = new BindableProperty<LayerMask>(() => layer, v => layer = v);
         }
 
         protected override void OnInitialized()
@@ -145,7 +145,7 @@ namespace CZToolKit.GOAP
         public override void DrawGizmos(IGraphOwner _graphOwner)
         {
 #if UNITY_EDITOR
-            GameObject go = (_graphOwner.Self() as MonoBehaviour).gameObject;
+            GameObject go = (_graphOwner as MonoBehaviour).gameObject;
             SharedGameObject variable = _graphOwner.GetVariable(center.GUID) as SharedGameObject;
             Gizmos.color = Color.green;
             if (variable != null && variable.Value != null)

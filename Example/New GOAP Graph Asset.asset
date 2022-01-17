@@ -12,10 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3f6b19cf883224f952aa4c4fa594da, type: 3}
   m_Name: New GOAP Graph Asset
   m_EditorClassIdentifier: 
-  graph:
-    pan: {x: -105, y: -168, z: 0}
-    zoom: {x: 1.3225, y: 1.3225, z: 1}
-    connections: []
   serializedGraph: "{\r\n    \"$id\": 0,\r\n    \"$type\": \"0|CZToolKit.GOAP.GOAPGraph,
     Assembly-CSharp\",\r\n    \"pan\": {\r\n        \"$type\": \"1|UnityEngine.Vector3,
     UnityEngine.CoreModule\",\r\n        137,\r\n        -64,\r\n        0\r\n   

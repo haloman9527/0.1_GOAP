@@ -56,8 +56,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         {
             base.OnEnabled();
             this[nameof(Agents)] = new BindableList<GameObject>();
-            this[nameof(Speed)] = new BindableProperty<float>(speed.Value);
-            this[nameof(AgularSpeed)] = new BindableProperty<float>(angularSpeed.Value);
+            this[nameof(Speed)] = new BindableProperty<float>(() => speed.Value);
+            this[nameof(AgularSpeed)] = new BindableProperty<float>(() => angularSpeed.Value);
         }
 
         protected override void OnInitialized()

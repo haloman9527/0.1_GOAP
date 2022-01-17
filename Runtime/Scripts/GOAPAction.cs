@@ -67,8 +67,8 @@ namespace CZToolKit.GOAP
         {
             base.OnEnabled();
 
-            this[nameof(Name)] = new BindableProperty<string>(name, v => { name = v; });
-            this[nameof(Cost)] = new BindableProperty<float>(cost, v => { cost = v; });
+            this[nameof(Name)] = new BindableProperty<string>(() => name, v => { name = v; });
+            this[nameof(Cost)] = new BindableProperty<float>(() => cost, v => { cost = v; });
         }
 
         protected override void OnInitialized()
