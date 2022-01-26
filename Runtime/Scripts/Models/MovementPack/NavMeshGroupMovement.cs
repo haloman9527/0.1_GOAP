@@ -13,8 +13,8 @@
  *
  */
 #endregion
+using CZToolKit.Core.BindableProperty;
 using CZToolKit.Core.SharedVariable;
-using CZToolKit.GraphProcessor;
 using UnityEngine;
 using UnityEngine.AI;
 
