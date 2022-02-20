@@ -36,7 +36,7 @@ namespace CZToolKit.GOAP
             Owner = _owner;
         }
 
-        public virtual void OnStart()
+        public virtual void OnBegin()
         {
             onStart?.Invoke();
         }
@@ -46,7 +46,7 @@ namespace CZToolKit.GOAP
             onUpdate?.Invoke();
         }
 
-        public virtual void OnExit()
+        public virtual void OnEnd()
         {
             onExit?.Invoke();
         }
@@ -56,7 +56,7 @@ namespace CZToolKit.GOAP
     {
         public IdleState(GOAPFSM _owner) : base(_owner) { }
 
-        public override void OnStart()
+        public override void OnBegin()
         {
             //await Task.Run(onStart);
             onStart?.Invoke();
@@ -68,7 +68,7 @@ namespace CZToolKit.GOAP
             //await Task.Run(onUpdate);
         }
 
-        public override void OnExit()
+        public override void OnEnd()
         {
             onExit?.Invoke();
             //await Task.Run(onExit);
