@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.Core.BindableProperty;
+using CZToolKit.Core.IntegratedViewModel;
 using CZToolKit.Core.SharedVariable;
 using UnityEngine;
 using UnityEngine.AI;
@@ -55,9 +55,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         protected override void OnEnabled()
         {
             base.OnEnabled();
-            this[nameof(Agents)] = new BindableList<GameObject>();
-            this[nameof(Speed)] = new BindableProperty<float>(() => speed.Value);
-            this[nameof(AgularSpeed)] = new BindableProperty<float>(() => angularSpeed.Value);
+            this[nameof(Agents)] = new BindableList<GameObject>(() => agents.Value, v => agents.Value = v);
+            this[nameof(AgularSpeed)] = new BindableProperty<float>(() => angularSpeed.Value, v => angularSpeed.Value = v);
         }
 
         protected override void OnInitialized()
