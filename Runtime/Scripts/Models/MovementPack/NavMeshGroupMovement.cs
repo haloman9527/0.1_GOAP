@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.Core.IntegratedViewModel;
+using CZToolKit.Core.ViewModel;
 using CZToolKit.Core.SharedVariable;
 using UnityEngine;
 using UnityEngine.AI;
