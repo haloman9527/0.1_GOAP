@@ -13,6 +13,7 @@
  *
  */
 #endregion
+using System;
 using System.Collections.Generic;
 using CZToolKit.Core.ObjectPool;
 
@@ -43,7 +44,7 @@ namespace CZToolKit.GOAP
             if (_currentStates.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
                 return;
 
-            NodePool.RecycleAll();
+            NodePool.Dispose();
 
             // 所有可用的行为
             usableActions.Clear();
@@ -93,11 +94,11 @@ namespace CZToolKit.GOAP
                 {
                     _plan.Enqueue(goapActionStack.Pop());
                 }
-                Stack_Pool.Recycle(goapActionStack);
+                Stack_Pool.Release(goapActionStack);
             }
 
             // 用完回收所有对象
-            DictionaryObjPool.RecycleAll();
+            DictionaryObjPool.Dispose();
         }
 
         /// <summary> 构建树并返回所有计划 </summary>
@@ -199,120 +200,46 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public class GOAPNodePool : PoolBase<GOAPNode>
+        public class GOAPNodePool : ObjectPool<GOAPNode>
         {
-            public GOAPNodePool(int _count)
+            public GOAPNodePool(int capacity) : base(capacity)
             {
-                for (int i = 0; i < _count; i++)
+                base.createFunction = () => new GOAPNode();
+                base.onRelease = (unit) =>
                 {
-                    IdleList.Add(CreateNewUnit());
-                }
+                    unit.parent = null;
+                    unit.runningCost = 0;
+                    unit.state = null;
+                    unit.action = null;
+                };
             }
 
-            public GOAPNode Spawn(GOAPNode _parent, float _runningCost, Dictionary<string, bool> _state, GOAPAction _action)
+            public GOAPNode Spawn(GOAPNode parent, float runningCost, Dictionary<string, bool> state, GOAPAction action)
             {
                 GOAPNode unit = base.Spawn();
-                unit.parent = _parent;
-                unit.runningCost = _runningCost;
-                unit.state = _state;
-                unit.action = _action;
+                unit.parent = parent;
+                unit.runningCost = runningCost;
+                unit.state = state;
+                unit.action = action;
                 return unit;
             }
+        }
 
-            protected override void OnAfterRecycle(GOAPNode _unit)
+        public class DictionaryPool<K, V> : ObjectPool<Dictionary<K, V>>
+        {
+            public DictionaryPool() : base()
             {
-                base.OnAfterRecycle(_unit);
-                _unit.parent = null;
-                _unit.runningCost = 0;
-                _unit.state = null;
-                _unit.action = null;
-            }
-
-            protected override GOAPNode CreateNewUnit()
-            {
-                return new GOAPNode();
-            }
-
-            public override void Dispose()
-            {
-
+                base.createFunction = () => new Dictionary<K, V>();
+                base.onRelease = (unit) => unit.Clear();
             }
         }
 
-        public class DictionaryPool<K, V> : PoolBase<Dictionary<K, V>>
+        public class StackPool<T> : ObjectPool<Stack<T>>
         {
-
-            protected override void OnAfterRecycle(Dictionary<K, V> _unit)
+            public StackPool() : base()
             {
-                base.OnAfterRecycle(_unit);
-                _unit.Clear();
-            }
-
-            protected override Dictionary<K, V> CreateNewUnit()
-            {
-                return new Dictionary<K, V>();
-            }
-
-            public override void Dispose()
-            {
-
-            }
-        }
-
-        public class QueuePool<T> : PoolBase<Queue<T>>
-        {
-            protected override void OnAfterRecycle(Queue<T> _unit)
-            {
-                base.OnAfterRecycle(_unit);
-                _unit.Clear();
-            }
-
-            protected override Queue<T> CreateNewUnit()
-            {
-                return new Queue<T>(8);
-            }
-
-            public override void Dispose()
-            {
-
-            }
-        }
-
-        public class StackPool<T> : PoolBase<Stack<T>>
-        {
-            protected override void OnAfterRecycle(Stack<T> _unit)
-            {
-                base.OnAfterRecycle(_unit);
-                _unit.Clear();
-            }
-
-            protected override Stack<T> CreateNewUnit()
-            {
-                return new Stack<T>(8);
-            }
-
-            public override void Dispose()
-            {
-
-            }
-        }
-
-        public class ListPool<T> : PoolBase<List<T>>
-        {
-            protected override void OnAfterRecycle(List<T> _unit)
-            {
-                base.OnAfterRecycle(_unit);
-                _unit.Clear();
-            }
-
-            protected override List<T> CreateNewUnit()
-            {
-                return new List<T>(8);
-            }
-
-            public override void Dispose()
-            {
-
+                base.createFunction = () => new Stack<T>(8);
+                base.onRelease = (unit) => unit.Clear();
             }
         }
     }
