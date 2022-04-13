@@ -37,7 +37,7 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView NewGraphView(BaseGraph graph)
+        protected override BaseGraphView NewGraphView(IGraph graph)
         {
             return new GOAPGraphView();
         }

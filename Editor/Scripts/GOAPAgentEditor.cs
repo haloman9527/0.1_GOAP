@@ -22,7 +22,7 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Editors
 {
     [CustomEditor(typeof(GOAPAgent))]
-    public class GOAPAgentEditor : GraphAssetOwnerEditor
+    public class GOAPAgentEditor : BasicEditor
     {
         GOAPAgent agent;
         SerializedProperty goalsProperty, preStateProperty;
@@ -30,7 +30,6 @@ namespace CZToolKit.GOAP.Editors
 
         protected override void OnEnable()
         {
-            base.OnEnable();
             agent = target as GOAPAgent;
 
             goalsProperty = serializedObject.FindProperty("goals");
