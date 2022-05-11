@@ -75,7 +75,7 @@ namespace CZToolKit.GOAP
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            Agent = Owner.GraphOwner as GOAPAgent;
+            Agent = (Owner as GOAPGraph).GraphOwner as GOAPAgent;
         }
 
         /// <summary> 是否行为是否可用(可重载) </summary>

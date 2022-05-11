@@ -67,10 +67,10 @@ namespace CZToolKit.GOAP.Editors
 
         void Save()
         {
-            if (GraphAsset is IGraphAsset graphAsset)
-                graphAsset.SaveGraph(Graph);
-            if (GraphOwner is IGraphOwner graphOwner)
-                graphOwner.SaveVariables();
+            if (GraphAsset is IGraphSerialization graphSerialization)
+                graphSerialization.SaveGraph(Graph);
+            if (GraphOwner is IVariableSerialization variableSerialization)
+                variableSerialization.SaveVariables();
             GraphView.SetDirty();
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -94,12 +94,12 @@ namespace CZToolKit.GOAP.Editors
             }
         }
 
-        protected override Type GetNodeViewType(BaseNode node)
+        protected override BaseNodeView NewNodeView(BaseNode node)
         {
             if (typeof(GOAPAction).IsAssignableFrom(node.GetType()))
-                return typeof(GOAPNodeView);
+                return new GOAPNodeView();
             else
-                return base.GetNodeViewType(node);
+                return base.NewNodeView(node);
         }
     }
 }

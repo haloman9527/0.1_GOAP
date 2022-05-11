@@ -23,7 +23,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraph>,IGraphOwner
+    public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraph>, IGraphOwner
     {
         #region 变量
 

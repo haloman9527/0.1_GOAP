@@ -154,9 +154,9 @@ namespace CZToolKit.GOAP
             }
         }
 
-        protected override void BindingProperties()
+        protected override void OnBindingProperties()
         {
-            base.BindingProperties();
+            base.OnBindingProperties();
 
             nameField.RegisterValueChangedCallback(evt =>
             {
@@ -189,9 +189,9 @@ namespace CZToolKit.GOAP
             T_Model.onEffectRemoved += OnEffectRemoved;
         }
 
-        public override void UnBindingProperties()
+        protected override void OnUnBindingProperties()
         {
-            base.UnBindingProperties();
+            base.OnUnBindingProperties();
 
             T_Model.UnBindingProperty<string>(nameof(T_Model.Name), OnNameChanged);
             T_Model.UnBindingProperty<float>(nameof(T_Model.Cost), OnCostChanged);

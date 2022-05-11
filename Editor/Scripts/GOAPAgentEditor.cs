@@ -30,6 +30,7 @@ namespace CZToolKit.GOAP.Editors
 
         protected override void OnEnable()
         {
+            base.OnEnable();
             agent = target as GOAPAgent;
 
             goalsProperty = serializedObject.FindProperty("goals");

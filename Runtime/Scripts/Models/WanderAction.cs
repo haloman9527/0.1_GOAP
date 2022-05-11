@@ -143,11 +143,12 @@ namespace CZToolKit.GOAP
             }
         }
 
-        public override void DrawGizmos(IGraphOwner _graphOwner)
+        public override void DrawGizmos(IGraphOwner graphOwner)
         {
 #if UNITY_EDITOR
-            GameObject go = (_graphOwner as MonoBehaviour).gameObject;
-            SharedGameObject variable = _graphOwner.GetVariable(center.GUID) as SharedGameObject;
+            var go = (graphOwner as MonoBehaviour).gameObject;
+            var variableOwner = graphOwner as IVariableOwner;
+            var variable = variableOwner.GetVariable(center.GUID) as SharedGameObject;
             Gizmos.color = Color.green;
             if (variable != null && variable.Value != null)
             {
