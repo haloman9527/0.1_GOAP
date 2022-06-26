@@ -133,7 +133,7 @@ namespace CZToolKit.GOAP
                          if (Provider != null)
                              Provider.PlanFound(CurrentGoal, actionQueue);
                          //转换状态
-                         FSM.ChangeTo("PerformActionState");
+                         FSM.JumpTo("PerformActionState");
                      }
                      else
                      {
@@ -199,13 +199,13 @@ namespace CZToolKit.GOAP
 
                     // 当前目标设置为空
                     CurrentGoal = null;
-                    FSM.ChangeTo("IdleState");
+                    FSM.JumpTo("IdleState");
                 }
             };
 
             FSM.PushState("IdleState", idleState);
             FSM.PushState("PerformActionState", performActionState);
-            FSM.ChangeTo("IdleState");
+            FSM.JumpTo("IdleState");
         }
 
         private void FixedUpdate()
@@ -249,7 +249,7 @@ namespace CZToolKit.GOAP
 
             CurrentAction = null;
             CurrentGoal = null;
-            FSM.ChangeTo("IdleState");
+            FSM.JumpTo("IdleState");
         }
 
         /// <summary> 终止当前计划，并立即重新搜寻计划 </summary>

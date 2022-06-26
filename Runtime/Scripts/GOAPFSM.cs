@@ -29,7 +29,7 @@ namespace CZToolKit.GOAP
         public Action onUpdate;
         public Action onExit;
 
-        public Core.SimpleFSM.FSM Owner { get; set; }
+        public IFSM Owner { get; set; }
 
         public GOAPFSMState(GOAPFSM _owner)
         {
