@@ -29,9 +29,14 @@ namespace CZToolKit.GOAP.Actions.Movement
         public float lookAheadDistance = 5;
         [Tooltip("The GameObject that the agent is fleeing from")]
         public SharedGameObject target;
+    }
 
-        #region ViewModel
+    [ViewModel(typeof(Flee))]
+    public class FleeVM : NavMeshMovementVM
+    {
         [NonSerialized] bool hasMoved;
+
+        public FleeVM(BaseNode model) : base(model) { }
 
         public override void OnPrePerform()
         {
@@ -44,21 +49,16 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Return running if the agent is still fleeing
         public override GOAPActionStatus OnPerform()
         {
-            if (Vector3.Magnitude(Agent.transform.position - target.Value.transform.position) > fleedDistance.Value)
-            {
+            var t_model = Model as Flee;
+            if (Vector3.Magnitude(Agent.transform.position - t_model.target.Value.transform.position) > t_model.fleedDistance.Value)
                 return GOAPActionStatus.Success;
-            }
 
             if (HasArrived())
             {
                 if (!hasMoved)
-                {
                     return GOAPActionStatus.Failure;
-                }
                 if (!SetDestination(Target()))
-                {
                     return GOAPActionStatus.Failure;
-                }
                 hasMoved = false;
             }
             else
@@ -66,9 +66,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                 // If the agent is stuck the task shouldn't continue to return a status of running.
                 var velocityMagnitude = Velocity().sqrMagnitude;
                 if (hasMoved && velocityMagnitude <= 0f)
-                {
                     return GOAPActionStatus.Failure;
-                }
                 hasMoved = velocityMagnitude > 0f;
             }
 
@@ -78,11 +76,12 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Flee in the opposite direction
         private Vector3 Target()
         {
-            return Agent.transform.position + (Agent.transform.position - target.Value.transform.position).normalized * lookAheadDistance;
+            var t_model = Model as Flee;
+            return Agent.transform.position + (Agent.transform.position - t_model.target.Value.transform.position).normalized * t_model.lookAheadDistance;
         }
 
         // Return false if the position isn't valid on the NavMesh.
-        protected override bool SetDestination(Vector3 destination)
+        public override bool SetDestination(Vector3 destination)
         {
             if (!SamplePosition(destination))
             {
@@ -90,6 +89,5 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             return base.SetDestination(destination);
         }
-        #endregion
     }
 }

@@ -19,7 +19,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeTooltip("Rotates towards the specified rotation. The rotation can either be specified by a transform or rotation. If the transform "+
+    [NodeTooltip("Rotates towards the specified rotation. The rotation can either be specified by a transform or rotation. If the transform " +
                      "is used then the rotation will not be used.")]
     [NodeMenuItem("Movement", "RotateTowards")]
     public class RotateTowards : GOAPAction
@@ -36,40 +36,46 @@ namespace CZToolKit.GOAP.Actions.Movement
         public SharedGameObject target;
         [Tooltip("If target is null then use the target rotation")]
         public SharedVector3 targetRotation;
+    }
 
-        #region ViewModel
+    [ViewModel(typeof(RotateTowards))]
+    public class RotateTowardsVM : GOAPActionVM
+    {
+        public RotateTowardsVM(BaseNode model) : base(model) { }
+
         public override GOAPActionStatus OnPerform()
         {
+            var t_model = Model as RotateTowards;
             var rotation = Target();
             // Return a task status of success once we are done rotating
-            if (Quaternion.Angle(Agent.transform.rotation, rotation) < rotationEpsilon.Value)
+            if (Quaternion.Angle(Agent.transform.rotation, rotation) < t_model.rotationEpsilon.Value)
             {
                 return GOAPActionStatus.Success;
             }
             // We haven't reached the target yet so keep rotating towards it
-            Agent.transform.rotation = Quaternion.RotateTowards(Agent.transform.rotation, rotation, maxLookAtRotationDelta.Value);
+            Agent.transform.rotation = Quaternion.RotateTowards(Agent.transform.rotation, rotation, t_model.maxLookAtRotationDelta.Value);
             return GOAPActionStatus.Running;
         }
 
         // Return targetPosition if targetTransform is null
         private Quaternion Target()
         {
-            if (target == null || target.Value == null)
+            var t_model = Model as RotateTowards;
+            if (t_model.target == null || t_model.target.Value == null)
             {
-                return Quaternion.Euler(targetRotation.Value);
+                return Quaternion.Euler(t_model.targetRotation.Value);
             }
-            var position = target.Value.transform.position - Agent.transform.position;
-            if (onlyY.Value)
+            var position = t_model.target.Value.transform.position - Agent.transform.position;
+            if (t_model.onlyY.Value)
             {
                 position.y = 0;
             }
-            if (usePhysics2D)
+            if (t_model.usePhysics2D)
             {
                 var angle = Mathf.Atan2(position.y, position.x) * Mathf.Rad2Deg;
                 return Quaternion.AngleAxis(angle, Vector3.forward);
             }
             return Quaternion.LookRotation(position);
         }
-        #endregion
     }
 }

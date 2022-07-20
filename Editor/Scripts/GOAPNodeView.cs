@@ -25,7 +25,7 @@ using UnityEngine.UIElements;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPNodeView : BaseSimpleNodeView<GOAPAction>
+    public class GOAPNodeView : BaseSimpleNodeView<GOAPActionVM>
     {
         string rawTitle;
         TextField nameField;
@@ -74,40 +74,40 @@ namespace CZToolKit.GOAP
 
         protected override void OnInitialized()
         {
-            if (!typeof(GOAPAction).IsAssignableFrom(T_Model.GetType())) return;
+            if (!typeof(GOAPAction).IsAssignableFrom(T_ViewModel.GetType())) return;
 
-            rawTitle = T_Model.Title;
+            rawTitle = T_ViewModel.Title;
 
-            title = T_Model.Name + $"({rawTitle})";
-            nameField.SetValueWithoutNotify(T_Model.Name);
-            costField.SetValueWithoutNotify(T_Model.Cost);
+            title = T_ViewModel.Name + $"({rawTitle})";
+            nameField.SetValueWithoutNotify(T_ViewModel.Name);
+            costField.SetValueWithoutNotify(T_ViewModel.Cost);
 
-            for (int i = 0; i < T_Model.Preconditions.Count; i++)
+            for (int i = 0; i < T_ViewModel.Preconditions.Count; i++)
             {
-                VisualElement v = CreateToggle(T_Model.Preconditions[i], (ele, state) =>
+                VisualElement v = CreateToggle(T_ViewModel.Preconditions[i], (ele, state) =>
                 {
-                    T_Model.RemovePrecondition(state);
+                    T_ViewModel.RemovePrecondition(state);
                     ele.RemoveFromHierarchy();
                 });
                 conditionFoldout.Add(v);
-                ConditionElements[T_Model.Preconditions[i]] = v;
+                ConditionElements[T_ViewModel.Preconditions[i]] = v;
             }
 
-            for (int i = 0; i < T_Model.Effects.Count; i++)
+            for (int i = 0; i < T_ViewModel.Effects.Count; i++)
             {
-                VisualElement v = CreateToggle(T_Model.Effects[i], (ele, state) =>
+                VisualElement v = CreateToggle(T_ViewModel.Effects[i], (ele, state) =>
                 {
-                    T_Model.RemoveEffect(state);
+                    T_ViewModel.RemoveEffect(state);
                     ele.RemoveFromHierarchy();
                 });
                 effectFoldout.Add(v);
-                EffectElements[T_Model.Effects[i]] = v;
+                EffectElements[T_ViewModel.Effects[i]] = v;
             }
         }
 
         void OnNameChanged(string _newName)
         {
-            title = T_Model.Name + $"({rawTitle})";
+            title = T_ViewModel.Name + $"({rawTitle})";
             nameField.SetValueWithoutNotify(_newName);
         }
 
@@ -120,7 +120,7 @@ namespace CZToolKit.GOAP
         {
             VisualElement v = CreateToggle(_newCondition, (ele, state) =>
             {
-                T_Model.RemovePrecondition(state);
+                T_ViewModel.RemovePrecondition(state);
             });
             conditionFoldout.Add(v);
             ConditionElements[_newCondition] = v;
@@ -139,7 +139,7 @@ namespace CZToolKit.GOAP
         {
             VisualElement v = CreateToggle(_newEffect, (ele, state) =>
             {
-                T_Model.RemoveEffect(state);
+                T_ViewModel.RemoveEffect(state);
             });
             effectFoldout.Add(v);
             EffectElements[_newEffect] = v;
@@ -160,47 +160,47 @@ namespace CZToolKit.GOAP
 
             nameField.RegisterValueChangedCallback(evt =>
             {
-                T_Model.Name = evt.newValue;
+                T_ViewModel.Name = evt.newValue;
             });
 
             costField.RegisterValueChangedCallback(evt =>
             {
-                T_Model.Cost = evt.newValue;
+                T_ViewModel.Cost = evt.newValue;
             });
 
             btnAddCondition.clicked += () =>
             {
-                T_Model.AddPrecondition(new GOAPState());
+                T_ViewModel.AddPrecondition(new GOAPState());
                 Owner.SetDirty();
             };
             btnAddEffect.clicked += () =>
             {
-                T_Model.AddEffect(new GOAPState());
+                T_ViewModel.AddEffect(new GOAPState());
                 Owner.SetDirty();
             };
 
-            T_Model.BindingProperty<string>(nameof(T_Model.Name), OnNameChanged);
-            T_Model.BindingProperty<float>(nameof(T_Model.Cost), OnCostChanged);
+            T_ViewModel.BindingProperty<string>(nameof(T_ViewModel.Name), OnNameChanged);
+            T_ViewModel.BindingProperty<float>(nameof(T_ViewModel.Cost), OnCostChanged);
 
-            T_Model.onPreconditionAdded += OnPreconditionAdded;
-            T_Model.onPreconditionRemoved += OnPreconditionRemoved;
+            T_ViewModel.onPreconditionAdded += OnPreconditionAdded;
+            T_ViewModel.onPreconditionRemoved += OnPreconditionRemoved;
 
-            T_Model.onEffectAdded += OnEffectAdded;
-            T_Model.onEffectRemoved += OnEffectRemoved;
+            T_ViewModel.onEffectAdded += OnEffectAdded;
+            T_ViewModel.onEffectRemoved += OnEffectRemoved;
         }
 
         protected override void OnUnBindingProperties()
         {
             base.OnUnBindingProperties();
 
-            T_Model.UnBindingProperty<string>(nameof(T_Model.Name), OnNameChanged);
-            T_Model.UnBindingProperty<float>(nameof(T_Model.Cost), OnCostChanged);
+            T_ViewModel.UnBindingProperty<string>(nameof(T_ViewModel.Name), OnNameChanged);
+            T_ViewModel.UnBindingProperty<float>(nameof(T_ViewModel.Cost), OnCostChanged);
 
-            T_Model.onPreconditionAdded -= OnPreconditionAdded;
-            T_Model.onPreconditionRemoved -= OnPreconditionRemoved;
+            T_ViewModel.onPreconditionAdded -= OnPreconditionAdded;
+            T_ViewModel.onPreconditionRemoved -= OnPreconditionRemoved;
 
-            T_Model.onEffectAdded -= OnEffectAdded;
-            T_Model.onEffectRemoved -= OnEffectRemoved;
+            T_ViewModel.onEffectAdded -= OnEffectAdded;
+            T_ViewModel.onEffectRemoved -= OnEffectRemoved;
         }
 
         VisualElement CreateToggle(GOAPState _state, Action<VisualElement, GOAPState> _onBtnRemoveClicked)

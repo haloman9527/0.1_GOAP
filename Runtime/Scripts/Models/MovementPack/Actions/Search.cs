@@ -64,24 +64,29 @@ namespace CZToolKit.GOAP.Actions.Movement
         public SharedFloat audibilityThreshold = new SharedFloat(0.05f);
         [Tooltip("The object that is found")]
         public SharedGameObject returnedObject;
+    }
 
-        #region ViewModel
+    [ViewModel(typeof(Search))]
+    public class SearchVM : NavMeshMovementVM
+    {
         private float pauseTime;
         private float destinationReachTime;
-
         private Collider[] overlapColliders;
+
+        public SearchVM(BaseNode model) : base(model) { }
 
         public override GOAPActionStatus OnPerform()
         {
+            var t_model = Model as Search;
             if (HasArrived())
             {
                 // The agent should pause at the destination only if the max pause duration is greater than 0
-                if (maxPauseDuration.Value > 0)
+                if (t_model.maxPauseDuration.Value > 0)
                 {
                     if (destinationReachTime == -1)
                     {
                         destinationReachTime = Time.time;
-                        pauseTime = Random.Range(minPauseDuration.Value, maxPauseDuration.Value);
+                        pauseTime = Random.Range(t_model.minPauseDuration.Value, t_model.maxPauseDuration.Value);
                     }
                     if (destinationReachTime + pauseTime <= Time.time)
                     {
@@ -101,20 +106,20 @@ namespace CZToolKit.GOAP.Actions.Movement
             // Detect if any objects are within sight
             if (overlapColliders == null)
             {
-                overlapColliders = new Collider[maxCollisionCount];
+                overlapColliders = new Collider[t_model.maxCollisionCount];
             }
-            returnedObject.Value = MovementUtility.WithinSight(Agent.transform, offset.Value, fieldOfViewAngle.Value, viewDistance.Value, overlapColliders, objectLayerMask, targetOffset.Value, ignoreLayerMask, useTargetBone.Value, targetBone, drawDebugRay.Value);
+            t_model.returnedObject.Value = MovementUtility.WithinSight(Agent.transform, t_model.offset.Value, t_model.fieldOfViewAngle.Value, t_model.viewDistance.Value, overlapColliders, t_model.objectLayerMask, t_model.targetOffset.Value, t_model.ignoreLayerMask, t_model.useTargetBone.Value, t_model.targetBone, t_model.drawDebugRay.Value);
             // If an object was seen then return success
-            if (returnedObject.Value != null)
+            if (t_model.returnedObject.Value != null)
             {
                 return GOAPActionStatus.Success;
             }
             // Detect if any object are within audio range (if enabled)
-            if (senseAudio.Value)
+            if (t_model.senseAudio.Value)
             {
-                returnedObject.Value = MovementUtility.WithinHearingRange(Agent.transform, offset.Value, audibilityThreshold.Value, hearingRadius.Value, overlapColliders, objectLayerMask);
+                t_model.returnedObject.Value = MovementUtility.WithinHearingRange(Agent.transform, t_model.offset.Value, t_model.audibilityThreshold.Value, t_model.hearingRadius.Value, overlapColliders, t_model.objectLayerMask);
                 // If an object was heard then return success
-                if (returnedObject.Value != null)
+                if (t_model.returnedObject.Value != null)
                 {
                     return GOAPActionStatus.Success;
                 }
@@ -126,14 +131,15 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         private bool TrySetTarget()
         {
+            var t_model = Model as Search;
             var direction = Agent.transform.forward;
             var validDestination = false;
-            var attempts = targetRetries.Value;
+            var attempts = t_model.targetRetries.Value;
             var destination = Agent.transform.position;
             while (!validDestination && attempts > 0)
             {
-                direction = direction + Random.insideUnitSphere * wanderRate.Value;
-                destination = Agent.transform.position + direction.normalized * Random.Range(minWanderDistance.Value, maxWanderDistance.Value);
+                direction = direction + Random.insideUnitSphere * t_model.wanderRate.Value;
+                destination = Agent.transform.position + direction.normalized * Random.Range(t_model.minWanderDistance.Value, t_model.maxWanderDistance.Value);
                 validDestination = SamplePosition(destination);
                 attempts--;
             }
@@ -143,7 +149,5 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             return validDestination;
         }
-
-        #endregion
     }
 }

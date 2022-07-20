@@ -23,7 +23,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraph>, IGraphOwner
+    public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraphVM>, IGraphOwner
     {
         #region 变量
 
@@ -51,8 +51,8 @@ namespace CZToolKit.GOAP
         [Tooltip("计划异常终止是否立即重新搜寻计划")]
         public bool replanOnFailed = true;
 
-        Queue<GOAPAction> storedActionQueue;
-        Queue<GOAPAction> actionQueue;
+        Queue<GOAPActionVM> storedActionQueue;
+        Queue<GOAPActionVM> actionQueue;
         #endregion
 
         #region 公共属性
@@ -64,11 +64,11 @@ namespace CZToolKit.GOAP
         public List<GOAPGoal> Goals { get { return goals; } private set { goals = value; } }
         public Dictionary<string, bool> States { get; private set; }
         /// <summary> 当前计划 </summary>
-        public IReadOnlyCollection<GOAPAction> StoredActionQueue { get { return storedActionQueue; } }
+        public IReadOnlyCollection<GOAPActionVM> StoredActionQueue { get { return storedActionQueue; } }
         /// <summary> 当前行为队列 </summary>
-        public IReadOnlyCollection<GOAPAction> ActionQueue { get { return actionQueue; } }
+        public IReadOnlyCollection<GOAPActionVM> ActionQueue { get { return actionQueue; } }
         /// <summary> 当前行为 </summary>
-        public GOAPAction CurrentAction { get; private set; }
+        public GOAPActionVM CurrentAction { get; private set; }
         /// <summary> 当前目的，没有为空 </summary>
         public GOAPGoal CurrentGoal { get; private set; }
         public bool HasGoal { get { return CurrentGoal != null; } }
@@ -80,8 +80,8 @@ namespace CZToolKit.GOAP
 
         protected virtual void Awake()
         {
-            storedActionQueue = new Queue<GOAPAction>();
-            actionQueue = new Queue<GOAPAction>();
+            storedActionQueue = new Queue<GOAPActionVM>();
+            actionQueue = new Queue<GOAPActionVM>();
             Provider = GetComponent<IGOAP>();
             Planner = new GOAPPlanner();
             FSM = new GOAPFSM();
@@ -154,7 +154,7 @@ namespace CZToolKit.GOAP
                 if (HasPlan)
                 {
                     // 如果当前有计划(目标尚未完成)
-                    GOAPAction action = actionQueue.Peek();
+                    GOAPActionVM action = actionQueue.Peek();
                     if (CurrentAction != action)
                     {
                         CurrentAction = action;
@@ -279,6 +279,16 @@ namespace CZToolKit.GOAP
             Gizmos.DrawIcon(transform.position, "GOAP/GOAP_Scene_Icon.png", true);
             if (enabled)
                 T_Graph?.DrawGizmos(this);
+        }
+
+        public override void SaveGraph(BaseGraph graph)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override BaseGraph DeserializeGraph()
+        {
+            throw new NotImplementedException();
         }
     }
 }

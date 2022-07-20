@@ -23,7 +23,6 @@ namespace CZToolKit.GOAP.Actions.Movement
     [NodeMenuItem("Movement", "Cover")]
     public class Cover : NavMeshMovement
     {
-        #region Model
         [Tooltip("The distance to search for cover")]
         public SharedFloat maxCoverDistance = new SharedFloat(1000);
         [Tooltip("The layermask of the available cover positions")]
@@ -40,48 +39,52 @@ namespace CZToolKit.GOAP.Actions.Movement
         public SharedFloat rotationEpsilon = new SharedFloat(0.5f);
         [Tooltip("Max rotation delta if lookAtCoverPoint")]
         public SharedFloat maxLookAtRotationDelta;
+    }
 
-
-        public Cover() : base()
-        {
-            name = "Cover";
-            cost = 1;
-        }
-
-        #endregion
-
-        #region ViewModel
+    [ViewModel(typeof(Cover))]
+    public class CoverVM : NavMeshMovementVM
+    {
         Vector3 coverPoint;
         // The position to reach, offsetted from coverPoint
         Vector3 coverTarget;
         // Was cover found?
         bool foundCover;
 
+        public CoverVM(BaseNode model) : base(model) { }
+
+        public override void OnAdded()
+        {
+            base.OnAdded();
+            var t_model = Model as Cover;
+            t_model.name = "Cover";
+            t_model.cost = 1;
+        }
+
         public override void OnPrePerform()
         {
-            RaycastHit hit;
+            var t_model = Model as Cover;
             int raycastCount = 0;
             var direction = Agent.transform.forward;
             float step = 0;
             coverTarget = Agent.transform.position;
             foundCover = false;
             // Keep firing a ray until too many rays have been fired
-            while (raycastCount < maxRaycasts.Value)
+            while (raycastCount < t_model.maxRaycasts.Value)
             {
                 var ray = new Ray(Agent.transform.position, direction);
-                if (Physics.Raycast(ray, out hit, maxCoverDistance.Value, availableLayerCovers.value))
+                if (Physics.Raycast(ray, out RaycastHit hit, t_model.maxCoverDistance.Value, t_model.availableLayerCovers.value))
                 {
                     // A suitable agent has been found. Find the opposite side of that agent by shooting a ray in the opposite direction from a point far away
-                    if (hit.collider.Raycast(new Ray(hit.point - hit.normal * maxCoverDistance.Value, hit.normal), out hit, Mathf.Infinity))
+                    if (hit.collider.Raycast(new Ray(hit.point - hit.normal * t_model.maxCoverDistance.Value, hit.normal), out hit, Mathf.Infinity))
                     {
                         coverPoint = hit.point;
-                        coverTarget = hit.point + hit.normal * coverOffset.Value;
+                        coverTarget = hit.point + hit.normal * t_model.coverOffset.Value;
                         foundCover = true;
                         break;
                     }
                 }
                 // Keep sweeiping along the y axis
-                step += rayStep.Value;
+                step += t_model.rayStep.Value;
                 direction = Quaternion.Euler(0, Agent.transform.eulerAngles.y + step, 0) * Vector3.forward;
                 raycastCount++;
             }
@@ -94,23 +97,24 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         public override GOAPActionStatus OnPerform()
         {
-            if (!foundCover) return GOAPActionStatus.Failure;
+            if (!foundCover)
+                return GOAPActionStatus.Failure;
+            var t_model = Model as Cover;
             if (HasArrived())
             {
                 var rotation = Quaternion.LookRotation(coverPoint - Agent.transform.position);
                 // Return success if the agent isn't going to look at the cover point or it has completely rotated to look at the cover point
-                if (!lookAtCoverPoint.Value || Quaternion.Angle(Agent.transform.rotation, rotation) < rotationEpsilon.Value)
+                if (!t_model.lookAtCoverPoint.Value || Quaternion.Angle(Agent.transform.rotation, rotation) < t_model.rotationEpsilon.Value)
                 {
                     return GOAPActionStatus.Success;
                 }
                 else
                 {
                     // Still needs to rotate towards the target
-                    Agent.transform.rotation = Quaternion.RotateTowards(Agent.transform.rotation, rotation, maxLookAtRotationDelta.Value);
+                    Agent.transform.rotation = Quaternion.RotateTowards(Agent.transform.rotation, rotation, t_model.maxLookAtRotationDelta.Value);
                 }
             }
             return GOAPActionStatus.Running;
         }
-        #endregion
     }
 }

@@ -19,7 +19,7 @@ using UnityEngine.AI;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    public abstract class NavMeshMovement : Movement
+    public abstract class NavMeshMovement : GOAPAction
     {
         [Tooltip("The speed of the agent")]
         public float speed = 10;
@@ -31,35 +31,35 @@ namespace CZToolKit.GOAP.Actions.Movement
         public bool stopOnTaskEnd = true;
         [Tooltip("Should the NavMeshAgent rotation be updated when the task ends?")]
         public bool updateRotation = true;
+    }
 
-        #region ViewModel
+    public abstract class NavMeshMovementVM : GOAPActionVM, IMovementAction
+    {
         protected NavMeshAgent navMeshAgent;
         private bool startUpdateRotation;
 
-        /// <summary>
-        /// Cache the component references.
-        /// </summary>
-        protected override void OnInitialized()
+        protected NavMeshMovementVM(BaseNode model) : base(model) { }
+
+        public override void Initialized(GOAPAgent agent)
         {
-            base.OnInitialized();
+            base.Initialized(agent);
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 
         public override void OnPrePerform()
         {
-            navMeshAgent.speed = speed;
-            navMeshAgent.angularSpeed = angularSpeed;
+            var t_model = Model as NavMeshMovement;
+            navMeshAgent.speed = t_model.speed;
+            navMeshAgent.angularSpeed = t_model.angularSpeed;
             navMeshAgent.isStopped = false;
             startUpdateRotation = navMeshAgent.updateRotation;
-            UpdateRotation(updateRotation);
+            UpdateRotation(t_model.updateRotation);
         }
 
-        /// <summary>
-        /// Set a new pathfinding destination.
-        /// </summary>
+        /// <summary> Set a new pathfinding destination. </summary>
         /// <param name="destination">The destination to set.</param>
         /// <returns>True if the destination is valid.</returns>
-        protected override bool SetDestination(Vector3 destination)
+        public virtual bool SetDestination(Vector3 destination)
         {
             navMeshAgent.isStopped = false;
             return navMeshAgent.SetDestination(destination);
@@ -67,7 +67,7 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         /// <summary> Specifies if the rotation should be updated. </summary>
         /// <param name="update">Should the rotation be updated?</param>
-        protected override void UpdateRotation(bool update)
+        public virtual void UpdateRotation(bool update)
         {
             navMeshAgent.updateRotation = update;
             navMeshAgent.updateUpAxis = update;
@@ -75,79 +75,59 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         /// <summary> Does the agent have a pathfinding path? </summary>
         /// <returns>True if the agent has a pathfinding path.</returns>
-        protected override bool HasPath()
+        public virtual bool HasPath()
         {
-            return navMeshAgent.hasPath && navMeshAgent.remainingDistance > arriveDistance;
+            var t_model = Model as NavMeshMovement;
+            return navMeshAgent.hasPath && navMeshAgent.remainingDistance > t_model.arriveDistance;
         }
 
-        /// <summary>
-        /// Returns the velocity of the agent.
-        /// </summary>
+        /// <summary> Returns the velocity of the agent. </summary>
         /// <returns>The velocity of the agent.</returns>
-        protected override Vector3 Velocity()
+        public virtual Vector3 Velocity()
         {
             return navMeshAgent.velocity;
         }
 
-        /// <summary>
-        /// Returns true if the position is a valid pathfinding position.
-        /// </summary>
+        /// <summary> Returns true if the position is a valid pathfinding position. </summary>
         /// <param name="position">The position to sample.</param>
         /// <returns>True if the position is a valid pathfinding position.</returns>
-        protected bool SamplePosition(Vector3 position)
+        public virtual bool SamplePosition(Vector3 position)
         {
             NavMeshHit hit;
             return NavMesh.SamplePosition(position, out hit, navMeshAgent.height * 2, NavMesh.AllAreas);
         }
 
-        /// <summary>
-        /// Has the agent arrived at the destination?
-        /// </summary>
+        /// <summary> Has the agent arrived at the destination?  </summary>
         /// <returns>True if the agent has arrived at the destination.</returns>
-        protected override bool HasArrived()
+        public virtual bool HasArrived()
         {
+            var t_model = Model as NavMeshMovement;
             // The path hasn't been computed yet if the path is pending.
             float remainingDistance;
             if (navMeshAgent.pathPending)
-            {
                 remainingDistance = float.PositiveInfinity;
-            }
             else
-            {
                 remainingDistance = navMeshAgent.remainingDistance;
-            }
 
-            return remainingDistance <= arriveDistance;
+            return remainingDistance <= t_model.arriveDistance;
         }
 
-        /// <summary>
-        /// Stop pathfinding.
-        /// </summary>
-        protected override void Stop()
+        /// <summary> Stop pathfinding. </summary>
+        public virtual void Stop()
         {
             UpdateRotation(startUpdateRotation);
             if (navMeshAgent.hasPath)
-            {
                 navMeshAgent.isStopped = true;
-            }
         }
 
-        /// <summary>
-        /// The behavior tree has ended.Stop moving.
-        /// </summary>
+        /// <summary> The behavior tree has ended.Stop moving. </summary>
         public override void OnPostPerform(bool _successed)
         {
-            if (stopOnTaskEnd)
+            var t_model = Model as NavMeshMovement;
+            if (t_model.stopOnTaskEnd)
                 Stop();
             else
                 UpdateRotation(startUpdateRotation);
         }
-
-        //public override void PostPerform()
-        //{
-        //    Stop();
-        //    Debug.Log(1);
-        //}
-        #endregion
     }
 }

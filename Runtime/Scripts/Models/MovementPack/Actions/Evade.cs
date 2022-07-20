@@ -33,15 +33,21 @@ namespace CZToolKit.GOAP.Actions.Movement
         public SharedFloat targetDistPredictionMult = new SharedFloat(20);
         [Tooltip("The GameObject that the agent is evading")]
         public SharedGameObject target;
+    }
 
-        #region ViewModel
+    [ViewModel(typeof(Evade))]
+    public class EvadeVM : NavMeshMovementVM
+    {
         // The position of the target at the last frame
-        [NonSerialized] Vector3 targetPosition;
+        Vector3 targetPosition;
+
+        public EvadeVM(BaseNode model) : base(model) { }
 
         public override void OnPrePerform()
         {
             base.OnPrePerform();
-            targetPosition = target.Value.transform.position;
+            var t_model = Model as Evade;
+            targetPosition = t_model.target.Value.transform.position;
             SetDestination(Target());
         }
 
@@ -49,8 +55,9 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Return running if the agent is still fleeing
         public override GOAPActionStatus OnPerform()
         {
+            var t_model = Model as Evade;
             SetDestination(Target());
-            if (Vector3.Magnitude(Agent.transform.position - target.Value.transform.position) > evadeDistance.Value)
+            if (Vector3.Magnitude(Agent.transform.position - t_model.target.Value.transform.position) > t_model.evadeDistance.Value)
                 return GOAPActionStatus.Success;
 
             return GOAPActionStatus.Running;
@@ -59,28 +66,24 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Evade in the opposite direction
         private Vector3 Target()
         {
+            var t_model = Model as Evade;
             // Calculate the current distance to the target and the current speed
-            var distance = (target.Value.transform.position - Agent.transform.position).magnitude;
+            var distance = (t_model.target.Value.transform.position - Agent.transform.position).magnitude;
             var speed = Velocity().magnitude;
 
             float futurePrediction = 0;
             // Set the future prediction to max prediction if the speed is too small to give an accurate prediction
-            if (speed <= distance / targetDistPrediction.Value)
-            {
-                futurePrediction = targetDistPrediction.Value;
-            }
+            if (speed <= distance / t_model.targetDistPrediction.Value)
+                futurePrediction = t_model.targetDistPrediction.Value;
             else
-            {
-                futurePrediction = (distance / speed) * targetDistPredictionMult.Value; // the prediction should be accurate enough
-            }
+                futurePrediction = (distance / speed) * t_model.targetDistPredictionMult.Value; // the prediction should be accurate enough
 
             // Predict the future by taking the velocity of the target and multiply it by the future prediction
             var prevTargetPosition = targetPosition;
-            targetPosition = target.Value.transform.position;
+            targetPosition = t_model.target.Value.transform.position;
             var position = targetPosition + (targetPosition - prevTargetPosition) * futurePrediction;
 
-            return Agent.transform.position + (Agent.transform.position - position).normalized * lookAheadDistance.Value;
+            return Agent.transform.position + (Agent.transform.position - position).normalized * t_model.lookAheadDistance.Value;
         }
-        #endregion
     }
 }

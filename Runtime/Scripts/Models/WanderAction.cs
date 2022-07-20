@@ -30,51 +30,36 @@ namespace CZToolKit.GOAP
     public class WanderAction : GOAPAction
     {
         [Header("巡逻范围")]
-        [SerializeField] SharedGameObject center = new SharedGameObject();
-
-        [SerializeField] float range = 10;
-
+        public SharedGameObject center = new SharedGameObject();
+        public float range = 10;
         [Header("视野范围")]
-        [SerializeField] float radius = 5;
+        public float radius = 5;
         [Range(0, 360)]
         [Header("视野角度")]
-        [SerializeField] float sector = 90;
-        [SerializeField] LayerMask layer;
+        public float sector = 90;
+        public LayerMask layer;
+    }
 
-        public WanderAction() : base()
+    [ViewModel(typeof(WanderAction))]
+    public class WanderActionVM : GOAPActionVM
+    {
+        NavMeshAgent navMeshAgent;
+
+        public WanderActionVM(BaseNode model) : base(model) { }
+
+        public override void OnAdded()
         {
-            name = "徘徊";
-
-            preconditions.Add(new GOAPState() { Key = "HasTarget", Value = false });
-
-            effects.Add(new GOAPState() { Key = "HasTarget", Value = true });
+            base.OnAdded();
+            var t_model = Model as WanderAction;
+            t_model.name = "徘徊";
+            t_model.preconditions.Add(new GOAPState() { Key = "HasTarget", Value = false });
+            t_model.effects.Add(new GOAPState() { Key = "HasTarget", Value = true });
         }
 
-        #region ViewModel
-        [NonSerialized] NavMeshAgent navMeshAgent;
-
-        public GameObject Center
+        public override void Initialized(GOAPAgent agent)
         {
-            get { return GetPropertyValue<GameObject>(nameof(Center)); }
-            set { SetPropertyValue(nameof(Center), value); }
-        }
-
-        protected override void OnEnabled()
-        {
-            base.OnEnabled();
-            this[nameof(Center)] = new BindableProperty<GameObject>(()=> center.Value, v => center.Value = v);
-
-            this["Range"] = new BindableProperty<float>(() => range, v => range = v);
-            this["Radius"] = new BindableProperty<float>(() => radius, v => radius = v);
-            this["Sector"] = new BindableProperty<float>(() => sector, v => sector = v);
-            this["Layer"] = new BindableProperty<LayerMask>(() => layer, v => layer = v);
-        }
-
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
+            base.Initialized(agent);
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
-            Center = center.Value;
         }
 
         public override bool IsProceduralPrecondition(Dictionary<string, bool> currentState)
@@ -92,7 +77,8 @@ namespace CZToolKit.GOAP
 
         public override void OnPrePerform()
         {
-            targetPos = Random.insideUnitSphere * range + center.Value.transform.position;
+            var t_model = Model as WanderAction;
+            targetPos = Random.insideUnitSphere * t_model.range + t_model.center.Value.transform.position;
             targetPos.y = 0;
             stayTime = Random.Range(2, 5);
             navMeshAgent.stoppingDistance = 0;
@@ -102,24 +88,25 @@ namespace CZToolKit.GOAP
 
         public override GOAPActionStatus OnPerform()
         {
+            var t_model = Model as WanderAction;
             if (Vector3.Distance(targetPos, Agent.transform.position) <= 2)
             {
                 stayTime -= Time.deltaTime;
                 if (stayTime <= 0)
                 {
-                    targetPos = Random.insideUnitSphere * range + center.Value.transform.position;
+                    targetPos = Random.insideUnitSphere * t_model.range + t_model.center.Value.transform.position;
                     targetPos.y = 0;
                     stayTime = Random.Range(2, 5);
                 }
             }
             navMeshAgent.SetDestination(targetPos);
 
-            Collider[] colliders = Physics.OverlapSphere(Agent.transform.position, radius, layer);
+            Collider[] colliders = Physics.OverlapSphere(Agent.transform.position, t_model.radius, t_model.layer);
             if (colliders.Length > 0)
             {
                 foreach (var item in colliders)
                 {
-                    if (Vector3.Angle(Agent.transform.forward, item.transform.position - Agent.transform.position) <= sector / 2)
+                    if (Vector3.Angle(Agent.transform.forward, item.transform.position - Agent.transform.position) <= t_model.sector / 2)
                     {
                         Agent.Memory.SetData("Target", item.gameObject);
                         return GOAPActionStatus.Success;
@@ -146,17 +133,18 @@ namespace CZToolKit.GOAP
         public override void DrawGizmos(IGraphOwner graphOwner)
         {
 #if UNITY_EDITOR
+            var t_model = Model as WanderAction;
             var go = (graphOwner as MonoBehaviour).gameObject;
             var variableOwner = graphOwner as IVariableOwner;
-            var variable = variableOwner.GetVariable(center.GUID) as SharedGameObject;
+            var variable = variableOwner.GetVariable(t_model.center.GUID) as SharedGameObject;
             Gizmos.color = Color.green;
             if (variable != null && variable.Value != null)
             {
-                Gizmos.DrawWireSphere(variable.Value.transform.position, range);
+                Gizmos.DrawWireSphere(variable.Value.transform.position, t_model.range);
                 Gizmos.DrawSphere(variable.Value.transform.position, 0.5f);
             }
             Gizmos.color = new Color(1, 0, 0, 0.3f);
-            Gizmos.DrawMesh(SemicircleMesh(radius, (int)sector, Vector3.up), go.transform.position + Vector3.up * 0.2f, go.transform.rotation);
+            Gizmos.DrawMesh(SemicircleMesh(t_model.radius, (int)t_model.sector, Vector3.up), go.transform.position + Vector3.up * 0.2f, go.transform.rotation);
 #endif
             if (Application.isPlaying)
                 Gizmos.DrawSphere(targetPos, 0.5f);
@@ -228,6 +216,5 @@ namespace CZToolKit.GOAP
             return mesh;
         }
 #endif
-        #endregion
     }
 }

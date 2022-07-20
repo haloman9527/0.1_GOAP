@@ -19,16 +19,19 @@ using System.Collections.Generic;
 namespace CZToolKit.GOAP
 {
     [NodeMenuItem("Attack")]
-    public class AttackAction : GOAPAction
+    public class AttackAction : GOAPAction { }
+
+    [ViewModel(typeof(AttackAction))]
+    public class AttackActionVM : GOAPActionVM
     {
-        public AttackAction() : base()
+        public AttackActionVM(BaseNode model) : base(model)
         {
-            name = "攻击";
+            var t_model = model as AttackAction;
 
-            preconditions.Add(new GOAPState() { Key = "HasTarget", Value = true });
-            preconditions.Add(new GOAPState() { Key = "InAttackRange", Value = true });
-
-            effects.Add(new GOAPState() { Key = "KillTarget", Value = true });
+            t_model.name = "攻击";
+            t_model.preconditions.Add(new GOAPState() { Key = "HasTarget", Value = true });
+            t_model.preconditions.Add(new GOAPState() { Key = "InAttackRange", Value = true });
+            t_model.effects.Add(new GOAPState() { Key = "KillTarget", Value = true });
         }
 
         public override GOAPActionStatus OnPerform()

@@ -17,10 +17,10 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    public abstract class GroupMovement : GOAPAction
+    public interface IGroupMovement
     {
-        protected abstract bool SetDestination(int index, Vector3 target);
+        bool SetDestination(int index, Vector3 target);
 
-        protected abstract Vector3 Velocity(int index);
+        Vector3 Velocity(int index);
     }
 }

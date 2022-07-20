@@ -21,28 +21,23 @@ using UnityEngine.Events;
 
 namespace CZToolKit.GOAP
 {
-    [NodeMenuItem("Seek")]
     [NodeTooltip("追逐敌人到一定距离后停下")]
+    [NodeMenuItem("Seek")]
     public class SeekAction : GOAPAction
     {
         public float stopDistance = 2;
-
         [Header("超时")]
         [Tooltip("超时将不再追击敌人")]
         public float timeout = 10;
 
-        public SeekAction()
-        {
-            name = "追逐";
-            cost = 1;
+    }
 
-            preconditions.Add(new GOAPState() { Key = "HasTarget", Value = true });
-            preconditions.Add(new GOAPState() { Key = "InAttackRange", Value = false });
+    [ViewModel(typeof(SeekAction))]
+    public class SeekActionVM : GOAPActionVM
+    {
+        public SeekActionVM(BaseNode model) : base(model) { }
 
-            effects.Add(new GOAPState() { Key = "InAttackRange", Value = true });
-        }
 
-        #region ViewModel
         [NonSerialized] GameObject target;
         [NonSerialized] NavMeshAgent navMeshAgent;
 
@@ -52,17 +47,29 @@ namespace CZToolKit.GOAP
         public UnityAction onSuccess { get; }
         public UnityAction onFailed { get; }
 
-        protected override void OnInitialized()
+        public override void OnAdded()
         {
-            base.OnInitialized();
+            base.OnAdded();
+            var t_model = Model as SeekAction;
+            t_model.name = "追逐";
+            t_model.cost = 1;
+            t_model.preconditions.Add(new GOAPState() { Key = "HasTarget", Value = true });
+            t_model.preconditions.Add(new GOAPState() { Key = "InAttackRange", Value = false });
+            t_model.effects.Add(new GOAPState() { Key = "InAttackRange", Value = true });
+        }
+
+        public override void Initialized(GOAPAgent agent)
+        {
+            base.Initialized(agent);
             navMeshAgent = Agent.GetComponent<NavMeshAgent>();
         }
 
         public override void OnPrePerform()
         {
+            var t_model = Model as SeekAction;
             Agent.Memory.TryGetData("Target", out target);
             startTime = Time.time;
-            navMeshAgent.stoppingDistance = stopDistance;
+            navMeshAgent.stoppingDistance = t_model.stopDistance;
             navMeshAgent.updateRotation = true;
             navMeshAgent.isStopped = false;
             onPrePerform?.Invoke();
@@ -71,12 +78,13 @@ namespace CZToolKit.GOAP
 
         public override GOAPActionStatus OnPerform()
         {
-            if (target == null || !target.activeSelf || Time.time - startTime > timeout)
+            var t_model = Model as SeekAction;
+            if (target == null || !target.activeSelf || Time.time - startTime > t_model.timeout)
             {
                 Debug.Log("追不上");
                 return GOAPActionStatus.Failure;
             }
-            if (Vector3.Distance(Agent.transform.position, target.transform.position) <= stopDistance)
+            if (Vector3.Distance(Agent.transform.position, target.transform.position) <= t_model.stopDistance)
             {
                 return GOAPActionStatus.Success;
             }
@@ -100,6 +108,5 @@ namespace CZToolKit.GOAP
                 Agent.SetState("InAttackRange", false);
             }
         }
-        #endregion
     }
 }

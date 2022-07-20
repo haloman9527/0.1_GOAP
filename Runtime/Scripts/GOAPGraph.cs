@@ -21,7 +21,10 @@ using System.Collections.Generic;
 namespace CZToolKit.GOAP
 {
     [Serializable]
-    public class GOAPGraph : BaseGraph, IGraphForMono
+    public class GOAPGraph : BaseGraph { }
+
+    [ViewModel(typeof(GOAPGraph))]
+    public class GOAPGraphVM : BaseGraphVM
     {
         [NonSerialized] internal List<SharedVariable> variables;
 
@@ -38,12 +41,10 @@ namespace CZToolKit.GOAP
         {
             get { return variables; }
         }
-        public List<GOAPAction> AvailableActions { get; private set; } = new List<GOAPAction>();
+        public List<GOAPActionVM> AvailableActions { get; private set; } = new List<GOAPActionVM>();
 
-        protected override void OnEnabled()
+        public GOAPGraphVM(BaseGraph model) : base(model)
         {
-            base.OnEnabled();
-
             OnNodeAdded += NodeAdded;
         }
 
@@ -53,8 +54,8 @@ namespace CZToolKit.GOAP
 
             foreach (var node in Nodes.Values)
             {
-                if (node is INodeForMono monoNode)
-                    monoNode.Initialize();
+                if (node is IGOAPAction goapAction)
+                    goapAction.Initialize();
             }
 
             variables = new List<SharedVariable>();
@@ -69,12 +70,12 @@ namespace CZToolKit.GOAP
 
             GOAPAgent agent = GraphOwner as GOAPAgent;
             if (AvailableActions == null)
-                AvailableActions = new List<GOAPAction>();
+                AvailableActions = new List<GOAPActionVM>();
             else
                 AvailableActions.Clear();
             foreach (var node in Nodes)
             {
-                if (node.Value is GOAPAction action)
+                if (node.Value is GOAPActionVM action)
                     AvailableActions.Add(action);
             }
             AvailableActions.QuickSort((a, b) =>
@@ -87,12 +88,12 @@ namespace CZToolKit.GOAP
             });
         }
 
-        public void NodeAdded(BaseNode node)
+        public void NodeAdded(BaseNodeVM node)
         {
-            if (!(node is INodeForMono monoNode))
+            if (!(node is IGOAPAction goapAction))
                 return;
             if (GraphOwner != null)
-                monoNode.Initialize();
+                goapAction.Initialize();
 
             IEnumerable<SharedVariable> nodeVariables = SharedVariableUtility.CollectionObjectSharedVariables(node);
             variables.AddRange(nodeVariables);
@@ -109,7 +110,7 @@ namespace CZToolKit.GOAP
         {
             foreach (var node in Nodes)
             {
-                GOAPAction action = node.Value as GOAPAction;
+                GOAPActionVM action = node.Value as GOAPActionVM;
                 if (action != null)
                     action.DrawGizmos(_agent);
             }

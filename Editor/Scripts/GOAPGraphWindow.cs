@@ -28,7 +28,7 @@ using UnityObject = UnityEngine.Object;
 
 namespace CZToolKit.GOAP.Editors
 {
-    [CustomGraphWindow(typeof(GOAPGraph))]
+    [CustomView(typeof(GOAPGraph))]
     public class GOAPGraphWindow : BaseGraphWindow
     {
         protected override void OnEnable()
@@ -37,7 +37,7 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView NewGraphView(IGraph graph)
+        protected override BaseGraphView NewGraphView(BaseGraphVM graph)
         {
             return new GOAPGraphView();
         }
@@ -68,9 +68,7 @@ namespace CZToolKit.GOAP.Editors
         void Save()
         {
             if (GraphAsset is IGraphSerialization graphSerialization)
-                graphSerialization.SaveGraph(Graph);
-            if (GraphOwner is IVariableSerialization variableSerialization)
-                variableSerialization.SaveVariables();
+                graphSerialization.SaveGraph(Graph.Model);
             GraphView.SetDirty();
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -94,9 +92,9 @@ namespace CZToolKit.GOAP.Editors
             }
         }
 
-        protected override BaseNodeView NewNodeView(BaseNode node)
+        protected override BaseNodeView NewNodeView(BaseNodeVM node)
         {
-            if (typeof(GOAPAction).IsAssignableFrom(node.GetType()))
+            if (typeof(GOAPAction).IsAssignableFrom(node.ModelType))
                 return new GOAPNodeView();
             else
                 return base.NewNodeView(node);

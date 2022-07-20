@@ -17,13 +17,14 @@ using System.Collections.Generic;
 
 namespace CZToolKit.GOAP
 {
-    public interface IGOAPActionViewModel
+    public interface IGOAPAction
     {
         string Name { get; }
         float Cost { get; }
         IReadOnlyList<GOAPState> Preconditions { get; }
         IReadOnlyList<GOAPState> Effects { get; }
 
+        bool Initialize();
         bool IsUsable();
         void DynamicallyEvaluateCost();
         bool IsProceduralPrecondition(Dictionary<string, bool> currentState);

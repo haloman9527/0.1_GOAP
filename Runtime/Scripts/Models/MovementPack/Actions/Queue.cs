@@ -21,7 +21,7 @@ namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh前往目标")]
     [NodeMenuItem("Movement", "Queue")]
-    public class Queue : NavMeshGroupMovement
+    public class Queue : NavMeshGroupMoveMent
     {
         [Tooltip("Agents less than this distance apart are neighbors")]
         public SharedFloat neighborDistance = new SharedFloat(10);
@@ -35,25 +35,33 @@ namespace CZToolKit.GOAP.Actions.Movement
         public SharedFloat slowDownSpeed = new SharedFloat(0.15f);
         [Tooltip("The target to seek towards")]
         public SharedGameObject target;
+    }
 
-        public Queue() : base()
+    [ViewModel(typeof(Queue))]
+    public class QueueVM : NavMeshGroupMovementVM
+    {
+        public QueueVM(BaseNode model) : base(model) { }
+
+        public override void OnAdded()
         {
-            name = "排队";
+            base.OnAdded();
+            var t_model = Model as Queue;
+            t_model.name = "排队";
         }
 
-        #region ViewModel
         public override GOAPActionStatus OnPerform()
         {
+            var t_model = Model as Queue;
             // Determine a destination for each agent
-            for (int i = 0; i < agents.Value.Count; ++i)
+            for (int i = 0; i < t_model.agents.Value.Count; ++i)
             {
                 if (AgentAhead(i))
                 {
-                    SetDestination(i, transforms[i].position + transforms[i].forward * slowDownSpeed.Value + DetermineSeparation(i));
+                    SetDestination(i, transforms[i].position + transforms[i].forward * t_model.slowDownSpeed.Value + DetermineSeparation(i));
                 }
                 else
                 {
-                    SetDestination(i, target.Value.transform.position);
+                    SetDestination(i, t_model.target.Value.transform.position);
                 }
             }
             return GOAPActionStatus.Running;
@@ -62,12 +70,13 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Returns the agent that is ahead of the current agent
         private bool AgentAhead(int index)
         {
+            var t_model = Model as Queue;
             // queueAhead is the distance in front of the current agent
-            var queueAhead = Velocity(index) * maxQueueAheadDistance.Value;
-            for (int i = 0; i < agents.Value.Count; ++i)
+            var queueAhead = Velocity(index) * t_model.maxQueueAheadDistance.Value;
+            for (int i = 0; i < t_model.agents.Value.Count; ++i)
             {
                 // Return the first agent that is ahead of the current agent
-                if (index != i && Vector3.SqrMagnitude(queueAhead - transforms[i].position) < maxQueueRadius.Value)
+                if (index != i && Vector3.SqrMagnitude(queueAhead - transforms[i].position) < t_model.maxQueueRadius.Value)
                 {
                     return true;
                 }
@@ -78,17 +87,18 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Determine the separation between the current agent and all of the other agents also queuing
         private Vector3 DetermineSeparation(int agentIndex)
         {
+            var t_model = Model as Queue;
             var separation = Vector3.zero;
             int neighborCount = 0;
             var agentTransform = transforms[agentIndex];
             // Loop through each agent to determine the separation
-            for (int i = 0; i < agents.Value.Count; ++i)
+            for (int i = 0; i < t_model.agents.Value.Count; ++i)
             {
                 // The agent can't compare against itself
                 if (agentIndex != i)
                 {
                     // Only determine the parameters if the other agent is its neighbor
-                    if (Vector3.SqrMagnitude(transforms[i].position - agentTransform.position) < neighborDistance.Value)
+                    if (Vector3.SqrMagnitude(transforms[i].position - agentTransform.position) < t_model.neighborDistance.Value)
                     {
                         // This agent is the neighbor of the original agent so add the separation
                         separation += transforms[i].position - agentTransform.position;
@@ -103,8 +113,7 @@ namespace CZToolKit.GOAP.Actions.Movement
                 return Vector3.zero;
             }
             // Normalize the value
-            return ((separation / neighborCount) * -1).normalized * separationDistance.Value;
+            return ((separation / neighborCount) * -1).normalized * t_model.separationDistance.Value;
         }
-        #endregion
     }
 }

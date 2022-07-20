@@ -25,21 +25,22 @@ namespace CZToolKit.GOAP
     {
         /// <summary> 行为的名称 </summary>
         [Tooltip("行为名称")]
-        [SerializeField] protected string name;
+        public string name;
 
         /// <summary> 行为的执行成本 </summary>
         [Tooltip("此行为的执行成本")]
-        [SerializeField] protected float cost = 1;
+        public float cost = 1;
 
         /// <summary> 执行此行为的前提条件 </summary>
         [Tooltip("此行为的前提条件")]
-        [SerializeField] protected List<GOAPState> preconditions = new List<GOAPState>();
+        public List<GOAPState> preconditions = new List<GOAPState>();
 
         /// <summary> 行为执行成功造成的效果 </summary>
-        [Tooltip("行为可以造成的效果")]
-        [SerializeField] protected List<GOAPState> effects = new List<GOAPState>();
+        public List<GOAPState> effects = new List<GOAPState>();
+    }
 
-        #region ViewModel
+    public abstract class GOAPActionVM : BaseNodeVM
+    {
         public event Action<GOAPState> onPreconditionAdded;
         public event Action<GOAPState> onPreconditionRemoved;
         public event Action<GOAPState> onEffectAdded;
@@ -55,67 +56,92 @@ namespace CZToolKit.GOAP
             get { return GetPropertyValue<float>(nameof(Cost)); }
             set { SetPropertyValue(nameof(Cost), value); }
         }
-        public IReadOnlyList<GOAPState> Preconditions { get { return preconditions; } }
-        public IReadOnlyList<GOAPState> Effects { get { return effects; } }
+        public IReadOnlyList<GOAPState> Preconditions
+        {
+            get { return (Model as GOAPAction).preconditions; }
+        }
+        public IReadOnlyList<GOAPState> Effects
+        {
+            get { return (Model as GOAPAction).effects; }
+        }
         /// <summary> 冷却时间(可重载) </summary>
-        public virtual float CooldownTime => 0f;
+        public virtual float CooldownTime
+        {
+            get { return 0; }
+        }
         /// <summary> 冷却计时器 </summary>
-        public Cooldown Cooldown { get; private set; } = new Cooldown();
-
-        public GOAPAgent Agent { get; set; }
-
-        protected override void OnEnabled()
+        public Cooldown Cooldown
         {
-            base.OnEnabled();
-
-            this[nameof(Name)] = new BindableProperty<string>(() => name, v => { name = v; });
-            this[nameof(Cost)] = new BindableProperty<float>(() => cost, v => { cost = v; });
+            get;
+            private set;
+        } = new Cooldown();
+        public GOAPAgent Agent
+        {
+            get;
+            set;
         }
 
-        protected override void OnInitialized()
+        public GOAPActionVM(BaseNode model) : base(model)
         {
-            base.OnInitialized();
-            Agent = (Owner as GOAPGraph).GraphOwner as GOAPAgent;
+            var t_model = Model as GOAPAction;
+            this[nameof(Name)] = new BindableProperty<string>(() => t_model.name, v => t_model.name = v);
+            this[nameof(Cost)] = new BindableProperty<float>(() => t_model.cost, v => t_model.cost = v);
         }
 
-        /// <summary> 是否行为是否可用(可重载) </summary>
-        public virtual bool IsUsable() { return true; }
+        public virtual void Initialized(GOAPAgent agent)
+        {
+            Agent = agent;
+        }
+
+        public virtual void OnAdded() { }
+
+        /// <summary> 行为是否可用(可重载) </summary>
+        public virtual bool IsUsable()
+        {
+            return true;
+        }
+
+        /// <summary> 匹配计划过程中检查能否执行(应用计划执行过程中会导致的状态改变) </summary>
+        public virtual bool IsProceduralPrecondition(Dictionary<string, bool> currentState)
+        {
+            return true;
+        }
 
         /// <summary> 动态评估成本 </summary>
         public virtual void DynamicallyEvaluateCost() { }
-
-        /// <summary> 匹配计划过程中检查能否执行(应用计划执行过程中会导致的状态改变) </summary>
-        public virtual bool IsProceduralPrecondition(Dictionary<string, bool> currentState) { return true; }
 
         public virtual void OnPrePerform() { }
 
         public abstract GOAPActionStatus OnPerform();
 
-        public virtual void OnPostPerform(bool _successed) { }
+        public virtual void OnPostPerform(bool successed) { }
 
-        public void AddPrecondition(GOAPState _precondition)
+        public void AddPrecondition(GOAPState precondition)
         {
-            preconditions.Add(_precondition);
-            onPreconditionAdded?.Invoke(_precondition);
+            var t_model = Model as GOAPAction;
+            t_model.preconditions.Add(precondition);
+            onPreconditionAdded?.Invoke(precondition);
+        }
+
+        public void RemovePrecondition(GOAPState precondition)
+        {
+            var t_model = Model as GOAPAction;
+            if (t_model.preconditions.Remove(precondition))
+                onPreconditionRemoved?.Invoke(precondition);
         }
 
         public void AddEffect(GOAPState _effect)
         {
-            effects.Add(_effect);
+            var t_model = Model as GOAPAction;
+            t_model.effects.Add(_effect);
             onEffectAdded?.Invoke(_effect);
         }
 
-        public void RemovePrecondition(GOAPState _precondition)
+        public void RemoveEffect(GOAPState effect)
         {
-            if (preconditions.Remove(_precondition))
-                onPreconditionRemoved?.Invoke(_precondition);
+            var t_model = Model as GOAPAction;
+            if (t_model.effects.Remove(effect))
+                onEffectRemoved?.Invoke(effect);
         }
-
-        public void RemoveEffect(GOAPState _effect)
-        {
-            if (effects.Remove(_effect))
-                onEffectRemoved?.Invoke(_effect);
-        }
-        #endregion
     }
 }

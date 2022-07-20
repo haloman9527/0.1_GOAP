@@ -15,7 +15,6 @@
 #endregion
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
-using System;
 using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
@@ -29,15 +28,21 @@ namespace CZToolKit.GOAP.Actions.Movement
         public float targetDistPredictionMult = 20;
         [Tooltip("The GameObject that the agent is pursuing")]
         public SharedGameObject target = new SharedGameObject(null);
+    }
 
-        #region ViewModel
+    [ViewModel(typeof(Pursue))]
+    public class PursueVM : NavMeshMovementVM
+    {
         // The position of the target at the last frame
-        [NonSerialized] Vector3 targetPosition;
+        Vector3 targetPosition;
+
+        public PursueVM(BaseNode model) : base(model) { }
 
         public override void OnPrePerform()
         {
             base.OnPrePerform();
-            targetPosition = target.Value.transform.position;
+            var t_model = Model as Pursue;
+            targetPosition = t_model.target.Value.transform.position;
             SetDestination(Target());
         }
 
@@ -56,26 +61,26 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Predict the position of the target
         private Vector3 Target()
         {
+            var t_model = Model as Pursue;
             // Calculate the current distance to the target and the current speed
-            var distance = (target.Value.transform.position - Agent.transform.position).magnitude;
+            var distance = (t_model.target.Value.transform.position - Agent.transform.position).magnitude;
             var speed = Velocity().magnitude;
 
             float futurePrediction = 0;
             // Set the future prediction to max prediction if the speed is too small to give an accurate prediction
-            if (speed <= distance / targetDistPrediction)
+            if (speed <= distance / t_model.targetDistPrediction)
             {
-                futurePrediction = targetDistPrediction;
+                futurePrediction = t_model.targetDistPrediction;
             }
             else
             {
-                futurePrediction = (distance / speed) * targetDistPredictionMult; // the prediction should be accurate enough
+                futurePrediction = (distance / speed) * t_model.targetDistPredictionMult; // the prediction should be accurate enough
             }
 
             // Predict the future by taking the velocity of the target and multiply it by the future prediction
             var prevTargetPosition = targetPosition;
-            targetPosition = target.Value.transform.position;
+            targetPosition = t_model.target.Value.transform.position;
             return targetPosition + (targetPosition - prevTargetPosition) * futurePrediction;
         }
-        #endregion
     }
 }

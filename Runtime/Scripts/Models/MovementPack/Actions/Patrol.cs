@@ -1,4 +1,4 @@
-#region 注 释
+#region ע ��
 /***
  *
  *  Title:
@@ -7,7 +7,7 @@
  *  
  *  Date:
  *  Version:
- *  Writer: 半只龙虾人
+ *  Writer: ��ֻ��Ϻ��
  *  Github: https://github.com/HalfLobsterMan
  *  Blog: https://www.crosshair.top/
  *
@@ -15,14 +15,12 @@
 #endregion
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
-using System;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeTooltip("���趨·��Ѳ�ߣ�ʹ��NavMesh�ƶ�")]
     [NodeMenuItem("Movement", "Patrol")]
     public class Patrol : NavMeshMovement
     {
@@ -32,32 +30,37 @@ namespace CZToolKit.GOAP.Actions.Movement
         public float waypointPauseDuration = 0;
         [Tooltip("The waypoints to move to")]
         public SharedGameObjectList waypoints = new SharedGameObjectList();
+    }
 
-        public Patrol() : base()
-        {
-            preconditions.Add(new GOAPState("HasTarget", false));
-
-            effects.Add(new GOAPState("HasTarget", true));
-
-            randomPatrol = false;
-            waypointPauseDuration = 0;
-        }
-
-        #region ViewModel
+    [ViewModel(typeof(Patrol))]
+    public class PatrolVM : NavMeshMovementVM
+    {
         // The current index that we are heading towards within the waypoints array
-        [NonSerialized] int waypointIndex;
-        [NonSerialized] float waypointReachedTime;
+        int waypointIndex;
+        float waypointReachedTime;
+
+        public PatrolVM(BaseNode model) : base(model) { }
+
+        public override void OnAdded()
+        {
+            base.OnAdded();
+            var t_model = Model as Patrol;
+            t_model.preconditions.Add(new GOAPState("HasTarget", false));
+            t_model.effects.Add(new GOAPState("HasTarget", true));
+            t_model.randomPatrol = false;
+            t_model.waypointPauseDuration = 0;
+        }
 
         public override void OnPrePerform()
         {
             base.OnPrePerform();
-
+            var t_model = Model as Patrol;
             // initially move towards the closest waypoint
             float distance = Mathf.Infinity;
             float localDistance;
-            for (int i = 0; i < waypoints.Value.Count; ++i)
+            for (int i = 0; i < t_model.waypoints.Value.Count; ++i)
             {
-                if ((localDistance = Vector3.Magnitude(Agent.transform.position - waypoints.Value[i].transform.position)) < distance)
+                if ((localDistance = Vector3.Magnitude(Agent.transform.position - t_model.waypoints.Value[i].transform.position)) < distance)
                 {
                     distance = localDistance;
                     waypointIndex = i;
@@ -70,7 +73,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Patrol around the different waypoints specified in the waypoint array. Always return a task status of running. 
         public override GOAPActionStatus OnPerform()
         {
-            if (waypoints.Value.Count == 0)
+            var t_model = Model as Patrol;
+            if (t_model.waypoints.Value.Count == 0)
             {
                 return GOAPActionStatus.Failure;
             }
@@ -81,11 +85,11 @@ namespace CZToolKit.GOAP.Actions.Movement
                     waypointReachedTime = Time.time;
                 }
                 // wait the required duration before switching waypoints.
-                if (waypointReachedTime + waypointPauseDuration <= Time.time)
+                if (waypointReachedTime + t_model.waypointPauseDuration <= Time.time)
                 {
-                    if (randomPatrol)
+                    if (t_model.randomPatrol)
                     {
-                        if (waypoints.Value.Count == 1)
+                        if (t_model.waypoints.Value.Count == 1)
                         {
                             waypointIndex = 0;
                         }
@@ -95,14 +99,14 @@ namespace CZToolKit.GOAP.Actions.Movement
                             var newWaypointIndex = waypointIndex;
                             while (newWaypointIndex == waypointIndex)
                             {
-                                newWaypointIndex = Random.Range(0, waypoints.Value.Count);
+                                newWaypointIndex = Random.Range(0, t_model.waypoints.Value.Count);
                             }
                             waypointIndex = newWaypointIndex;
                         }
                     }
                     else
                     {
-                        waypointIndex = (waypointIndex + 1) % waypoints.Value.Count;
+                        waypointIndex = (waypointIndex + 1) % t_model.waypoints.Value.Count;
                     }
                     SetDestination(Target());
                     waypointReachedTime = -1;
@@ -115,32 +119,33 @@ namespace CZToolKit.GOAP.Actions.Movement
         // Return the current waypoint index position
         private Vector3 Target()
         {
-            if (waypointIndex >= waypoints.Value.Count)
+            var t_model = Model as Patrol;
+            if (waypointIndex >= t_model.waypoints.Value.Count)
             {
                 return Agent.transform.position;
             }
-            return waypoints.Value[waypointIndex].transform.position;
+            return t_model.waypoints.Value[waypointIndex].transform.position;
         }
 
         public override void DrawGizmos(IGraphOwner _graphOwner)
         {
 #if UNITY_EDITOR
-            if (waypoints == null)
+            var t_model = Model as Patrol;
+            if (t_model.waypoints == null)
             {
                 return;
             }
             var oldColor = UnityEditor.Handles.color;
             UnityEditor.Handles.color = Color.yellow;
-            for (int i = 0; i < waypoints.Value.Count; ++i)
+            for (int i = 0; i < t_model.waypoints.Value.Count; ++i)
             {
-                if (waypoints.Value[i] != null)
+                if (t_model.waypoints.Value[i] != null)
                 {
-                    UnityEditor.Handles.SphereHandleCap(0, waypoints.Value[i].transform.position, waypoints.Value[i].transform.rotation, 1, EventType.Repaint);
+                    UnityEditor.Handles.SphereHandleCap(0, t_model.waypoints.Value[i].transform.position, t_model.waypoints.Value[i].transform.rotation, 1, EventType.Repaint);
                 }
             }
             UnityEditor.Handles.color = oldColor;
 #endif
         }
-        #endregion
     }
 }

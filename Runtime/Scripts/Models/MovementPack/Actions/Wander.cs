@@ -15,7 +15,6 @@
 #endregion
 using CZToolKit.Core.SharedVariable;
 using CZToolKit.GraphProcessor;
-using System;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
@@ -38,27 +37,36 @@ namespace CZToolKit.GOAP.Actions.Movement
         public SharedFloat maxPauseDuration = new SharedFloat(0);
         [Tooltip("The maximum number of retries per tick (set higher if using a slow tick time)")]
         public SharedInt targetRetries = new SharedInt(1);
+    }
 
-        public Wander() : base()
+    [ViewModel(typeof(Wander))]
+    public class WanderVM : NavMeshMovementVM
+    {
+        float pauseTime;
+        float destinationReachTime;
+
+        public WanderVM(BaseNode model) : base(model) { }
+
+        public override void OnAdded()
         {
-            name = "徘徊";
+            base.OnAdded();
+            var t_model = Model as Wander;
+            t_model.name = "徘徊";
         }
-        #region ViewModel
-        [NonSerialized] float pauseTime;
-        [NonSerialized] float destinationReachTime;
 
         // There is no success or fail state with wander - the agent will just keep wandering
         public override GOAPActionStatus OnPerform()
         {
+            var t_model = Model as Wander;
             if (HasArrived())
             {
                 // The agent should pause at the destination only if the max pause duration is greater than 0
-                if (maxPauseDuration.Value > 0)
+                if (t_model.maxPauseDuration.Value > 0)
                 {
                     if (destinationReachTime == -1)
                     {
                         destinationReachTime = Time.time;
-                        pauseTime = Random.Range(minPauseDuration.Value, maxPauseDuration.Value);
+                        pauseTime = Random.Range(t_model.minPauseDuration.Value, t_model.maxPauseDuration.Value);
                     }
                     if (destinationReachTime + pauseTime <= Time.time)
                     {
@@ -79,14 +87,15 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         private bool TrySetTarget()
         {
+            var t_model = Model as Wander;
             var direction = Agent.transform.forward;
             var validDestination = false;
-            var attempts = targetRetries.Value;
+            var attempts = t_model.targetRetries.Value;
             var destination = Agent.transform.position;
             while (!validDestination && attempts > 0)
             {
-                direction = direction + Random.insideUnitSphere * wanderRate.Value;
-                destination = Agent.transform.position + direction.normalized * Random.Range(minWanderDistance.Value, maxWanderDistance.Value);
+                direction = direction + Random.insideUnitSphere * t_model.wanderRate.Value;
+                destination = Agent.transform.position + direction.normalized * Random.Range(t_model.minWanderDistance.Value, t_model.maxWanderDistance.Value);
                 validDestination = SamplePosition(destination);
                 attempts--;
             }
@@ -96,6 +105,5 @@ namespace CZToolKit.GOAP.Actions.Movement
             }
             return validDestination;
         }
-        #endregion
     }
 }

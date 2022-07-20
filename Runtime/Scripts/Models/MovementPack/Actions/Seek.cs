@@ -21,21 +21,26 @@ namespace CZToolKit.GOAP.Actions.Movement
     [NodeMenuItem("Movement", "Seek")]
     public class Seek : NavMeshMovement
     {
-        [Tooltip("The GameObject that the agent is seeking")]
-        public GameObject target;
         [Tooltip("If target is null then use the target position")]
         public Vector3 targetPosition;
+    }
 
-        public Seek() : base()
+    [ViewModel(typeof(Seek))]
+    public class SeekVM : NavMeshMovementVM
+    {
+        public GameObject target;
+
+        public SeekVM(BaseNode model) : base(model) { }
+
+        public override void OnAdded()
         {
-            preconditions.Add(new GOAPState("HasTarget", true));
-            effects.Add(new GOAPState("InXXXRange", true));
-
-            target = null;
-            targetPosition = Vector3.zero;
+            base.OnAdded();
+            var t_model = Model as Seek;
+            t_model.preconditions.Add(new GOAPState("HasTarget", true));
+            t_model.effects.Add(new GOAPState("InXXXRange", true));
+            t_model.targetPosition = Vector3.zero;
         }
 
-        #region ViewModel
         public override bool IsUsable()
         {
             return !Agent.GetState("HasTarget");
@@ -63,8 +68,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         {
             if (target != null)
                 return target.transform.position;
-            return targetPosition;
+            var t_model = Model as Seek;
+            return t_model.targetPosition;
         }
-        #endregion
     }
 }

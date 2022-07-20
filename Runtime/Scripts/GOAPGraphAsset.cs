@@ -35,7 +35,7 @@ namespace CZToolKit.GOAP
 
         public Type GraphType => typeof(GOAPGraph);
 
-        public void SaveGraph(IGraph graph)
+        public void SaveGraph(BaseGraph graph)
         {
             serializedGraph = SerializationUtility.SerializeValue(graph, DataFormat.JSON, out graphUnityReferences);
         }
@@ -52,7 +52,6 @@ namespace CZToolKit.GOAP
                 graph = SerializationUtility.DeserializeValue<GOAPGraph>(serializedGraph, DataFormat.JSON, graphUnityReferences);
             if (graph == null)
                 graph = new GOAPGraph();
-            graph.Enable();
             return graph;
         }
     }
