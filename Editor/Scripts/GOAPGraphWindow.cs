@@ -42,18 +42,20 @@ namespace CZToolKit.GOAP.Editors
             return new GOAPGraphView();
         }
 
-        protected override void BuildToolbar(ToolbarView toolbar)
+        protected override void OnGraphLoaded()
         {
-            base.BuildToolbar(toolbar);
+            base.OnGraphLoaded();
+
             ToolbarButton btnSave = new ToolbarButton();
             btnSave.text = "Save";
             btnSave.clicked += Save;
-            toolbar.AddButtonToRight(btnSave);
+            ToolbarRight.Add(btnSave);
+
+            GraphView.RegisterCallback<KeyDownEvent>(KeyDownCallback);
         }
 
-        protected override void KeyDownCallback(KeyDownEvent evt)
+        void KeyDownCallback(KeyDownEvent evt)
         {
-            base.KeyDownCallback(evt);
             if (evt.commandKey || evt.ctrlKey)
             {
                 switch (evt.keyCode)
