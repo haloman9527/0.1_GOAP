@@ -283,12 +283,12 @@ namespace CZToolKit.GOAP
 
         public override void SaveGraph(BaseGraph graph)
         {
-            throw new NotImplementedException();
+            T_GraphAsset.SaveGraph(graph);
         }
 
         public override BaseGraph DeserializeGraph()
         {
-            throw new NotImplementedException();
+            return T_GraphAsset.DeserializeGraph();
         }
     }
 }

@@ -14,6 +14,7 @@
  */
 #endregion
 using CZToolKit.Core.SharedVariable;
+using CZToolKit.Core.ViewModel;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
 
@@ -73,7 +74,11 @@ namespace CZToolKit.GOAP.Actions.Movement
         private float destinationReachTime;
         private Collider[] overlapColliders;
 
-        public SearchVM(BaseNode model) : base(model) { }
+        public SearchVM(Search model) : base(model)
+        {
+            this[nameof(model.name)] = new BindableProperty<string>(() => model.name, v => model.name = v);
+
+        }
 
         public override GOAPActionStatus OnPerform()
         {

@@ -37,7 +37,7 @@ namespace CZToolKit.GOAP
 
         public void SaveGraph(BaseGraph graph)
         {
-            serializedGraph = SerializationUtility.SerializeValue(graph, DataFormat.JSON, out graphUnityReferences);
+            serializedGraph = SerializationUtility.SerializeValue(graph as GOAPGraph, DataFormat.JSON, out graphUnityReferences);
         }
 
         public BaseGraph DeserializeGraph()
