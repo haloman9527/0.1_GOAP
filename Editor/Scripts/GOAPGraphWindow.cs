@@ -48,6 +48,8 @@ namespace CZToolKit.GOAP.Editors
 
             ToolbarButton btnSave = new ToolbarButton();
             btnSave.text = "Save";
+            btnSave.style.width = 80;
+            btnSave.style.unityTextAlign = TextAnchor.MiddleCenter;
             btnSave.clicked += Save;
             ToolbarRight.Add(btnSave);
 
