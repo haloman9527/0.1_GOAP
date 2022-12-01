@@ -21,7 +21,7 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("跟随一个目标，使用NavMesh移动")]
-    [NodeMenuItem("Movement", "Follow")]
+    [NodeMenu("Movement", "Follow")]
     public class Follow : NavMeshMovement
     {
         [Tooltip("The GameObject that the agent is following")]

@@ -21,7 +21,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenuItem("Movement", "Evade")]
+    [NodeMenu("Movement", "Evade")]
     public class Evade : NavMeshMovement
     {
         [Tooltip("The agent has evaded when the magnitude is greater than this value")]

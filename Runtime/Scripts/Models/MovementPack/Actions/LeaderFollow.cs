@@ -23,7 +23,7 @@ using UnityEngine.AI;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh跟随一个目标")]
-    [NodeMenuItem("Movement", "LeaderFollow")]
+    [NodeMenu("Movement", "LeaderFollow")]
     public class LeaderFollow : NavMeshGroupMoveMent
     {
         [Tooltip("Agents less than this distance apart are neighbors")]

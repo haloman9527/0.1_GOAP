@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace CZToolKit.GOAP
 {
-    [NodeMenuItem("Attack")]
+    [NodeMenu("Attack")]
     public class AttackAction : GOAPAction { }
 
     [ViewModel(typeof(AttackAction))]

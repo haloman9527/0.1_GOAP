@@ -1,4 +1,4 @@
-#region ×¢ ÊÍ
+#region ×¢ ï¿½ï¿½
 /***
  *
  *  Title:
@@ -7,7 +7,7 @@
  *  
  *  Date:
  *  Version:
- *  Writer: °ëÖ»ÁúÏºÈË
+ *  Writer: ï¿½ï¿½Ö»ï¿½ï¿½Ïºï¿½ï¿½
  *  Github: https://github.com/HalfLobsterMan
  *  Blog: https://www.crosshair.top/
  *
@@ -22,7 +22,7 @@ using Random = UnityEngine.Random;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenuItem("Movement", "Patrol")]
+    [NodeMenu("Movement", "Patrol")]
     public class Patrol : NavMeshMovement
     {
         [Tooltip("Should the agent patrol the waypoints randomly?")]

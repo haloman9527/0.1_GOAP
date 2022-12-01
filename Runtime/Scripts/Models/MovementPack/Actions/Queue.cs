@@ -21,7 +21,7 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh前往目标")]
-    [NodeMenuItem("Movement", "Queue")]
+    [NodeMenu("Movement", "Queue")]
     public class Queue : NavMeshGroupMoveMent
     {
         [Tooltip("Agents less than this distance apart are neighbors")]

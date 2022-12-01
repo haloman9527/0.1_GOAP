@@ -19,7 +19,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenuItem("Movement", "Seek")]
+    [NodeMenu("Movement", "Seek")]
     public class Seek : NavMeshMovement
     {
         [Tooltip("If target is null then use the target position")]

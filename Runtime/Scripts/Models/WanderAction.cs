@@ -25,7 +25,7 @@ using Random = UnityEngine.Random;
 
 namespace CZToolKit.GOAP
 {
-    [NodeMenuItem("Wander")]
+    [NodeMenu("Wander")]
     [NodeTooltip("在指定区域内徘徊，直到看到敌人")]
     public class WanderAction : GOAPAction
     {

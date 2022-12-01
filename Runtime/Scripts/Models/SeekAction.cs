@@ -23,7 +23,7 @@ using UnityEngine.Events;
 namespace CZToolKit.GOAP
 {
     [NodeTooltip("追逐敌人到一定距离后停下")]
-    [NodeMenuItem("Seek")]
+    [NodeMenu("Seek")]
     public class SeekAction : GOAPAction
     {
         public float stopDistance = 2;
