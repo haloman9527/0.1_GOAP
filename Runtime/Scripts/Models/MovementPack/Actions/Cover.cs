@@ -21,7 +21,7 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("寻找一个掩体躲起来，使用NavMesh移动")]
-    [NodeMenu("Movement", "Cover")]
+    [NodeMenu("Movement/Cover")]
     public class Cover : NavMeshMovement
     {
         [Tooltip("The distance to search for cover")]

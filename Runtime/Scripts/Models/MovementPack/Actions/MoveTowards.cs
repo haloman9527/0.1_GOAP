@@ -22,7 +22,7 @@ namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("Move towards the specified position. The position can either be specified by a transform or position. If the transform " +
                      "is used then the position will not be used.")]
-    [NodeMenu("Movement", "MoveTowards")]
+    [NodeMenu("Movement/MoveTowards")]
     public class MoveTowards : GOAPAction
     {
         [Tooltip("The speed of the agent")]

@@ -22,7 +22,7 @@ using Random = UnityEngine.Random;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenu("Movement", "Patrol")]
+    [NodeMenu("Movement/Patrol")]
     public class Patrol : NavMeshMovement
     {
         [Tooltip("Should the agent patrol the waypoints randomly?")]

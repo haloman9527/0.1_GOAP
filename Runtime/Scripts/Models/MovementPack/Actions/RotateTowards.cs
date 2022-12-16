@@ -22,7 +22,7 @@ namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("Rotates towards the specified rotation. The rotation can either be specified by a transform or rotation. If the transform " +
                      "is used then the rotation will not be used.")]
-    [NodeMenu("Movement", "RotateTowards")]
+    [NodeMenu("Movement/RotateTowards")]
     public class RotateTowards : GOAPAction
     {
         [Tooltip("Should the 2D version be used?")]

@@ -21,7 +21,7 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("在场景中聚集，使用NavMesh移动")]
-    [NodeMenu("Movement", "Flock")]
+    [NodeMenu("Movement/Flock")]
     public class Flock : NavMeshGroupMoveMent
     {
         [Tooltip("Agents less than this distance apart are neighbors")]

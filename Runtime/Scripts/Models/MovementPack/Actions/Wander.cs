@@ -23,7 +23,7 @@ using Random = UnityEngine.Random;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("在NavMesh上徘徊")]
-    [NodeMenu("Movement", "Wander")]
+    [NodeMenu("Movement/Wander")]
     public class Wander : NavMeshMovement
     {
         [Tooltip("Minimum distance ahead of the current position to look ahead for a destination")]

@@ -20,7 +20,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP.Actions.Movement
 {
-    [NodeMenu("Movement", "Pursue")]
+    [NodeMenu("Movement/Pursue")]
     public class Pursue : NavMeshMovement
     {
         [Tooltip("How far to predict the distance ahead of the target. Lower values indicate less distance should be predicated")]

@@ -76,7 +76,7 @@ namespace CZToolKit.GOAP.Editors
             GraphView.SetDirty();
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            GraphView.SetUndirty();
+            GraphView.SetUnDirty();
         }
     }
 

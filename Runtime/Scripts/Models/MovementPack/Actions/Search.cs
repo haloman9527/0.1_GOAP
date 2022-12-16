@@ -21,7 +21,7 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Actions.Movement
 {
     [NodeTooltip("Search for a target by combining the wander, within hearing range, and the within seeing range tasks using the Unity NavMesh.")]
-    [NodeMenu("Movement", "Search")]
+    [NodeMenu("Movement/Search")]
     public class Search : NavMeshMovement
     {
         [Tooltip("Minimum distance ahead of the current position to look ahead for a destination")]
