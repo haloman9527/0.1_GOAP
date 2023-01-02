@@ -68,7 +68,7 @@ namespace CZToolKit.GOAP
         public override void OnPrePerform()
         {
             var t_model = Model as SeekAction;
-            Agent.Memory.TryGetData("Target", out target);
+            Agent.Memory.TryGet("Target", out target);
             startTime = Time.time;
             navMeshAgent.stoppingDistance = t_model.stopDistance;
             navMeshAgent.updateRotation = true;
@@ -104,7 +104,7 @@ namespace CZToolKit.GOAP
             else
             {
                 onFailed?.Invoke();
-                Agent.Memory.SetData<GameObject>("Target", null);
+                Agent.Memory.Set<GameObject>("Target", null);
                 Agent.SetState("HasTarget", false);
                 Agent.SetState("InAttackRange", false);
             }

@@ -50,7 +50,7 @@ namespace CZToolKit.GOAP.Actions.Movement
         public override void OnPrePerform()
         {
             base.OnPrePerform();
-            Agent.Memory.TryGetData("Target", out target, null);
+            Agent.Memory.TryGet("Target", out target);
             SetDestination(Target());
         }
 
