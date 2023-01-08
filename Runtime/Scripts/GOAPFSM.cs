@@ -13,12 +13,12 @@
  *
  */
 #endregion
-using CZToolKit.Core.SimpleFSM;
+using CZToolKit.Common.SimpleFSM;
 using System;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPFSM : Core.SimpleFSM.FSM
+    public class GOAPFSM : Common.SimpleFSM.FSM
     {
         public float time;
     }

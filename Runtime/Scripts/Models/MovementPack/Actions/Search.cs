@@ -13,8 +13,8 @@
  *
  */
 #endregion
-using CZToolKit.Core.SharedVariable;
-using CZToolKit.Core.ViewModel;
+using CZToolKit.Common.SharedVariable;
+using CZToolKit.Common.ViewModel;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
 
