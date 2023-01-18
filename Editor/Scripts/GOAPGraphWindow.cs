@@ -1,4 +1,5 @@
 #region 注 释
+
 /***
  *
  *  Title:
@@ -12,7 +13,9 @@
  *  Blog: https://www.crosshair.top/
  *
  */
+
 #endregion
+
 using CZToolKit.Common;
 using CZToolKit.GraphProcessor;
 using CZToolKit.GraphProcessor.Editors;
@@ -23,7 +26,6 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-
 using UnityObject = UnityEngine.Object;
 
 namespace CZToolKit.GOAP.Editors
@@ -37,9 +39,9 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView NewGraphView(BaseGraphVM graph)
+        protected override BaseGraphView NewGraphView(CommandDispatcher commandDispatcher)
         {
-            return new GOAPGraphView();
+            return new GOAPGraphView(Graph, this, commandDispatcher);
         }
 
         protected override void OnGraphLoaded()
@@ -82,6 +84,10 @@ namespace CZToolKit.GOAP.Editors
 
     public class GOAPGraphView : BaseGraphView
     {
+        public GOAPGraphView(BaseGraphVM graph, BaseGraphWindow window, CommandDispatcher commandDispatcher) : base(graph, window, commandDispatcher)
+        {
+        }
+        
         protected override IEnumerable<Type> GetNodeTypes()
         {
             foreach (var type in Util_Reflection.GetChildTypes<GOAPAction>())
@@ -89,6 +95,7 @@ namespace CZToolKit.GOAP.Editors
                 if (type.IsAbstract) continue;
                 yield return type;
             }
+
             foreach (var type in Util_Reflection.GetChildTypes<GOAPActionEvtNode>())
             {
                 if (type.IsAbstract) continue;
