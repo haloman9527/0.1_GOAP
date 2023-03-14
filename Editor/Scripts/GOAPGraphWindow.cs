@@ -17,6 +17,7 @@
 #endregion
 
 using CZToolKit.Common;
+using CZToolKit.Common.Collection;
 using CZToolKit.GraphProcessor;
 using CZToolKit.GraphProcessor.Editors;
 using System;
@@ -26,6 +27,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+
 using UnityObject = UnityEngine.Object;
 
 namespace CZToolKit.GOAP.Editors
@@ -125,13 +127,13 @@ namespace CZToolKit.GOAP.Editors
         
         private IEnumerable<Type> GetNodeTypes()
         {
-            foreach (var type in Util_Reflection.GetChildTypes<GOAPAction>())
+            foreach (var type in Util_TypeCache.GetTypesDerivedFrom<GOAPAction>())
             {
                 if (type.IsAbstract) continue;
                 yield return type;
             }
 
-            foreach (var type in Util_Reflection.GetChildTypes<GOAPActionEvtNode>())
+            foreach (var type in Util_TypeCache.GetTypesDerivedFrom<GOAPActionEvtNode>())
             {
                 if (type.IsAbstract) continue;
                 yield return type;
