@@ -21,15 +21,14 @@ using UnityEngine;
 namespace CZToolKit.GOAP.Editors
 {
     [CustomEditor(typeof(GOAPAgent))]
-    public class GOAPAgentEditor : BasicEditor
+    public class GOAPAgentEditor : BaseEditor
     {
         GOAPAgent agent;
         SerializedProperty goalsProperty, preStateProperty;
         ReorderableList goalsReorderableList, preStateReorderableList;
-
-        protected override void OnEnable()
+        
+        void OnEnable()
         {
-            base.OnEnable();
             agent = target as GOAPAgent;
 
             goalsProperty = serializedObject.FindProperty("goals");
@@ -45,21 +44,28 @@ namespace CZToolKit.GOAP.Editors
             preStateReorderableList.drawElementCallback += (a, b, c, d) => DrawElement(a, b, c, d, preStateProperty);
         }
 
-        protected override void RegisterDrawers()
+        protected override void OnPropertyGUI(SerializedProperty property)
         {
-            base.RegisterDrawers();
-
-            RegisterDrawer("goals", property =>
+            switch (property.propertyPath)
             {
-                if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), GUIHelper.TextContent("Goals")))
-                    goalsReorderableList.DoLayoutList();
-            });
-            RegisterDrawer("preState", property =>
-            {
-                if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), GUIHelper.TextContent("PreStates")))
-                    preStateReorderableList.DoLayoutList();
-            });
-
+                case "goals":
+                {
+                    if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), GUIHelper.TextContent("Goals")))
+                        goalsReorderableList.DoLayoutList();
+                    break;
+                }
+                case "preState":
+                {
+                    if (EditorGUILayoutExtension.DrawFoldout(agent.GetHashCode(), GUIHelper.TextContent("PreStates")))
+                        preStateReorderableList.DoLayoutList();
+                    break;
+                }
+                default:
+                {
+                    base.OnPropertyGUI(property);
+                    break;
+                }
+            }
         }
 
         public override void OnInspectorGUI()

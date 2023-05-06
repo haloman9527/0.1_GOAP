@@ -42,14 +42,14 @@ namespace CZToolKit.GOAP
         public GOAPNodeView() : base()
         {
             nameField = new TextField();
-            controlsContainer.Add(nameField);
+            contentContainer.Add(nameField);
 
             costField = new FloatField();
-            controlsContainer.Add(costField);
+            contentContainer.Add(costField);
 
             conditionFoldout = new Foldout() { text = "条件" };
             conditionFoldout.style.unityFontStyleAndWeight = FontStyle.Bold;
-            controlsContainer.Add(conditionFoldout);
+            contentContainer.Add(conditionFoldout);
 
             btnAddCondition = new Button();
             btnAddCondition.text = "添加条件";
@@ -58,7 +58,7 @@ namespace CZToolKit.GOAP
 
             effectFoldout = new Foldout() { text = "可以造成的效果" };
             effectFoldout.style.unityFontStyleAndWeight = FontStyle.Bold;
-            controlsContainer.Add(effectFoldout);
+            contentContainer.Add(effectFoldout);
 
             btnAddEffect = new Button();
             btnAddEffect.text = "添加效果";
