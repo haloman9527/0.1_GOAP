@@ -43,21 +43,21 @@ namespace CZToolKit.GOAP.Editors
 
         protected override BaseGraphView NewGraphView(CommandDispatcher commandDispatcher)
         {
-            return new GOAPGraphView(Graph, this, commandDispatcher);
+            var graphView = new GOAPGraphView(Graph, this, commandDispatcher);
+            GraphView.RegisterCallback<KeyDownEvent>(KeyDownCallback);
+            return graphView;
         }
 
-        protected override void OnGraphLoaded()
+        protected override void BuildToolBar()
         {
-            base.OnGraphLoaded();
-
+            base.BuildToolBar();
+            
             ToolbarButton btnSave = new ToolbarButton();
             btnSave.text = "Save";
             btnSave.style.width = 80;
             btnSave.style.unityTextAlign = TextAnchor.MiddleCenter;
             btnSave.clicked += Save;
             ToolbarRight.Add(btnSave);
-
-            GraphView.RegisterCallback<KeyDownEvent>(KeyDownCallback);
         }
 
         void KeyDownCallback(KeyDownEvent evt)
