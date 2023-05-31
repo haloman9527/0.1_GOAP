@@ -41,9 +41,9 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView NewGraphView(CommandDispatcher commandDispatcher)
+        protected override BaseGraphView NewGraphView(object argument)
         {
-            var graphView = new GOAPGraphView(Graph, this, commandDispatcher);
+            var graphView = new GOAPGraphView(Graph, this, new CommandDispatcher());
             GraphView.RegisterCallback<KeyDownEvent>(KeyDownCallback);
             return graphView;
         }
