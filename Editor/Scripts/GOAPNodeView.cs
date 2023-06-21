@@ -105,15 +105,15 @@ namespace CZToolKit.GOAP
             }
         }
 
-        void OnNameChanged(string _newName)
+        void OnNameChanged(string oldName, string newName)
         {
             title = T_ViewModel.Name + $"({rawTitle})";
-            nameField.SetValueWithoutNotify(_newName);
+            nameField.SetValueWithoutNotify(newName);
         }
 
-        void OnCostChanged(float _newCost)
+        void OnCostChanged(float oldCost, float newCost)
         {
-            costField.SetValueWithoutNotify(_newCost);
+            costField.SetValueWithoutNotify(newCost);
         }
 
         void OnPreconditionAdded(GOAPState _newCondition)
