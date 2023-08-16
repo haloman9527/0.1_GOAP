@@ -44,7 +44,7 @@ namespace CZToolKit.GOAP
             if (_currentStates.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
                 return;
 
-            NodePool.Release();
+            NodePool.Dispose();
 
             // 所有可用的行为
             usableActions.Clear();
@@ -98,7 +98,7 @@ namespace CZToolKit.GOAP
             }
 
             // 用完回收所有对象
-            DictionaryObjPool.Release();
+            DictionaryObjPool.Dispose();
         }
 
         /// <summary> 构建树并返回所有计划 </summary>
@@ -202,7 +202,7 @@ namespace CZToolKit.GOAP
 
         public class GOAPNodePool : ObjectPool<GOAPNode>
         {
-            protected override GOAPNode Generate()
+            protected override GOAPNode Create()
             {
                 return new GOAPNode();
             }
@@ -228,7 +228,7 @@ namespace CZToolKit.GOAP
 
         public class DictionaryPool<K, V> : ObjectPool<Dictionary<K, V>>
         {
-            protected override Dictionary<K, V> Generate()
+            protected override Dictionary<K, V> Create()
             {
                 return new Dictionary<K, V>();
             }
@@ -241,7 +241,7 @@ namespace CZToolKit.GOAP
 
         public class StackPool<T> : ObjectPool<Stack<T>>
         {
-            protected override Stack<T> Generate()
+            protected override Stack<T> Create()
             {
                 return new Stack<T>(8);
             }
