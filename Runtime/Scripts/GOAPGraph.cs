@@ -13,9 +13,8 @@
  *
  */
 #endregion
-using CZToolKit.Common;
-using CZToolKit.Common.ViewModel;
-using CZToolKit.Common.SharedVariable;
+using CZToolKit.VM;
+using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using System;
 using System.Collections.Generic;
@@ -28,7 +27,7 @@ namespace CZToolKit.GOAP
     [ViewModel(typeof(GOAPGraph))]
     public class GOAPGraphVM : BaseGraphVM
     {
-        [NonSerialized] internal List<SharedVariable> variables;
+        [NonSerialized] internal List<CZToolKit.SharedVariable.SharedVariable> variables;
 
         public IGraphOwner GraphOwner
         {
@@ -39,7 +38,7 @@ namespace CZToolKit.GOAP
         {
             get { return GraphOwner as IVariableOwner; }
         }
-        public IReadOnlyList<SharedVariable> Variables
+        public IReadOnlyList<CZToolKit.SharedVariable.SharedVariable> Variables
         {
             get { return variables; }
         }
@@ -60,7 +59,7 @@ namespace CZToolKit.GOAP
                     goapAction.Initialize();
             }
 
-            variables = new List<SharedVariable>();
+            variables = new List<CZToolKit.SharedVariable.SharedVariable>();
             foreach (var node in Nodes.Values)
             {
                 variables.AddRange(SharedVariableUtility.CollectionObjectSharedVariables(node));
@@ -97,7 +96,7 @@ namespace CZToolKit.GOAP
             if (GraphOwner != null)
                 goapAction.Initialize();
 
-            IEnumerable<SharedVariable> nodeVariables = SharedVariableUtility.CollectionObjectSharedVariables(node);
+            IEnumerable<CZToolKit.SharedVariable.SharedVariable> nodeVariables = SharedVariableUtility.CollectionObjectSharedVariables(node);
             variables.AddRange(nodeVariables);
             if (VarialbeOwner != null)
             {
