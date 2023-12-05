@@ -9,7 +9,7 @@
  *  Version:
  *  Writer: 半只龙虾人
  *  Github: https://github.com/HalfLobsterMan
- *  Blog: https://www.crosshair.top/
+ *  Blog: https://www.mindgear.net/
  *
  */
 #endregion
@@ -22,7 +22,7 @@ using UnityEngine;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraphVM>, IGraphOwner
+    public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraphVM>
     {
         #region 变量
 
@@ -278,16 +278,6 @@ namespace CZToolKit.GOAP
             Gizmos.DrawIcon(transform.position, "GOAP/GOAP_Scene_Icon.png", true);
             if (enabled)
                 T_Graph?.DrawGizmos(this);
-        }
-
-        public override void SaveGraph(BaseGraph graph)
-        {
-            T_GraphAsset.SaveGraph(graph);
-        }
-
-        public override BaseGraph DeserializeGraph()
-        {
-            return T_GraphAsset.DeserializeGraph();
         }
     }
 }

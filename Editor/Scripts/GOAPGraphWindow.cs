@@ -10,7 +10,7 @@
  *  Version:
  *  Writer: 半只龙虾人
  *  Github: https://github.com/HalfLobsterMan
- *  Blog: https://www.crosshair.top/
+ *  Blog: https://www.mindgear.net/
  *
  */
 
@@ -38,7 +38,7 @@ namespace CZToolKit.GOAP.Editors
             titleContent.text = "Goap Graph";
         }
 
-        protected override BaseGraphView NewGraphView(object argument)
+        protected override BaseGraphView NewGraphView()
         {
             var graphView = new GOAPGraphView(Graph, this, new CommandDispatcher());
             GraphView.RegisterCallback<KeyDownEvent>(KeyDownCallback);
@@ -72,7 +72,7 @@ namespace CZToolKit.GOAP.Editors
 
         void Save()
         {
-            if (GraphAsset is IGraphSerialization graphSerialization)
+            if (GraphAsset is IGraphAsset graphSerialization)
                 graphSerialization.SaveGraph(Graph.Model);
             GraphView.SetDirty();
             AssetDatabase.SaveAssets();

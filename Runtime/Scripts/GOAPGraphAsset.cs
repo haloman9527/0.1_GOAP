@@ -9,7 +9,7 @@
  *  Version:
  *  Writer: 半只龙虾人
  *  Github: https://github.com/HalfLobsterMan
- *  Blog: https://www.crosshair.top/
+ *  Blog: https://www.mindgear.net/
  *
  */
 #endregion
@@ -32,6 +32,8 @@ namespace CZToolKit.GOAP
         [HideInInspector]
         [SerializeField]
         List<UnityObject> graphUnityReferences = new List<UnityObject>();
+
+        public UnityObject UnityAsset => this;
 
         public Type GraphType => typeof(GOAPGraph);
 

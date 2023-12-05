@@ -9,7 +9,7 @@
  *  Version:
  *  Writer: ��ֻ��Ϻ��
  *  Github: https://github.com/HalfLobsterMan
- *  Blog: https://www.crosshair.top/
+ *  Blog: https://www.mindgear.net/
  *
  */
 #endregion
