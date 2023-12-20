@@ -20,10 +20,6 @@ using CZToolKit.GraphProcessor;
 using CZToolKit.GraphProcessor.Editors;
 using System;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.UIElements;
-using UnityEngine;
-using UnityEngine.UIElements;
 
 using UnityObject = UnityEngine.Object;
 
@@ -40,44 +36,7 @@ namespace CZToolKit.GOAP.Editors
 
         protected override BaseGraphView NewGraphView()
         {
-            var graphView = new GOAPGraphView(Graph, this, new CommandDispatcher());
-            GraphView.RegisterCallback<KeyDownEvent>(KeyDownCallback);
-            return graphView;
-        }
-
-        protected override void BuildToolBar()
-        {
-            base.BuildToolBar();
-            
-            ToolbarButton btnSave = new ToolbarButton();
-            btnSave.text = "Save";
-            btnSave.style.width = 80;
-            btnSave.style.unityTextAlign = TextAnchor.MiddleCenter;
-            btnSave.clicked += Save;
-            ToolbarRight.Add(btnSave);
-        }
-
-        void KeyDownCallback(KeyDownEvent evt)
-        {
-            if (evt.commandKey || evt.ctrlKey)
-            {
-                switch (evt.keyCode)
-                {
-                    case KeyCode.S:
-                        Save();
-                        break;
-                }
-            }
-        }
-
-        void Save()
-        {
-            if (GraphAsset is IGraphAsset graphSerialization)
-                graphSerialization.SaveGraph(Graph.Model);
-            GraphView.SetDirty();
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
-            GraphView.SetUnDirty();
+            return new GOAPGraphView(Graph, this, new CommandDispatcher());
         }
     }
 
