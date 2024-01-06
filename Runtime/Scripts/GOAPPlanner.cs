@@ -66,7 +66,7 @@ namespace CZToolKit.GOAP
             // 如果通过构建节点树找到了能够达成目标的计划
             if (BuildGraph(root, usableActions, _goal, 0, _maxDepth, leaves))
             {
-                Stack<GOAPActionVM> goapActionStack = Stack_Pool.Acquire();
+                Stack<GOAPActionVM> goapActionStack = Stack_Pool.Spawn();
 
                 foreach (GOAPNode leaf in leaves)
                 {
@@ -93,7 +93,7 @@ namespace CZToolKit.GOAP
                 {
                     _plan.Enqueue(goapActionStack.Pop());
                 }
-                Stack_Pool.Release(goapActionStack);
+                Stack_Pool.Recycle(goapActionStack);
             }
 
             // 用完回收所有对象
@@ -141,7 +141,7 @@ namespace CZToolKit.GOAP
         /// <param name="_effects">行为效果</param>
         private Dictionary<string, bool> PopulateState(Dictionary<string, bool> _currentStates, IReadOnlyList<GOAPState> _effects)
         {
-            Dictionary<string, bool> newStates = DictionaryObjPool.Acquire();
+            Dictionary<string, bool> newStates = DictionaryObjPool.Spawn();
             newStates.Clear();
             foreach (var state in _currentStates)
             {
@@ -216,7 +216,7 @@ namespace CZToolKit.GOAP
 
             public GOAPNode Spawn(GOAPNode parent, float runningCost, Dictionary<string, bool> state, GOAPActionVM action)
             {
-                GOAPNode unit = base.Acquire();
+                GOAPNode unit = base.Spawn();
                 unit.parent = parent;
                 unit.runningCost = runningCost;
                 unit.state = state;
