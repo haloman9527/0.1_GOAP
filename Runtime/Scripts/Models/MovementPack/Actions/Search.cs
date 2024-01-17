@@ -14,7 +14,7 @@
  */
 #endregion
 using CZToolKit.SharedVariable;
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
 
@@ -68,13 +68,13 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(Search))]
-    public class SearchVM : NavMeshMovementVM
+    public class SearchProcessor : NavMeshMovementProcessor
     {
         private float pauseTime;
         private float destinationReachTime;
         private Collider[] overlapColliders;
 
-        public SearchVM(Search model) : base(model)
+        public SearchProcessor(Search model) : base(model)
         {
             this[nameof(model.name)] = new BindableProperty<string>(() => model.name, v => model.name = v);
 

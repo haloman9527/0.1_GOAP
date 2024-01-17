@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
@@ -40,9 +40,9 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(MoveTowards))]
-    public class MoveTowardsVM : GOAPActionVM
+    public class MoveTowardsProcessor : GOAPActionProcessor
     {
-        public MoveTowardsVM(BaseNode model) : base(model) { }
+        public MoveTowardsProcessor(BaseNode model) : base(model) { }
 
         // Return targetPosition if targetTransform is null
         private Vector3 Target()

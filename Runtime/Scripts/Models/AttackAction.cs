@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.GraphProcessor;
 using System.Collections.Generic;
 
@@ -23,9 +23,9 @@ namespace CZToolKit.GOAP
     public class AttackAction : GOAPAction { }
 
     [ViewModel(typeof(AttackAction))]
-    public class AttackActionVM : GOAPActionVM
+    public class AttackActionProcessor : GOAPActionProcessor
     {
-        public AttackActionVM(BaseNode model) : base(model)
+        public AttackActionProcessor(BaseNode model) : base(model)
         {
             var t_model = model as AttackAction;
 

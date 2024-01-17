@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using System;
@@ -33,11 +33,11 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(Flee))]
-    public class FleeVM : NavMeshMovementVM
+    public class FleeProcessor : NavMeshMovementProcessor
     {
         [NonSerialized] bool hasMoved;
 
-        public FleeVM(BaseNode model) : base(model) { }
+        public FleeProcessor(BaseNode model) : base(model) { }
 
         public override void OnPrePerform()
         {

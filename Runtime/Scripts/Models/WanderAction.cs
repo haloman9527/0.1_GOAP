@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using System;
@@ -41,11 +41,11 @@ namespace CZToolKit.GOAP
     }
 
     [ViewModel(typeof(WanderAction))]
-    public class WanderActionVM : GOAPActionVM
+    public class WanderActionProcessor : GOAPActionProcessor
     {
         NavMeshAgent navMeshAgent;
 
-        public WanderActionVM(BaseNode model) : base(model) { }
+        public WanderActionProcessor(BaseNode model) : base(model) { }
 
         public override void OnAdded()
         {

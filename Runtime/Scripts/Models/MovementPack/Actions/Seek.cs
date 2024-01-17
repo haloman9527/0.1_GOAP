@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
 
@@ -27,11 +27,11 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(Seek))]
-    public class SeekVM : NavMeshMovementVM
+    public class SeekProcessor : NavMeshMovementProcessor
     {
         public GameObject target;
 
-        public SeekVM(BaseNode model) : base(model) { }
+        public SeekProcessor(BaseNode model) : base(model) { }
 
         public override void OnAdded()
         {

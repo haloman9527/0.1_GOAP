@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
@@ -37,9 +37,9 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(Flock))]
-    public class FlockVM : NavMeshGroupMovementVM
+    public class FlockProcessor : NavMeshGroupMovementProcessor
     {
-        public FlockVM(BaseNode model) : base(model) { }
+        public FlockProcessor(BaseNode model) : base(model) { }
 
         // Determine the three flock parameters: alignment, cohesion, and separation.
         // Alignment: determines which direction to move

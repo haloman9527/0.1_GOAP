@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.GraphProcessor;
 using System;
 using UnityEngine;
@@ -34,9 +34,9 @@ namespace CZToolKit.GOAP
     }
 
     [ViewModel(typeof(SeekAction))]
-    public class SeekActionVM : GOAPActionVM
+    public class SeekActionProcessor : GOAPActionProcessor
     {
-        public SeekActionVM(BaseNode model) : base(model) { }
+        public SeekActionProcessor(BaseNode model) : base(model) { }
 
 
         [NonSerialized] GameObject target;

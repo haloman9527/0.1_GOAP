@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
@@ -40,9 +40,9 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(RotateTowards))]
-    public class RotateTowardsVM : GOAPActionVM
+    public class RotateTowardsProcessor : GOAPActionProcessor
     {
-        public RotateTowardsVM(BaseNode model) : base(model) { }
+        public RotateTowardsProcessor(BaseNode model) : base(model) { }
 
         public override GOAPActionStatus OnPerform()
         {

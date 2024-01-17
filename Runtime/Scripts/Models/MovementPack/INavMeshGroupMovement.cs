@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using UnityEngine;
 using UnityEngine.AI;
@@ -31,13 +31,13 @@ namespace CZToolKit.GOAP.Actions.Movement
         public SharedFloat angularSpeed = new SharedFloat(120);
     }
 
-    public abstract class NavMeshGroupMovementVM : GOAPActionVM, IGroupMovement
+    public abstract class NavMeshGroupMovementProcessor : GOAPActionProcessor, IGroupMovement
     {
         // A cache of the NavMeshAgents
         NavMeshAgent[] navMeshAgents;
         protected Transform[] transforms;
 
-        protected NavMeshGroupMovementVM(BaseNode model) : base(model)
+        protected NavMeshGroupMovementProcessor(BaseNode model) : base(model)
         {
             var t_model = Model as NavMeshGroupMoveMent;
             this[nameof(NavMeshGroupMoveMent.speed)] = new BindableProperty<float>(() => t_model.speed.Value, v => t_model.speed.Value = v);

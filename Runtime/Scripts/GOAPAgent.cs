@@ -50,8 +50,8 @@ namespace CZToolKit.GOAP
         [Tooltip("计划异常终止是否立即重新搜寻计划")]
         public bool replanOnFailed = true;
 
-        Queue<GOAPActionVM> storedActionQueue;
-        Queue<GOAPActionVM> actionQueue;
+        Queue<GOAPActionProcessor> storedActionQueue;
+        Queue<GOAPActionProcessor> actionQueue;
         #endregion
 
         #region 公共属性
@@ -63,11 +63,11 @@ namespace CZToolKit.GOAP
         public List<GOAPGoal> Goals { get { return goals; } private set { goals = value; } }
         public Dictionary<string, bool> States { get; private set; }
         /// <summary> 当前计划 </summary>
-        public IReadOnlyCollection<GOAPActionVM> StoredActionQueue { get { return storedActionQueue; } }
+        public IReadOnlyCollection<GOAPActionProcessor> StoredActionQueue { get { return storedActionQueue; } }
         /// <summary> 当前行为队列 </summary>
-        public IReadOnlyCollection<GOAPActionVM> ActionQueue { get { return actionQueue; } }
+        public IReadOnlyCollection<GOAPActionProcessor> ActionQueue { get { return actionQueue; } }
         /// <summary> 当前行为 </summary>
-        public GOAPActionVM CurrentAction { get; private set; }
+        public GOAPActionProcessor CurrentAction { get; private set; }
         /// <summary> 当前目的，没有为空 </summary>
         public GOAPGoal CurrentGoal { get; private set; }
         public bool HasGoal { get { return CurrentGoal != null; } }
@@ -79,8 +79,8 @@ namespace CZToolKit.GOAP
 
         protected virtual void Awake()
         {
-            storedActionQueue = new Queue<GOAPActionVM>();
-            actionQueue = new Queue<GOAPActionVM>();
+            storedActionQueue = new Queue<GOAPActionProcessor>();
+            actionQueue = new Queue<GOAPActionProcessor>();
             Provider = GetComponent<IGOAP>();
             Planner = new GOAPPlanner();
             FSM = new GOAPFSM();
@@ -153,7 +153,7 @@ namespace CZToolKit.GOAP
                 if (HasPlan)
                 {
                     // 如果当前有计划(目标尚未完成)
-                    GOAPActionVM action = actionQueue.Peek();
+                    GOAPActionProcessor action = actionQueue.Peek();
                     if (CurrentAction != action)
                     {
                         CurrentAction = action;

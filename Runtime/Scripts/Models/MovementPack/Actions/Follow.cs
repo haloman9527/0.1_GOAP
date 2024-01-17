@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
@@ -31,12 +31,12 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(Follow))]
-    public class FollowVM : NavMeshMovementVM
+    public class FollowProcessor : NavMeshMovementProcessor
     {
         Vector3 lastTargetPosition;
         bool hasMoved;
 
-        public FollowVM(BaseNode model) : base(model) { }
+        public FollowProcessor(BaseNode model) : base(model) { }
 
         public override void OnAdded()
         {

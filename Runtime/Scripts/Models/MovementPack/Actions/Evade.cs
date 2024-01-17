@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using System;
@@ -37,12 +37,12 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(Evade))]
-    public class EvadeVM : NavMeshMovementVM
+    public class EvadeProcessor : NavMeshMovementProcessor
     {
         // The position of the target at the last frame
         Vector3 targetPosition;
 
-        public EvadeVM(BaseNode model) : base(model) { }
+        public EvadeProcessor(BaseNode model) : base(model) { }
 
         public override void OnPrePerform()
         {

@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using System;
@@ -42,7 +42,7 @@ namespace CZToolKit.GOAP
         {
             get { return variables; }
         }
-        public List<GOAPActionVM> AvailableActions { get; private set; } = new List<GOAPActionVM>();
+        public List<GOAPActionProcessor> AvailableActions { get; private set; } = new List<GOAPActionProcessor>();
 
         public GOAPGraphProcessor(BaseGraph model) : base(model)
         {
@@ -71,12 +71,12 @@ namespace CZToolKit.GOAP
 
             GOAPAgent agent = GraphOwner as GOAPAgent;
             if (AvailableActions == null)
-                AvailableActions = new List<GOAPActionVM>();
+                AvailableActions = new List<GOAPActionProcessor>();
             else
                 AvailableActions.Clear();
             foreach (var node in Nodes)
             {
-                if (node.Value is GOAPActionVM action)
+                if (node.Value is GOAPActionProcessor action)
                     AvailableActions.Add(action);
             }
             AvailableActions.QuickSort((a, b) =>
@@ -111,7 +111,7 @@ namespace CZToolKit.GOAP
         {
             foreach (var node in Nodes)
             {
-                GOAPActionVM action = node.Value as GOAPActionVM;
+                GOAPActionProcessor action = node.Value as GOAPActionProcessor;
                 if (action != null)
                     action.DrawGizmos(_agent);
             }

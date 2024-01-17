@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
@@ -41,12 +41,12 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(Wander))]
-    public class WanderVM : NavMeshMovementVM
+    public class WanderProcessor : NavMeshMovementProcessor
     {
         float pauseTime;
         float destinationReachTime;
 
-        public WanderVM(BaseNode model) : base(model) { }
+        public WanderProcessor(BaseNode model) : base(model) { }
 
         public override void OnAdded()
         {

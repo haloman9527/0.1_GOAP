@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.GraphProcessor;
 using System;
 using System.Collections.Generic;
@@ -39,7 +39,7 @@ namespace CZToolKit.GOAP
         public List<GOAPState> effects = new List<GOAPState>();
     }
 
-    public abstract class GOAPActionVM : BaseNodeProcessor
+    public abstract class GOAPActionProcessor : BaseNodeProcessor
     {
         public event Action<GOAPState> onPreconditionAdded;
         public event Action<GOAPState> onPreconditionRemoved;
@@ -81,7 +81,7 @@ namespace CZToolKit.GOAP
             set;
         }
 
-        public GOAPActionVM(BaseNode model) : base(model)
+        public GOAPActionProcessor(BaseNode model) : base(model)
         {
             var t_model = Model as GOAPAction;
             this[nameof(Name)] = new BindableProperty<string>(() => t_model.name, v => t_model.name = v);

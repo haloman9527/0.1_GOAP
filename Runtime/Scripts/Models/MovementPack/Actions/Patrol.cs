@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using UnityEngine;
@@ -34,13 +34,13 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(Patrol))]
-    public class PatrolVM : NavMeshMovementVM
+    public class PatrolProcessor : NavMeshMovementProcessor
     {
         // The current index that we are heading towards within the waypoints array
         int waypointIndex;
         float waypointReachedTime;
 
-        public PatrolVM(BaseNode model) : base(model) { }
+        public PatrolProcessor(BaseNode model) : base(model) { }
 
         public override void OnAdded()
         {

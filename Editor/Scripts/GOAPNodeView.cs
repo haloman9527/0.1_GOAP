@@ -25,7 +25,7 @@ using UnityEngine.UIElements;
 
 namespace CZToolKit.GOAP
 {
-    public class GOAPNodeView : BaseSimpleNodeView<GOAPActionVM>
+    public class GOAPNodeView : BaseSimpleNodeView<GOAPActionProcessor>
     {
         string rawTitle;
         TextField nameField;

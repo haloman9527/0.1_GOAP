@@ -13,7 +13,7 @@
  *
  */
 #endregion
-using CZToolKit.VM;
+using CZToolKit;
 using CZToolKit.SharedVariable;
 using CZToolKit.GraphProcessor;
 using System;
@@ -40,12 +40,12 @@ namespace CZToolKit.GOAP.Actions.Movement
     }
 
     [ViewModel(typeof(LeaderFollow))]
-    public class LeaderFollowVM : NavMeshGroupMovementVM
+    public class LeaderFollowProcessor : NavMeshGroupMovementProcessor
     {
         Transform leaderTransform;
         NavMeshAgent leaderAgent;
 
-        public LeaderFollowVM(BaseNode model) : base(model) { }
+        public LeaderFollowProcessor(BaseNode model) : base(model) { }
 
         public override void OnPrePerform()
         {

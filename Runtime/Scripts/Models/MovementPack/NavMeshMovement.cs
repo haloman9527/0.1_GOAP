@@ -33,12 +33,12 @@ namespace CZToolKit.GOAP.Actions.Movement
         public bool updateRotation = true;
     }
 
-    public abstract class NavMeshMovementVM : GOAPActionVM, IMovementAction
+    public abstract class NavMeshMovementProcessor : GOAPActionProcessor, IMovementAction
     {
         protected NavMeshAgent navMeshAgent;
         private bool startUpdateRotation;
 
-        protected NavMeshMovementVM(BaseNode model) : base(model) { }
+        protected NavMeshMovementProcessor(BaseNode model) : base(model) { }
 
         public override void Initialized(GOAPAgent agent)
         {
