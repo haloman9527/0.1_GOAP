@@ -39,7 +39,7 @@ namespace CZToolKit.GOAP
         public List<GOAPState> effects = new List<GOAPState>();
     }
 
-    public abstract class GOAPActionVM : BaseNodeVM
+    public abstract class GOAPActionVM : BaseNodeProcessor
     {
         public event Action<GOAPState> onPreconditionAdded;
         public event Action<GOAPState> onPreconditionRemoved;

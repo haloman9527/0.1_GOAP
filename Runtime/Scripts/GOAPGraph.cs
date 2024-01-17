@@ -25,7 +25,7 @@ namespace CZToolKit.GOAP
     public class GOAPGraph : BaseGraph { }
 
     [ViewModel(typeof(GOAPGraph))]
-    public class GOAPGraphVM : BaseGraphVM
+    public class GOAPGraphProcessor : BaseGraphProcessor
     {
         [NonSerialized] internal List<CZToolKit.SharedVariable.SharedVariable> variables;
 
@@ -44,7 +44,7 @@ namespace CZToolKit.GOAP
         }
         public List<GOAPActionVM> AvailableActions { get; private set; } = new List<GOAPActionVM>();
 
-        public GOAPGraphVM(BaseGraph model) : base(model)
+        public GOAPGraphProcessor(BaseGraph model) : base(model)
         {
             OnNodeAdded += NodeAdded;
         }
@@ -89,7 +89,7 @@ namespace CZToolKit.GOAP
             });
         }
 
-        public void NodeAdded(BaseNodeVM node)
+        public void NodeAdded(BaseNodeProcessor node)
         {
             if (!(node is IGOAPAction goapAction))
                 return;

@@ -42,7 +42,7 @@ namespace CZToolKit.GOAP.Editors
 
     public class GOAPGraphView : BaseGraphView
     {
-        public GOAPGraphView(BaseGraphVM graph, BaseGraphWindow window, CommandDispatcher commandDispatcher) : base(graph, window, commandDispatcher)
+        public GOAPGraphView(BaseGraphProcessor graph, BaseGraphWindow window, CommandDispatcher commandDispatcher) : base(graph, window, commandDispatcher)
         {
         }
 
@@ -77,7 +77,7 @@ namespace CZToolKit.GOAP.Editors
             }
         }
 
-        protected override BaseNodeView NewNodeView(BaseNodeVM node)
+        protected override BaseNodeView NewNodeView(BaseNodeProcessor node)
         {
             if (typeof(GOAPAction).IsAssignableFrom(node.ModelType))
                 return new GOAPNodeView();
