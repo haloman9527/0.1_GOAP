@@ -179,8 +179,8 @@ namespace CZToolKit.GOAP
                 Owner.SetDirty();
             };
 
-            T_ViewModel.BindingProperty<string>(nameof(T_ViewModel.Name), OnNameChanged);
-            T_ViewModel.BindingProperty<float>(nameof(T_ViewModel.Cost), OnCostChanged);
+            T_ViewModel.BindProperty<string>(nameof(T_ViewModel.Name), OnNameChanged);
+            T_ViewModel.BindProperty<float>(nameof(T_ViewModel.Cost), OnCostChanged);
 
             T_ViewModel.onPreconditionAdded += OnPreconditionAdded;
             T_ViewModel.onPreconditionRemoved += OnPreconditionRemoved;
@@ -193,8 +193,8 @@ namespace CZToolKit.GOAP
         {
             base.OnUnBindingProperties();
 
-            T_ViewModel.UnBindingProperty<string>(nameof(T_ViewModel.Name), OnNameChanged);
-            T_ViewModel.UnBindingProperty<float>(nameof(T_ViewModel.Cost), OnCostChanged);
+            T_ViewModel.UnBindProperty<string>(nameof(T_ViewModel.Name), OnNameChanged);
+            T_ViewModel.UnBindProperty<float>(nameof(T_ViewModel.Cost), OnCostChanged);
 
             T_ViewModel.onPreconditionAdded -= OnPreconditionAdded;
             T_ViewModel.onPreconditionRemoved -= OnPreconditionRemoved;
