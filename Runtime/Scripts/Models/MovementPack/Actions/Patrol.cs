@@ -9,7 +9,7 @@
  *  Version:
  *  Writer: ��ֻ��Ϻ��
  *  Github: https://github.com/haloman9527
- *  Blog: https://www.mindgear.net/
+ *  Blog: https://www.haloman.net/
  *
  */
 #endregion
