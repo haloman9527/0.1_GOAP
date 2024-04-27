@@ -206,7 +206,7 @@ namespace CZToolKit.GOAP
                 return new GOAPNode();
             }
 
-            protected override void OnRelease(GOAPNode unit)
+            protected override void OnRecycle(GOAPNode unit)
             {
                 unit.parent = null;
                 unit.runningCost = 0;
@@ -232,7 +232,7 @@ namespace CZToolKit.GOAP
                 return new Dictionary<K, V>();
             }
 
-            protected override void OnRelease(Dictionary<K, V> unit)
+            protected override void OnRecycle(Dictionary<K, V> unit)
             {
                 unit.Clear();
             }
@@ -245,7 +245,7 @@ namespace CZToolKit.GOAP
                 return new Stack<T>(8);
             }
 
-            protected override void OnRelease(Stack<T> unit)
+            protected override void OnRecycle(Stack<T> unit)
             {
                 unit.Clear();
             }
