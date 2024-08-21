@@ -143,5 +143,13 @@ namespace CZToolKit.GOAP
             if (t_model.effects.Remove(effect))
                 onEffectRemoved?.Invoke(effect);
         }
+
+        #region Helper
+
+        public virtual void DrawGizmos(IGraphOwner graphOwner)
+        {
+        }
+
+        #endregion
     }
 }
