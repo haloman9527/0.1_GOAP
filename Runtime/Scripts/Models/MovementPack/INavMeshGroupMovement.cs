@@ -40,8 +40,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         protected NavMeshGroupMovementProcessor(BaseNode model) : base(model)
         {
             var t_model = Model as NavMeshGroupMoveMent;
-            this[nameof(NavMeshGroupMoveMent.speed)] = new BindableProperty<float>(() => t_model.speed.Value, v => t_model.speed.Value = v);
-            this[nameof(NavMeshGroupMoveMent.angularSpeed)] = new BindableProperty<float>(() => t_model.angularSpeed.Value, v => t_model.angularSpeed.Value = v);
+            this.RegisterProperty(nameof(NavMeshGroupMoveMent.speed), new BindableProperty<float>(() => t_model.speed.Value, v => t_model.speed.Value = v));
+            this.RegisterProperty(nameof(NavMeshGroupMoveMent.angularSpeed), new BindableProperty<float>(() => t_model.angularSpeed.Value, v => t_model.angularSpeed.Value = v));
         }
 
         public float Speed
@@ -60,8 +60,8 @@ namespace CZToolKit.GOAP.Actions.Movement
         {
             base.Initialized(agent);
             var t_model = Model as NavMeshGroupMoveMent;
-            this[nameof(NavMeshGroupMoveMent.speed)].AsBindableProperty<float>().SetValueWithoutNotify(t_model.speed.Value);
-            this[nameof(NavMeshGroupMoveMent.angularSpeed)].AsBindableProperty<float>().SetValueWithoutNotify(t_model.angularSpeed.Value);
+            this.GetProperty<float>(nameof(NavMeshGroupMoveMent.speed)).SetValueWithoutNotify(t_model.speed.Value);
+            this.GetProperty<float>(nameof(NavMeshGroupMoveMent.angularSpeed)).SetValueWithoutNotify(t_model.angularSpeed.Value);
         }
 
         public override void OnPrePerform()

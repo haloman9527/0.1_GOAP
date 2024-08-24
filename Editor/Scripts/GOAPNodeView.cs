@@ -1,10 +1,11 @@
 #region 注 释
+
 /***
  *
  *  Title:
- *  
+ *
  *  Description:
- *  
+ *
  *  Date:
  *  Version:
  *  Writer: 半只龙虾人
@@ -12,7 +13,9 @@
  *  Blog: https://www.haloman.net/
  *
  */
+
 #endregion
+
 using CZToolKit;
 using CZToolKit.GraphProcessor;
 using CZToolKit.GraphProcessor.Editors;
@@ -118,10 +121,7 @@ namespace CZToolKit.GOAP
 
         void OnPreconditionAdded(GOAPState _newCondition)
         {
-            VisualElement v = CreateToggle(_newCondition, (ele, state) =>
-            {
-                T_ViewModel.RemovePrecondition(state);
-            });
+            VisualElement v = CreateToggle(_newCondition, (ele, state) => { T_ViewModel.RemovePrecondition(state); });
             conditionFoldout.Add(v);
             ConditionElements[_newCondition] = v;
         }
@@ -137,10 +137,7 @@ namespace CZToolKit.GOAP
 
         void OnEffectAdded(GOAPState _newEffect)
         {
-            VisualElement v = CreateToggle(_newEffect, (ele, state) =>
-            {
-                T_ViewModel.RemoveEffect(state);
-            });
+            VisualElement v = CreateToggle(_newEffect, (ele, state) => { T_ViewModel.RemoveEffect(state); });
             effectFoldout.Add(v);
             EffectElements[_newEffect] = v;
         }
@@ -158,15 +155,9 @@ namespace CZToolKit.GOAP
         {
             base.OnBindingProperties();
 
-            nameField.RegisterValueChangedCallback(evt =>
-            {
-                T_ViewModel.Name = evt.newValue;
-            });
+            nameField.RegisterValueChangedCallback(evt => { T_ViewModel.Name = evt.newValue; });
 
-            costField.RegisterValueChangedCallback(evt =>
-            {
-                T_ViewModel.Cost = evt.newValue;
-            });
+            costField.RegisterValueChangedCallback(evt => { T_ViewModel.Cost = evt.newValue; });
 
             btnAddCondition.clicked += () =>
             {
@@ -179,8 +170,8 @@ namespace CZToolKit.GOAP
                 Owner.SetDirty();
             };
 
-            T_ViewModel.BindProperty<string>(nameof(T_ViewModel.Name), OnNameChanged);
-            T_ViewModel.BindProperty<float>(nameof(T_ViewModel.Cost), OnCostChanged);
+            T_ViewModel.GetProperty<string>(nameof(T_ViewModel.Name)).RegisterValueChangedEvent(OnNameChanged);
+            T_ViewModel.GetProperty<float>(nameof(T_ViewModel.Cost)).RegisterValueChangedEvent(OnCostChanged);
 
             T_ViewModel.onPreconditionAdded += OnPreconditionAdded;
             T_ViewModel.onPreconditionRemoved += OnPreconditionRemoved;
@@ -193,8 +184,8 @@ namespace CZToolKit.GOAP
         {
             base.OnUnBindingProperties();
 
-            T_ViewModel.UnBindProperty<string>(nameof(T_ViewModel.Name), OnNameChanged);
-            T_ViewModel.UnBindProperty<float>(nameof(T_ViewModel.Cost), OnCostChanged);
+            T_ViewModel.GetProperty<string>(nameof(T_ViewModel.Name)).RegisterValueChangedEvent(OnNameChanged);
+            T_ViewModel.GetProperty<float>(nameof(T_ViewModel.Cost)).RegisterValueChangedEvent(OnCostChanged);
 
             T_ViewModel.onPreconditionAdded -= OnPreconditionAdded;
             T_ViewModel.onPreconditionRemoved -= OnPreconditionRemoved;
@@ -210,29 +201,20 @@ namespace CZToolKit.GOAP
 
             Toggle toggle = new Toggle();
             toggle.value = _state.Value;
-            toggle.RegisterValueChangedCallback(evt =>
-            {
-                _state.Value = evt.newValue;
-            });
+            toggle.RegisterValueChangedCallback(evt => { _state.Value = evt.newValue; });
             toggle.style.width = 20;
             box.Add(toggle);
 
             TextField keyField = new TextField();
             keyField.value = _state.Key;
-            keyField.RegisterValueChangedCallback(evt =>
-            {
-                _state.Key = evt.newValue;
-            });
+            keyField.RegisterValueChangedCallback(evt => { _state.Key = evt.newValue; });
             keyField.style.flexGrow = 1;
             keyField.RegisterCallback<FocusInEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.On; });
             keyField.RegisterCallback<FocusOutEvent>(evt => { Input.imeCompositionMode = IMECompositionMode.Auto; });
             box.Add(keyField);
 
             box.Add(CreateSmallButton(EditorGUIUtility.FindTexture("P4_DeletedLocal"), 14,
-                () =>
-                {
-                    _onBtnRemoveClicked?.Invoke(box, _state);
-                }));
+                () => { _onBtnRemoveClicked?.Invoke(box, _state); }));
             box.userData = _state;
             return box;
         }

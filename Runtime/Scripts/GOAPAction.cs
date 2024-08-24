@@ -84,8 +84,8 @@ namespace CZToolKit.GOAP
         public GOAPActionProcessor(BaseNode model) : base(model)
         {
             var t_model = Model as GOAPAction;
-            this[nameof(Name)] = new BindableProperty<string>(() => t_model.name, v => t_model.name = v);
-            this[nameof(Cost)] = new BindableProperty<float>(() => t_model.cost, v => t_model.cost = v);
+            this.RegisterProperty(nameof(Name), new BindableProperty<string>(() => t_model.name, v => t_model.name = v));
+            this.RegisterProperty(nameof(Cost), new BindableProperty<float>(() => t_model.cost, v => t_model.cost = v));
         }
 
         public virtual void Initialized(GOAPAgent agent)

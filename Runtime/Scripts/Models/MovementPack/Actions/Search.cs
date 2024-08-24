@@ -76,7 +76,7 @@ namespace CZToolKit.GOAP.Actions.Movement
 
         public SearchProcessor(Search model) : base(model)
         {
-            this[nameof(model.name)] = new BindableProperty<string>(() => model.name, v => model.name = v);
+            this.RegisterProperty(nameof(model.name), new BindableProperty<string>(() => model.name, v => model.name = v));
 
         }
 
