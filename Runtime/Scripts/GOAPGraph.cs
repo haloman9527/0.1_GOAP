@@ -66,7 +66,7 @@ namespace CZToolKit.GOAP
             }
             foreach (var variable in variables)
             {
-                variable.InitializePropertyMapping(VarialbeOwner);
+                variable.SetVariableOwner(VarialbeOwner);
             }
 
             GOAPAgent agent = GraphOwner as GOAPAgent;
@@ -102,7 +102,7 @@ namespace CZToolKit.GOAP
             {
                 foreach (var variable in nodeVariables)
                 {
-                    variable.InitializePropertyMapping(VarialbeOwner);
+                    variable.SetVariableOwner(VarialbeOwner);
                 }
             }
         }

@@ -74,9 +74,14 @@ namespace CZToolKit.GOAP.Actions.Movement
         private float destinationReachTime;
         private Collider[] overlapColliders;
 
+        public string Name
+        {
+            get => (Model as Search).name;
+            set => SetFieldValue(ref (Model as Search).name, value, nameof(Search.name));
+        }
+
         public SearchProcessor(Search model) : base(model)
         {
-            this.RegisterProperty(nameof(model.name), new BindableProperty<string>(() => model.name, v => model.name = v));
 
         }
 

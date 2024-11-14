@@ -1,10 +1,11 @@
 #region 注 释
+
 /***
  *
  *  Title:
- *  
+ *
  *  Description:
- *  
+ *
  *  Date:
  *  Version:
  *  Writer: 半只龙虾人
@@ -12,7 +13,9 @@
  *  Blog: https://www.haloman.net/
  *
  */
+
 #endregion
+
 using CZToolKit;
 using CZToolKit.SharedVariable;
 using UnityEngine;
@@ -23,10 +26,9 @@ namespace CZToolKit.GOAP.Actions.Movement
 {
     public abstract class NavMeshGroupMoveMent : GOAPAction
     {
-        [Tooltip("All of the agents")]
-        public SharedGameObjectList agents = null;
-        [Tooltip("The speed of the agents")]
-        public SharedFloat speed = new SharedFloat(10);
+        [Tooltip("All of the agents")] public SharedGameObjectList agents = null;
+        [Tooltip("The speed of the agents")] public SharedFloat speed = new SharedFloat(10);
+
         [Tooltip("The angular speed of the agents")]
         public SharedFloat angularSpeed = new SharedFloat(120);
     }
@@ -40,28 +42,18 @@ namespace CZToolKit.GOAP.Actions.Movement
         protected NavMeshGroupMovementProcessor(BaseNode model) : base(model)
         {
             var t_model = Model as NavMeshGroupMoveMent;
-            this.RegisterProperty(nameof(NavMeshGroupMoveMent.speed), new BindableProperty<float>(() => t_model.speed.Value, v => t_model.speed.Value = v));
-            this.RegisterProperty(nameof(NavMeshGroupMoveMent.angularSpeed), new BindableProperty<float>(() => t_model.angularSpeed.Value, v => t_model.angularSpeed.Value = v));
         }
 
         public float Speed
         {
-            get { return GetPropertyValue<float>(nameof(NavMeshGroupMoveMent.speed)); }
-            set { SetPropertyValue(nameof(NavMeshGroupMoveMent.speed), value); }
+            get { return (Model as NavMeshGroupMoveMent).speed.Value; }
+            set { (Model as NavMeshGroupMoveMent).speed.Value = value; }
         }
 
         public float AgularSpeed
         {
-            get { return GetPropertyValue<float>(nameof(NavMeshGroupMoveMent.angularSpeed)); }
-            set { SetPropertyValue(nameof(NavMeshGroupMoveMent.angularSpeed), value); }
-        }
-
-        public override void Initialized(GOAPAgent agent)
-        {
-            base.Initialized(agent);
-            var t_model = Model as NavMeshGroupMoveMent;
-            this.GetProperty<float>(nameof(NavMeshGroupMoveMent.speed)).SetValueWithoutNotify(t_model.speed.Value);
-            this.GetProperty<float>(nameof(NavMeshGroupMoveMent.angularSpeed)).SetValueWithoutNotify(t_model.angularSpeed.Value);
+            get { return (Model as NavMeshGroupMoveMent).angularSpeed.Value; }
+            set { (Model as NavMeshGroupMoveMent).angularSpeed.Value = value; }
         }
 
         public override void OnPrePerform()
@@ -85,6 +77,7 @@ namespace CZToolKit.GOAP.Actions.Movement
             {
                 return true;
             }
+
             return navMeshAgents[index].SetDestination(target);
         }
 

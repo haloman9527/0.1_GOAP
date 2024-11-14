@@ -135,13 +135,13 @@ namespace CZToolKit.GOAP
 #if UNITY_EDITOR
             var t_model = Model as WanderAction;
             var go = (graphOwner as MonoBehaviour).gameObject;
-            var variableOwner = graphOwner as IVariableOwner;
-            var variable = variableOwner.GetVariable(t_model.center.GUID) as SharedGameObject;
+            var variableSource = graphOwner as IVariableSource;
+            variableSource.TryGetValue(t_model.center.Id, out GameObject v);
             Gizmos.color = Color.green;
-            if (variable != null && variable.Value != null)
+            if (v != null && v != null)
             {
-                Gizmos.DrawWireSphere(variable.Value.transform.position, t_model.range);
-                Gizmos.DrawSphere(variable.Value.transform.position, 0.5f);
+                Gizmos.DrawWireSphere(v.transform.position, t_model.range);
+                Gizmos.DrawSphere(v.transform.position, 0.5f);
             }
             Gizmos.color = new Color(1, 0, 0, 0.3f);
             Gizmos.DrawMesh(SemicircleMesh(t_model.radius, (int)t_model.sector, Vector3.up), go.transform.position + Vector3.up * 0.2f, go.transform.rotation);
