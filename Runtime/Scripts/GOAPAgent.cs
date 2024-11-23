@@ -13,14 +13,14 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKit.Blackboard;
-using CZToolKit.GraphProcessor;
+using Jiange;
+using Jiange.Blackboard;
 using System.Collections.Generic;
 using System.Linq;
+using Jiange.GraphProcessor;
 using UnityEngine;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraphProcessor>
     {

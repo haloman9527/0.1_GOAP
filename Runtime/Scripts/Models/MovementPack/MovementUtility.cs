@@ -17,7 +17,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     public static class MovementUtility
     {

@@ -15,7 +15,7 @@
 #endregion
 using UnityEngine;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     public class CoroutineService : MonoBehaviour
     {

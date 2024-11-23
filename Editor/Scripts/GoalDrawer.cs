@@ -15,9 +15,9 @@
 #endregion
 using UnityEditor;
 using UnityEngine;
-using Goal = CZToolKit.GOAP.GOAPGoal;
+using Goal = Jiange.GOAP.GOAPGoal;
 
-namespace CZToolKit.GOAP.Editors
+namespace Jiange.GOAP.Editors
 {
     [CustomPropertyDrawer(typeof(GOAPGoal))]
     public class GoalDrawer : PropertyDrawer

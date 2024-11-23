@@ -13,17 +13,18 @@
  *
  */
 #endregion
-using CZToolKit.GraphProcessor;
+
 using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
+using Jiange.GraphProcessor;
 using UnityEngine;
 
 using UnityObject = UnityEngine.Object;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
-    [CreateAssetMenu(menuName = "CZToolKit/GOAP/New GOAPGraph")]
+    [CreateAssetMenu(menuName = "Jiange/GOAP/New GOAPGraph")]
     public class GOAPGraphAsset : ScriptableObject, IGraphAsset, IGraphAsset<GOAPGraph>
     {
         [HideInInspector]

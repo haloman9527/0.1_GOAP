@@ -13,17 +13,17 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKit.SharedVariable;
-using CZToolKit.GraphProcessor;
+using Jiange;
 using System;
 using System.Collections.Generic;
+using Jiange.GraphProcessor;
+using Jiange.SharedVariable;
 using UnityEngine;
 using UnityEngine.AI;
 
 using Random = UnityEngine.Random;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     [NodeMenu("Wander")]
     [NodeTooltip("在指定区域内徘徊，直到看到敌人")]

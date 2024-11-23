@@ -13,17 +13,17 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKitEditor;
+using Jiange;
+using JiangeEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace CZToolKit.GOAP.Editors
+namespace Jiange.GOAP.Editors
 {
     public class GOAPDebugWindow : BaseEditorWindow
     {
 
-        [MenuItem("Tools/CZToolKit/GraphGOAP", priority = 0)]
+        [MenuItem("Tools/Jiange/GraphGOAP", priority = 0)]
         public static void Open()
         {
             GOAPDebugWindow w = GetWindow<GOAPDebugWindow>("Agent Debuger");

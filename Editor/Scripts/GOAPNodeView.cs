@@ -16,17 +16,17 @@
 
 #endregion
 
-using CZToolKit;
-using CZToolKit.GraphProcessor;
-using CZToolKit.GraphProcessor.Editors;
+using Jiange;
+using Jiange.GraphProcessor;
 using System;
 using System.Collections.Generic;
+using Jiange.GraphProcessor.Editors;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     public class GOAPNodeView : BaseSimpleNodeView<GOAPActionProcessor>
     {

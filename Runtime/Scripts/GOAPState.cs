@@ -15,7 +15,7 @@
 #endregion
 using System;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     [Serializable]
     public class GOAPState

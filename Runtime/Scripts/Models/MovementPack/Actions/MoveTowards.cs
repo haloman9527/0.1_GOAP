@@ -13,12 +13,12 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKit.SharedVariable;
-using CZToolKit.GraphProcessor;
+using Jiange;
+using Jiange.GraphProcessor;
+using Jiange.SharedVariable;
 using UnityEngine;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     [NodeTooltip("Move towards the specified position. The position can either be specified by a transform or position. If the transform " +
                      "is used then the position will not be used.")]

@@ -13,11 +13,12 @@
  *
  */
 #endregion
-using CZToolKit.GraphProcessor;
+
+using Jiange.GraphProcessor;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     public abstract class NavMeshMovement : GOAPAction
     {

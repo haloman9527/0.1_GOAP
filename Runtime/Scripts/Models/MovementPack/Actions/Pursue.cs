@@ -13,12 +13,12 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKit.SharedVariable;
-using CZToolKit.GraphProcessor;
+using Jiange;
+using Jiange.GraphProcessor;
+using Jiange.SharedVariable;
 using UnityEngine;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     [NodeMenu("Movement/Pursue")]
     public class Pursue : NavMeshMovement

@@ -14,7 +14,7 @@
  */
 #endregion
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     public enum UpdateMode
     {

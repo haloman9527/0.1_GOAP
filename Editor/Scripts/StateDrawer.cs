@@ -15,9 +15,9 @@
 #endregion
 using UnityEditor;
 using UnityEngine;
-using State = CZToolKit.GOAP.GOAPState;
+using State = Jiange.GOAP.GOAPState;
 
-namespace CZToolKit.GOAP.Editors
+namespace Jiange.GOAP.Editors
 {
     [CustomPropertyDrawer(typeof(GOAPState))]
     public class StateDrawer : PropertyDrawer

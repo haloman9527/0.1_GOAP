@@ -16,7 +16,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     public class Cooldown
     {

@@ -13,11 +13,11 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKit.GraphProcessor;
+using Jiange;
 using System.Collections.Generic;
+using Jiange.GraphProcessor;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     [NodeMenu("Attack")]
     public class AttackAction : GOAPAction { }

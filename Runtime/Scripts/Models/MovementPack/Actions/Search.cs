@@ -13,12 +13,13 @@
  *
  */
 #endregion
-using CZToolKit.SharedVariable;
-using CZToolKit;
-using CZToolKit.GraphProcessor;
+
+using Jiange;
+using Jiange.GraphProcessor;
+using Jiange.SharedVariable;
 using UnityEngine;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     [NodeTooltip("Search for a target by combining the wander, within hearing range, and the within seeing range tasks using the Unity NavMesh.")]
     [NodeMenu("Movement/Search")]

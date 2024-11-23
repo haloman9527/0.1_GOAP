@@ -13,14 +13,14 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKit.SharedVariable;
-using CZToolKit.GraphProcessor;
+using Jiange;
 using System;
+using Jiange.GraphProcessor;
+using Jiange.SharedVariable;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh跟随一个目标")]
     [NodeMenu("Movement/LeaderFollow")]

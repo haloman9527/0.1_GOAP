@@ -15,7 +15,7 @@
 #endregion
 using UnityEngine;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     public interface IGroupMovement
     {

@@ -15,7 +15,7 @@
 #endregion
 using System.Collections.Generic;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     public interface IGOAP
     {

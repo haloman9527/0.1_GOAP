@@ -13,11 +13,11 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKit.GraphProcessor;
+using Jiange;
+using Jiange.GraphProcessor;
 using UnityEngine;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     [NodeMenu("Movement/Seek")]
     public class Seek : NavMeshMovement

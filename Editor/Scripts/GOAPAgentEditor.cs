@@ -14,13 +14,13 @@
  */
 #endregion
 
-using CZToolKit;
-using CZToolKitEditor;
+using Jiange;
+using JiangeEditor;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace CZToolKit.GOAP.Editors
+namespace Jiange.GOAP.Editors
 {
     [CustomEditor(typeof(GOAPAgent))]
     public class GOAPAgentEditor : BaseEditor

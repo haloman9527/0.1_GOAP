@@ -13,10 +13,11 @@
  *
  */
 #endregion
-using CZToolKit.GraphProcessor;
-using System;
 
-namespace CZToolKit.GOAP
+using System;
+using Jiange.GraphProcessor;
+
+namespace Jiange.GOAP
 {
     public abstract class GOAPActionEvtNode : BaseNode
     {

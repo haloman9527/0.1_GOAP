@@ -13,12 +13,12 @@
  *
  */
 #endregion
-using CZToolKit;
-using CZToolKit.SharedVariable;
-using CZToolKit.GraphProcessor;
+using Jiange;
+using Jiange.GraphProcessor;
+using Jiange.SharedVariable;
 using UnityEngine;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     [NodeTooltip("Rotates towards the specified rotation. The rotation can either be specified by a transform or rotation. If the transform " +
                      "is used then the rotation will not be used.")]

@@ -16,12 +16,12 @@
 
 #endregion
 
-using CZToolKit.GraphProcessor;
 using System;
 using System.Collections.Generic;
+using Jiange.GraphProcessor;
 using UnityEngine;
 
-namespace CZToolKit.GOAP
+namespace Jiange.GOAP
 {
     public abstract class GOAPAction : BaseNode
     {

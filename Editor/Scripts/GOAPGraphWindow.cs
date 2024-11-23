@@ -16,14 +16,13 @@
 
 #endregion
 
-using CZToolKit.GraphProcessor;
-using CZToolKit.GraphProcessor.Editors;
 using System;
 using System.Collections.Generic;
-
+using Jiange.GraphProcessor;
+using Jiange.GraphProcessor.Editors;
 using UnityObject = UnityEngine.Object;
 
-namespace CZToolKit.GOAP.Editors
+namespace Jiange.GOAP.Editors
 {
     [CustomView(typeof(GOAPGraph))]
     public class GOAPGraphWindow : BaseGraphWindow

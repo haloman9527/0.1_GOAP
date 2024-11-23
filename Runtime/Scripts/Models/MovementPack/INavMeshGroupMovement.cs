@@ -16,13 +16,13 @@
 
 #endregion
 
-using CZToolKit;
-using CZToolKit.SharedVariable;
+using Jiange;
 using UnityEngine;
 using UnityEngine.AI;
-using CZToolKit.GraphProcessor;
+using Jiange.GraphProcessor;
+using Jiange.SharedVariable;
 
-namespace CZToolKit.GOAP.Actions.Movement
+namespace Jiange.GOAP.Actions.Movement
 {
     public abstract class NavMeshGroupMoveMent : GOAPAction
     {
