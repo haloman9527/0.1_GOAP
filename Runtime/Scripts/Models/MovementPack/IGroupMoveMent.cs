@@ -15,7 +15,7 @@
 #endregion
 using UnityEngine;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     public interface IGroupMovement
     {

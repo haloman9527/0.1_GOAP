@@ -17,14 +17,14 @@
 using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
-using Jiange.GraphProcessor;
+using Moyo.GraphProcessor;
 using UnityEngine;
 
 using UnityObject = UnityEngine.Object;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
-    [CreateAssetMenu(menuName = "Jiange/GOAP/New GOAPGraph")]
+    [CreateAssetMenu(menuName = "Moyo/GOAP/New GOAPGraph")]
     public class GOAPGraphAsset : ScriptableObject, IGraphAsset, IGraphAsset<GOAPGraph>
     {
         [HideInInspector]

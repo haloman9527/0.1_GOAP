@@ -13,12 +13,12 @@
  *
  */
 #endregion
-using Jiange;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh前往目标")]
     [NodeMenu("Movement/Queue")]

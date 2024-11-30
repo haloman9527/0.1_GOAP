@@ -16,13 +16,13 @@
 
 #endregion
 
-using Jiange;
+using Moyo;
 using UnityEngine;
 using UnityEngine.AI;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     public abstract class NavMeshGroupMoveMent : GOAPAction
     {

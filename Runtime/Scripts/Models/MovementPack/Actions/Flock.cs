@@ -13,12 +13,12 @@
  *
  */
 #endregion
-using Jiange;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeTooltip("在场景中聚集，使用NavMesh移动")]
     [NodeMenu("Movement/Flock")]

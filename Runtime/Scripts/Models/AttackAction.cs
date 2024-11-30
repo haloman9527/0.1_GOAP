@@ -13,11 +13,11 @@
  *
  */
 #endregion
-using Jiange;
+using Moyo;
 using System.Collections.Generic;
-using Jiange.GraphProcessor;
+using Moyo.GraphProcessor;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     [NodeMenu("Attack")]
     public class AttackAction : GOAPAction { }

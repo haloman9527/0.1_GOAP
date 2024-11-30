@@ -16,7 +16,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     public class GOAPPlanner
     {

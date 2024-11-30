@@ -14,12 +14,12 @@
  */
 #endregion
 
-using Jiange;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeTooltip("Search for a target by combining the wander, within hearing range, and the within seeing range tasks using the Unity NavMesh.")]
     [NodeMenu("Movement/Search")]

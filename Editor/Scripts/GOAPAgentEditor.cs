@@ -14,13 +14,13 @@
  */
 #endregion
 
-using Jiange;
-using JiangeEditor;
+using Moyo;
+using MoyoEditor;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace Jiange.GOAP.Editors
+namespace Moyo.GOAP.Editors
 {
     [CustomEditor(typeof(GOAPAgent))]
     public class GOAPAgentEditor : BaseEditor

@@ -18,11 +18,11 @@
 
 using System;
 using System.Collections.Generic;
-using Jiange.GraphProcessor;
-using Jiange.GraphProcessor.Editors;
+using Moyo.GraphProcessor;
+using Moyo.GraphProcessor.Editors;
 using UnityObject = UnityEngine.Object;
 
-namespace Jiange.GOAP.Editors
+namespace Moyo.GOAP.Editors
 {
     [CustomView(typeof(GOAPGraph))]
     public class GOAPGraphWindow : BaseGraphWindow

@@ -18,10 +18,10 @@
 
 using System;
 using System.Collections.Generic;
-using Jiange.GraphProcessor;
+using Moyo.GraphProcessor;
 using UnityEngine;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     public abstract class GOAPAction : BaseNode
     {

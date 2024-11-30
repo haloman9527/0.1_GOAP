@@ -13,13 +13,13 @@
  *
  */
 #endregion
-using Jiange;
+using Moyo;
 using System;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeMenu("Movement/Flee")]
     public class Flee : NavMeshMovement

@@ -17,7 +17,7 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-namespace Jiange.GOAP.Editors
+namespace Moyo.GOAP.Editors
 {
     [InitializeOnLoad]
     public class HierarchyIcon : ScriptableObject

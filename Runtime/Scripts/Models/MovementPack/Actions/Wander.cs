@@ -13,14 +13,14 @@
  *
  */
 #endregion
-using Jiange;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeTooltip("在NavMesh上徘徊")]
     [NodeMenu("Movement/Wander")]

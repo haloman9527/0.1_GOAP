@@ -15,9 +15,9 @@
 #endregion
 
 using System;
-using Jiange.GraphProcessor;
+using Moyo.GraphProcessor;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     public abstract class GOAPActionEvtNode : BaseNode
     {

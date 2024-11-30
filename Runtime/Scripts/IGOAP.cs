@@ -15,7 +15,7 @@
 #endregion
 using System.Collections.Generic;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     public interface IGOAP
     {

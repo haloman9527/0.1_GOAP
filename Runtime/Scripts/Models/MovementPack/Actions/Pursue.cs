@@ -13,12 +13,12 @@
  *
  */
 #endregion
-using Jiange;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeMenu("Movement/Pursue")]
     public class Pursue : NavMeshMovement

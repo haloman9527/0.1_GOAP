@@ -13,17 +13,17 @@
  *
  */
 #endregion
-using Jiange;
-using JiangeEditor;
+using Moyo;
+using MoyoEditor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Jiange.GOAP.Editors
+namespace Moyo.GOAP.Editors
 {
     public class GOAPDebugWindow : BaseEditorWindow
     {
 
-        [MenuItem("Tools/Jiange/GraphGOAP", priority = 0)]
+        [MenuItem("Tools/Moyo/GraphGOAP", priority = 0)]
         public static void Open()
         {
             GOAPDebugWindow w = GetWindow<GOAPDebugWindow>("Agent Debuger");

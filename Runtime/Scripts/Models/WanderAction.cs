@@ -13,17 +13,17 @@
  *
  */
 #endregion
-using Jiange;
+using Moyo;
 using System;
 using System.Collections.Generic;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 using UnityEngine.AI;
 
 using Random = UnityEngine.Random;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     [NodeMenu("Wander")]
     [NodeTooltip("在指定区域内徘徊，直到看到敌人")]

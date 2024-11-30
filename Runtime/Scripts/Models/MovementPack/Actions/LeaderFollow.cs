@@ -13,14 +13,14 @@
  *
  */
 #endregion
-using Jiange;
+using Moyo;
 using System;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh跟随一个目标")]
     [NodeMenu("Movement/LeaderFollow")]

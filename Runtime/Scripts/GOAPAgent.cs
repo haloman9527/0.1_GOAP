@@ -13,14 +13,14 @@
  *
  */
 #endregion
-using Jiange;
-using Jiange.Blackboard;
+using Moyo;
 using System.Collections.Generic;
 using System.Linq;
-using Jiange.GraphProcessor;
+using Moyo.Blackboard;
+using Moyo.GraphProcessor;
 using UnityEngine;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraphProcessor>
     {

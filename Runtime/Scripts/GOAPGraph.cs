@@ -13,13 +13,13 @@
  *
  */
 #endregion
-using Jiange;
+using Moyo;
 using System;
 using System.Collections.Generic;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     [Serializable]
     public class GOAPGraph : BaseGraph { }

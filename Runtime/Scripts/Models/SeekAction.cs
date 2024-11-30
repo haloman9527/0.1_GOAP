@@ -13,14 +13,14 @@
  *
  */
 #endregion
-using Jiange;
+using Moyo;
 using System;
-using Jiange.GraphProcessor;
+using Moyo.GraphProcessor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     [NodeTooltip("追逐敌人到一定距离后停下")]
     [NodeMenu("Seek")]

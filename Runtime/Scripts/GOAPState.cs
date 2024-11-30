@@ -15,7 +15,7 @@
 #endregion
 using System;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     [Serializable]
     public class GOAPState

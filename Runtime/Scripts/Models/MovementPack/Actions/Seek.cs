@@ -13,11 +13,11 @@
  *
  */
 #endregion
-using Jiange;
-using Jiange.GraphProcessor;
+using Moyo;
+using Moyo.GraphProcessor;
 using UnityEngine;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeMenu("Movement/Seek")]
     public class Seek : NavMeshMovement

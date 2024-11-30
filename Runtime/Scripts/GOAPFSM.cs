@@ -15,9 +15,9 @@
 #endregion
 
 using System;
-using Jiange.SimpleFSM;
+using Moyo.SimpleFSM;
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     public class GOAPFSM : SimpleFSM.FSM
     {

@@ -14,7 +14,7 @@
  */
 #endregion
 
-namespace Jiange.GOAP
+namespace Moyo.GOAP
 {
     public enum GOAPActionStatus
     {

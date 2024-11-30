@@ -13,12 +13,12 @@
  *
  */
 #endregion
-using Jiange;
-using Jiange.GraphProcessor;
-using Jiange.SharedVariable;
+using Moyo;
+using Moyo.GraphProcessor;
+using Moyo.SharedVariable;
 using UnityEngine;
 
-namespace Jiange.GOAP.Actions.Movement
+namespace Moyo.GOAP.Actions.Movement
 {
     [NodeTooltip("Move towards the specified position. The position can either be specified by a transform or position. If the transform " +
                      "is used then the position will not be used.")]
