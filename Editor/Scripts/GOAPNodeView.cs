@@ -108,15 +108,15 @@ namespace Moyo.GOAP
             }
         }
 
-        void OnNameChanged(string oldName, string newName)
+        void OnNameChanged(ViewModel.ValueChangedArg<string> e)
         {
             title = T_ViewModel.Name + $"({rawTitle})";
-            nameField.SetValueWithoutNotify(newName);
+            nameField.SetValueWithoutNotify(e.newValue);
         }
 
-        void OnCostChanged(float oldCost, float newCost)
+        void OnCostChanged(ViewModel.ValueChangedArg<float> e)
         {
-            costField.SetValueWithoutNotify(newCost);
+            costField.SetValueWithoutNotify(e.newValue);
         }
 
         void OnPreconditionAdded(GOAPState _newCondition)

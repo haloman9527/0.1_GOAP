@@ -63,13 +63,13 @@ namespace Moyo.GOAP.Editors
         
         private IEnumerable<Type> GetNodeTypes()
         {
-            foreach (var type in Util_TypeCache.GetTypesDerivedFrom<GOAPAction>())
+            foreach (var type in TypesCache.GetTypesDerivedFrom<GOAPAction>())
             {
                 if (type.IsAbstract) continue;
                 yield return type;
             }
 
-            foreach (var type in Util_TypeCache.GetTypesDerivedFrom<GOAPActionEvtNode>())
+            foreach (var type in TypesCache.GetTypesDerivedFrom<GOAPActionEvtNode>())
             {
                 if (type.IsAbstract) continue;
                 yield return type;
