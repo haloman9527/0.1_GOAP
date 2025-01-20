@@ -134,9 +134,10 @@ namespace Moyo.GOAP.Editors
                     GUILayout.BeginHorizontal();
                     if (agent.HasPlan)
                     {
-                        foreach (var action in agent.StoredActionQueue)
+                        for (int i = 0; i < agent.Plan.Count; i++)
                         {
-                            if (agent.CurrentAction == action)
+                            var action = agent.Plan[i];
+                            if (i == agent.CurrentActionIndex)
                                 GUILayout.Label($"{action.Name}-->", "BoldLabel");
                             else
                                 GUILayout.Label($"{action.Name}-->");

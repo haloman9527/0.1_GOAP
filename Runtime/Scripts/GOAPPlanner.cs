@@ -22,8 +22,6 @@ namespace Moyo.GOAP
     {
         /// <summary> 节点对象池，节点对象重复利用 </summary>
         private GOAPNodePool NodePool { get; } = new GOAPNodePool();
-        private StackPool<GOAPActionProcessor> Stack_Pool { get; } = new StackPool<GOAPActionProcessor>();
-        private DictionaryPool<string, bool> DictionaryObjPool { get; } = new DictionaryPool<string, bool>();
 
         GOAPNode root;
         GOAPNode cheapestNode;
@@ -37,13 +35,13 @@ namespace Moyo.GOAP
         /// <param name="_availableActions">所有可用行为</param>
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_goal">目标状态，想要达到的状态</param>
-        public void Plan(GOAPActionProcessor[] _availableActions,
-            Dictionary<string, bool> _currentStates, GOAPGoal _goal, int _maxDepth, ref Queue<GOAPActionProcessor> _plan)
+        public void Plan(IList<GOAPActionProcessor> _availableActions,
+            Dictionary<string, bool> _currentStates, GOAPGoal _goal, int _maxDepth, in List<GOAPActionProcessor> _plan)
         {
             if (_currentStates.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
                 return;
 
-            NodePool.Dispose();
+            _plan.Clear();
 
             // 所有可用的行为
             usableActions.Clear();
@@ -57,7 +55,11 @@ namespace Moyo.GOAP
             }
 
             // 根节点
-            root = NodePool.Spawn(null, 0, _currentStates, null);
+            root = NodePool.Spawn();
+            foreach (var pair in _currentStates)
+            {
+                root.state[pair.Key] = pair.Value;
+            }
             // 所有能达到目标的节点
             leaves.Clear();
             // 成本最低的计划节点
@@ -66,8 +68,6 @@ namespace Moyo.GOAP
             // 如果通过构建节点树找到了能够达成目标的计划
             if (BuildGraph(root, usableActions, _goal, 0, _maxDepth, leaves))
             {
-                Stack<GOAPActionProcessor> goapActionStack = Stack_Pool.Spawn();
-
                 foreach (GOAPNode leaf in leaves)
                 {
                     if (cheapestNode == null)
@@ -76,28 +76,21 @@ namespace Moyo.GOAP
                         cheapestNode = leaf;
                 }
 
-                // 向上遍历并添加行为到栈中，直至根节点，因为从后向前遍历
-                while (cheapestNode != null)
+                if (cheapestNode != null)
                 {
-                    goapActionStack.Push(cheapestNode.action);
-
-                    if (cheapestNode.parent.action != null)
+                    while (_plan.Count < cheapestNode.depth + 1)
+                    {
+                        _plan.Add(null);
+                    }
+                    
+                    // 向上遍历并添加行为到栈中，直至根节点，因为从后向前遍历
+                    while (cheapestNode != null && cheapestNode.depth >= 0)
+                    {
+                        _plan[cheapestNode.depth] = cheapestNode.action;
                         cheapestNode = cheapestNode.parent;
-                    else
-                        break;
+                    }
                 }
-
-                //goapActions = new Queue<Action>();
-                // 再将栈压入到队列中
-                while (goapActionStack.Count > 0)
-                {
-                    _plan.Enqueue(goapActionStack.Pop());
-                }
-                Stack_Pool.Recycle(goapActionStack);
             }
-
-            // 用完回收所有对象
-            DictionaryObjPool.Dispose();
         }
 
         /// <summary> 构建树并返回所有计划 </summary>
@@ -119,14 +112,18 @@ namespace Moyo.GOAP
 
                 if (InState(_parent.state, action.Preconditions))
                 {
-                    // 造成效果影响当前状态
-                    Dictionary<string, bool> currentState = PopulateState(_parent.state, action.Effects);
-
                     // 生成动作完成的节点链，成本累加
-                    GOAPNode node = NodePool.Spawn(_parent, _parent.runningCost + action.Cost, currentState, action);
+                    var node = NodePool.Spawn();
+                    node.parent = _parent;
+                    node.runningCost = _parent.runningCost + action.Cost;
+                    node.depth = _depth;
+                    node.action = action;
+                    
+                    // 造成效果影响当前状态
+                    PopulateState(_parent.state, action.Effects, node.state);
 
                     // 如果当前状态能够达成目标
-                    if (currentState.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
+                    if (node.state.TryGetValue(_goal.Key, out bool value) && value.Equals(_goal.Value))
                         _leaves.Add(node);
                     else
                         BuildGraph(node, _usableActions, _goal, ++_depth, _maxDepth, _leaves);
@@ -139,10 +136,8 @@ namespace Moyo.GOAP
         /// <summary> 返回一个新的修改过的状态 </summary>
         /// <param name="_currentStates">当前状态</param>
         /// <param name="_effects">行为效果</param>
-        private Dictionary<string, bool> PopulateState(Dictionary<string, bool> _currentStates, IReadOnlyList<GOAPState> _effects)
+        private void PopulateState(Dictionary<string, bool> _currentStates, IReadOnlyList<GOAPState> _effects, in Dictionary<string, bool> newStates)
         {
-            Dictionary<string, bool> newStates = DictionaryObjPool.Spawn();
-            newStates.Clear();
             foreach (var state in _currentStates)
             {
                 newStates[state.Key] = state.Value;
@@ -152,8 +147,6 @@ namespace Moyo.GOAP
             {
                 newStates[effect.Key] = effect.Value;
             }
-
-            return newStates;
         }
 
         /// <summary> 当前状态是否达成目标(_currentStates是否包含所有的_goals) </summary>
@@ -185,21 +178,13 @@ namespace Moyo.GOAP
             /// <summary> 此节点代表的行为 </summary>
             public GOAPActionProcessor action;
 
+            public int depth;
+
             /// <summary> 运行到此节点时的当前状态 </summary>
-            public Dictionary<string, bool> state;
-
-            public GOAPNode() { }
-
-            public GOAPNode(GOAPNode _parent, float _runningCost, Dictionary<string, bool> _state, GOAPActionProcessor _action)
-            {
-                parent = _parent;
-                runningCost = _runningCost;
-                state = _state;
-                action = _action;
-            }
+            public Dictionary<string, bool> state = new Dictionary<string, bool>();
         }
 
-        public class GOAPNodePool : BaseObjectPool<GOAPNode>
+        public class GOAPNodePool : ObjectPool<GOAPNode>
         {
             protected override GOAPNode Create()
             {
@@ -210,44 +195,9 @@ namespace Moyo.GOAP
             {
                 unit.parent = null;
                 unit.runningCost = 0;
-                unit.state = null;
+                unit.depth = -1;
                 unit.action = null;
-            }
-
-            public GOAPNode Spawn(GOAPNode parent, float runningCost, Dictionary<string, bool> state, GOAPActionProcessor action)
-            {
-                GOAPNode unit = base.Spawn();
-                unit.parent = parent;
-                unit.runningCost = runningCost;
-                unit.state = state;
-                unit.action = action;
-                return unit;
-            }
-        }
-
-        public class DictionaryPool<K, V> : BaseObjectPool<Dictionary<K, V>>
-        {
-            protected override Dictionary<K, V> Create()
-            {
-                return new Dictionary<K, V>();
-            }
-
-            protected override void OnRecycle(Dictionary<K, V> unit)
-            {
-                unit.Clear();
-            }
-        }
-
-        public class StackPool<T> : BaseObjectPool<Stack<T>>
-        {
-            protected override Stack<T> Create()
-            {
-                return new Stack<T>(8);
-            }
-
-            protected override void OnRecycle(Stack<T> unit)
-            {
-                unit.Clear();
+                unit.state.Clear();
             }
         }
     }

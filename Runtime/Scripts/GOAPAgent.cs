@@ -50,8 +50,9 @@ namespace Moyo.GOAP
         [Tooltip("计划异常终止是否立即重新搜寻计划")]
         public bool replanOnFailed = true;
 
-        Queue<GOAPActionProcessor> storedActionQueue;
-        Queue<GOAPActionProcessor> actionQueue;
+        private List<GOAPActionProcessor> plan = new List<GOAPActionProcessor>();
+        private int currentActionIndex = -1;
+        private GOAPGoal currentGoal;
         #endregion
 
         #region 公共属性
@@ -63,15 +64,14 @@ namespace Moyo.GOAP
         public List<GOAPGoal> Goals { get { return goals; } private set { goals = value; } }
         public Dictionary<string, bool> States { get; private set; }
         /// <summary> 当前计划 </summary>
-        public IReadOnlyCollection<GOAPActionProcessor> StoredActionQueue { get { return storedActionQueue; } }
-        /// <summary> 当前行为队列 </summary>
-        public IReadOnlyCollection<GOAPActionProcessor> ActionQueue { get { return actionQueue; } }
+        public IReadOnlyList<GOAPActionProcessor> Plan => plan;
+        public int CurrentActionIndex => currentActionIndex;
         /// <summary> 当前行为 </summary>
-        public GOAPActionProcessor CurrentAction { get; private set; }
+        public GOAPActionProcessor CurrentAction => plan[currentActionIndex];
         /// <summary> 当前目的，没有为空 </summary>
-        public GOAPGoal CurrentGoal { get; private set; }
+        public GOAPGoal CurrentGoal => currentGoal;
         public bool HasGoal { get { return CurrentGoal != null; } }
-        public bool HasPlan { get { return ActionQueue != null && ActionQueue.Count > 0; } }
+        public bool HasPlan { get { return plan != null && plan.Count > 0 && currentActionIndex >= 0; } }
         /// <summary> 下此搜寻计划的时间 </summary>
         public float NextPlanTime { get; set; } = 0;
 
@@ -79,8 +79,6 @@ namespace Moyo.GOAP
 
         protected virtual void Awake()
         {
-            storedActionQueue = new Queue<GOAPActionProcessor>();
-            actionQueue = new Queue<GOAPActionProcessor>();
             Provider = GetComponent<IGOAP>();
             Planner = new GOAPPlanner();
             FSM = new GOAPFSM();
@@ -112,25 +110,21 @@ namespace Moyo.GOAP
                      // 搜寻计划
                      foreach (GOAPGoal goal in Goals)
                      {
-                         storedActionQueue.Clear();
-                         Planner.Plan(T_Graph.AvailableActions.ToArray(), States, goal, maxDepth, ref storedActionQueue);
+                         plan.Clear();
+                         Planner.Plan(T_Graph.AvailableActions.ToArray(), States, goal, maxDepth, plan);
                          // 如果找到了计划
-                         if (StoredActionQueue.Count != 0)
+                         if (plan.Count != 0)
                          {
-                             CurrentGoal = goal;
+                             currentGoal = goal;
                              break;
                          }
                      }
 
-                     if (storedActionQueue.Count > 0)
+                     if (plan.Count > 0)
                      {
-                         actionQueue.Clear();
-                         foreach (var action in storedActionQueue)
-                             actionQueue.Enqueue(action);
-
                          //通知计划找到
                          if (Provider != null)
-                             Provider.PlanFound(CurrentGoal, actionQueue);
+                             Provider.PlanFound(CurrentGoal, plan);
                          //转换状态
                          FSM.JumpTo("PerformActionState");
                      }
@@ -139,7 +133,8 @@ namespace Moyo.GOAP
                          //通知计划没找到
                          if (Provider != null)
                              Provider.PlanFailed(Goals);
-                         CurrentGoal = null;
+                         currentGoal = null;
+                         currentActionIndex = -1;
                      }
                  };
 
@@ -153,51 +148,58 @@ namespace Moyo.GOAP
                 if (HasPlan)
                 {
                     // 如果当前有计划(目标尚未完成)
-                    GOAPActionProcessor action = actionQueue.Peek();
-                    if (CurrentAction != action)
-                    {
-                        CurrentAction = action;
-                        action.OnPrePerform();
-                    }
+                    var action = CurrentAction;
                     // 成功 or 失败
                     GOAPActionStatus status = action.OnPerform();
 
                     switch (status)
                     {
                         case GOAPActionStatus.Success:
+                        {
                             foreach (var effect in action.Effects)
                             {
                                 SetState(effect.Key, effect.Value);
                             }
+
                             action.OnPostPerform(true);
                             if (Provider != null)
                                 Provider.ActionFinished(action.Effects);
-                            actionQueue.Dequeue();
-                            CurrentAction = null;
+
+                            if (currentActionIndex + 1 >= plan.Count)
+                            {
+                                plan.Clear();
+                                currentActionIndex = -1;
+                            }
+                            else
+                            {
+                                currentActionIndex++;
+                            }
+
                             break;
+                        }
                         case GOAPActionStatus.Failure:
+                        {
                             if (replanOnFailed)
                                 EnforceReplan();
                             else
                                 AbortPlan();
                             return;
-                        default:
-                            break;
+                        }
                     }
                 }
                 else
                 {
                     // 如果没有计划(目标已完成)
                     // 如果目标为一次性，移除掉
-                    if (CurrentGoal != null && CurrentGoal.Once)
-                        Goals.Remove(CurrentGoal);
+                    if (currentGoal != null && currentGoal.Once)
+                        Goals.Remove(currentGoal);
 
                     // 通知计划完成
                     if (Provider != null)
                         Provider.PlanFinished();
 
                     // 当前目标设置为空
-                    CurrentGoal = null;
+                    currentGoal = null;
                     FSM.JumpTo("IdleState");
                 }
             };
@@ -235,8 +237,10 @@ namespace Moyo.GOAP
         /// <summary> 终止计划(在<see cref="interval"/>之后才会重新搜寻计划) </summary>
         public void AbortPlan()
         {
-            if (HasPlan)
-                actionQueue.Clear();
+            if (!HasPlan)
+            {
+                return;
+            }
 
             if (CurrentAction != null)
             {
@@ -246,8 +250,9 @@ namespace Moyo.GOAP
                     Provider.PlanAborted(CurrentAction);
             }
 
-            CurrentAction = null;
-            CurrentGoal = null;
+            plan.Clear();
+            currentActionIndex = -1;
+            currentGoal = null;
             FSM.JumpTo("IdleState");
         }
 

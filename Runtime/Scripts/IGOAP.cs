@@ -26,7 +26,7 @@ namespace Moyo.GOAP
         void ActionFinished(IReadOnlyList<GOAPState> effect);
 
         /// <summary> 找到可以完成目标的一系列动作 </summary>  
-        void PlanFound(GOAPGoal goal, Queue<GOAPActionProcessor> actions);
+        void PlanFound(GOAPGoal goal, List<GOAPActionProcessor> plan);
 
         /// <summary> 动作全部完成，达成目标 </summary>
         void PlanFinished();

@@ -35,16 +35,12 @@ namespace Moyo.GOAP.Editors
 
         protected override BaseGraphView NewGraphView()
         {
-            return new GOAPGraphView(Graph, this, new CommandDispatcher());
+            return new GOAPGraphView();
         }
     }
 
     public class GOAPGraphView : BaseGraphView
     {
-        public GOAPGraphView(BaseGraphProcessor graph, BaseGraphWindow window, CommandDispatcher commandDispatcher) : base(graph, window, commandDispatcher)
-        {
-        }
-
         protected override void BuildNodeMenu(NodeMenuWindow nodeMenu)
         {
             foreach (var nodeType in GetNodeTypes())
