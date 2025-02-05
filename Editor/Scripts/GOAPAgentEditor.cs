@@ -14,8 +14,7 @@
  */
 #endregion
 
-using Moyo;
-using MoyoEditor;
+using Moyo.UnityEditors;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
