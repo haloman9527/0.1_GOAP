@@ -24,7 +24,7 @@ namespace Atom.GOAP.Editors
     public class GOAPDebugWindow : BaseEditorWindow
     {
 
-        [MenuItem("Tools/Moyo/GraphGOAP", priority = 0)]
+        [MenuItem("Tools/Atom/GraphGOAP", priority = 0)]
         public static void Open()
         {
             GOAPDebugWindow w = GetWindow<GOAPDebugWindow>("Agent Debuger");

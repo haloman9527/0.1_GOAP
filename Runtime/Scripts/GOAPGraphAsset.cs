@@ -20,7 +20,7 @@ using UnityEngine;
 
 namespace Atom.GOAP
 {
-    [CreateAssetMenu(menuName = "Moyo/GOAP/New GOAPGraph")]
+    [CreateAssetMenu(menuName = "Atom/GOAP/New GOAPGraph")]
     public class GOAPGraphAsset : ScriptableObject, IGraphAsset
     {
         [SerializeField]
