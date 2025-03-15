@@ -13,13 +13,13 @@
  *
  */
 #endregion
-using Moyo;
+using Atom;
 using System.Collections.Generic;
 using System.Linq;
-using Moyo.GraphProcessor;
+using Atom.GraphProcessor;
 using UnityEngine;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     public class GOAPAgent : GraphAssetOwner<GOAPGraphAsset, GOAPGraphProcessor>
     {

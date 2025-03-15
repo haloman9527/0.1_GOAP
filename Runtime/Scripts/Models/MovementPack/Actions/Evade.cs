@@ -13,13 +13,13 @@
  *
  */
 #endregion
-using Moyo;
+using Atom;
 using System;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
 using UnityEngine;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     [NodeMenu("Movement/Evade")]
     public class Evade : NavMeshMovement

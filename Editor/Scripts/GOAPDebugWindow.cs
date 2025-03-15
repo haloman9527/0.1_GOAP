@@ -13,12 +13,13 @@
  *
  */
 #endregion
-using Moyo;
-using Moyo.UnityEditors;
+
+using Atom.UnityEditors;
+using Atom;
 using UnityEditor;
 using UnityEngine;
 
-namespace Moyo.GOAP.Editors
+namespace Atom.GOAP.Editors
 {
     public class GOAPDebugWindow : BaseEditorWindow
     {

@@ -15,7 +15,7 @@
 #endregion
 using UnityEngine;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     public class CoroutineService : MonoBehaviour
     {

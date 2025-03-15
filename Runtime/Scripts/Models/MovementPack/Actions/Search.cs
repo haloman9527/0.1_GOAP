@@ -14,12 +14,12 @@
  */
 #endregion
 
-using Moyo;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
+using Atom;
 using UnityEngine;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     [NodeTooltip("Search for a target by combining the wander, within hearing range, and the within seeing range tasks using the Unity NavMesh.")]
     [NodeMenu("Movement/Search")]

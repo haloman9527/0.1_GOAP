@@ -18,10 +18,10 @@
 
 using System;
 using System.Collections.Generic;
-using Moyo.GraphProcessor;
+using Atom.GraphProcessor;
 using UnityEngine;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     public abstract class GOAPAction : BaseNode
     {

@@ -16,7 +16,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     public class Cooldown
     {

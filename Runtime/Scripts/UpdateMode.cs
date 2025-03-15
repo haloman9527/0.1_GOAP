@@ -14,7 +14,7 @@
  */
 #endregion
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     public enum UpdateMode
     {

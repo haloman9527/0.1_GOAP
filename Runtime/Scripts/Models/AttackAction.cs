@@ -13,11 +13,11 @@
  *
  */
 #endregion
-using Moyo;
+using Atom;
 using System.Collections.Generic;
-using Moyo.GraphProcessor;
+using Atom.GraphProcessor;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     [NodeMenu("Attack")]
     public class AttackAction : GOAPAction { }

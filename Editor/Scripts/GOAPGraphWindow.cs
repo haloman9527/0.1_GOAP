@@ -18,11 +18,11 @@
 
 using System;
 using System.Collections.Generic;
-using Moyo.GraphProcessor;
-using Moyo.GraphProcessor.Editors;
+using Atom.GraphProcessor;
+using Atom.GraphProcessor.Editors;
 using UnityObject = UnityEngine.Object;
 
-namespace Moyo.GOAP.Editors
+namespace Atom.GOAP.Editors
 {
     [CustomView(typeof(GOAPGraph))]
     public class GOAPGraphWindow : BaseGraphWindow

@@ -13,13 +13,13 @@
  *
  */
 #endregion
-using Moyo;
+using Atom;
 using System;
 using System.Collections.Generic;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     [Serializable]
     public class GOAPGraph : BaseGraph { }

@@ -15,10 +15,10 @@
 #endregion
 
 using System;
-using Moyo.GraphProcessor;
+using Atom.GraphProcessor;
 using UnityEngine;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     [CreateAssetMenu(menuName = "Moyo/GOAP/New GOAPGraph")]
     public class GOAPGraphAsset : ScriptableObject, IGraphAsset

@@ -15,7 +15,7 @@
 #endregion
 using System.Collections.Generic;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     public interface IGOAP
     {

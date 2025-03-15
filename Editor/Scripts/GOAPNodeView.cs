@@ -16,17 +16,17 @@
 
 #endregion
 
-using Moyo;
-using Moyo.GraphProcessor;
+using Atom;
+using Atom.GraphProcessor;
 using System;
 using System.Collections.Generic;
-using Moyo.GraphProcessor.Editors;
+using Atom.GraphProcessor.Editors;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     public class GOAPNodeView : BaseSimpleNodeView<GOAPActionProcessor>
     {

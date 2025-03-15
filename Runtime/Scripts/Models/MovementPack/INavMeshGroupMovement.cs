@@ -16,13 +16,13 @@
 
 #endregion
 
-using Moyo;
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
+using Atom;
 using UnityEngine;
 using UnityEngine.AI;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     public abstract class NavMeshGroupMoveMent : GOAPAction
     {

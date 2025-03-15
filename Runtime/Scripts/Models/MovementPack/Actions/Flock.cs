@@ -13,12 +13,13 @@
  *
  */
 #endregion
-using Moyo;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
+
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
+using Atom;
 using UnityEngine;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     [NodeTooltip("在场景中聚集，使用NavMesh移动")]
     [NodeMenu("Movement/Flock")]

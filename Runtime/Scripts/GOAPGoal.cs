@@ -15,7 +15,7 @@
 #endregion
 using System;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     [Serializable]
     public class GOAPGoal : GOAPState

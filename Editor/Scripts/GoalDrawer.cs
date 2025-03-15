@@ -15,9 +15,9 @@
 #endregion
 using UnityEditor;
 using UnityEngine;
-using Goal = Moyo.GOAP.GOAPGoal;
+using Goal = Atom.GOAP.GOAPGoal;
 
-namespace Moyo.GOAP.Editors
+namespace Atom.GOAP.Editors
 {
     [CustomPropertyDrawer(typeof(GOAPGoal))]
     public class GoalDrawer : PropertyDrawer

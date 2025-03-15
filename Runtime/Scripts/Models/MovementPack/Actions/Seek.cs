@@ -13,11 +13,12 @@
  *
  */
 #endregion
-using Moyo;
-using Moyo.GraphProcessor;
+
+using Atom.GraphProcessor;
+using Atom;
 using UnityEngine;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     [NodeMenu("Movement/Seek")]
     public class Seek : NavMeshMovement

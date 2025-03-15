@@ -13,12 +13,13 @@
  *
  */
 #endregion
-using Moyo;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
+
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
+using Atom;
 using UnityEngine;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     [NodeTooltip("Rotates towards the specified rotation. The rotation can either be specified by a transform or rotation. If the transform " +
                      "is used then the rotation will not be used.")]

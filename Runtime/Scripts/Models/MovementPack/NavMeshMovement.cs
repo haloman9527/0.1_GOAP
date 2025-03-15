@@ -14,11 +14,11 @@
  */
 #endregion
 
-using Moyo.GraphProcessor;
+using Atom.GraphProcessor;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     public abstract class NavMeshMovement : GOAPAction
     {

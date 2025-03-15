@@ -13,14 +13,14 @@
  *
  */
 #endregion
-using Moyo;
+using Atom;
 using System;
-using Moyo.GraphProcessor;
+using Atom.GraphProcessor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     [NodeTooltip("追逐敌人到一定距离后停下")]
     [NodeMenu("Seek")]

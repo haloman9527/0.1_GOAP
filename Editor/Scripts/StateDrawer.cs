@@ -15,9 +15,9 @@
 #endregion
 using UnityEditor;
 using UnityEngine;
-using State = Moyo.GOAP.GOAPState;
+using State = Atom.GOAP.GOAPState;
 
-namespace Moyo.GOAP.Editors
+namespace Atom.GOAP.Editors
 {
     [CustomPropertyDrawer(typeof(GOAPState))]
     public class StateDrawer : PropertyDrawer

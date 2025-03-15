@@ -13,12 +13,13 @@
  *
  */
 #endregion
-using Moyo;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
+
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
+using Atom;
 using UnityEngine;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     [NodeTooltip("Move towards the specified position. The position can either be specified by a transform or position. If the transform " +
                      "is used then the position will not be used.")]

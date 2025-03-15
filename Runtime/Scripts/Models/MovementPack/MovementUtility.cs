@@ -17,7 +17,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     public static class MovementUtility
     {

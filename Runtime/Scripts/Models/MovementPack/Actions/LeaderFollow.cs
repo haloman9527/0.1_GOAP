@@ -13,14 +13,14 @@
  *
  */
 #endregion
-using Moyo;
+using Atom;
 using System;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     [NodeTooltip("控制多个NavMesh跟随一个目标")]
     [NodeMenu("Movement/LeaderFollow")]

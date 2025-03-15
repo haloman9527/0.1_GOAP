@@ -15,9 +15,9 @@
 #endregion
 
 using System;
-using Moyo.GraphProcessor;
+using Atom.GraphProcessor;
 
-namespace Moyo.GOAP
+namespace Atom.GOAP
 {
     public abstract class GOAPActionEvtNode : BaseNode
     {

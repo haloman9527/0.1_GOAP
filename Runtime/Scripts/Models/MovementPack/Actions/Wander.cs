@@ -13,14 +13,15 @@
  *
  */
 #endregion
-using Moyo;
-using Moyo.GraphProcessor;
-using Moyo.SharedVariable;
+
+using Atom.GraphProcessor;
+using Atom.SharedVariable;
+using Atom;
 using UnityEngine;
 
 using Random = UnityEngine.Random;
 
-namespace Moyo.GOAP.Actions.Movement
+namespace Atom.GOAP.Actions.Movement
 {
     [NodeTooltip("在NavMesh上徘徊")]
     [NodeMenu("Movement/Wander")]
